@@ -160,3 +160,4 @@
 - **2026-06-22**: System initialized.
 - **2026-06-22**: Updated with initial bilingual Sanity data schema and tech stack invariants.
 - **2026-06-23**: Updated schemas to cover Celebrities, Case Studies, Reviews, Team, and Tours based on site structure input. Added typography advice (`Noto Sans TC` for Chinese, `Montserrat` for English) and colors (`#C13825` and `#494c53`).
+- **2026-06-23**: Completed Next.js + Tailwind v4 frontend layout. Setup i18n routing, static translations, custom Cloudinary loader, and verified production build compilation.
