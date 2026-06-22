@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "home": "首頁",
+    "successStories": "療效分享",
+    "aboutUs": "關於我們",
+    "newsTours": "巡迴服務",
+    "contact": "聯絡我們"
+  },
+  "home": {
+    "hero": {
+      "title": "THE SHUGAOSHA WAY",
+      "subtitle": "平衡 • 和諧 • 健康",
+      "description": "以溫和的日式小顏手法，幫助面部恢復平衡、對稱與和諧 —— 同時提升外在美感與內在健康。"
+    },
+    "whatWeDo": {
+      "title": "什麼是日本小顏矯正?",
+      "description1": "日本小顏矯正是通過最自然、最安全的專業矯正手法，改善面部骨骼間的縫隙，塑造臉部輪廓，達至小顏效果，你會發現臉容更緊緻年輕。",
+      "description2": "整個療程完全是自我收復，無入侵性，無需採用儀器及藥物，安全及無副作用。過程舒適，絕無痛楚。",
+      "benefitsTitle": "日本小顏矯正的功效",
+      "benefits": [
+        "促進面部緊緻，呈現年輕狀態。",
+        "調整面部對稱度，使五官更平衡。",
+        "提升頰骨位置，塑造立體輪廓。",
+        "改善下垂腫大，消除面部水腫。",
+        "放鬆深層肌肉，釋放面部壓力。",
+        "平衡顎骨、舒緩牙關，使呼吸更暢通。"
+      ]
+    },
+    "celebrityTeaser": {
+      "title": "深受澳洲、香港及海外政商名流與客人的信賴。",
+      "description": "多年來，無數客人親身體驗了修顏社溫和手感的小顏矯正，帶來的平衡與和諧。",
+      "ctaText": "探索來自世界各地客人的真實故事、見證及小顏蛻變旅程。"
+    },
+    "reviews": {
+      "title": "客戶好評與療效對照",
+      "subtitle": "自然小顏的前後轉變"
+    },
+    "howItWorks": {
+      "title": "療程步驟",
+      "steps": [
+        {
+          "number": "1",
+          "title": "面部測量與評估",
+          "desc": "仔細評估您的面部骨骼缝隙與平衡狀態，制定專屬的矯正方案。"
+        },
+        {
+          "number": "2",
+          "title": "小顏矯正療程",
+          "desc": "使用正宗日式溫和手法進行矯正，過程舒適且安全。"
+        },
+        {
+          "number": "3",
+          "title": "日常保養建議",
+          "desc": "提供專屬日常護理與姿勢調整建議，使小顏效果更加持久。"
+        }
+      ]
+    },
+    "cta": {
+      "title": "準備好用最自然的方式煥發美麗了嗎？",
+      "button": "立即透過 WhatsApp/SMS 預約: +61 493552213"
+    }
+  },
+  "success": {
+    "title": "療效見證",
+    "subtitle": "前後對比及客戶評論",
+    "visualEvidence": "視覺見證",
+    "celebrityTitle": "名人明星推薦",
+    "everydayTitle": "客戶真實評價"
+  },
+  "about": {
+    "title": "關於我們",
+    "subtitle": "修顏社的專業堅持",
+    "foundersTitle": "創辦人介紹",
+    "awardsTitle": "獲獎與肯定",
+    "awards": [
+      "🏆 2026年 Northern Districts 當地傑出商業獎決賽入圍者",
+      "卓越美容服務獎 (Outstanding Beauty Services)",
+      "Google 5星好評推薦"
+    ],
+    "philosophyTitle": "我們的理念與科學",
+    "philosophyDesc": "修顏社理念：平衡、和諧、健康。修顏社小顏術：更少力量，更多理解。我們不改變您的臉，我們幫您找回最美、最平衡的狀態。",
+    "locationNotice": "我們已搬遷至 Gladesville 新址！"
+  },
+  "newsTours": {
+    "title": "最新消息與全球巡迴",
+    "newsTitle": "最新動態 (Instagram)",
+    "tourTitle": "全球巡迴服務時程",
+    "tourIntro": "我們定期前往亞洲與北美各大主要城市，為我們尊貴的國際客戶提供專業的日本小顏矯正服務。",
+    "bookingNote": "巡迴服務名額有限，請盡早透過 WhatsApp 預約以保留您的時段。"
+  },
+  "contact": {
+    "title": "聯絡我們",
+    "subtitle": "預約諮詢",
+    "desc": "為確保提供最細緻貼心的服務與時間規劃，我們統一使用訊息進行預約與諮詢。",
+    "locationsTitle": "服務地點",
+    "primaryClinic": "主要診所: 5 Pittwater Road, Gladesville NSW 2111, Australia."
+  }
+}

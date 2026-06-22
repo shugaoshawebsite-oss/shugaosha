@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "home": "Home",
+    "successStories": "Success Stories",
+    "aboutUs": "About Us",
+    "newsTours": "News & Tours",
+    "contact": "Contact Us"
+  },
+  "home": {
+    "hero": {
+      "title": "THE SHUGAOSHA WAY",
+      "subtitle": "Balance • Harmony • Wellbeing",
+      "description": "A gentle hands-on approach that helps restore balance, alignment and harmony — supporting both how you look and how you feel."
+    },
+    "whatWeDo": {
+      "title": "What Is The Shugaosha Way?",
+      "description1": "The Shugaosha Way is a gentle hands-on approach that focuses on balance, harmony and overall wellbeing.",
+      "description2": "It helps create a more lifted, refreshed and naturally balanced appearance without machines, needles or invasive procedures.",
+      "benefitsTitle": "Benefits of The Shugaosha Way",
+      "benefits": [
+        "Promotes a more lifted and refined appearance.",
+        "Encourages facial balance and harmony.",
+        "Helps reduce the appearance of puffiness.",
+        "Supports a fresher and more refreshed look.",
+        "Encourages relaxation and release of tension.",
+        "Supports overall wellbeing and a lighter feeling."
+      ]
+    },
+    "celebrityTeaser": {
+      "title": "Trusted by celebrities, professionals and clients from Australia, Hong Kong and beyond.",
+      "description": "Over the years, clients have experienced The Shugaosha Way for its gentle, hands-on approach to balance, harmony and overall wellbeing.",
+      "ctaText": "Explore real stories, testimonials and progression journeys from those who have experienced visible yet natural changes through consistency and care."
+    },
+    "reviews": {
+      "title": "Client Reviews & Results",
+      "subtitle": "Before and After Transformations"
+    },
+    "howItWorks": {
+      "title": "The Process",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Scan & Plan",
+          "desc": "We analyze your facial balance and create a custom realignment plan."
+        },
+        {
+          "number": "2",
+          "title": "Treatment",
+          "desc": "A gentle, non-invasive hands-on treatment using specialized Japanese techniques."
+        },
+        {
+          "number": "3",
+          "title": "Maintain",
+          "desc": "Follow-up recommendations and simple routines to maintain your natural balance."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to transform your facial contours naturally?",
+      "button": "Book Your Session via WhatsApp/SMS: +61 493552213"
+    }
+  },
+  "success": {
+    "title": "Success Stories",
+    "subtitle": "Case Studies & Reviews",
+    "visualEvidence": "The Visual Evidence",
+    "celebrityTitle": "Celebrity Endorsements",
+    "everydayTitle": "Everyday Client Reviews"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "The Shugaosha Difference",
+    "foundersTitle": "The Founders",
+    "awardsTitle": "Awards & Recognition",
+    "awards": [
+      "🏆 2026 Northern Districts Local Business Awards Finalist",
+      "Outstanding Beauty Services",
+      "5-Star Google Reviews"
+    ],
+    "philosophyTitle": "The Science & Philosophy",
+    "philosophyDesc": "The Shugaosha Philosophy: Balance, Harmony, Wellbeing. The Shugaosha Way: Less Force. More Understanding. We Don’t Change Your Face.",
+    "locationNotice": "We have moved to Gladesville!"
+  },
+  "newsTours": {
+    "title": "News & Global Tours",
+    "newsTitle": "Latest News & Updates",
+    "tourTitle": "Global Tour Schedule",
+    "tourIntro": "We regularly travel to major cities in Asia and North America to serve our international clientele.",
+    "bookingNote": "Tour slots fill up quickly. Please message us on WhatsApp to secure your spot in advance."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in Touch",
+    "desc": "To ensure personalized care and scheduling, we handle all appointments directly via messaging.",
+    "locationsTitle": "Our Locations",
+    "primaryClinic": "Primary Clinic: 5 Pittwater Road, Gladesville NSW 2111, Australia."
+  }
+}
