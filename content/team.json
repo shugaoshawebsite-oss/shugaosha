@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "t1",
+    "name": { "en": "Teresa Soo", "zh": "蘇子賢 (Teresa)" },
+    "role": { "en": "Japan-Certified Master Specialist and Trainer", "zh": "日本認證小顏矯正師 / 總導師" },
+    "bio": {
+      "en": "Teresa discovered this non-invasive technique and pursued her advanced certifications and trainer license directly in Japan. Her passion is helping individuals achieve natural, beautiful facial alignment through the warmth and expertise of manual touch.",
+      "zh": "Teresa 在日本親自學習並取得了正宗小顏矯正師及導師證書，擁有豐富的手感操作與教學經驗。她深信雙手的溫度和理解能啟動面部肌肉的記憶與自愈能力，幫助每位客戶實現最完美的平衡。"
+    },
+    "imageRelativeUrl": "/images/teresa_soo.jpg"
+  },
+  {
+    "_id": "t2",
+    "name": { "en": "Charles Cho", "zh": "曹志豪 (Charles)" },
+    "role": { "en": "Japan-Certified Specialist & Australia-Certified Trainer", "zh": "日本認證小顏矯正師 / 澳洲註冊培訓導師" },
+    "bio": {
+      "en": "Charles certified in Japan as a specialist and extended his teaching and practice to Australia. He is highly regarded for his precise explanation of skeletal gaps, jaw alignment, and his smooth, relaxing manual style.",
+      "zh": "Charles 在日本取得小顏認證後，將技術帶回澳洲並成為當地推廣導師。他擅長從面部骨骼結構及解剖原理，向客戶詳細解說五官走位原因，以精準細緻的手法，舒緩咬合關節並重塑臉部對稱線條。"
+    },
+    "imageRelativeUrl": "/images/charles_cho.jpg"
+  }
+]

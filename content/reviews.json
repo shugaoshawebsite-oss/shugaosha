@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "r1",
+    "clientName": "Angie Lin, Sheley Yeung & Maggie Han",
+    "location": "Australia / Hong Kong",
+    "rating": 5,
+    "reviewText": {
+      "en": "So happy to meet Teresa and Charles, and get to know Japanese Kogao beauty tech. Charles introduced the concept of 'small face' in a professional perspective. Throughout the entire process, Teresa was skillful, friendly and professional. After the treatment, the face slimming effect is obvious, I surely will recommend to my friends.",
+      "zh": "很高興認識了Teresa和Charles，並了解到日本小顔美容技術。Charles以專業的角度介紹了“小颜”概念。深入而簡潔的解釋使我對接受治療感到興趣和信心。在整個過程中，Teresa既熟練又友善，專業至極。治療後，臉部瘦臉效果顯著，我一定會向我的朋友推薦。"
+    }
+  },
+  {
+    "_id": "r2",
+    "clientName": "Nancy Tong",
+    "location": "Australia",
+    "rating": 5,
+    "reviewText": {
+      "en": "Charles knew what he was doing. I saw immediate improvement on my face after just the first session. Since I finished the 4 treatments, which was about 9 months ago, the result still remains. I highly recommend his service.",
+      "zh": "Charles知道他在做什麼。在第一次療程後，我立即看到臉部有所改善。自從我約9個月前完成了四次療程，效果仍然保持。我強烈推薦他的服務。"
+    }
+  },
+  {
+    "_id": "r3",
+    "clientName": "Virginia Degrange",
+    "location": "Google Review Client",
+    "rating": 5,
+    "reviewText": {
+      "en": "Thank you for helping me achieve a more youthful look, Charles and Teresa have truly transformed my facial appearance. I feel uplifted and more confident. Grateful for the fantastic service!",
+      "zh": "感謝你們幫助我實現更年輕的外貌，Charles和Teresa真的改變了我的面容。我感到振奮且更有信心。對於這出色的服務深感感激！"
+    }
+  }
+]

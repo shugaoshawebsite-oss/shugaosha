@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 import { getTeam } from '@/utils/dataService'
 import { Award, Compass, Star, MapPin } from 'lucide-react'
@@ -45,9 +46,21 @@ export default async function AboutPage({ params }: PageProps) {
               key={member._id}
               className="bg-white border border-gray-100/60 rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row gap-8 items-start hover:shadow-md transition-shadow duration-300"
             >
-              {/* Profile Icon Placeholder */}
-              <div className="flex-shrink-0 w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-semibold shadow-inner">
-                {(member.name[locale] || member.name.en).charAt(0)}
+              {/* Profile Image / Placeholder */}
+              <div className="flex-shrink-0 w-24 h-24 rounded-full overflow-hidden relative border border-gray-100 shadow-sm bg-primary/5">
+                {member.imageRelativeUrl ? (
+                  <Image
+                    src={member.imageRelativeUrl}
+                    alt={member.name[locale] || member.name.en}
+                    fill
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-primary text-2xl font-semibold">
+                    {(member.name[locale] || member.name.en).charAt(0)}
+                  </div>
+                )}
               </div>
 
               {/* Bio Details */}

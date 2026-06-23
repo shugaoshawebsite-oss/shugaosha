@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 import { getServices, getCelebrities } from '@/utils/dataService'
 import { Check, ArrowRight, MessageCircle } from 'lucide-react'
@@ -122,8 +123,20 @@ export default async function HomePage({ params }: PageProps) {
                   "{celebrity.quote[locale] || celebrity.quote.en}"
                 </p>
                 <div className="flex items-center gap-4 border-t border-gray-50 pt-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm">
-                    {(celebrity.name[locale] || celebrity.name.en).charAt(0)}
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full overflow-hidden relative border border-gray-100 shadow-sm bg-primary/5">
+                    {celebrity.imageRelativeUrl ? (
+                      <Image
+                        src={celebrity.imageRelativeUrl}
+                        alt={celebrity.name[locale] || celebrity.name.en}
+                        fill
+                        sizes="40px"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-primary font-semibold text-sm">
+                        {(celebrity.name[locale] || celebrity.name.en).charAt(0)}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-foreground">

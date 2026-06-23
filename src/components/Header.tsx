@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Globe } from 'lucide-react'
 import { getDictionary } from '@/utils/dictionary'
@@ -48,14 +49,16 @@ export default function Header({ locale }: HeaderProps) {
           {/* Logo / Brand Name */}
           <Link 
             href={`/${locale}`}
-            className="flex flex-col tracking-wider group"
+            className="flex items-center"
           >
-            <span className="font-semibold text-lg text-primary transition-colors duration-300 group-hover:text-primary/80">
-              SHUGAOSHA
-            </span>
-            <span className="text-xs text-charcoal font-light tracking-[0.3em] mt-0.5">
-              修顏社
-            </span>
+            <Image
+              src="/images/logo.png"
+              alt="Shugaosha Logo"
+              width={250}
+              height={50}
+              priority
+              className="w-[180px] md:w-[250px] h-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}

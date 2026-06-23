@@ -1,4 +1,5 @@
-import { client } from '@/sanity/lib/client'
+import fs from 'fs/promises'
+import path from 'path'
 
 // Interfaces representing the payload format defined in gemini.md
 export interface LocaleString {
@@ -89,7 +90,7 @@ const fallbackServices: Service[] = [
     ],
     price: 198,
     duration: '60 mins',
-    imageRelativeUrl: 'service_realignment.jpg'
+    imageRelativeUrl: '/images/service_realignment.jpg'
   }
 ]
 
@@ -102,7 +103,7 @@ const fallbackCelebrities: Celebrity[] = [
       en: "I feel my face has become more balanced, and since the treatment is non-invasive I find it quite appealing. Overall, I'm very satisfied with the results. Thank you Teresa and Charles!",
       zh: "我覺得小顏術對我嚟講真係好有用，因為我本身有水腫同埋包包面，做咗小顏之後我覺得我塊面冇咁水腫，依家摸到個面骨細咗令我感覺非常之好。做完之後，我覺得塊面balance咗，冇之前咁鴛鴦，啪返啱個位，而且因為小顏無入侵性，所以我覺得幾好。"
     },
-    imageRelativeUrl: 'luisa_leitao.jpg'
+    imageRelativeUrl: '/images/luisa_leitao.jpg'
   },
   {
     _id: 'c2',
@@ -112,7 +113,7 @@ const fallbackCelebrities: Celebrity[] = [
       en: "Thank you Teresa for making me more beautiful. I now have full confidence.",
       zh: "多謝 Teresa 另我變得更靚, 我現在信心十足。"
     },
-    imageRelativeUrl: 'vivian_lai.jpg'
+    imageRelativeUrl: '/images/vivian_lai.jpg'
   },
   {
     _id: 'c3',
@@ -120,9 +121,9 @@ const fallbackCelebrities: Celebrity[] = [
     role: { en: 'Renowned host of Hong Kong', zh: '香港著名節目主持人' },
     quote: {
       en: "Although I'm not someone who's overweight, recently I tried the Kogao treatment. I feel that my facial contours have become more prominent and defined after the treatment. To some extent, it's truly unbelievable. 👍",
-      zh: "我雖然唔係一個肥人，但係做咗小顏呢一個事情呢，我又覺得Teresa真係有啲辦法喎，我覺得自己嘅輪廓呢… 就好明顯就更加突出啦… 同埋自己嘅血氣都循環得好啲。用人手唔係機器又可以有一個咁嘅效果，某程度真係匪夷所思👍"
+      zh: "我雖然唔係一個肥人，但係做咗小顏呢一個事情呢，我又覺得Teresa真係有啲辦法喎，我覺得自己嘅輪廓呢… 就好明顯就更加突出啦… 同埋自己嘅血氣都循環得好啲。用人手唔係機器又可以有一個咁嘅效果，某程度真係匪輿所思👍"
     },
-    imageRelativeUrl: 'helen_tam.jpg'
+    imageRelativeUrl: '/images/helen_tam.jpg'
   },
   {
     _id: 'c4',
@@ -132,7 +133,7 @@ const fallbackCelebrities: Celebrity[] = [
       en: "Thank you Charles and Teresa for introducing me to authentic Japanese face slimming techniques. After the treatment, I could clearly see my contours returning. Those who know me are aware that I had faced issues with facial muscle weakness due to previous paralysis. However, after undergoing the petite facial twice, there's been improvement!",
       zh: "多謝 Charles 同 Teresa，令我認識正宗日式小顏是什麼。做完之後，明顯輪廓出返嚟，同精神咗好多。認識我嘅人都知道，我曾經面癱，有啲面部肌肉力量會差啲，當我做完兩次小顏後，已有改善！Thx Teresa & Charles。"
     },
-    imageRelativeUrl: 'max_cheung.jpg'
+    imageRelativeUrl: '/images/max_cheung.jpg'
   },
   {
     _id: 'c5',
@@ -142,7 +143,7 @@ const fallbackCelebrities: Celebrity[] = [
       en: "Although I've only had one Kogao treatment, I can definitely see an improvement. 👍🏻",
       zh: "雖然只做了一次小顏，但真係見到有改善👍🏻"
     },
-    imageRelativeUrl: 'ben_wong.jpg'
+    imageRelativeUrl: '/images/ben_wong.jpg'
   }
 ]
 
@@ -185,8 +186,8 @@ const fallbackCaseStudies: CaseStudy[] = [
     title: { en: 'Client Progression A', zh: '客戶療程對照 A' },
     sessionsCount: 4,
     category: '4-session',
-    beforeImageRelativeUrl: 'case_study_1_before.jpg',
-    afterImageRelativeUrl: 'case_study_1_after.jpg',
+    beforeImageRelativeUrl: '/images/case_study_1_before.jpg',
+    afterImageRelativeUrl: '/images/case_study_1_after.jpg',
     description: {
       en: 'Significant reduction in cheek width, jaw alignment, and cheekbone symmetry after 4 sessions.',
       zh: '進行4次小顏療程後，顴骨寬度明顯內收，下頜輪廓更具V字感，左右平衡度大幅提升。'
@@ -197,8 +198,8 @@ const fallbackCaseStudies: CaseStudy[] = [
     title: { en: 'Client Progression B', zh: '客戶療程對照 B' },
     sessionsCount: 8,
     category: '8-session',
-    beforeImageRelativeUrl: 'case_study_2_before.jpg',
-    afterImageRelativeUrl: 'case_study_2_after.jpg',
+    beforeImageRelativeUrl: '/images/case_study_2_before.jpg',
+    afterImageRelativeUrl: '/images/case_study_2_after.jpg',
     description: {
       en: '8-session journey showcasing nose bridge elevation, nasolabial folds reduction, and skin firming.',
       zh: '8次療程的完整蛻變：鼻樑視覺上顯得更高挺，法令紋與笑紋顯著減淡，面部組織整體提拉。'
@@ -209,8 +210,8 @@ const fallbackCaseStudies: CaseStudy[] = [
     title: { en: 'Maintenance Client C', zh: '日常保養客戶 C' },
     sessionsCount: 12,
     category: 'maintenance',
-    beforeImageRelativeUrl: 'case_study_3_before.jpg',
-    afterImageRelativeUrl: 'case_study_3_after.jpg',
+    beforeImageRelativeUrl: '/images/case_study_3_before.jpg',
+    afterImageRelativeUrl: '/images/case_study_3_after.jpg',
     description: {
       en: 'Long term maintenance result showing sustained face slimming and tone over 12 months.',
       zh: '維持期保養對照：每月一次的例行微調，使精緻的小顏曲線在一年後依然保持完美不反彈。'
@@ -227,7 +228,7 @@ const fallbackTeam: TeamMember[] = [
       en: "Teresa discovered this non-invasive technique and pursued her advanced certifications and trainer license directly in Japan. Her passion is helping individuals achieve natural, beautiful facial alignment through the warmth and expertise of manual touch.",
       zh: "Teresa 在日本親自學習並取得了正宗小顏矯正師及導師證書，擁有豐富的手感操作與教學經驗。她深信雙手的溫度和理解能啟動面部肌肉的記憶與自愈能力，幫助每位客戶實現最完美的平衡。"
     },
-    imageRelativeUrl: 'teresa_soo.jpg'
+    imageRelativeUrl: '/images/teresa_soo.jpg'
   },
   {
     _id: 't2',
@@ -237,7 +238,7 @@ const fallbackTeam: TeamMember[] = [
       en: "Charles certified in Japan as a specialist and extended his teaching and practice to Australia. He is highly regarded for his precise explanation of skeletal gaps, jaw alignment, and his smooth, relaxing manual style.",
       zh: "Charles 在日本取得小顏認證後，將技術帶回澳洲並成為當地推廣導師。他擅長從面部骨骼結構及解剖原理，向客戶詳細解說五官走位原因，以精準細緻的手法，舒緩咬合關節並重塑臉部對稱線條。"
     },
-    imageRelativeUrl: 'charles_cho.jpg'
+    imageRelativeUrl: '/images/charles_cho.jpg'
   }
 ]
 
@@ -266,62 +267,62 @@ const fallbackTours: TourSchedule[] = [
 // DATA FETCHING SERVICE (WITH MOCK FALLBACKS)
 // ==========================================
 
-export async function getServices(): Promise<Service[]> {
-  try {
-    const data = await client.fetch<Service[]>(`*[_type == "service"]`)
-    if (data && data.length > 0) return data
-  } catch (error) {
-    console.error('Error fetching services from Sanity, falling back to local seed:', error)
+async function fetchContent<T>(fileName: string, fallback: T): Promise<T> {
+  const repo = process.env.GITHUB_CONTENT_REPO
+  const branch = process.env.GITHUB_CONTENT_BRANCH || 'main'
+  const token = process.env.GITHUB_TOKEN
+
+  if (repo) {
+    const url = `https://raw.githubusercontent.com/${repo}/${branch}/content/${fileName}`
+    try {
+      const headers: Record<string, string> = {}
+      if (token) {
+        headers['Authorization'] = `token ${token}`
+      }
+      const response = await fetch(url, {
+        headers,
+        next: { revalidate: 60 }
+      })
+      if (response.ok) {
+        return await response.json() as T
+      }
+      console.warn(`Failed to fetch ${fileName} from GitHub (status: ${response.status}), trying local filesystem`)
+    } catch (error) {
+      console.error(`Error fetching ${fileName} from GitHub:`, error)
+    }
   }
-  return fallbackServices
+
+  // Fallback to local file system
+  try {
+    const filePath = path.join(process.cwd(), 'content', fileName)
+    const fileData = await fs.readFile(filePath, 'utf-8')
+    return JSON.parse(fileData) as T
+  } catch (error) {
+    console.error(`Error reading ${fileName} from local file system:`, error)
+    return fallback
+  }
+}
+
+export async function getServices(): Promise<Service[]> {
+  return fetchContent<Service[]>('services.json', fallbackServices)
 }
 
 export async function getCelebrities(): Promise<Celebrity[]> {
-  try {
-    const data = await client.fetch<Celebrity[]>(`*[_type == "celebrityEndorsement"] | order(order asc)`)
-    if (data && data.length > 0) return data
-  } catch (error) {
-    console.error('Error fetching celebrities from Sanity, falling back to local seed:', error)
-  }
-  return fallbackCelebrities
+  return fetchContent<Celebrity[]>('celebrities.json', fallbackCelebrities)
 }
 
 export async function getReviews(): Promise<ClientReview[]> {
-  try {
-    const data = await client.fetch<ClientReview[]>(`*[_type == "clientReview"] | order(order asc)`)
-    if (data && data.length > 0) return data
-  } catch (error) {
-    console.error('Error fetching reviews from Sanity, falling back to local seed:', error)
-  }
-  return fallbackReviews
+  return fetchContent<ClientReview[]>('reviews.json', fallbackReviews)
 }
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {
-  try {
-    const data = await client.fetch<CaseStudy[]>(`*[_type == "caseStudy"] | order(order asc)`)
-    if (data && data.length > 0) return data
-  } catch (error) {
-    console.error('Error fetching case studies from Sanity, falling back to local seed:', error)
-  }
-  return fallbackCaseStudies
+  return fetchContent<CaseStudy[]>('caseStudies.json', fallbackCaseStudies)
 }
 
 export async function getTeam(): Promise<TeamMember[]> {
-  try {
-    const data = await client.fetch<TeamMember[]>(`*[_type == "teamMember"] | order(order asc)`)
-    if (data && data.length > 0) return data
-  } catch (error) {
-    console.error('Error fetching team from Sanity, falling back to local seed:', error)
-  }
-  return fallbackTeam
+  return fetchContent<TeamMember[]>('team.json', fallbackTeam)
 }
 
 export async function getTours(): Promise<TourSchedule[]> {
-  try {
-    const data = await client.fetch<TourSchedule[]>(`*[_type == "tourSchedule"] | order(order asc)`)
-    if (data && data.length > 0) return data
-  } catch (error) {
-    console.error('Error fetching tours from Sanity, falling back to local seed:', error)
-  }
-  return fallbackTours
+  return fetchContent<TourSchedule[]>('tours.json', fallbackTours)
 }

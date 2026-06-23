@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 import { getCaseStudies, getCelebrities, getReviews } from '@/utils/dataService'
 import { Star, Quote } from 'lucide-react'
@@ -50,35 +51,37 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
               >
                 {/* Images placeholder / display container */}
                 <div className="grid grid-cols-2 gap-0.5 bg-gray-100 h-64 sm:h-72 relative">
-                  <div className="relative h-full flex items-center justify-center bg-gray-50 border-r border-white/60">
-                    <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] uppercase font-semibold text-charcoal px-2.5 py-1 rounded">
+                  <div className="relative h-full w-full overflow-hidden border-r border-white/60 bg-gray-50">
+                    {cs.beforeImageRelativeUrl ? (
+                      <Image
+                        src={cs.beforeImageRelativeUrl}
+                        alt={`${cs.title[locale] || cs.title.en} - Before`}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-xs text-charcoal/40">Pre</div>
+                    )}
+                    <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] uppercase font-semibold text-charcoal px-2.5 py-1 rounded z-10">
                       {locale === 'en' ? 'Before' : '前'}
                     </span>
-                    {/* Simulated before-image styled for minimal UI */}
-                    <div className="text-center p-4">
-                      <div className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center mx-auto text-xs text-charcoal/40 font-light mb-1">
-                        Pre
-                      </div>
-                      <span className="text-[10px] text-charcoal/45 tracking-widest block uppercase">
-                        {locale === 'en' ? 'Session 1' : '第 1 次'}
-                      </span>
-                    </div>
                   </div>
-                  <div className="relative h-full flex items-center justify-center bg-primary/5">
-                    <span className="absolute top-3 left-3 bg-primary text-white text-[10px] uppercase font-semibold px-2.5 py-1 rounded shadow-sm">
+                  <div className="relative h-full w-full overflow-hidden bg-primary/5">
+                    {cs.afterImageRelativeUrl ? (
+                      <Image
+                        src={cs.afterImageRelativeUrl}
+                        alt={`${cs.title[locale] || cs.title.en} - After`}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-xs text-primary">Post</div>
+                    )}
+                    <span className="absolute top-3 left-3 bg-primary text-white text-[10px] uppercase font-semibold px-2.5 py-1 rounded shadow-sm z-10">
                       {locale === 'en' ? 'After' : '後'}
                     </span>
-                    {/* Simulated after-image styled for minimal UI */}
-                    <div className="text-center p-4">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto text-xs text-primary font-medium mb-1">
-                        Post
-                      </div>
-                      <span className="text-[10px] text-primary tracking-widest block uppercase font-medium">
-                        {cs.category === '4-session' ? (locale === 'en' ? 'Session 4' : '第 4 次') :
-                         cs.category === '8-session' ? (locale === 'en' ? 'Session 8' : '第 8 次') :
-                         (locale === 'en' ? 'Maintenance' : '保養期')}
-                      </span>
-                    </div>
                   </div>
                 </div>
 
@@ -127,8 +130,20 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
                 </div>
                 
                 <div className="flex items-center gap-4 border-t border-gray-50 pt-6">
-                  <div className="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center font-medium text-sm">
-                    {(celebrity.name[locale] || celebrity.name.en).charAt(0)}
+                  <div className="w-11 h-11 rounded-full overflow-hidden relative border border-gray-100 shadow-sm bg-primary/5">
+                    {celebrity.imageRelativeUrl ? (
+                      <Image
+                        src={celebrity.imageRelativeUrl}
+                        alt={celebrity.name[locale] || celebrity.name.en}
+                        fill
+                        sizes="44px"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-primary font-medium text-sm">
+                        {(celebrity.name[locale] || celebrity.name.en).charAt(0)}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-foreground">

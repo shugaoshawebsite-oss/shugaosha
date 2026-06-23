@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 
 interface FooterProps {
@@ -15,9 +16,14 @@ export default function Footer({ locale }: FooterProps) {
           
           {/* Brand block */}
           <div className="flex flex-col space-y-4">
-            <Link href={`/${locale}`} className="flex flex-col tracking-wider">
-              <span className="font-semibold text-lg text-primary">SHUGAOSHA</span>
-              <span className="text-xs text-charcoal font-light tracking-[0.3em] mt-0.5">修顏社</span>
+            <Link href={`/${locale}`} className="flex items-center">
+              <Image
+                src="/images/logo.png"
+                alt="Shugaosha Logo"
+                width={200}
+                height={40}
+                className="w-[150px] md:w-[200px] h-auto object-contain"
+              />
             </Link>
             <p className="text-sm font-light text-charcoal/75 leading-relaxed max-w-xs">
               {locale === 'en' 

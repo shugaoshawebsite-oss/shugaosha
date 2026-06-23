@@ -1,0 +1,27 @@
+[
+  {
+    "_id": "s1",
+    "title": {
+      "en": "Japanese Face Slimming Realignment (Kogao)",
+      "zh": "正宗日本小顏矯正術"
+    },
+    "slug": {
+      "current": "japanese-face-slimming-realignment"
+    },
+    "description": {
+      "en": "Our skull is made up of 22 bones. With age and improper posture, the gaps between the bones continue to widen, resulting in facial misalignment. This gentle, hands-on treatment corrects gaps between bones and repositions bone collaterals to achieve a natural, refined appearance.",
+      "zh": "我們頭骨由22塊骨塊組成。隨著年齡增長和不良姿勢，骨塊間的缝隙不斷加濶，導致面部歪斜與不對稱。日式小顏矯正通過最自然、最安全的專業手感，改善面部骨骼間的缝隙，塑造臉部輪廓，達至小顏與提拉效果。"
+    },
+    "benefits": [
+      { "en": "Promotes a more lifted and refined appearance.", "zh": "面部提拉與收緊，重塑精緻臉廓。" },
+      { "en": "Encourages facial balance and symmetry.", "zh": "調整左右臉對稱度，使五官更均勻。" },
+      { "en": "Helps reduce the appearance of puffiness & swelling.", "zh": "促進淋巴與血液循環，快速減輕面部水腫。" },
+      { "en": "Supports a fresher, more rejuvenated skin look.", "zh": "改善血流代謝，使皮膚煥發自然光澤。" },
+      { "en": "Encourages deep relaxation and release of facial tension.", "zh": "深層放鬆面部肌肉，釋放生活壓力。" },
+      { "en": "Supports overall wellbeing and jaw opening alignment.", "zh": "調整顎骨平衡，使牙關咬合開合更順暢。" }
+    ],
+    "price": 198,
+    "duration": "60 mins",
+    "imageRelativeUrl": "/images/service_realignment.jpg"
+  }
+]
