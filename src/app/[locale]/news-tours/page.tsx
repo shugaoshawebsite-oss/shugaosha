@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 import { getTours } from '@/utils/dataService'
 import { Calendar, Globe, MessageCircle } from 'lucide-react'
@@ -25,6 +26,13 @@ const InstagramIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
+const cityEmojis: Record<string, string> = {
+  'Hong Kong': '🇭🇰',
+  'USA': '🇺🇸',
+  'Canada': '🇨🇦',
+  'Australia': '🇦🇺',
+}
+
 export default async function NewsToursPage({ params }: PageProps) {
   const { locale: rawLocale } = await params
   const locale = (rawLocale === 'zh' ? 'zh' : 'en') as 'en' | 'zh'
@@ -33,113 +41,141 @@ export default async function NewsToursPage({ params }: PageProps) {
 
   return (
     <div className="flex flex-col space-y-24 md:space-y-36 pb-24">
+
       {/* Page Header */}
-      <section className="bg-gradient-to-b from-soft-bg to-white py-20 px-6 text-center">
-        <div className="max-w-3xl mx-auto space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary block">
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/assets/Artboard 1bg4.webp"
+            alt="Hero Background"
+            fill
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55" />
+        </div>
+
+        <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 block mb-3">
             {dict.newsTours.title}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-light text-foreground tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-light text-white tracking-tight">
             {locale === 'en' ? 'News & Travel Schedule' : '最新動態與巡迴服務'}
           </h1>
-          <p className="text-sm sm:text-base font-light text-charcoal/80 max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base font-light text-white/80 max-w-xl leading-relaxed mt-4">
             {dict.newsTours.tourIntro}
           </p>
         </div>
       </section>
 
-      {/* Global Tour Schedule */}
-      <section className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
+      {/* Tour Schedule */}
+      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
         <div className="border-b border-gray-100 pb-6 flex items-center justify-between">
-          <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight flex items-center gap-3">
-            <Globe className="w-6 h-6 text-primary" />
-            {dict.newsTours.tourTitle}
-          </h2>
-          <span className="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full font-medium uppercase tracking-wider">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary block mb-2">
+              {locale === 'en' ? 'International Service' : '國際巡迴服務'}
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight flex items-center gap-3">
+              <Globe className="w-6 h-6 text-primary" />
+              {dict.newsTours.tourTitle}
+            </h2>
+          </div>
+          <span className="text-xs bg-primary/10 text-primary px-3 py-1.5 rounded-full font-medium uppercase tracking-wider hidden sm:inline">
             {locale === 'en' ? 'Active' : '預約中'}
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {tours.map((tour) => (
-            <div 
-              key={tour._id}
-              className="bg-white border border-gray-100 rounded-2xl p-8 flex flex-col justify-between space-y-8 hover:shadow-md transition-shadow duration-300"
-            >
-              <div className="space-y-6">
-                <div className="space-y-1">
-                  <span className="text-[10px] uppercase font-semibold text-primary tracking-widest block">
-                    {locale === 'en' ? 'Destination' : '巡迴城市'}
-                  </span>
-                  <h3 className="text-xl font-medium text-foreground">
-                    {tour.city[locale] || tour.city.en}
-                  </h3>
+          {tours.map((tour) => {
+            const cityName = tour.city.en
+            const flag = Object.entries(cityEmojis).find(([key]) => cityName.includes(key))?.[1] || '🌏'
+
+            return (
+              <div
+                key={tour._id}
+                className="bg-white border border-gray-100 rounded-2xl p-8 flex flex-col justify-between space-y-8 hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="space-y-6">
+                  <div className="space-y-1">
+                    <span className="text-3xl">{flag}</span>
+                    <span className="text-[10px] uppercase font-semibold text-primary tracking-widest block mt-3">
+                      {locale === 'en' ? 'Destination' : '巡迴城市'}
+                    </span>
+                    <h3 className="text-xl font-medium text-foreground leading-snug">
+                      {tour.city[locale] || tour.city.en}
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    <span className="text-[10px] uppercase font-semibold text-charcoal/40 tracking-widest block">
+                      {locale === 'en' ? 'Past & Upcoming Dates' : '歷史及近期時程'}
+                    </span>
+                    <ul className="space-y-3">
+                      {tour.dates.map((date, idx) => (
+                        <li key={idx} className="flex gap-3 items-center text-sm font-light text-charcoal/85">
+                          <Calendar className="w-4 h-4 text-primary/50 flex-shrink-0" />
+                          <span>{date}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
-                <div className="space-y-4">
-                  <span className="text-[10px] uppercase font-semibold text-charcoal/40 tracking-widest block">
-                    {locale === 'en' ? 'Availability / Upcoming Dates' : '歷史及近期時程'}
-                  </span>
-                  <ul className="space-y-3">
-                    {tour.dates.map((date, idx) => (
-                      <li key={idx} className="flex gap-3 items-center text-sm font-light text-charcoal/85">
-                        <Calendar className="w-4 h-4 text-primary/50" />
-                        <span>{date}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="pt-4 border-t border-gray-50">
+                  <a
+                    href="https://wa.me/61493552213"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 border border-primary text-primary hover:bg-primary hover:text-white text-xs font-semibold px-4 py-3 rounded transition-all duration-300"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    {locale === 'en' ? 'Book Tour Session' : '預約此城市'}
+                  </a>
                 </div>
               </div>
-
-              {/* Booking trigger */}
-              <div className="pt-4 border-t border-gray-50">
-                <a
-                  href="https://wa.me/61493552213"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 border border-primary text-primary hover:bg-primary hover:text-white text-xs font-semibold px-4 py-3 rounded transition-all duration-300"
-                >
-                  <MessageCircle className="w-3.5 h-3.5" />
-                  {locale === 'en' ? 'Book Tour Session' : '預約此城市'}
-                </a>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
-        {/* Tour Booking Notice */}
+        {/* Booking Notice */}
         <div className="bg-primary/5 border border-primary/10 rounded-2xl p-8 sm:p-12 text-center space-y-4 max-w-4xl mx-auto">
           <h3 className="text-lg font-medium text-foreground tracking-wide">
             {locale === 'en' ? 'Important Travel Booking Note' : '巡迴預約須知'}
           </h3>
-          <p className="text-sm font-light text-charcoal/85 max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm font-light text-charcoal/80 max-w-xl mx-auto leading-relaxed">
             {dict.newsTours.bookingNote}
           </p>
         </div>
       </section>
 
-      {/* Latest News & Updates (Instagram Feed Placeholder) */}
-      <section className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
+      {/* Instagram / News */}
+      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
         <div className="border-b border-gray-100 pb-6">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary block mb-2">
+            {locale === 'en' ? 'Follow Along' : '關注我們'}
+          </span>
           <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight flex items-center gap-3">
             <InstagramIcon className="w-6 h-6 text-primary" />
             {dict.newsTours.newsTitle}
           </h2>
         </div>
 
-        {/* Premium Grid Placeholder mimicking Instagram posts */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[...Array(4)].map((_, i) => (
-            <div 
+        {/* Instagram grid placeholder */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[...Array(6)].map((_, i) => (
+            <a
               key={i}
+              href="https://instagram.com/shugaosha"
+              target="_blank"
+              rel="noopener noreferrer"
               className="aspect-square bg-gray-50 border border-gray-100 rounded-xl flex flex-col items-center justify-center text-center p-6 relative overflow-hidden group hover:bg-primary/[0.02] hover:border-primary/20 transition-all duration-300"
             >
               <InstagramIcon className="w-8 h-8 text-charcoal/30 group-hover:text-primary/60 transition-colors duration-300 mb-2" />
-              <span className="text-[10px] text-charcoal/50 uppercase tracking-widest font-light">
-                {locale === 'en' ? 'View Post' : '查看貼文'}
+              <span className="text-[10px] text-charcoal/40 uppercase tracking-widest font-light">
+                @shugaosha
               </span>
               <div className="absolute inset-0 bg-primary/[0.01] opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
+            </a>
           ))}
         </div>
 
@@ -148,13 +184,14 @@ export default async function NewsToursPage({ params }: PageProps) {
             href="https://instagram.com/shugaosha"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
             {locale === 'en' ? 'Follow @shugaosha on Instagram' : '在 Instagram 上關注 @shugaosha'}
             <InstagramIcon className="w-4 h-4" />
           </a>
         </div>
       </section>
+
     </div>
   )
 }

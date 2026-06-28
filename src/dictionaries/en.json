@@ -1,10 +1,11 @@
 {
   "nav": {
     "home": "Home",
+    "treatment": "Treatment",
     "successStories": "Success Stories",
-    "aboutUs": "About Us",
-    "newsTours": "News & Tours",
-    "contact": "Contact Us"
+    "aboutUs": "About",
+    "newsTours": "News",
+    "contact": "Contact"
   },
   "home": {
     "hero": {
@@ -58,19 +59,81 @@
     "cta": {
       "title": "Ready to transform your facial contours naturally?",
       "button": "Book Your Session via WhatsApp/SMS: +61 493552213"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Common Questions",
+      "items": [
+        {
+          "question": "Is the treatment painful or invasive?",
+          "answer": "No. The Shugaosha Method is 100% natural, non-invasive, and painless. We use gentle Japanese manual techniques without needles, machines, or surgery. Most clients find the session deeply relaxing and often fall asleep."
+        },
+        {
+          "question": "How many sessions do I need to see results?",
+          "answer": "Many clients notice visible changes and a lighter, more lifted feeling after their very first session. For lasting and stable results, we generally recommend a complete course of 4 to 8 sessions, depending on your individual facial structure and goals."
+        },
+        {
+          "question": "How long do the results last?",
+          "answer": "After completing a full course of treatments, results can last for a long time. Because facial bones and muscles naturally shift with age, stress, and posture, we recommend periodic maintenance sessions (e.g., once a month) to maintain optimal alignment."
+        },
+        {
+          "question": "Who is this treatment suitable for?",
+          "answer": "It is suitable for anyone looking to improve facial symmetry, lift contours, reduce puffiness, or relieve jaw/TMJ tension naturally. It is popular among both women and men of all ages."
+        }
+      ]
     }
   },
   "success": {
     "title": "Success Stories",
     "subtitle": "Case Studies & Reviews",
-    "visualEvidence": "The Visual Evidence",
+    "visualEvidence": "Before & After",
     "celebrityTitle": "Celebrity Endorsements",
-    "everydayTitle": "Everyday Client Reviews"
+    "everydayTitle": "Google Reviews"
+  },
+  "treatment": {
+    "title": "Treatment",
+    "subtitle": "The Shugaosha Method",
+    "tagline": "Effective, Non-invasive, Safe & Natural",
+    "introTitle": "What Is Japanese Face Slimming Realignment?",
+    "introDesc": "Japanese face slimming realignment, also known as \"Kogao\" or \"small face\" in Japanese, is a beauty technique that has gained popularity in recent years as a safe and effective way to beautify, slim down, and achieve facial rejuvenation. The goal of this technique is to reshape the face by targeting the muscles, skin, and bones, resulting in a more youthful and refreshed appearance.",
+    "skullTitle": "Facial Imbalance and Aging: The Impact on Your Skull's Structure",
+    "skullDesc": "Our skull is made up of 22 bones. With age and improper posture, the gaps between the bones continue to widen, resulting in your face being crooked, an imbalance between the left and right side of the face, high cheekbones, wide jawline, protruding facial bones and a lack of soft facial lines.",
+    "techniqueTitle": "Refining Facial Contours: Non-Invasive Japanese Face Slimming Realignment",
+    "techniqueDesc": "Japanese face slimming realignment is a non-surgical hands-on treatment that uses massage techniques to help reshape and contour the face. It is based on the principles of traditional Japanese skill that refers to the most natural and professional techniques to correct the gaps between bones and reposition bone collaterals to achieve the effect of face slimming. When gaps are tightened, you will find your face becoming much firmer and refined.",
+    "muscleTitle": "Unlocking Facial Rejuvenation: The Power of Creating New Muscle Memory",
+    "muscleDesc": "This technique revitalizes the facial condition and creates new muscle memory, initiating a natural self-healing process. As this process unfolds, improved blood circulation within the skin layers enhances lymphatic drainage, reducing facial swelling. These combined effects work harmoniously to enhance the overall slimming of the face, resulting in a more youthful and rejuvenated appearance.",
+    "naturalTitle": "Embrace the Natural Approach: Safe, Comfortable & Non-Invasive",
+    "naturalDesc": "The entire treatment is completely natural, non-invasive, with no equipment or medications involved — safe with no side effects. By applying gentle Japanese techniques, the process is comfortable and painless.",
+    "methodTitle": "The Japanese Kogao Technique",
+    "methodDesc1": "Our skull is made up of 22 bones. With age and improper posture, the gaps between the bones continue to widen, resulting in facial misalignment, asymmetry and a heavier-looking face.",
+    "methodDesc2": "The Shugaosha Method corrects these bone gaps through precise, gentle manual pressure — repositioning bone collaterals to achieve a naturally refined and more symmetrical appearance. No machines. No needles. No surgery.",
+    "coreBenefitsTitle": "Core Benefits",
+    "coreBenefits": [
+      "Face slimming & V-line contouring",
+      "Facial symmetry & balance restoration",
+      "Reduction in puffiness & water retention",
+      "Lifted appearance without surgery",
+      "Jaw alignment & bite improvement",
+      "Skin circulation & glow enhancement"
+    ],
+    "additionalBenefitsTitle": "Additional Benefits",
+    "additionalBenefits": [
+      "Deep muscle relaxation & tension release",
+      "Improved lymphatic drainage",
+      "Reduction in nasolabial folds",
+      "More defined cheekbone structure",
+      "Relief from TMJ discomfort",
+      "Natural, long-lasting results with maintenance"
+    ],
+    "cta": {
+      "title": "Ready to experience the Shugaosha Method?",
+      "button": "Book a Session via WhatsApp"
+    }
   },
   "about": {
     "title": "About Us",
     "subtitle": "The Shugaosha Difference",
-    "foundersTitle": "The Founders",
+    "foundersTitle": "Our Specialists",
     "awardsTitle": "Awards & Recognition",
     "awards": [
       "🏆 2026 Northern Districts Local Business Awards Finalist",
@@ -78,7 +141,7 @@
       "5-Star Google Reviews"
     ],
     "philosophyTitle": "The Science & Philosophy",
-    "philosophyDesc": "The Shugaosha Philosophy: Balance, Harmony, Wellbeing. The Shugaosha Way: Less Force. More Understanding. We Don’t Change Your Face.",
+    "philosophyDesc": "The Shugaosha Philosophy: Balance, Harmony, Wellbeing. The Shugaosha Way: Less Force. More Understanding. We Don't Change Your Face.",
     "locationNotice": "We have moved to Gladesville!"
   },
   "newsTours": {

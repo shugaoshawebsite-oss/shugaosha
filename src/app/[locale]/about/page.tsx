@@ -1,11 +1,47 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
 import { getTeam } from '@/utils/dataService'
-import { Award, Compass, Star, MapPin } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
+import InteriorSlideshow from '@/components/InteriorSlideshow'
+import CertGallery from '@/components/CertGallery'
 
 interface PageProps {
   params: Promise<{ locale: string }>
 }
+
+const certGroups = [
+  {
+    titleEn: 'Best Business Verification',
+    titleZh: '最佳商業認證',
+    descEn: 'Verified and recognised as an outstanding business for excellence in professional beauty services and client satisfaction.',
+    descZh: '在專業美容服務及客戶滿意度方面，榮獲傑出商業驗證認可。',
+    thumbs: [
+      { thumbSrc: '/assets/cert/ausbrb1_s.webp', fullSrc: '/assets/cert/ausbrb1.avif', labelEn: 'Best Business Verification 1', labelZh: '最佳商業認證 1' },
+      { thumbSrc: '/assets/cert/ausbrb2_s.webp', fullSrc: '/assets/cert/ausbrb2.avif', labelEn: 'Best Business Verification 2', labelZh: '最佳商業認證 2' },
+      { thumbSrc: '/assets/cert/ausbrb3_s.webp', fullSrc: '/assets/cert/ausbrb3.avif', labelEn: 'Best Business Verification 3', labelZh: '最佳商業認證 3' },
+    ],
+  },
+  {
+    titleEn: 'NORTHERN DISTRICTS LOCAL BUSINESS AWARDS — Outstanding Beauty Services',
+    titleZh: 'NORTHERN DISTRICTS 本地商業獎 — 卓越美容服務',
+    descEn: 'Shugaosha Gladesville was honoured with the Outstanding Beauty Services award at the Northern Districts Local Business Awards — recognising our commitment to authentic, results-driven Japanese facial realignment.',
+    descZh: 'Shugaosha Gladesville 榮獲 Northern Districts 本地商業獎卓越美容服務獎項，表揚我們對正宗日式小顏矯正的專業承諾。',
+    thumbs: [
+      { thumbSrc: '/assets/cert/Outstanding Beauty Services_s.webp', fullSrc: '/assets/cert/Outstanding Beauty Services.png', labelEn: 'Outstanding Beauty Services Award', labelZh: '卓越美容服務獎' },
+    ],
+  },
+]
+
+const interiorImages = [
+  '/assets/interior/940182_55b53c02637849feaff1448ebad3120b~mv2.avif',
+  '/assets/interior/940182_5f0bc9ebe8a54fdf8f2951381c9f2bdd~mv2.avif',
+  '/assets/interior/940182_71f01d03a59242ca8e968d0a054bc1fb~mv2.avif',
+  '/assets/interior/940182_d9e2d24fe2b34a4ebf191989453ec3df~mv2.avif',
+  '/assets/interior/940182_eff1867ad1e243d2a67823b9cc52d734~mv2.avif',
+  '/assets/interior/940182_f29bc537d3b642a291e85e8badd000b7~mv2.avif',
+]
 
 export default async function AboutPage({ params }: PageProps) {
   const { locale: rawLocale } = await params
@@ -15,16 +51,28 @@ export default async function AboutPage({ params }: PageProps) {
 
   return (
     <div className="flex flex-col space-y-24 md:space-y-36 pb-24">
+
       {/* Page Header */}
-      <section className="bg-gradient-to-b from-soft-bg to-white py-20 px-6 text-center">
-        <div className="max-w-3xl mx-auto space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary block">
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/assets/Artboard 1bg2.webp"
+            alt="Hero Background"
+            fill
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55" />
+        </div>
+
+        <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 block mb-3">
             {dict.about.title}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-light text-foreground tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-light text-white tracking-tight">
             {dict.about.subtitle}
           </h1>
-          <p className="text-sm sm:text-base font-light text-charcoal/80 max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base font-light text-white/80 max-w-xl leading-relaxed mt-4">
             {locale === 'en'
               ? 'Our mission is to help restore balance, alignment, and harmony through non-surgical Japanese techniques.'
               : '我們致力於透過溫和的日式小顏手法，協助您恢復平衡、對稱與身心和諧。'}
@@ -32,170 +80,179 @@ export default async function AboutPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Founders Section */}
+      {/* Specialists Section */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
         <div className="border-b border-gray-100 pb-6">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary block mb-3">
+            {locale === 'en' ? 'Meet the Team' : '認識我們的團隊'}
+          </span>
           <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
             {dict.about.foundersTitle}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-          {team.map((member) => (
-            <div 
-              key={member._id}
-              className="bg-white border border-gray-100/60 rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row gap-8 items-start hover:shadow-md transition-shadow duration-300"
-            >
-              {/* Profile Image / Placeholder */}
-              <div className="flex-shrink-0 w-24 h-24 rounded-full overflow-hidden relative border border-gray-100 shadow-sm bg-primary/5">
-                {member.imageRelativeUrl ? (
-                  <Image
-                    src={member.imageRelativeUrl}
-                    alt={member.name[locale] || member.name.en}
-                    fill
-                    sizes="96px"
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-primary text-2xl font-semibold">
-                    {(member.name[locale] || member.name.en).charAt(0)}
-                  </div>
-                )}
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {team.map((member) => {
+            const specialistImages: Record<string, string> = {
+              't1': '/assets/specialist/specialist_teresa_soo.avif',
+              't2': '/assets/specialist/specialist_Charles_Cho.avif',
+            }
+            const specialistImg = specialistImages[member._id] || member.imageRelativeUrl
 
-              {/* Bio Details */}
-              <div className="space-y-4 flex-grow">
-                <div>
-                  <h3 className="text-xl font-medium text-foreground">
-                    {member.name[locale] || member.name.en}
-                  </h3>
-                  <span className="text-xs font-medium text-primary uppercase tracking-wide block mt-1">
-                    {member.role[locale] || member.role.en}
-                  </span>
+            return (
+              <div
+                key={member._id}
+                className="bg-white border border-gray-100/60 rounded-2xl p-8 flex flex-col items-center text-center space-y-6 hover:shadow-md transition-shadow duration-300"
+              >
+                {/* Profile Image cropped in a circle shape */}
+                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden bg-gray-50 shadow-md border-2 border-primary/10">
+                  {specialistImg ? (
+                    <Image
+                      src={specialistImg}
+                      alt={member.name[locale] || member.name.en}
+                      fill
+                      sizes="(max-width: 768px) 192px, 256px"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-primary text-4xl md:text-5xl font-light">
+                      {(member.name[locale] || member.name.en).charAt(0)}
+                    </div>
+                  )}
                 </div>
-                <p className="text-sm font-light text-charcoal/80 leading-relaxed">
-                  {member.bio[locale] || member.bio.en}
-                </p>
+
+                {/* Bio Details */}
+                <div className="space-y-4 flex-grow flex flex-col items-center">
+                  <div>
+                    <h3 className="text-xl font-medium text-foreground">
+                      {member.name[locale] || member.name.en}
+                    </h3>
+                    <span className="text-xs font-semibold text-primary uppercase tracking-wider block mt-1">
+                      {member.role[locale] || member.role.en}
+                    </span>
+                  </div>
+                  <p className="text-sm font-light text-charcoal/80 leading-relaxed">
+                    {member.bio[locale] || member.bio.en}
+                  </p>
+                  <div className="flex flex-wrap gap-2 justify-center pt-2">
+                    {(locale === 'en'
+                      ? ['Japan-Certified', 'Manual Technique', 'Non-Invasive']
+                      : ['日本認證', '純手工技術', '無入侵性']
+                    ).map((tag) => (
+                      <span key={tag} className="text-[10px] font-medium text-charcoal bg-soft-bg border border-gray-100 rounded-full px-3 py-1">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </section>
 
-      {/* Awards & Recognition Section */}
+      {/* Certificates & Awards Section */}
       <section className="bg-soft-bg border-y border-gray-100 py-24">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-4">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
+          {/* CertGallery handles lightbox state internally */}
+          <CertGallery groups={certGroups} locale={locale} />
+
+          <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-4">
             <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-              {locale === 'en' ? 'Quality & Trust' : '榮譽與信賴'}
+              {locale === 'en' ? 'Credentials & Recognition' : '認證與榮譽'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-              {dict.about.awardsTitle}
+              {locale === 'en' ? 'Certificate & Award' : '證書與獎項'}
             </h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border border-gray-100 p-8 rounded-xl text-center space-y-4 shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto">
-                <Award className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-medium text-foreground tracking-wide">
-                {locale === 'en' ? 'Award Finalist' : '傑出商業獎入圍'}
-              </h3>
-              <p className="text-sm font-light text-charcoal/80">
-                {locale === 'en'
-                  ? '🏆 2026 Northern Districts Local Business Awards Finalist'
-                  : '🏆 2026年 Northern Districts 當地傑出商業獎決賽入圍'}
-              </p>
-            </div>
-
-            <div className="bg-white border border-gray-100 p-8 rounded-xl text-center space-y-4 shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto">
-                <Compass className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-medium text-foreground tracking-wide">
-                {locale === 'en' ? 'Outstanding Services' : '卓越美容服務'}
-              </h3>
-              <p className="text-sm font-light text-charcoal/80">
-                {locale === 'en'
-                  ? 'Recognized for outstanding and professional beauty alignment services.'
-                  : '技術與理念榮獲業界肯定，提供最優質的日式面部調整服務。'}
-              </p>
-            </div>
-
-            <div className="bg-white border border-gray-100 p-8 rounded-xl text-center space-y-4 shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto">
-                <Star className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-medium text-foreground tracking-wide">
-                {locale === 'en' ? '5-Star Reviews' : '5星好評推薦'}
-              </h3>
-              <p className="text-sm font-light text-charcoal/80">
-                {locale === 'en'
-                  ? 'Consistently rated 5 stars by verified clients across Australia & Hong Kong.'
-                  : '在 Google 及社交平台上，獲得澳洲與香港客人的全五星滿分推薦。'}
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Science & Philosophy Section */}
+      {/* Shop Interior Slideshow */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          {/* Left Column: Philosophy Details */}
-          <div className="lg:col-span-6 space-y-8">
-            <div className="space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          {/* Description */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="space-y-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-                {locale === 'en' ? 'Philosophy' : '品牌理念'}
+                {locale === 'en' ? 'Our Clinic' : '我們的診所'}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight">
-                {dict.about.philosophyTitle}
+              <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+                {locale === 'en' ? 'The Gladesville Studio' : 'Gladesville 診所'}
               </h2>
             </div>
-            
-            <div className="space-y-6 text-base font-light text-charcoal/80 leading-relaxed">
-              <p>
-                {locale === 'en'
-                  ? 'Our approach is rooted in the concepts of Balance, Harmony, and Wellbeing. We believe that facial symmetry is closely connected with internal comfort, postural alignment, and muscle memory.'
-                  : '我們的技術核心在於「平衡、對稱、和諧」。我們深信面部的對稱美感與身體內部張力、生活姿勢及肌肉記憶密切相關。'}
-              </p>
-              <div className="border-l-2 border-primary pl-6 py-1 italic font-normal text-foreground">
-                {locale === 'en'
-                  ? '“Less Force. More Understanding. We Don’t Change Your Face.”'
-                  : '「更少力量。更多理解。我們不改變您的臉。」'}
-              </div>
-              <p>
-                {locale === 'en'
-                  ? 'By adjusting bone gaps and relaxing deep tension naturally, we help bring back the original, balanced contours of your features without the need for needles, machines, or surgery.'
-                  : '透過溫和地調整骨骼間隙與釋放肌肉深層張力，我們在無需打針、無需儀器及手術的狀態下，幫助您找回原本自然對稱的完美輪廓。'}
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column: Relocation Announcement */}
-          <div className="lg:col-span-6 bg-primary/[0.02] border border-primary/5 rounded-2xl p-8 sm:p-12 space-y-6">
-            <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-              <Compass className="w-5 h-5" />
-            </div>
-            <h3 className="text-xl font-medium text-foreground">
-              {dict.about.locationNotice}
-            </h3>
-            <p className="text-sm font-light text-charcoal/85 leading-relaxed">
+            <p className="text-base font-light text-charcoal/80 leading-relaxed">
               {locale === 'en'
-                ? 'We are delighted to share that our primary clinic has relocated to a spacious, light-filled brand new space in Gladesville. Visit us for an elevated wellness experience.'
-                : '非常高興向大家宣佈，我們的核心診所已搬遷至 Gladesville 全新寬敞且光線充足的新址，提供更舒適、奢華的放鬆體驗。'}
+                ? 'Our newly relocated clinic in Gladesville is a calm, light-filled space designed for comfort and focus. Every detail has been considered to provide you with an elevated, serene wellness experience.'
+                : '我們位於 Gladesville 的全新診所，是一個寧靜、採光充足的空間，專為舒適與專注而設計。每一個細節都經過精心考量，為您提供高品質、舒緩的健康體驗。'}
             </p>
-            <div className="pt-2">
-              <p className="text-sm font-medium text-foreground">
-                5 Pittwater Road, Gladesville NSW 2111
-              </p>
+            <div className="space-y-2 text-sm font-light text-charcoal/70">
+              <p className="font-medium text-foreground">5 Pittwater Road</p>
+              <p>Gladesville NSW 2111</p>
+              <p>Australia</p>
             </div>
           </div>
 
+          {/* Slideshow */}
+          <div className="lg:col-span-8">
+            <InteriorSlideshow images={interiorImages} locale={locale} />
+          </div>
         </div>
       </section>
+
+      {/* Instagram Plugin */}
+      <section className="max-w-7xl mx-auto w-full px-0">
+        <div className="elfsight-app-79831042-0a38-4901-8e6a-93cc7c0dadcf" data-elfsight-app-lazy></div>
+        <Script src="https://elfsightcdn.com/platform.js" async />
+      </section>
+
+      {/* CTA */}
+      <section className="w-full bg-primary/5 border-y border-primary/10 py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-6 text-center md:text-left space-y-8">
+          <h2 className="text-2xl sm:text-4xl font-light text-foreground tracking-tight max-w-xl mx-auto md:mx-0 leading-tight">
+            {locale === 'en'
+              ? 'Visit Us in Gladesville'
+              : '歡迎來到 Gladesville 診所'}
+          </h2>
+          <p className="text-sm font-light text-charcoal/70 max-w-md mx-auto md:mx-0 leading-relaxed">
+            {locale === 'en'
+              ? 'Book your personalized consultation or treatment session today.'
+              : '立即預約您的個人化諮詢或療程。'}
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+            <a
+              href="https://wa.me/61493552213"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary flex items-center gap-3"
+            >
+              <MessageCircle className="w-5 h-5" />
+              {locale === 'en' ? 'Book via WhatsApp' : 'WhatsApp 線上預約'}
+            </a>
+            <a
+              href="sms:+61493552213"
+              className="btn-secondary flex items-center gap-3 bg-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-5 h-5"
+              >
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              {locale === 'en' ? 'Book via SMS' : 'SMS 簡訊預約'}
+            </a>
+          </div>
+        </div>
+      </section>
+
     </div>
   )
 }
