@@ -81,7 +81,7 @@ export default function Header({ locale }: HeaderProps) {
               width={180}
               height={36}
               priority
-              className="w-[150px] md:w-[180px] h-auto object-contain transition-all duration-500"
+              className="w-[120px] md:w-[180px] h-auto object-contain transition-all duration-500"
             />
           </Link>
 
@@ -196,21 +196,20 @@ export default function Header({ locale }: HeaderProps) {
           ))}
 
           <div className="pt-6 border-t border-gray-100 flex flex-col space-y-4">
-            <span className="text-xs text-charcoal/40 tracking-widest uppercase">Language / 語言</span>
             <div className="flex space-x-4">
               <Link
                 href={getLanguageSwitchPath('en')}
                 onClick={() => setIsOpen(false)}
                 className={`text-sm ${locale === 'en' ? 'text-primary font-medium' : 'text-charcoal font-light'}`}
               >
-                English
+                Eng
               </Link>
               <Link
                 href={getLanguageSwitchPath('zh')}
                 onClick={() => setIsOpen(false)}
                 className={`text-sm ${locale === 'zh' ? 'text-primary font-medium' : 'text-charcoal font-light'}`}
               >
-                繁體中文
+                中文
               </Link>
             </div>
           </div>

@@ -151,15 +151,6 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
               {locale === 'en' ? 'Book a Session' : '立即預約'}
             </span>
           </a>
-          <Link
-            href={`/${locale}/treatment`}
-            className="btn-secondary-white flex items-center gap-2"
-          >
-            <span className="relative z-10">
-              {locale === 'en' ? 'Learn About the Treatment' : '了解療程詳情'}
-            </span>
-            <ArrowRight className="w-4 h-4 relative z-10" />
-          </Link>
         </div>
       </div>
 

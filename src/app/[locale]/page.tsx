@@ -49,7 +49,7 @@ export default async function HomePage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text */}
-          <div className="space-y-8 order-2 lg:order-1">
+          <div className="space-y-8 order-1 lg:order-1">
             <div className="space-y-3">
               <span className="type-label text-primary">
                 {locale === 'en' ? 'The Methodology' : '核心技術'}
@@ -75,7 +75,7 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           {/* Image */}
-          <div className="relative order-1 lg:order-2 w-full">
+          <div className="relative order-2 lg:order-2 w-full">
             <div className="relative aspect-4-5 w-full rounded-2xl overflow-hidden bg-gray-50">
               <Image
                 src="/assets/Artboard 3photo3.webp"
