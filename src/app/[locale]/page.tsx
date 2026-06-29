@@ -39,6 +39,40 @@ export default async function HomePage({ params }: PageProps) {
   const featuredCelebrity = celebrities[0]
   const featuredCase = caseStudies[0]
 
+  const beforeAfterImages = featuredCase ? (
+    <div className="w-full">
+      <div className="grid grid-cols-2 gap-1.5 rounded-2xl overflow-hidden shadow-lg w-full">
+        <div className="relative aspect-3-4 w-full">
+          <Image
+            src="/assets/bna/before1.jpg"
+            alt={locale === 'en' ? 'Original' : '原狀'}
+            fill
+            sizes="(max-width: 768px) 50vw, 35vw"
+            className="object-cover"
+          />
+          <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] font-semibold text-charcoal uppercase px-2.5 py-1 rounded">
+            {locale === 'en' ? 'Original' : '原狀'}
+          </span>
+        </div>
+        <div className="relative aspect-3-4 w-full">
+          <Image
+            src="/assets/bna/after1.jpg"
+            alt={locale === 'en' ? '3rd Session' : '第 3 次療程'}
+            fill
+            sizes="(max-width: 768px) 50vw, 35vw"
+            className="object-cover"
+          />
+          <span className="absolute top-3 left-3 bg-primary text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded shadow-sm">
+            {locale === 'en' ? '3rd Session' : '第 3 次療程'}
+          </span>
+        </div>
+      </div>
+      <p className="type-caption text-charcoal/50 text-center mt-4">
+        {locale === 'en' ? '3 sessions · Natural, hands-on results' : '3 次療程 · 自然純手工效果'}
+      </p>
+    </div>
+  ) : null
+
   return (
     <div className="flex flex-col space-y-24 md:space-y-36 pb-24">
 
@@ -188,8 +222,8 @@ export default async function HomePage({ params }: PageProps) {
                   alt={cert.alt}
                   width={150}
                   height={100}
-                  className="object-contain h-[100px] w-auto"
-                  sizes="150px"
+                  className="object-contain h-[80px] w-auto"
+                  sizes="120px"
                 />
               </div>
             ))}
@@ -211,6 +245,9 @@ export default async function HomePage({ params }: PageProps) {
                 ? 'These are real client progressions. Natural, consistent, and honest results from dedicated sessions.'
                 : '以下均為真實客戶的療程進展對照，展示持續堅持後帶來的自然、誠實的效果。'}
             </p>
+            <div className="block md:hidden w-full">
+              {beforeAfterImages}
+            </div>
             {featuredCase && (
               <div className="space-y-2">
                 <p className="type-body-sm font-medium text-foreground">{featuredCase.title[locale] || featuredCase.title.en}</p>
@@ -228,39 +265,9 @@ export default async function HomePage({ params }: PageProps) {
             </Link>
           </div>
 
-          {featuredCase && (
-            <div className="md:col-span-7 w-full">
-              <div className="grid grid-cols-2 gap-1.5 rounded-2xl overflow-hidden shadow-lg w-full">
-                <div className="relative aspect-3-4 w-full">
-                  <Image
-                    src="/assets/bna/before1.jpg"
-                    alt={locale === 'en' ? 'Original' : '原狀'}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 35vw"
-                    className="object-cover"
-                  />
-                  <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] font-semibold text-charcoal uppercase px-2.5 py-1 rounded">
-                    {locale === 'en' ? 'Original' : '原狀'}
-                  </span>
-                </div>
-                <div className="relative aspect-3-4 w-full">
-                  <Image
-                    src="/assets/bna/after1.jpg"
-                    alt={locale === 'en' ? '3rd Session' : '第 3 次療程'}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 35vw"
-                    className="object-cover"
-                  />
-                  <span className="absolute top-3 left-3 bg-primary text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded shadow-sm">
-                    {locale === 'en' ? '3rd Session' : '第 3 次療程'}
-                  </span>
-                </div>
-              </div>
-              <p className="type-caption text-charcoal/50 text-center mt-4">
-                {locale === 'en' ? '3 sessions · Natural, hands-on results' : '3 次療程 · 自然純手工效果'}
-              </p>
-            </div>
-          )}
+          <div className="hidden md:block md:col-span-7 w-full">
+            {beforeAfterImages}
+          </div>
         </div>
       </section>
 
