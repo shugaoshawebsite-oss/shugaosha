@@ -87,27 +87,38 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
       className="relative min-h-[100dvh] flex items-end overflow-hidden text-white"
       aria-label="Hero"
     >
-      {/* Full-bleed Background Video */}
+      {/* Full-bleed Background Video / Image Cover */}
       <div className="absolute inset-0 -z-10 bg-black">
+        {/* Desktop video */}
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover object-center opacity-85"
+          className="hidden md:block w-full h-full object-cover object-center opacity-85"
         >
           <source src="/assets/home_hero.webm" type="video/webm" />
           <source src="/assets/home_hero.mp4" type="video/mp4" />
         </video>
+        {/* Mobile image cover */}
+        <div className="block md:hidden absolute inset-0">
+          <Image
+            src="/assets/herocover.webp"
+            alt="Hero Background"
+            fill
+            priority
+            className="object-cover object-center opacity-85"
+          />
+        </div>
         {/* Gradient overlay: heavy at bottom, fades to transparent at top */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15" />
       </div>
 
       {/* Content — bottom-left third */}
-      <div className="w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 pb-20 sm:pb-28 space-y-8">
+      <div className="w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 pb-20 sm:pb-28 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
 
         {/* Typography: same font size, "THE SHUGAOSHA" in primary, "WAY" in white */}
-        <div className="space-y-2 leading-none">
+        <div className="space-y-2 leading-none w-full text-center md:text-left">
           <div
             className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light uppercase tracking-tight text-primary"
             style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}
@@ -123,12 +134,12 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         </div>
 
         {/* Description */}
-        <p className="hero-desc text-base sm:text-lg font-light text-white/80 leading-relaxed max-w-lg">
+        <p className="hero-desc text-base sm:text-lg font-light text-white/80 leading-relaxed max-w-lg mx-auto md:mx-0">
           {dict.home.hero.description}
         </p>
 
         {/* CTA Buttons */}
-        <div className="hero-cta flex flex-col sm:flex-row items-start gap-4">
+        <div className="hero-cta flex flex-col sm:flex-row items-center md:items-start gap-4 w-full justify-center md:justify-start">
           <a
             href="https://wa.me/61493552213"
             target="_blank"

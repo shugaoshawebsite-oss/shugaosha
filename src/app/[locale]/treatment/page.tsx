@@ -54,8 +54,8 @@ export default async function TreatmentPage({ params }: PageProps) {
 
           {/* Left: Intro text */}
           <div className="space-y-8">
-            <div className="space-y-3">
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            <div className="space-y-3 text-center md:text-left">
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
                 {locale === 'en' ? 'The Method' : '技術核心'}
               </span>
               <h2 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight">
@@ -92,7 +92,7 @@ export default async function TreatmentPage({ params }: PageProps) {
 
           {/* Right: Portrait video */}
           <div>
-            <div className="relative aspect-[9/16] max-h-[600px] bg-black border border-gray-200 rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative aspect-[9/16] max-h-[600px] w-full max-w-[337px] mx-auto bg-black border border-gray-200 rounded-2xl overflow-hidden shadow-lg">
               <video
                 src="/assets/treatment.mp4"
                 controls
@@ -123,8 +123,8 @@ export default async function TreatmentPage({ params }: PageProps) {
             </div>
 
             {/* Right: text */}
-            <div className="space-y-6 order-1 lg:order-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            <div className="space-y-6 order-1 lg:order-2 text-center md:text-left">
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
                 {locale === 'en' ? 'The Science' : '科學原理'}
               </span>
               <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight leading-snug">
@@ -135,13 +135,20 @@ export default async function TreatmentPage({ params }: PageProps) {
               </p>
 
               {/* 22 bones stat highlight */}
-              <div className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                <div className="text-4xl font-light text-primary shrink-0">22</div>
-                <p className="text-sm font-light text-charcoal/80 leading-snug">
-                  {locale === 'en'
-                    ? 'bones make up the human skull — and each gap matters.'
-                    : '塊骨骼構成人類頭骨 — 每一個縫隙都至關重要。'}
-                </p>
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-4 text-center sm:text-left">
+                <div className="text-6xl font-light text-primary tracking-tight leading-none shrink-0">22</div>
+                <div className="space-y-1">
+                  <p className="text-lg font-medium text-foreground tracking-tight">
+                    {locale === 'en'
+                      ? 'Bones make up the human skull'
+                      : '塊骨骼構成人類頭骨'}
+                  </p>
+                  <p className="text-sm font-light text-primary tracking-wide uppercase">
+                    {locale === 'en'
+                      ? '— and each gap matters.'
+                      : '— 每一個縫隙都至關重要。'}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -153,8 +160,8 @@ export default async function TreatmentPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Left: text */}
-          <div className="space-y-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+          <div className="space-y-6 text-center md:text-left">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
               {locale === 'en' ? 'The Technique' : '技術手法'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight leading-snug">
@@ -178,55 +185,43 @@ export default async function TreatmentPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Section 4: Muscle Memory + Natural Approach — 2-column info cards */}
-      <section className="bg-soft-bg border-y border-gray-100 py-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
-          <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-              {locale === 'en' ? 'How It Works' : '療程原理'}
+      {/* Section 4: Muscle Memory + Natural Approach — Full-bleed background card */}
+      <section className="relative overflow-hidden py-24 text-white shadow-xl w-full border-y border-gray-100">
+        {/* Background Image */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src={images[2]}
+            alt={locale === 'en' ? 'Shugaosha treatment result' : '修顏社療程效果'}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+          {/* Dim overlay */}
+          <div className="absolute inset-0 bg-black/65" />
+        </div>
+
+        {/* Content */}
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+          <div className="w-full lg:w-1/2 lg:ml-auto text-center lg:text-left space-y-6">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
+               {locale === 'en' ? 'How It Works' : '療程原理'}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-              {locale === 'en' ? 'Self-Healing & Natural Results' : '自我修復與自然效果'}
+            <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight">
+              {locale === 'en' ? 'Creating New Muscle Memory for Natural Self-Healing' : '激活肌肉記憶與自然自我修復'}
             </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Muscle memory card */}
-            <div className="bg-white border border-gray-100 rounded-2xl p-8 space-y-5 shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Zap className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-medium text-foreground leading-snug">
-                {t.muscleTitle}
-              </h3>
-              <p className="text-base font-light text-charcoal/80 leading-relaxed">
-                {t.muscleDesc}
+            <div className="space-y-4 text-white/80 font-light leading-relaxed text-sm sm:text-base">
+              <p>
+                {locale === 'en'
+                  ? 'The Shugaosha Method is a 100% natural, non-invasive treatment that works by revitalizing your facial condition and creating new muscle memory. With no needles, machines, or surgery involved, our gentle Japanese manual techniques reposition bone structures and stimulate lymphatic drainage safely without side effects.'
+                  : '修顏社療法是100%自然且無入侵性的修復手法，透過激活深層面部肌肉記憶，引導面部組織自然重塑。本療程完全不使用儀器、針劑或手術，安全且無副作用。'}
+              </p>
+              <p>
+                {locale === 'en'
+                  ? 'As blood circulation and energy flow are restored, facial swelling is reduced, jaw tension is released, and your face achieves a firmer, V-line contour that is both balanced and naturally refreshed.'
+                  : '隨著面部血液循環與淋巴回流的改善，能迅速消腫排水、釋放顎關節緊繃，協助您在無痛舒適的過程中，找回對稱和諧、自然緊緻的精緻輪廓。'}
               </p>
             </div>
-
-            {/* Natural approach card */}
-            <div className="bg-white border border-gray-100 rounded-2xl p-8 space-y-5 shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-medium text-foreground leading-snug">
-                {t.naturalTitle}
-              </h3>
-              <p className="text-base font-light text-charcoal/80 leading-relaxed">
-                {t.naturalDesc}
-              </p>
-            </div>
-          </div>
-
-          {/* Third supporting image */}
-          <div className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-md">
-            <Image
-              src={images[2]}
-              alt={locale === 'en' ? 'Shugaosha treatment result' : '修顏社療程效果'}
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
           </div>
         </div>
       </section>
@@ -235,7 +230,7 @@ export default async function TreatmentPage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="space-y-12">
           <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
               {locale === 'en' ? 'What You Can Expect' : '您可以期待的效果'}
             </span>
             <h2 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight">
@@ -303,8 +298,8 @@ export default async function TreatmentPage({ params }: PageProps) {
       {/* Additional Benefits */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="space-y-10">
-          <div className="space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+          <div className="space-y-3 text-center md:text-left">
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
               {locale === 'en' ? 'Further Advantages' : '更多好處'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
@@ -361,13 +356,6 @@ export default async function TreatmentPage({ params }: PageProps) {
               </svg>
               {locale === 'en' ? 'Book via SMS' : 'SMS 簡訊預約'}
             </a>
-            <Link
-              href={`/${locale}/success-stories`}
-              className="btn-secondary flex items-center gap-2"
-            >
-              {locale === 'en' ? 'View Success Stories' : '查看療效見證'}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
       </section>

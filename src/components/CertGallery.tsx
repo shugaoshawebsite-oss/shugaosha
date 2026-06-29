@@ -49,19 +49,10 @@ export default function CertGallery({ groups, locale }: CertGalleryProps) {
         {groups.map((group, gi) => (
           <div
             key={gi}
-            className="space-y-6 bg-white border border-gray-100 rounded-[2rem] p-8 h-full flex flex-col justify-between"
+            className="space-y-6 bg-white border border-gray-100 rounded-[2rem] p-8 h-full flex flex-col justify-start"
           >
-            <div className="space-y-3">
-              <h3 className="text-lg font-medium text-foreground">
-                {locale === 'en' ? group.titleEn : group.titleZh}
-              </h3>
-              <p className="text-sm font-light text-charcoal/75 leading-relaxed">
-                {locale === 'en' ? group.descEn : group.descZh}
-              </p>
-            </div>
-
             {/* Clickable thumbnails row */}
-            <div className="flex flex-wrap gap-4 pt-4 items-center">
+            <div className="flex flex-wrap gap-2 md:gap-4 pb-4 justify-center md:justify-start items-center border-b border-gray-50">
               {group.thumbs.map((thumb, ti) => {
                 const lbIdx = indexMap[gi][ti]
                 return (
@@ -77,8 +68,8 @@ export default function CertGallery({ groups, locale }: CertGalleryProps) {
                         alt={locale === 'en' ? thumb.labelEn : thumb.labelZh}
                         width={140}
                         height={140}
-                        className="object-contain max-h-[130px] w-auto"
-                        sizes="140px"
+                        className="object-contain h-[80px] md:h-[130px] w-auto"
+                        sizes="(max-width: 768px) 90px, 140px"
                       />
                       {/* Hover overlay */}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-[1rem] flex items-end justify-center pb-2">
@@ -90,6 +81,15 @@ export default function CertGallery({ groups, locale }: CertGalleryProps) {
                   </button>
                 )
               })}
+            </div>
+
+            <div className="space-y-3 pt-2">
+              <h3 className="text-lg font-medium text-foreground">
+                {locale === 'en' ? group.titleEn : group.titleZh}
+              </h3>
+              <p className="text-sm font-light text-charcoal/75 leading-relaxed">
+                {locale === 'en' ? group.descEn : group.descZh}
+              </p>
             </div>
           </div>
         ))}

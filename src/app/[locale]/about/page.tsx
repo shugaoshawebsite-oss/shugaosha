@@ -66,13 +66,13 @@ export default async function AboutPage({ params }: PageProps) {
         </div>
 
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 block mb-3">
+          <span className="type-label text-white/70 block mb-3">
             {dict.about.title}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-light text-white tracking-tight">
+          <h1 className="type-hero text-white">
             {dict.about.subtitle}
           </h1>
-          <p className="text-sm sm:text-base font-light text-white/80 max-w-xl leading-relaxed mt-4">
+          <p className="type-body text-white/80 max-w-xl mt-4">
             {locale === 'en'
               ? 'Our mission is to help restore balance, alignment, and harmony through non-surgical Japanese techniques.'
               : '我們致力於透過溫和的日式小顏手法，協助您恢復平衡、對稱與身心和諧。'}
@@ -83,10 +83,10 @@ export default async function AboutPage({ params }: PageProps) {
       {/* Specialists Section */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
         <div className="border-b border-gray-100 pb-6">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary block mb-3">
+          <span className="type-label text-primary block mb-3">
             {locale === 'en' ? 'Meet the Team' : '認識我們的團隊'}
           </span>
-          <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+          <h2 className="type-heading text-foreground">
             {dict.about.foundersTitle}
           </h2>
         </div>
@@ -124,26 +124,16 @@ export default async function AboutPage({ params }: PageProps) {
                 {/* Bio Details */}
                 <div className="space-y-4 flex-grow flex flex-col items-center">
                   <div>
-                    <h3 className="text-xl font-medium text-foreground">
+                    <h3 className="type-card-title text-foreground">
                       {member.name[locale] || member.name.en}
                     </h3>
-                    <span className="text-xs font-semibold text-primary uppercase tracking-wider block mt-1">
+                    <span className="type-label text-primary block mt-1">
                       {member.role[locale] || member.role.en}
                     </span>
                   </div>
-                  <p className="text-sm font-light text-charcoal/80 leading-relaxed">
+                  <p className="type-body-sm text-charcoal/80">
                     {member.bio[locale] || member.bio.en}
                   </p>
-                  <div className="flex flex-wrap gap-2 justify-center pt-2">
-                    {(locale === 'en'
-                      ? ['Japan-Certified', 'Manual Technique', 'Non-Invasive']
-                      : ['日本認證', '純手工技術', '無入侵性']
-                    ).map((tag) => (
-                      <span key={tag} className="text-[10px] font-medium text-charcoal bg-soft-bg border border-gray-100 rounded-full px-3 py-1">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </div>
             )
@@ -154,17 +144,17 @@ export default async function AboutPage({ params }: PageProps) {
       {/* Certificates & Awards Section */}
       <section className="bg-soft-bg border-y border-gray-100 py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
-          {/* CertGallery handles lightbox state internally */}
-          <CertGallery groups={certGroups} locale={locale} />
-
           <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            <span className="type-label text-primary">
               {locale === 'en' ? 'Credentials & Recognition' : '認證與榮譽'}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+            <h2 className="type-heading text-foreground">
               {locale === 'en' ? 'Certificate & Award' : '證書與獎項'}
             </h2>
           </div>
+
+          {/* CertGallery handles lightbox state internally */}
+          <CertGallery groups={certGroups} locale={locale} />
         </div>
       </section>
 
@@ -174,14 +164,14 @@ export default async function AboutPage({ params }: PageProps) {
           {/* Description */}
           <div className="lg:col-span-4 space-y-6">
             <div className="space-y-3">
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+              <span className="type-label text-primary">
                 {locale === 'en' ? 'Our Clinic' : '我們的診所'}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+              <h2 className="type-subheading text-foreground">
                 {locale === 'en' ? 'The Gladesville Studio' : 'Gladesville 診所'}
               </h2>
             </div>
-            <p className="text-base font-light text-charcoal/80 leading-relaxed">
+            <p className="type-body text-charcoal/80">
               {locale === 'en'
                 ? 'Our newly relocated clinic in Gladesville is a calm, light-filled space designed for comfort and focus. Every detail has been considered to provide you with an elevated, serene wellness experience.'
                 : '我們位於 Gladesville 的全新診所，是一個寧靜、採光充足的空間，專為舒適與專注而設計。每一個細節都經過精心考量，為您提供高品質、舒緩的健康體驗。'}
@@ -209,12 +199,12 @@ export default async function AboutPage({ params }: PageProps) {
       {/* CTA */}
       <section className="w-full bg-primary/5 border-y border-primary/10 py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-6 text-center md:text-left space-y-8">
-          <h2 className="text-2xl sm:text-4xl font-light text-foreground tracking-tight max-w-xl mx-auto md:mx-0 leading-tight">
+          <h2 className="type-heading text-foreground max-w-xl mx-auto md:mx-0">
             {locale === 'en'
               ? 'Visit Us in Gladesville'
               : '歡迎來到 Gladesville 診所'}
           </h2>
-          <p className="text-sm font-light text-charcoal/70 max-w-md mx-auto md:mx-0 leading-relaxed">
+          <p className="type-body-sm text-charcoal/70 max-w-md mx-auto md:mx-0">
             {locale === 'en'
               ? 'Book your personalized consultation or treatment session today.'
               : '立即預約您的個人化諮詢或療程。'}

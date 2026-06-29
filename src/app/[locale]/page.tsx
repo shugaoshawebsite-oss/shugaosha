@@ -51,19 +51,19 @@ export default async function HomePage({ params }: PageProps) {
           {/* Text */}
           <div className="space-y-8 order-2 lg:order-1">
             <div className="space-y-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+              <span className="type-label text-primary">
                 {locale === 'en' ? 'The Methodology' : '核心技術'}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight">
+              <h2 className="type-heading text-foreground">
                 {dict.home.whatWeDo.title}
               </h2>
             </div>
-            <div className="space-y-4 text-base font-light text-charcoal/80 leading-relaxed">
+            <div className="space-y-4 type-body text-charcoal/80">
               <p>{dict.home.whatWeDo.description1}</p>
               <p>{dict.home.whatWeDo.description2}</p>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center lg:justify-start gap-4">
               <Link
                 href={`/${locale}/treatment`}
                 className="btn-secondary flex items-center gap-2"
@@ -75,8 +75,8 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           {/* Image */}
-          <div className="relative order-1 lg:order-2">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-50">
+          <div className="relative order-1 lg:order-2 w-full">
+            <div className="relative aspect-4-5 w-full rounded-2xl overflow-hidden bg-gray-50">
               <Image
                 src="/assets/Artboard 3photo3.webp"
                 alt={locale === 'en' ? 'Shugaosha treatment' : '修顏社療程'}
@@ -95,10 +95,10 @@ export default async function HomePage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
           {/* Header */}
           <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+            <span className="type-label text-primary">
               {locale === 'en' ? 'Why Shugaosha' : '小顏矯正的好處'}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-foreground">
+            <h2 className="type-heading text-foreground">
               {locale === 'en' ? 'Benefits of The Shugaosha Way' : '修顏社療法的益處'}
             </h2>
           </div>
@@ -147,8 +147,8 @@ export default async function HomePage({ params }: PageProps) {
                     <Icon className="w-5.5 h-5.5" />
                   </div>
                   <div className="space-y-1.5 text-left">
-                    <h3 className="text-lg font-medium text-foreground">{item.title}</h3>
-                    <p className="text-sm font-light text-charcoal/80 leading-relaxed">{item.desc}</p>
+                    <h3 className="type-card-title text-foreground">{item.title}</h3>
+                    <p className="type-body-sm text-charcoal/80">{item.desc}</p>
                   </div>
                 </div>
               )
@@ -173,8 +173,8 @@ export default async function HomePage({ params }: PageProps) {
       {/* 4. Certificates & Awards — Light grey background, compact y spacing */}
       <section className="w-full bg-[#f8f9fa] border-y border-gray-100 py-12">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-8">
-          <div className="text-center md:text-left">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+          <div className="text-center">
+            <span className="type-label text-primary">
               {locale === 'en' ? 'Certificate & Award' : '證書與獎項'}
             </span>
           </div>
@@ -188,7 +188,7 @@ export default async function HomePage({ params }: PageProps) {
                   alt={cert.alt}
                   width={150}
                   height={100}
-                  className="object-contain max-h-[100px] w-auto"
+                  className="object-contain h-[100px] w-auto"
                   sizes="150px"
                 />
               </div>
@@ -197,32 +197,31 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* 5. Before & After — 1 case */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          <div className="lg:col-span-5 space-y-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+          <div className="md:col-span-5 space-y-6 w-full flex flex-col items-center md:items-start text-center md:text-left">
+            <span className="type-label text-primary">
               {locale === 'en' ? 'Visual Evidence' : '療效對比'}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight">
+            <h2 className="type-heading text-foreground">
               {locale === 'en' ? 'Real Results' : '真實療效'}
             </h2>
-            <p className="text-base font-light text-charcoal/80 leading-relaxed">
+            <p className="type-body text-charcoal/80">
               {locale === 'en'
                 ? 'These are real client progressions. Natural, consistent, and honest results from dedicated sessions.'
                 : '以下均為真實客戶的療程進展對照，展示持續堅持後帶來的自然、誠實的效果。'}
             </p>
             {featuredCase && (
               <div className="space-y-2">
-                <p className="text-sm font-medium text-foreground">{featuredCase.title[locale] || featuredCase.title.en}</p>
-                <p className="text-sm font-light text-charcoal/75 leading-relaxed">
+                <p className="type-body-sm font-medium text-foreground">{featuredCase.title[locale] || featuredCase.title.en}</p>
+                <p className="type-body-sm text-charcoal/75">
                   {featuredCase.description ? (featuredCase.description[locale] || featuredCase.description.en) : ''}
                 </p>
               </div>
             )}
             <Link
               href={`/${locale}/success-stories#before-after`}
-              className="btn-secondary flex items-center gap-2"
+              className="btn-secondary flex items-center gap-2 mx-auto md:mx-0"
             >
               {locale === 'en' ? 'More Success Stories' : '更多療效見證'}
               <ArrowRight className="w-4 h-4" />
@@ -230,9 +229,9 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           {featuredCase && (
-            <div className="lg:col-span-7">
-              <div className="grid grid-cols-2 gap-1.5 rounded-2xl overflow-hidden shadow-lg">
-                <div className="relative aspect-[3/4]">
+            <div className="md:col-span-7 w-full">
+              <div className="grid grid-cols-2 gap-1.5 rounded-2xl overflow-hidden shadow-lg w-full">
+                <div className="relative aspect-3-4 w-full">
                   <Image
                     src="/assets/bna/before1.jpg"
                     alt={locale === 'en' ? 'Original' : '原狀'}
@@ -244,7 +243,7 @@ export default async function HomePage({ params }: PageProps) {
                     {locale === 'en' ? 'Original' : '原狀'}
                   </span>
                 </div>
-                <div className="relative aspect-[3/4]">
+                <div className="relative aspect-3-4 w-full">
                   <Image
                     src="/assets/bna/after1.jpg"
                     alt={locale === 'en' ? '3rd Session' : '第 3 次療程'}
@@ -257,7 +256,7 @@ export default async function HomePage({ params }: PageProps) {
                   </span>
                 </div>
               </div>
-              <p className="text-xs font-light text-charcoal/50 text-center mt-4">
+              <p className="type-caption text-charcoal/50 text-center mt-4">
                 {locale === 'en' ? '3 sessions · Natural, hands-on results' : '3 次療程 · 自然純手工效果'}
               </p>
             </div>
@@ -265,15 +264,14 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* 6. Celebrity section — 1 featured */}
       <section className="bg-soft-bg border-y border-gray-100 py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
 
             {/* Celebrity portrait */}
             {featuredCelebrity && (
-              <div className="lg:col-span-6">
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 shadow-xl">
+              <div className="md:col-span-6 w-full">
+                <div className="relative aspect-3-2 md:aspect-3-4 w-full rounded-2xl overflow-hidden bg-gray-100 shadow-xl">
                   {featuredCelebrity.imageRelativeUrl ? (
                     <Image
                       src={featuredCelebrity.imageRelativeUrl}
@@ -293,12 +291,12 @@ export default async function HomePage({ params }: PageProps) {
 
             {/* Celebrity content */}
             {featuredCelebrity && (
-              <div className="lg:col-span-6 space-y-8">
+              <div className="md:col-span-6 space-y-8 w-full text-center md:text-left flex flex-col items-center md:items-start">
                 <div className="space-y-3">
-                  <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+                  <span className="type-label text-primary">
                     {locale === 'en' ? 'Celebrity Endorsements' : '名人明星推薦'}
                   </span>
-                  <h2 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight">
+                  <h2 className="type-heading text-foreground">
                     {locale === 'en'
                       ? "Trusted by Hong Kong Celebrities"
                       : '深受香港著名明星信賴'}
@@ -306,18 +304,18 @@ export default async function HomePage({ params }: PageProps) {
                 </div>
 
                 <div className="space-y-4">
-                  <Quote className="w-10 h-10 text-primary/15" />
-                  <p className="text-base font-light text-charcoal/85 italic leading-relaxed">
+                  <Quote className="w-10 h-10 text-primary/15 mx-auto md:mx-0" />
+                  <p className="type-body text-charcoal/85 italic text-center md:text-left">
                     {featuredCelebrity.quote[locale] || featuredCelebrity.quote.en}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-4 border-t border-gray-100 pt-6">
-                  <div>
-                    <p className="text-base font-medium text-foreground">
+                <div className="flex flex-col items-center md:flex-row md:items-center gap-4 border-t border-gray-100 pt-6 w-full">
+                  <div className="text-center md:text-left">
+                    <p className="type-body font-medium text-foreground text-center md:text-left">
                       {featuredCelebrity.name[locale] || featuredCelebrity.name.en}
                     </p>
-                    <p className="text-xs font-light text-charcoal/65">
+                    <p className="type-caption text-charcoal/65 text-center md:text-left">
                       {featuredCelebrity.role[locale] || featuredCelebrity.role.en}
                     </p>
                   </div>
@@ -325,7 +323,7 @@ export default async function HomePage({ params }: PageProps) {
 
                 <Link
                   href={`/${locale}/success-stories#celebrities`}
-                  className="btn-secondary flex items-center gap-2"
+                  className="btn-secondary flex items-center gap-2 mx-auto md:mx-0"
                 >
                   {locale === 'en' ? 'More Celebrity Stories' : '更多明星見證'}
                   <ArrowRight className="w-4 h-4" />
@@ -339,7 +337,7 @@ export default async function HomePage({ params }: PageProps) {
       {/* 7. Google Reviews + flags */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-4 mb-14">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+          <span className="type-label text-primary">
             {locale === 'en' ? 'Client Voices' : '客戶心聲'}
           </span>
           <div className="flex justify-center md:justify-start items-center py-2">
@@ -363,19 +361,19 @@ export default async function HomePage({ params }: PageProps) {
           {reviews.map((review) => (
             <div key={review._id} className="bg-white border border-gray-100 rounded-2xl p-8 flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow duration-300">
               <div className="space-y-4">
-                <div className="flex gap-1 text-primary">
+                <div className="flex gap-1 text-primary justify-center md:justify-start">
                   {[...Array(review.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                <p className="text-sm font-light text-charcoal/80 leading-relaxed italic">
+                <p className="type-body-sm text-charcoal/80 italic">
                   &ldquo;{review.reviewText[locale] || review.reviewText.en}&rdquo;
                 </p>
               </div>
-              <div className="border-t border-gray-50 pt-4 flex items-center gap-4">
+              <div className="border-t border-gray-50 pt-4 flex flex-col sm:flex-row items-center gap-4 text-center md:text-left justify-center md:justify-start">
                 <span className="text-3xl flex-shrink-0">{countryFlags[review.location] || '⭐'}</span>
                 <div>
-                  <span className="text-sm font-medium text-foreground block">{review.clientName}</span>
+                  <span className="type-body-sm font-medium text-foreground block text-center md:text-left">{review.clientName}</span>
                 </div>
               </div>
             </div>
@@ -387,10 +385,10 @@ export default async function HomePage({ params }: PageProps) {
       <section className="bg-soft-bg border-y border-gray-100 py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-4 mb-20">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            <span className="type-label text-primary">
               {locale === 'en' ? 'Our Process' : '療程步驟'}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-light text-foreground tracking-tight">
+            <h2 className="type-heading text-foreground">
               {dict.home.howItWorks.title}
             </h2>
           </div>
@@ -398,7 +396,11 @@ export default async function HomePage({ params }: PageProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
             <div className="hidden md:block absolute top-8 left-24 right-24 h-[1px] bg-gray-200 -z-10" />
             {dict.home.howItWorks.steps.map((step, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 text-center space-y-5 border border-gray-100 shadow-sm">
+              <div key={i} className="bg-white rounded-2xl p-8 text-center space-y-5 border border-gray-100 shadow-sm relative pt-10">
+                {/* Visual Step Number */}
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold shadow-md">
+                  {i + 1}
+                </div>
                 <div className="w-16 h-16 relative mx-auto flex items-center justify-center">
                   <Image
                     src={`/assets/step${i + 1}.svg`}
@@ -407,10 +409,10 @@ export default async function HomePage({ params }: PageProps) {
                     className="object-contain"
                   />
                 </div>
-                <h3 className="text-lg font-medium text-foreground tracking-wide">
-                  {i + 1}. {step.title}
+                <h3 className="type-card-title text-foreground">
+                  {step.title}
                 </h3>
-                <p className="text-sm font-light text-charcoal/80 leading-relaxed">{step.desc}</p>
+                <p className="type-body-sm text-charcoal/80">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -418,9 +420,9 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* 9. CTA */}
-      <section className="w-full bg-primary/5 border-y border-primary/10 py-16 sm:py-20">
+      <section className="w-full bg-primary/5 border-y border-primary/10 py-16 sm:py-20 !mt-0">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center md:text-left space-y-8">
-          <h2 className="text-2xl sm:text-4xl font-light text-foreground tracking-tight max-w-xl mx-auto md:mx-0 leading-tight">
+          <h2 className="type-heading text-foreground max-w-xl mx-auto md:mx-0">
             {dict.home.cta.title}
           </h2>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
@@ -454,7 +456,7 @@ export default async function HomePage({ params }: PageProps) {
               {locale === 'en' ? 'Book via SMS' : 'SMS 簡訊預約'}
             </a>
           </div>
-          <p className="text-xs font-light text-charcoal/60">
+          <p className="type-caption text-charcoal/60">
             {locale === 'en'
               ? 'Appointments are highly personalized. WhatsApp or SMS messaging is our fastest booking channel.'
               : '專屬一對一客製化服務，敬請透過 WhatsApp 或簡訊進行即時預約與諮詢。'}

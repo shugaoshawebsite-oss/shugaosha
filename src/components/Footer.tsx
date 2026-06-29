@@ -26,7 +26,7 @@ export default function Footer({ locale }: FooterProps) {
                 className="w-[150px] md:w-[200px] h-auto object-contain"
               />
             </Link>
-            <p className="text-sm font-light text-white/60 leading-relaxed max-w-xs">
+            <p className="type-body-sm text-white/60 max-w-xs">
               {locale === 'en' 
                 ? 'Authentic Japanese Face Slimming & Facial Realignment. A natural, non-invasive approach to balance, harmony and wellbeing.'
                 : '正宗日式小顏矯正與面部平衡術。以最自然、無入侵性的方式，為您找回對稱、和諧與健康狀態。'}
@@ -86,7 +86,7 @@ export default function Footer({ locale }: FooterProps) {
           <div className="flex flex-col space-y-4">
             <ul className="space-y-2.5">
               <li>
-                <Link href={`/${locale}`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
+                <Link href={`/${locale}`} className="type-body-sm text-white/70 hover:text-primary transition-colors duration-300">
                   {dict.nav.home}
                 </Link>
               </li>
@@ -120,11 +120,11 @@ export default function Footer({ locale }: FooterProps) {
 
           {/* Contact / Location block */}
           <div className="flex flex-col space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-white">
+            <span className="type-label text-white">
               {locale === 'en' ? 'Get in Touch' : '聯絡資訊'}
             </span>
             <div className="space-y-3">
-              <p className="text-sm font-light text-white/70 leading-relaxed">
+              <p className="type-body-sm text-white/70">
                 <span className="font-medium text-white block mb-1">
                   {locale === 'en' ? 'Gladesville Clinic:' : '主要診所地址:'}
                 </span>
@@ -147,9 +147,9 @@ export default function Footer({ locale }: FooterProps) {
 
         {/* Bottom footer */}
         <div className="flex flex-col sm:flex-row justify-between items-center pt-8 text-xs font-light text-white/40 space-y-4 sm:space-y-0">
-          <p>© {new Date().getFullYear()} Shugaosha.com. All rights reserved.</p>
+          <p className="type-caption text-white/40">© {new Date().getFullYear()} Shugaosha.com. All rights reserved.</p>
           <div className="flex space-x-6">
-            <span>{locale === 'en' ? 'Japanese Kogao Association Certified' : '日本小顏矯正協會認證'}</span>
+            <span className="type-caption text-white/40">{locale === 'en' ? 'Japanese Kogao Association Certified' : '日本小顏矯正協會認證'}</span>
           </div>
         </div>
       </div>

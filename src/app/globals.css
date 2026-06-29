@@ -91,7 +91,7 @@ html[lang="zh"] h2 {
 }
 
 html {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 html[lang="en"] p.font-light,
@@ -127,6 +127,83 @@ html[lang="en"] .font-normal i {
 .text-xs,
 .text-sm {
   font-weight: 400;
+}
+
+/* ============================================
+   TYPE SCALE — Harmonized Role Classes
+   These define the ONE true size for each role
+   so every page/component stays consistent.
+   ============================================ */
+
+/* Section eyebrow label */
+.type-label {
+  display: block;
+  font-size: 0.625rem;      /* 9.375px @15px base */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  line-height: 1;
+}
+
+/* Section H1 (hero / page header) */
+.type-hero {
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+/* Section H2 (standard section heading) */
+.type-heading {
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);  /* ~22.5px → ~31.5px */
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* Sub-section H2 / smaller section heading */
+.type-subheading {
+  font-size: clamp(1.25rem, 2vw, 1.7rem);  /* ~18.75px → ~25.5px */
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+/* Card / item H3 */
+.type-card-title {
+  font-size: 0.9375rem;   /* 14px */
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* Body / description text */
+.type-body {
+  font-size: 0.875rem;    /* 13.125px */
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* Small body (secondary descriptions, captions) */
+.type-body-sm {
+  font-size: 0.75rem;     /* 11.25px */
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Caption / fine print */
+.type-caption {
+  font-size: 0.625rem;    /* 9.375px */
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Aspect ratio helper classes to guarantee cross-browser rendering in Next.js fill layouts */
+.aspect-3-2 {
+  aspect-ratio: 3 / 2 !important;
+}
+.aspect-3-4 {
+  aspect-ratio: 3 / 4 !important;
+}
+.aspect-4-5 {
+  aspect-ratio: 4 / 5 !important;
 }
 
 /* ============================================
@@ -311,18 +388,6 @@ header a:not(.btn-book-nav):hover {
   main span,
   main li {
     text-align: center !important;
-  }
-
-  main .flex:not(.overflow-x-auto):not(.scrollbar-hide),
-  main .inline-flex {
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  main .grid {
-    justify-items: center !important;
-    align-items: center !important;
   }
 
   main img,

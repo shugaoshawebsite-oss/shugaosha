@@ -25,11 +25,11 @@ export default function FaqSection({ dict, locale }: FaqSectionProps) {
 
   return (
     <section className="max-w-4xl mx-auto px-6 w-full">
-      <div className="text-center space-y-4 mb-16">
-        <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+      <div className="text-center md:text-left space-y-4 mb-16">
+        <span className="type-label text-primary">
           {faqData.subtitle}
         </span>
-        <h2 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight">
+        <h2 className="type-heading text-foreground">
           {faqData.title}
         </h2>
       </div>
@@ -47,7 +47,7 @@ export default function FaqSection({ dict, locale }: FaqSectionProps) {
                 className="w-full flex justify-between items-center px-6 sm:px-8 py-5 text-left focus:outline-none group"
                 aria-expanded={isOpen}
               >
-                <span className={`text-base sm:text-lg font-medium transition-colors duration-300 ${isOpen ? 'text-primary' : 'text-charcoal group-hover:text-primary'}`}>
+                <span className={`type-card-title transition-colors duration-300 ${isOpen ? 'text-primary' : 'text-charcoal group-hover:text-primary'}`}>
                   {item.question}
                 </span>
                 <ChevronDown
@@ -62,7 +62,7 @@ export default function FaqSection({ dict, locale }: FaqSectionProps) {
                   isOpen ? 'max-h-96 opacity-100 border-t border-gray-50' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-6 sm:px-8 py-5 text-sm sm:text-base font-light text-charcoal/80 leading-relaxed bg-soft-bg">
+                <div className="px-6 sm:px-8 py-5 type-body text-charcoal/80 bg-soft-bg">
                   {item.answer}
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
 import { getTours } from '@/utils/dataService'
 import { Calendar, Globe, MessageCircle } from 'lucide-react'
@@ -148,48 +149,10 @@ export default async function NewsToursPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Instagram / News */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
-        <div className="border-b border-gray-100 pb-6">
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary block mb-2">
-            {locale === 'en' ? 'Follow Along' : '關注我們'}
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight flex items-center gap-3">
-            <InstagramIcon className="w-6 h-6 text-primary" />
-            {dict.newsTours.newsTitle}
-          </h2>
-        </div>
-
-        {/* Instagram grid placeholder */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {[...Array(6)].map((_, i) => (
-            <a
-              key={i}
-              href="https://instagram.com/shugaosha"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="aspect-square bg-gray-50 border border-gray-100 rounded-xl flex flex-col items-center justify-center text-center p-6 relative overflow-hidden group hover:bg-primary/[0.02] hover:border-primary/20 transition-all duration-300"
-            >
-              <InstagramIcon className="w-8 h-8 text-charcoal/30 group-hover:text-primary/60 transition-colors duration-300 mb-2" />
-              <span className="text-[10px] text-charcoal/40 uppercase tracking-widest font-light">
-                @shugaosha
-              </span>
-              <div className="absolute inset-0 bg-primary/[0.01] opacity-0 group-hover:opacity-100 transition-opacity" />
-            </a>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <a
-            href="https://instagram.com/shugaosha"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-          >
-            {locale === 'en' ? 'Follow @shugaosha on Instagram' : '在 Instagram 上關注 @shugaosha'}
-            <InstagramIcon className="w-4 h-4" />
-          </a>
-        </div>
+      {/* Instagram Section */}
+      <section className="max-w-7xl mx-auto w-full px-0">
+        <div className="elfsight-app-79831042-0a38-4901-8e6a-93cc7c0dadcf" data-elfsight-app-lazy></div>
+        <Script src="https://elfsightcdn.com/platform.js" async />
       </section>
 
     </div>
