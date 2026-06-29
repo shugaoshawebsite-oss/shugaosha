@@ -15,8 +15,8 @@ export default function Footer({ locale }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-white/10">
           
           {/* Brand block */}
-          <div className="flex flex-col space-y-4">
-            <Link href={`/${locale}`} className="flex items-center">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+            <Link href={`/${locale}`} className="flex items-center justify-center md:justify-start">
               {/* Using logo_dark.svg (white/light version) for dark background footer */}
               <Image
                 src="/images/logo_dark.svg"
@@ -26,13 +26,13 @@ export default function Footer({ locale }: FooterProps) {
                 className="w-[150px] md:w-[200px] h-auto object-contain"
               />
             </Link>
-            <p className="type-body-sm text-white/60 max-w-xs">
+            <p className="type-body-sm text-white/60 max-w-xs mx-auto md:mx-0">
               {locale === 'en' 
                 ? 'Authentic Japanese Face Slimming & Facial Realignment. A natural, non-invasive approach to balance, harmony and wellbeing.'
                 : '正宗日式小顏矯正與面部平衡術。以最自然、無入侵性的方式，為您找回對稱、和諧與健康狀態。'}
             </p>
             {/* Social Icons */}
-            <div className="flex gap-4 pt-2">
+            <div className="flex gap-4 pt-2 justify-center md:justify-start">
               <a
                 href="https://www.facebook.com/shugaosha"
                 target="_blank"
@@ -83,8 +83,8 @@ export default function Footer({ locale }: FooterProps) {
           </div>
 
           {/* Quick links block — sitemap text removed, nav links styled for dark footer */}
-          <div className="flex flex-col space-y-4">
-            <ul className="space-y-2.5">
+          <div className="flex flex-col items-center md:items-start space-y-4">
+            <ul className="space-y-2.5 text-center md:text-left">
               <li>
                 <Link href={`/${locale}`} className="type-body-sm text-white/70 hover:text-primary transition-colors duration-300">
                   {dict.nav.home}
@@ -119,11 +119,11 @@ export default function Footer({ locale }: FooterProps) {
           </div>
 
           {/* Contact / Location block */}
-          <div className="flex flex-col space-y-4">
-            <span className="type-label text-white">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 w-full">
+            <span className="type-label text-white block text-center md:text-left">
               {locale === 'en' ? 'Get in Touch' : '聯絡資訊'}
             </span>
-            <div className="space-y-3">
+            <div className="space-y-3 w-full">
               <p className="type-body-sm text-white/70">
                 <span className="font-medium text-white block mb-1">
                   {locale === 'en' ? 'Gladesville Clinic:' : '主要診所地址:'}
