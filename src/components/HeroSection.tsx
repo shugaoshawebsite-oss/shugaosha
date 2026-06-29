@@ -84,7 +84,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[100dvh] flex items-end overflow-hidden text-white"
+      className="relative min-h-[100dvh] flex items-center md:items-end overflow-hidden text-white"
       aria-label="Hero"
     >
       {/* Full-bleed Background Video / Image Cover */}
@@ -114,8 +114,8 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15" />
       </div>
 
-      {/* Content — bottom-left third */}
-      <div className="w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 pb-20 sm:pb-28 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
+      {/* Content — centered on mobile, bottom-left on desktop */}
+      <div className="w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 pt-28 pb-20 md:pt-0 md:pb-28 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
 
         {/* Typography: same font size, "THE SHUGAOSHA" in primary, "WAY" in white */}
         <div className="space-y-2 leading-none w-full text-center md:text-left">

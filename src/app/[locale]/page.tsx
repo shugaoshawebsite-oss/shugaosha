@@ -180,7 +180,7 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           {/* Horizontal strip — no box, no shadow, max-height 100px */}
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-12">
             {certImages.map((cert, i) => (
               <div key={i} className="flex-shrink-0">
                 <Image
