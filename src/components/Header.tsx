@@ -76,7 +76,7 @@ export default function Header({ locale }: HeaderProps) {
             className="flex items-center flex-shrink-0"
           >
             <Image
-              src={headerActive ? '/images/logo_light.svg' : '/images/logo_dark.svg'}
+              src="/images/logo_light.svg"
               alt="Shugaosha Logo"
               width={180}
               height={36}
@@ -93,8 +93,8 @@ export default function Header({ locale }: HeaderProps) {
                 href={link.path}
                 className={`text-sm tracking-wide relative py-1 transition-colors duration-300
                   ${isActive(link.path)
-                    ? `font-medium ${headerActive ? 'text-primary' : 'text-white'}`
-                    : `font-light ${headerActive ? 'text-charcoal/80 hover:text-primary' : 'text-white/80 hover:text-white'}`
+                    ? 'font-medium text-primary'
+                    : 'font-light text-charcoal/80 hover:text-primary'
                   }
                 `}
               >
@@ -103,22 +103,19 @@ export default function Header({ locale }: HeaderProps) {
             ))}
 
             {/* Language Switcher */}
-            <div className={`flex items-center space-x-2 border-l pl-5 ml-1 transition-colors duration-500 ${headerActive ? 'border-gray-200' : 'border-white/20'
-              }`}>
-              <Globe className={`w-3.5 h-3.5 transition-colors duration-500 ${headerActive ? 'text-charcoal/50' : 'text-white/60'}`} />
+            <div className="flex items-center space-x-2 border-l pl-5 ml-1 transition-colors duration-500 border-gray-200">
+              <Globe className="w-3.5 h-3.5 transition-colors duration-500 text-charcoal/50" />
               {locale === 'en' ? (
                 <Link
                   href={getLanguageSwitchPath('zh')}
-                  className={`text-xs font-light transition-colors duration-300 ${headerActive ? 'text-charcoal hover:text-primary' : 'text-white/80 hover:text-white'
-                    }`}
+                  className="text-xs font-light transition-colors duration-300 text-charcoal hover:text-primary"
                 >
                   中文
                 </Link>
               ) : (
                 <Link
                   href={getLanguageSwitchPath('en')}
-                  className={`text-xs font-light transition-colors duration-300 ${headerActive ? 'text-charcoal hover:text-primary' : 'text-white/80 hover:text-white'
-                    }`}
+                  className="text-xs font-light transition-colors duration-300 text-charcoal hover:text-primary"
                 >
                   Eng
                 </Link>
@@ -130,13 +127,7 @@ export default function Header({ locale }: HeaderProps) {
               href="https://wa.me/61493552213"
               target="_blank"
               rel="noopener noreferrer"
-              className={`btn-book-nav flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase px-4 py-2 rounded-[3rem] transition-all duration-350
-                ${headerActive
-                  ? 'bg-primary text-white hover:bg-primary/90'
-                  : 'bg-white/15 border border-white/30 text-white hover:bg-white/25'
-                }
-                hover:scale-[1.03]
-              `}
+              className="btn-book-nav flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase px-4 py-2 rounded-[3rem] transition-all duration-350 bg-primary text-white hover:bg-primary/90 hover:scale-[1.03]"
               style={{ transition: 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), background 0.3s ease, box-shadow 0.3s ease' }}
             >
               <MessageCircle className="w-3.5 h-3.5" />
@@ -148,16 +139,13 @@ export default function Header({ locale }: HeaderProps) {
           <div className="md:hidden flex items-center space-x-3">
             <Link
               href={getLanguageSwitchPath(locale === 'en' ? 'zh' : 'en')}
-              className={`text-xs border rounded-full px-2.5 py-1 transition-colors ${headerActive
-                ? 'text-charcoal border-gray-200 hover:border-primary hover:text-primary'
-                : 'text-white border-white/30 hover:border-white'
-                }`}
+              className="text-xs border rounded-full px-2.5 py-1 transition-colors text-charcoal border-gray-200 hover:border-primary hover:text-primary"
             >
               {locale === 'en' ? '中文' : 'Eng'}
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 transition-colors ${headerActive ? 'text-charcoal hover:text-primary' : 'text-white'}`}
+              className="p-2 transition-colors text-charcoal hover:text-primary"
               aria-label="Toggle navigation menu"
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

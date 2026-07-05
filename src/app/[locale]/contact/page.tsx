@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 import { MessageCircle, Mail, MapPin, Clock, Phone } from 'lucide-react'
+import contactBg from '@/images/pexels-karola-g-4862876 copy.webp'
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -15,26 +16,26 @@ export default async function ContactPage({ params }: PageProps) {
     <div className="flex flex-col space-y-24 pb-24">
 
       {/* Page Header */}
-      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full bg-white">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/assets/Artboard 1bg3.webp"
+            src={contactBg}
             alt="Hero Background"
             fill
             priority
-            className="object-cover"
+            className="object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-white/55" />
         </div>
 
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 block mb-3">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/70 block mb-3">
             {dict.contact.title}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-light text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-light text-charcoal tracking-tight">
             {dict.contact.subtitle}
           </h1>
-          <p className="text-sm sm:text-base font-light text-white/80 max-w-xl leading-relaxed mt-4">
+          <p className="text-sm sm:text-base font-light text-charcoal/80 max-w-xl leading-relaxed mt-4">
             {dict.contact.desc}
           </p>
         </div>
@@ -47,7 +48,7 @@ export default async function ContactPage({ params }: PageProps) {
           {/* Left: Contact Methods */}
           <div className="space-y-6">
             <h2 className="text-xl font-medium text-foreground tracking-wide">
-              {locale === 'en' ? 'Reach Us Directly' : '直接聯絡我們'}
+              {locale === 'en' ? 'Book Your Appointment' : '預約您的療程'}
             </h2>
 
             {/* WhatsApp - primary */}

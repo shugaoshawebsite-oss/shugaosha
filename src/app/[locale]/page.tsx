@@ -29,11 +29,7 @@ export default async function HomePage({ params }: PageProps) {
   const reviews = await getReviews()
 
   const certImages = [
-    { src: '/assets/cert/Outstanding Beauty Services_s.webp', alt: locale === 'en' ? 'Outstanding Beauty Services Award' : '卓越美容服務獎' },
-    { src: '/assets/cert/ausbrb1_s.webp', alt: locale === 'en' ? 'Best Business Verification 1' : '最佳商業認證 1' },
-    { src: '/assets/cert/ausbrb2_s.webp', alt: locale === 'en' ? 'Best Business Verification 2' : '最佳商業認證 2' },
-    { src: '/assets/cert/ausbrb3_s.webp', alt: locale === 'en' ? 'Best Business Verification 3' : '最佳商業認證 3' },
-
+    { src: '/assets/cert/Outstanding Beauty Services_s.webp', alt: locale === 'en' ? 'Outstanding Beauty Services Finalist' : '卓越美容服務決賽入圍' },
   ]
 
   const featuredCelebrity = celebrities[0]

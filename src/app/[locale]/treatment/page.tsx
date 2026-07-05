@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
+import treatmentBg from '@/images/floral-beauty-delicate-white-blossoms-with-red-ac-2026-01-06-10-12-15-utc copy.webp'
 import { Check, MessageCircle, ArrowRight, Shield, Sparkles, Heart, Zap, Scale, Smile } from 'lucide-react'
 
 interface PageProps {
@@ -23,26 +24,26 @@ export default async function TreatmentPage({ params }: PageProps) {
     <div className="flex flex-col space-y-24 md:space-y-32 pb-24">
 
       {/* Page Header */}
-      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full bg-white">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/assets/head1.avif"
+            src={treatmentBg}
             alt="Treatment Heading Background"
             fill
             priority
-            className="object-cover"
+            className="object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-white/55" />
         </div>
 
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-white/70 block mb-3">
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-charcoal/70 block mb-3">
             {t.title}
           </span>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-light text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-light text-charcoal tracking-tight">
             {t.subtitle}
           </h1>
-          <p className="text-sm sm:text-base font-light text-white/80 max-w-xl leading-relaxed mt-4">
+          <p className="text-sm sm:text-base font-light text-charcoal/80 max-w-xl leading-relaxed mt-4">
             {t.tagline}
           </p>
         </div>

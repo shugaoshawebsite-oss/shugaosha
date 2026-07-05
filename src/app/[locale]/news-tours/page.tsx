@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Script from 'next/script'
+import newsBg from '@/images/cherry-flowers-in-small-clusters-on-a-cherry-tree-2026-03-17-00-10-20-utc copy.webp'
 import { getDictionary } from '@/utils/dictionary'
 import { getTours } from '@/utils/dataService'
 import { Calendar, Globe, MessageCircle } from 'lucide-react'
@@ -44,26 +45,26 @@ export default async function NewsToursPage({ params }: PageProps) {
     <div className="flex flex-col space-y-24 md:space-y-36 pb-24">
 
       {/* Page Header */}
-      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full bg-white">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/assets/Artboard 1bg4.webp"
+            src={newsBg}
             alt="Hero Background"
             fill
             priority
-            className="object-cover"
+            className="object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-white/55" />
         </div>
 
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 block mb-3">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-charcoal/70 block mb-3">
             {dict.newsTours.title}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-light text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-light text-charcoal tracking-tight">
             {locale === 'en' ? 'News & Travel Schedule' : '最新動態與巡迴服務'}
           </h1>
-          <p className="text-sm sm:text-base font-light text-white/80 max-w-xl leading-relaxed mt-4">
+          <p className="text-sm sm:text-base font-light text-charcoal/80 max-w-xl leading-relaxed mt-4">
             {dict.newsTours.tourIntro}
           </p>
         </div>
