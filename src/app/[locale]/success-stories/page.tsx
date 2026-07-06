@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 import { getCaseStudies, getCelebrities, getReviews } from '@/utils/dataService'
-import successBg from '@/images/water-ripple-pattern-with-pastel-color-gradient-2026-03-24-07-37-25-utc copy.webp'
+import successBg from '@/images/bg5.webp'
 import { Star, Quote, MessageCircle } from 'lucide-react'
 import StickySubNav from '@/components/StickySubNav'
 
@@ -33,8 +33,8 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
     <div className="flex flex-col pb-24">
 
       {/* Page Header */}
-      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full bg-white">
-        <div className="absolute inset-0 -z-10">
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
+        <div className="absolute inset-0 z-0">
           <Image
             src={successBg}
             alt="Hero Background"
@@ -42,17 +42,16 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
             priority
             className="object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-white/55" />
         </div>
 
-        <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-charcoal/70 block mb-3">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
+          <span className="type-label text-charcoal/70 block mb-3">
             {dict.success.subtitle}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-light text-charcoal tracking-tight">
+          <h1 className="type-hero text-charcoal">
             {dict.success.title}
           </h1>
-          <p className="text-sm sm:text-base font-light text-charcoal/80 max-w-xl leading-relaxed mt-4">
+          <p className="type-body text-charcoal/80 max-w-xl mt-4">
             {locale === 'en'
               ? 'Real progression journeys and testimonials showcasing how consistency and hand alignment bring visible, natural results.'
               : '最真實的療程進展對照與見證，展示透過持續的日式小顏手感帶來的顯著與自然調整。'}

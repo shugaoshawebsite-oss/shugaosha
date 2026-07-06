@@ -2,19 +2,7 @@
   {
     "_id": "tour1",
     "city": { "en": "Hong Kong (Causeway Bay)", "zh": "香港 (銅鑼灣)" },
-    "dates": ["June, July 2024", "Jan, Feb 2023", "May-July 2022"],
-    "isActive": true
-  },
-  {
-    "_id": "tour2",
-    "city": { "en": "USA (SF Bay Area / LA / Las Vegas)", "zh": "美國 (舊金山灣區 / 洛杉磯 / 拉斯維加斯)" },
-    "dates": ["May, June 2024", "March - June 2023", "Oct, Nov 2022"],
-    "isActive": true
-  },
-  {
-    "_id": "tour3",
-    "city": { "en": "Canada (Vancouver)", "zh": "加拿大 (溫哥華)" },
-    "dates": ["June 2024", "June 2023", "Oct, Nov 2022"],
+    "dates": ["27 September – 18 October 2026"],
     "isActive": true
   }
 ]

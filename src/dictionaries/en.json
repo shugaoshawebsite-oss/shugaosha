@@ -5,6 +5,7 @@
     "successStories": "Success Stories",
     "aboutUs": "About",
     "newsTours": "News",
+    "training": "Training",
     "contact": "Contact"
   },
   "home": {
@@ -145,11 +146,11 @@
     "locationNotice": "We have moved to Gladesville!"
   },
   "newsTours": {
-    "title": "News & Global Tours",
+    "title": "International Visits",
     "newsTitle": "Latest News & Updates",
-    "tourTitle": "Global Tour Schedule",
-    "tourIntro": "We regularly travel to major cities in Asia and North America to serve our international clientele.",
-    "bookingNote": "Tour slots fill up quickly. Please message us on WhatsApp to secure your spot in advance."
+    "tourTitle": "International Visits",
+    "tourIntro": "From time to time, I travel to visit clients in other cities. Below are confirmed upcoming visits. Appointments are limited and will be confirmed on a first-confirmed basis.",
+    "bookingNote": "Appointments are limited. Please message via WhatsApp to secure your session."
   },
   "contact": {
     "title": "Contact Us",

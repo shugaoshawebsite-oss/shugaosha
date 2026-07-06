@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import aboutBg from '@/images/evie-s-Sw7f58YJbc0-unsplash copy.webp'
+import aboutBg from '@/images/bg2.webp'
 import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
 import { getTeam } from '@/utils/dataService'
@@ -43,8 +43,8 @@ export default async function AboutPage({ params }: PageProps) {
     <div className="flex flex-col space-y-24 md:space-y-36 pb-24">
 
       {/* Page Header */}
-      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full bg-white">
-        <div className="absolute inset-0 -z-10">
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
+        <div className="absolute inset-0 z-0">
           <Image
             src={aboutBg}
             alt="Hero Background"
@@ -52,10 +52,9 @@ export default async function AboutPage({ params }: PageProps) {
             priority
             className="object-cover opacity-80"
           />
-          <div className="absolute inset-0 bg-white/55" />
         </div>
 
-        <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
           <span className="type-label text-charcoal/70 block mb-3">
             {dict.about.title}
           </span>

@@ -5,7 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { MessageCircle, ArrowRight } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
+import logoPortrait from '@/images/logo-portrait.svg'
 
 gsap.registerPlugin(useGSAP)
 
@@ -27,6 +28,14 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
   useGSAP(
     () => {
       const ctx = gsap.context(() => {
+        gsap.from('.hero-logo', {
+          y: 20,
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          delay: 0.15,
+        })
+
         gsap.from('.hero-title-sans', {
           y: 40,
           opacity: 0,
@@ -68,12 +77,27 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           stagger: 0.1,
           delay: 0.95,
         })
+
+        gsap.from('.hero-scroll-indicator', {
+          y: -10,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          delay: 1.1,
+        })
       }, containerRef)
 
       return () => ctx.revert()
     },
     { scope: containerRef }
   )
+
+  const handleScrollDown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    })
+  }
 
   // Split the title into the two visual parts
   // EN: "THE SHUGAOSHA" (sans) + "WAY" (serif italic)
@@ -84,24 +108,23 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[100dvh] flex items-center md:items-end overflow-hidden text-charcoal"
+      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden text-charcoal bg-white"
       aria-label="Hero"
     >
-      {/* Full-bleed Background Image Cover */}
-      <div className="absolute inset-0 -z-10 bg-white">
-        <Image
-          src="/assets/head1.avif"
-          alt="Hero Background"
-          fill
-          priority
-          className="object-cover object-center opacity-80"
-        />
-        {/* Gradient overlay: heavy at bottom, fades to transparent at top */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-white/10" />
-      </div>
+      {/* Content — centered on mobile, bottom-left on desktop, vertically middle in tablet/desktop */}
+      <div className="w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 md:py-0 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
 
-      {/* Content — centered on mobile, bottom-left on desktop */}
-      <div className="w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 pt-28 pb-20 md:pt-0 md:pb-28 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
+        {/* Portrait Logo */}
+        <div className="hero-logo w-[200px] mx-auto md:mx-0">
+          <Image
+            src={logoPortrait}
+            alt="Shugaosha"
+            width={200}
+            height={200}
+            priority
+            className="w-full h-auto mb-2 object-contain"
+          />
+        </div>
 
         {/* Typography: same font size, "THE SHUGAOSHA" in primary, "WAY" in charcoal */}
         <div className="space-y-2 leading-none w-full text-center md:text-left">
@@ -139,6 +162,32 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           </a>
         </div>
       </div>
+
+      {/* Scroll Down Indicator */}
+      <button
+        onClick={handleScrollDown}
+        className="hero-scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20 focus:outline-none"
+        aria-label={locale === 'en' ? 'Scroll down to content' : '向下滾動至內容'}
+      >
+        <span className="text-[10px] uppercase tracking-widest font-light text-charcoal/50">
+          {locale === 'en' ? 'Scroll Down' : '向下滾動'}
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-5 h-5 text-primary animate-bounce"
+        >
+          <path d="M12 5v14" />
+          <path d="m19 12-7 7-7-7" />
+        </svg>
+      </button>
 
       {/* Social Links — vertical on right side */}
       <div className="hero-social-v absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-5 z-20">

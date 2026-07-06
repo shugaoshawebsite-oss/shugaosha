@@ -5,6 +5,7 @@
     "successStories": "療效分享",
     "aboutUs": "關於我們",
     "newsTours": "最新消息",
+    "training": "培訓課程",
     "contact": "聯絡我們"
   },
   "home": {
@@ -145,11 +146,11 @@
     "locationNotice": "我們已搬遷至 Gladesville 新址！"
   },
   "newsTours": {
-    "title": "最新消息與全球巡迴",
+    "title": "國際巡迴服務",
     "newsTitle": "最新動態 (Instagram)",
-    "tourTitle": "全球巡迴服務時程",
-    "tourIntro": "我們定期前往亞洲與北美各大主要城市，為我們尊貴的國際客戶提供專業的日本小顏矯正服務。",
-    "bookingNote": "巡迴服務名額有限，請盡早透過 WhatsApp 預約以保留您的時段。"
+    "tourTitle": "國際巡迴服務",
+    "tourIntro": "我不定期前往其他城市拜訪客人，以下為已確認的即將行程。名額有限，以先確認者為優先。",
+    "bookingNote": "名額有限，請盡早透過 WhatsApp 聯絡以保留您的時段。"
   },
   "contact": {
     "title": "聯絡我們",
