@@ -115,7 +115,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
       <div className="w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 md:py-0 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
 
         {/* Portrait Logo */}
-        <div className="hero-logo w-[200px] mx-auto md:mx-0">
+        <div className="hero-logo w-[150px] md:w-[200px] mx-auto md:mx-0">
           <Image
             src={logoPortrait}
             alt="Shugaosha"
@@ -166,7 +166,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
       {/* Scroll Down Indicator */}
       <button
         onClick={handleScrollDown}
-        className="hero-scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20 focus:outline-none"
+        className="hero-scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 cursor-pointer z-20 focus:outline-none"
         aria-label={locale === 'en' ? 'Scroll down to content' : '向下滾動至內容'}
       >
         <span className="text-[10px] uppercase tracking-widest font-light text-charcoal/50">
