@@ -1,0 +1,304 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Shugaosha Logo" [ref=e4] [cursor=pointer]:
+        - /url: /en
+        - img "Shugaosha Logo" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: /en
+        - link "Treatment" [ref=e8] [cursor=pointer]:
+          - /url: /en/treatment
+        - link "Success Stories" [ref=e9] [cursor=pointer]:
+          - /url: /en/success-stories
+        - link "About" [ref=e10] [cursor=pointer]:
+          - /url: /en/about
+        - link "News" [ref=e11] [cursor=pointer]:
+          - /url: /en/news-tours
+        - link "Contact" [ref=e12] [cursor=pointer]:
+          - /url: /en/contact
+        - generic [ref=e13]:
+          - img [ref=e14]
+          - link "中文" [ref=e17] [cursor=pointer]:
+            - /url: /zh
+        - link "Book" [ref=e18] [cursor=pointer]:
+          - /url: https://wa.me/61493552213
+          - img [ref=e19]
+          - generic [ref=e21]: Book
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - region "Hero" [ref=e24]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - generic [ref=e30]: THE SHUGAOSHA
+            - generic [ref=e31]: WAY
+          - paragraph [ref=e32]: A gentle hands-on approach that helps restore balance, alignment and harmony — supporting both how you look and how you feel.
+          - link "Book a Session" [ref=e34] [cursor=pointer]:
+            - /url: https://wa.me/61493552213
+            - img [ref=e35]
+            - generic [ref=e37]: Book a Session
+        - generic [ref=e38]:
+          - link "Facebook" [ref=e39] [cursor=pointer]:
+            - /url: https://www.facebook.com/shugaosha
+            - img [ref=e40]
+          - link "Instagram" [ref=e42] [cursor=pointer]:
+            - /url: https://www.instagram.com/shugaosha
+            - img [ref=e43]
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - text: The Methodology
+            - heading "What Is The Shugaosha Way?" [level=2] [ref=e50]
+          - generic [ref=e51]:
+            - paragraph [ref=e52]: The Shugaosha Way is a gentle hands-on approach that focuses on balance, harmony and overall wellbeing.
+            - paragraph [ref=e53]: It helps create a more lifted, refreshed and naturally balanced appearance without machines, needles or invasive procedures.
+          - link "Learn More" [ref=e55] [cursor=pointer]:
+            - /url: /en/treatment
+            - text: Learn More
+            - img [ref=e56]
+        - generic:
+          - generic:
+            - img "Shugaosha treatment"
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - text: Why Shugaosha
+          - heading "Benefits of The Shugaosha Way" [level=2] [ref=e61]
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - img [ref=e65]
+            - generic [ref=e68]:
+              - heading "Lifted & Refined" [level=3] [ref=e69]
+              - paragraph [ref=e70]: Promotes a firmer, contoured facial appearance.
+          - generic [ref=e71]:
+            - img [ref=e73]
+            - generic [ref=e77]:
+              - heading "Facial Harmony" [level=3] [ref=e78]
+              - paragraph [ref=e79]: Encourages symmetrical balancing of facial features.
+          - generic [ref=e80]:
+            - img [ref=e82]
+            - generic [ref=e84]:
+              - heading "Reduced Puffiness" [level=3] [ref=e85]
+              - paragraph [ref=e86]: Helps minimize fluid retention and facial swelling.
+          - generic [ref=e87]:
+            - img [ref=e89]
+            - generic [ref=e95]:
+              - heading "Refreshed Radiance" [level=3] [ref=e96]
+              - paragraph [ref=e97]: Supports a vibrant and youthfully revitalized look.
+          - generic [ref=e98]:
+            - img [ref=e100]
+            - generic [ref=e102]:
+              - heading "Tension Relief" [level=3] [ref=e103]
+              - paragraph [ref=e104]: Encourages deep relaxation of hypertonic facial muscles.
+          - generic [ref=e105]:
+            - img [ref=e107]
+            - generic [ref=e110]:
+              - heading "Holistic Wellbeing" [level=3] [ref=e111]
+              - paragraph [ref=e112]: Supports overall health and a lighter feeling.
+        - link "Book a Session" [ref=e114] [cursor=pointer]:
+          - /url: https://wa.me/61493552213
+          - img [ref=e115]
+          - text: Book a Session
+      - generic [ref=e118]:
+        - generic [ref=e119]: Certificate & Award
+        - img "Outstanding Beauty Services Finalist" [ref=e122]
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - generic [ref=e126]: Visual Evidence
+          - heading "Real Results" [level=2] [ref=e127]
+          - paragraph [ref=e128]: These are real client progressions. Natural, consistent, and honest results from dedicated sessions.
+          - generic [ref=e129]:
+            - paragraph [ref=e130]: Client Progression A
+            - paragraph [ref=e131]: Significant reduction in cheek width, jaw alignment, and cheekbone symmetry after 4 sessions.
+          - link "More Success Stories" [ref=e132] [cursor=pointer]:
+            - /url: /en/success-stories#before-after
+            - text: More Success Stories
+            - img [ref=e133]
+        - generic [ref=e136]:
+          - generic:
+            - generic:
+              - img "Original"
+              - generic [ref=e137]: Original
+            - generic:
+              - img "3rd Session"
+              - generic [ref=e138]: 3rd Session
+          - paragraph [ref=e139]: 3 sessions · Natural, hands-on results
+      - generic [ref=e142]:
+        - generic:
+          - generic:
+            - img "Luisa Leitao"
+        - generic [ref=e143]:
+          - generic [ref=e144]:
+            - text: Celebrity Endorsements
+            - heading "Trusted by Hong Kong Celebrities" [level=2] [ref=e145]
+          - generic [ref=e146]:
+            - img [ref=e147]
+            - paragraph [ref=e150]: I feel that the Kogao treatment is really useful for me. Because I had puffiness and a baby face, I feel my face is much less puffy after the treatment. Now that I can feel my facial bones are more defined, it makes me feel very good. I think the most important thing in Kogao is the technique; everyone's hand technique is different, but Teresa and Charles have excellent technique and the results last a long time. I love eating and used to have a round face, but after Kogao, I noticed my face doesn't get fat again even if I eat more, maintaining the contoured Kogao effect. Furthermore, my face used to be slightly asymmetrical with the right side being larger, but after the treatment, I feel my face is balanced and no longer uneven—it feels like my facial structure has been realigned to the correct position. Since it is non-invasive, I find it really great.
+          - generic [ref=e152]:
+            - paragraph [ref=e153]: Luisa Leitao
+            - paragraph [ref=e154]: Renowned host / actress of Hong Kong
+          - link "More Celebrity Stories" [ref=e155] [cursor=pointer]:
+            - /url: /en/success-stories#celebrities
+            - text: More Celebrity Stories
+            - img [ref=e156]
+      - generic [ref=e158]:
+        - generic [ref=e159]:
+          - text: Client Voices
+          - img "Google Reviews" [ref=e161]
+          - generic [ref=e162]:
+            - generic [ref=e163]: 🇭🇰
+            - generic [ref=e164]: 🇦🇺
+            - generic [ref=e165]: 🇺🇸
+            - generic [ref=e166]: 🇨🇦
+        - generic [ref=e167]:
+          - generic [ref=e168]:
+            - generic [ref=e169]:
+              - generic [ref=e170]:
+                - img [ref=e171]
+                - img [ref=e173]
+                - img [ref=e175]
+                - img [ref=e177]
+                - img [ref=e179]
+              - paragraph [ref=e181]: “So happy to meet Teresa and Charles, and get to know Japanese Kogao beauty tech. Charles introduced the concept of 'small face' in a professional perspective. Throughout the entire process, Teresa was skillful, friendly and professional. After the treatment, the face slimming effect is obvious, I surely will recommend to my friends.”
+            - generic [ref=e182]:
+              - generic [ref=e183]: 🇦🇺
+              - generic [ref=e185]: Angie Lin, Sheley Yeung & Maggie Han
+          - generic [ref=e186]:
+            - generic [ref=e187]:
+              - generic [ref=e188]:
+                - img [ref=e189]
+                - img [ref=e191]
+                - img [ref=e193]
+                - img [ref=e195]
+                - img [ref=e197]
+              - paragraph [ref=e199]: “Charles knew what he was doing. I saw immediate improvement on my face after just the first session. Since I finished the 4 treatments, which was about 9 months ago, the result still remains. I highly recommend his service.”
+            - generic [ref=e200]:
+              - generic [ref=e201]: 🇦🇺
+              - generic [ref=e203]: Nancy Tong
+          - generic [ref=e204]:
+            - generic [ref=e205]:
+              - generic [ref=e206]:
+                - img [ref=e207]
+                - img [ref=e209]
+                - img [ref=e211]
+                - img [ref=e213]
+                - img [ref=e215]
+              - paragraph [ref=e217]: “Thank you for helping me achieve a more youthful look, Charles and Teresa have truly transformed my facial appearance. I feel uplifted and more confident. Grateful for the fantastic service!”
+            - generic [ref=e218]:
+              - generic [ref=e219]: ⭐
+              - generic [ref=e221]: Virginia Degrange
+      - generic [ref=e223]:
+        - generic [ref=e224]:
+          - text: Our Process
+          - heading "The Process" [level=2] [ref=e225]
+        - generic [ref=e226]:
+          - generic [ref=e228]:
+            - generic [ref=e229]: "1"
+            - img "Step 1" [ref=e231]
+            - heading "Scan & Plan" [level=3] [ref=e232]
+            - paragraph [ref=e233]: We analyze your facial balance and create a custom realignment plan.
+          - generic [ref=e234]:
+            - generic [ref=e235]: "2"
+            - img "Step 2" [ref=e237]
+            - heading "Treatment" [level=3] [ref=e238]
+            - paragraph [ref=e239]: A gentle, non-invasive hands-on treatment using specialized Japanese techniques.
+          - generic [ref=e240]:
+            - generic [ref=e241]: "3"
+            - img "Step 3" [ref=e243]
+            - heading "Maintain" [level=3] [ref=e244]
+            - paragraph [ref=e245]: Follow-up recommendations and simple routines to maintain your natural balance.
+      - generic [ref=e247]:
+        - heading "Ready to transform your facial contours naturally?" [level=2] [ref=e248]
+        - generic [ref=e249]:
+          - link "Book via WhatsApp" [ref=e250] [cursor=pointer]:
+            - /url: https://wa.me/61493552213
+            - img [ref=e251]
+            - text: Book via WhatsApp
+          - link "Book via SMS" [ref=e253] [cursor=pointer]:
+            - /url: sms:+61493552213
+            - img [ref=e254]
+            - text: Book via SMS
+        - paragraph [ref=e256]: Appointments are highly personalized. WhatsApp or SMS messaging is our fastest booking channel.
+      - generic [ref=e257]:
+        - generic [ref=e258]:
+          - text: Common Questions
+          - heading "Frequently Asked Questions" [level=2] [ref=e259]
+        - generic [ref=e260]:
+          - generic [ref=e261]:
+            - button "Is the treatment painful or invasive?" [ref=e262]:
+              - generic [ref=e263]: Is the treatment painful or invasive?
+              - img [ref=e264]
+            - generic [ref=e266]: No. The Shugaosha Method is 100% natural, non-invasive, and painless. We use gentle Japanese manual techniques without needles, machines, or surgery. Most clients find the session deeply relaxing and often fall asleep.
+          - generic [ref=e267]:
+            - button "How many sessions do I need to see results?" [ref=e268]:
+              - generic [ref=e269]: How many sessions do I need to see results?
+              - img [ref=e270]
+            - generic [ref=e272]: Many clients notice visible changes and a lighter, more lifted feeling after their very first session. For lasting and stable results, we generally recommend a complete course of 4 to 8 sessions, depending on your individual facial structure and goals.
+          - generic [ref=e273]:
+            - button "How long do the results last?" [ref=e274]:
+              - generic [ref=e275]: How long do the results last?
+              - img [ref=e276]
+            - generic [ref=e278]: After completing a full course of treatments, results can last for a long time. Because facial bones and muscles naturally shift with age, stress, and posture, we recommend periodic maintenance sessions (e.g., once a month) to maintain optimal alignment.
+          - generic [ref=e279]:
+            - button "Who is this treatment suitable for?" [ref=e280]:
+              - generic [ref=e281]: Who is this treatment suitable for?
+              - img [ref=e282]
+            - generic [ref=e284]: It is suitable for anyone looking to improve facial symmetry, lift contours, reduce puffiness, or relieve jaw/TMJ tension naturally. It is popular among both women and men of all ages.
+      - link "Free Instagram Feed Widget" [ref=e293] [cursor=pointer]:
+        - /url: https://elfsight.com/instagram-feed-instashow/?utm_source=websites&utm_medium=clients&utm_content=instashow&utm_term=localhost&utm_campaign=free-widget
+        - img [ref=e294]
+        - text: Free Instagram Feed Widget
+  - contentinfo [ref=e296]:
+    - generic [ref=e297]:
+      - generic [ref=e298]:
+        - generic [ref=e299]:
+          - link "Shugaosha Logo" [ref=e300] [cursor=pointer]:
+            - /url: /en
+            - img "Shugaosha Logo" [ref=e301]
+          - paragraph [ref=e302]: Authentic Japanese Face Slimming & Facial Realignment. A natural, non-invasive approach to balance, harmony and wellbeing.
+          - generic [ref=e303]:
+            - link "Facebook" [ref=e304] [cursor=pointer]:
+              - /url: https://www.facebook.com/shugaosha
+              - img [ref=e305]
+            - link "Instagram" [ref=e307] [cursor=pointer]:
+              - /url: https://www.instagram.com/shugaosha
+              - img [ref=e308]
+        - list [ref=e312]:
+          - listitem [ref=e313]:
+            - link "Home" [ref=e314] [cursor=pointer]:
+              - /url: /en
+          - listitem [ref=e315]:
+            - link "Treatment" [ref=e316] [cursor=pointer]:
+              - /url: /en/treatment
+          - listitem [ref=e317]:
+            - link "Success Stories" [ref=e318] [cursor=pointer]:
+              - /url: /en/success-stories
+          - listitem [ref=e319]:
+            - link "About" [ref=e320] [cursor=pointer]:
+              - /url: /en/about
+          - listitem [ref=e321]:
+            - link "News" [ref=e322] [cursor=pointer]:
+              - /url: /en/news-tours
+          - listitem [ref=e323]:
+            - link "Contact" [ref=e324] [cursor=pointer]:
+              - /url: /en/contact
+        - generic [ref=e325]:
+          - generic [ref=e326]: Get in Touch
+          - generic [ref=e327]:
+            - paragraph [ref=e328]:
+              - generic [ref=e329]: "Gladesville Clinic:"
+              - text: 5 Pittwater Road, Gladesville NSW 2111, Australia
+            - generic [ref=e330]:
+              - paragraph [ref=e331]:
+                - text: "WhatsApp / SMS:"
+                - link "+61 493552213" [ref=e332] [cursor=pointer]:
+                  - /url: tel:+61493552213
+              - paragraph [ref=e333]:
+                - text: "Email:"
+                - link "shugaosha@gmail.com" [ref=e334] [cursor=pointer]:
+                  - /url: mailto:shugaosha@gmail.com
+      - generic [ref=e335]:
+        - paragraph [ref=e336]: © 2026 Shugaosha.com. All rights reserved.
+        - generic [ref=e338]: Japanese Kogao Association Certified
+  - button "Open Next.js Dev Tools" [ref=e344] [cursor=pointer]:
+    - img [ref=e345]
+  - alert [ref=e348]
