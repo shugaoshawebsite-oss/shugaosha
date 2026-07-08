@@ -23,6 +23,7 @@ export default function MarqueeCarousel<T>({
   const scrollLeftStart = useRef(0)
   const animationFrameId = useRef<number | null>(null)
   const lastTime = useRef<number | null>(null)
+  const hasInitialized = useRef(false)
 
   const originalCount = items.length
   // Duplicate items to ensure seamless marquee looping
@@ -40,7 +41,7 @@ export default function MarqueeCarousel<T>({
     let minDiff = Infinity
     const containerCenter = container.scrollLeft + container.clientWidth / 2
 
-    // Only search the first half to determine the active index
+    // Search the first half of children to map to the correct active index dot
     for (let i = 0; i < originalCount; i++) {
       const child = children[i] as HTMLElement
       if (!child) continue
@@ -62,16 +63,37 @@ export default function MarqueeCarousel<T>({
     const halfWidth = container.scrollWidth / 2
     if (halfWidth <= 0) return
 
-    // Seamless wrap-around
+    const threshold = 20 // pixels threshold to wrap before hitting the scroll wall
+
+    // Seamless wrap-around in both directions
     if (container.scrollLeft >= halfWidth) {
       container.scrollLeft -= halfWidth
-    } else if (container.scrollLeft <= 0) {
+    } else if (container.scrollLeft <= threshold) {
       container.scrollLeft += halfWidth
     }
 
     updateActiveIndex()
   }
 
+  // Initialize scroll position to the middle (halfWidth) for infinite scrolling in both directions
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container || hasInitialized.current) return
+
+    const initScroll = () => {
+      const halfWidth = container.scrollWidth / 2
+      if (halfWidth > 0) {
+        container.scrollLeft = halfWidth
+        updateActiveIndex()
+        hasInitialized.current = true
+      }
+    }
+
+    const timer = setTimeout(initScroll, 150)
+    return () => clearTimeout(timer)
+  }, [originalCount])
+
+  // Auto-scroll loop using requestAnimationFrame
   useEffect(() => {
     const animate = (time: number) => {
       if (lastTime.current === null) {
@@ -82,7 +104,7 @@ export default function MarqueeCarousel<T>({
       lastTime.current = time
 
       const container = containerRef.current
-      if (container && !isDragging.current && !isHovered.current) {
+      if (container && !isDragging.current && !isHovered.current && hasInitialized.current) {
         const frameAdjust = delta / 16.666
         container.scrollLeft += speed * frameAdjust
       }
@@ -138,7 +160,7 @@ export default function MarqueeCarousel<T>({
     }
   }
 
-  // Handle window resize to recalculate active index center
+  // Handle window resize to keep layout and index alignment correct
   useEffect(() => {
     const handleResize = () => {
       updateActiveIndex()
@@ -167,17 +189,17 @@ export default function MarqueeCarousel<T>({
           WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
         }}
       >
-        {/* Track holding all items */}
+        {/* Track holding all items with symmetric spacing via item padding-right */}
         <div
           ref={trackRef}
-          className="flex flex-row gap-6 w-max px-[10vw]"
+          className="flex flex-row w-max"
         >
           {duplicatedItems.map((item, idx) => {
             const isClone = idx >= originalCount
             return (
               <div
                 key={idx}
-                className="select-none"
+                className="select-none pr-6" // Symmetric gap spacing (24px) for perfect infinite loop
                 style={{ userSelect: 'none' }}
               >
                 {renderItem(item, idx % originalCount, isClone)}
