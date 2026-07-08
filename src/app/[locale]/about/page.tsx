@@ -25,12 +25,15 @@ const certGroups = [
 ]
 
 const interiorImages = [
-  '/assets/interior/940182_55b53c02637849feaff1448ebad3120b~mv2.avif',
-  '/assets/interior/940182_5f0bc9ebe8a54fdf8f2951381c9f2bdd~mv2.avif',
-  '/assets/interior/940182_71f01d03a59242ca8e968d0a054bc1fb~mv2.avif',
-  '/assets/interior/940182_d9e2d24fe2b34a4ebf191989453ec3df~mv2.avif',
-  '/assets/interior/940182_eff1867ad1e243d2a67823b9cc52d734~mv2.avif',
-  '/assets/interior/940182_f29bc537d3b642a291e85e8badd000b7~mv2.avif',
+  '/images/studio-1.jpeg',
+  '/images/studio-2.jpeg',
+  '/images/studio-3.jpeg',
+  '/images/studio-4.jpeg',
+  '/images/studio-5.jpeg',
+  '/images/studio-6.jpeg',
+  '/images/studio-7.jpeg',
+  '/images/studio-8.jpeg',
+  '/images/studio-9.jpeg',
 ]
 
 export default async function AboutPage({ params }: PageProps) {
