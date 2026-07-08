@@ -81,16 +81,16 @@ export default function SuccessStoriesClient({
             speed={0.4}
             renderItem={(celebrity) => (
               <div
-                className="w-[85vw] sm:w-[500px] md:w-[600px] flex-shrink-0 bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 grid grid-cols-1 md:grid-cols-12 min-h-[380px] md:min-h-0"
+                className="w-[75vw] sm:w-[320px] md:w-[360px] flex-shrink-0 bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full"
               >
-                {/* Left: Photo Column */}
-                <div className="relative h-48 md:h-auto md:col-span-5 bg-gray-50">
+                {/* Top: Photo Column (Square) */}
+                <div className="relative aspect-square w-full bg-gray-50">
                   {celebrity.imageRelativeUrl ? (
                     <Image
                       src={celebrity.imageRelativeUrl}
                       alt={celebrity.name[locale] || celebrity.name.en}
                       fill
-                      sizes="(max-width: 768px) 100vw, 250px"
+                      sizes="(max-width: 768px) 100vw, 360px"
                       className="object-cover"
                       draggable="false"
                     />
@@ -101,20 +101,20 @@ export default function SuccessStoriesClient({
                   )}
                 </div>
 
-                {/* Right: Content Column */}
-                <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-center space-y-4">
-                  <div>
-                    <h3 className="text-lg font-medium text-foreground leading-tight">
+                {/* Bottom: Content Column */}
+                <div className="p-6 flex flex-col justify-between flex-grow space-y-4">
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-medium text-foreground leading-tight text-center md:text-left">
                       {celebrity.name[locale] || celebrity.name.en}
                     </h3>
-                    <span className="text-xs font-semibold text-primary uppercase tracking-wider block mt-1">
+                    <span className="text-xs font-semibold text-primary uppercase tracking-wider block mt-1 text-center md:text-left">
                       {celebrity.role[locale] || celebrity.role.en}
                     </span>
                   </div>
 
-                  <div className="space-y-2">
-                    <Quote className="w-6 h-6 text-primary/15" />
-                    <p className="text-sm font-light text-charcoal/85 italic leading-relaxed">
+                  <div className="space-y-2 border-t border-gray-50 pt-4">
+                    <Quote className="w-6 h-6 text-primary/15 mx-auto md:mx-0" />
+                    <p className="text-sm font-light text-charcoal/85 italic leading-relaxed text-center md:text-left">
                       {celebrity.quote[locale] || celebrity.quote.en}
                     </p>
                   </div>
