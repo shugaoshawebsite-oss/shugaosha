@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
 import { getServices, getCelebrities, getCaseStudies, getReviews } from '@/utils/dataService'
-import { Check, ArrowRight, MessageCircle, Star, Quote, Sparkles, Scale, Droplet, Sun, Heart, Leaf } from 'lucide-react'
+import { Check, ArrowRight, MessageCircle, Star, Quote, Sparkles, Scale, Droplet, Sun, Heart, Leaf, Smile, Shield } from 'lucide-react'
 import FaqSection from '@/components/FaqSection'
 import HeroSection from '@/components/HeroSection'
 
@@ -82,7 +82,7 @@ export default async function HomePage({ params }: PageProps) {
           <div className="space-y-8 order-1 lg:order-1">
             <div className="space-y-3">
               <span className="type-label text-primary">
-                {locale === 'en' ? 'The Methodology' : '核心技術'}
+                {locale === 'en' ? 'Our Approach' : '我們的方法'}
               </span>
               <h2 className="type-heading text-foreground">
                 {dict.home.whatWeDo.title}
@@ -91,6 +91,7 @@ export default async function HomePage({ params }: PageProps) {
             <div className="space-y-4 type-body text-charcoal/80">
               <p>{dict.home.whatWeDo.description1}</p>
               <p>{dict.home.whatWeDo.description2}</p>
+              {dict.home.whatWeDo.description3 && <p>{dict.home.whatWeDo.description3}</p>}
             </div>
 
             <div className="flex items-center justify-center lg:justify-start gap-4">
@@ -139,32 +140,32 @@ export default async function HomePage({ params }: PageProps) {
               {
                 icon: Sparkles,
                 title: locale === 'en' ? 'Lifted & Refined' : '提升與緊緻',
-                desc: locale === 'en' ? 'Promotes a firmer, contoured facial appearance.' : '促進面部輪廓更加緊緻立體。'
+                desc: locale === 'en' ? 'Promotes a firmer, more contoured facial appearance.' : '促進面部輪廓更加緊緻立體。'
               },
               {
                 icon: Scale,
                 title: locale === 'en' ? 'Facial Harmony' : '面部和諧',
-                desc: locale === 'en' ? 'Encourages symmetrical balancing of facial features.' : '促進面部特徵的對稱平衡。'
+                desc: locale === 'en' ? 'Encourages better balance between facial features.' : '促進面部特徵之間更好的對稱與平衡。'
               },
               {
                 icon: Droplet,
                 title: locale === 'en' ? 'Reduced Puffiness' : '減少浮腫',
-                desc: locale === 'en' ? 'Helps minimize fluid retention and facial swelling.' : '有助於減少水分滯留與面部腫脹。'
+                desc: locale === 'en' ? 'Helps minimize facial swelling and fluid retention.' : '有助於減少水分滯留與面部腫脹。'
               },
               {
                 icon: Sun,
-                title: locale === 'en' ? 'Refreshed Radiance' : '重塑光彩',
-                desc: locale === 'en' ? 'Supports a vibrant and youthfully revitalized look.' : '展現充滿活力與年輕光澤的容顏。'
+                title: locale === 'en' ? 'Refreshed Radiance' : '煥新光彩',
+                desc: locale === 'en' ? 'Supports a healthier, more radiant complexion.' : '改善面部血液循環，重塑健康紅潤氣色。'
               },
               {
-                icon: Heart,
+                icon: Smile,
                 title: locale === 'en' ? 'Tension Relief' : '舒緩緊繃',
-                desc: locale === 'en' ? 'Encourages deep relaxation of hypertonic facial muscles.' : '促進面部過度緊張肌肉的深層放鬆。'
+                desc: locale === 'en' ? 'Encourages relaxation of facial muscles and everyday tension.' : '促進面部肌肉深層放鬆，舒緩日常張力。'
               },
               {
-                icon: Leaf,
-                title: locale === 'en' ? 'Holistic Wellbeing' : '整體健康',
-                desc: locale === 'en' ? 'Supports overall health and a lighter feeling.' : '支持整體健康，帶來更輕鬆愉悅的感受。'
+                icon: Shield,
+                title: locale === 'en' ? 'Youthful Glow' : '青春活力',
+                desc: locale === 'en' ? 'Supports healthier-looking skin and a naturally refreshed appearance.' : '提升肌膚活力，帶來由內而外的自然健康光澤。'
               }
             ].map((item, i) => {
               const Icon = item.icon

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
-import { MessageCircle, Mail, MapPin, Clock, Phone } from 'lucide-react'
+import { MessageCircle, Mail, MapPin, Clock, Phone, Calendar } from 'lucide-react'
 import contactBg from '@/images/bg4.webp'
 
 interface PageProps {
@@ -169,6 +169,110 @@ export default async function ContactPage({ params }: PageProps) {
               <MapPin className="w-4 h-4" />
               {locale === 'en' ? 'Open in Google Maps' : '在 Google 地圖中打開'}
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* International Visits Section */}
+      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full border-t border-gray-100 pt-16">
+        <div className="border-b border-gray-100 pb-6 mb-12">
+          <span className="type-label text-primary block mb-3">
+            {locale === 'en' ? 'Confirmed Upcoming Visit' : '已確認即將行程'}
+          </span>
+          <h2 className="type-heading text-foreground">
+            {locale === 'en' ? 'Hong Kong' : '香港'}
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Left: Details */}
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="text-3xl">🇭🇰</span>
+                <div>
+                  <p className="type-label text-primary mb-1">
+                    {locale === 'en' ? 'Destination' : '巡迴城市'}
+                  </p>
+                  <h3 className="text-xl font-medium text-foreground">
+                    {locale === 'en' ? 'Hong Kong (Causeway Bay)' : '香港 (銅鑼灣)'}
+                  </h3>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 pt-2">
+                <Calendar className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="type-label text-charcoal/50 mb-1">
+                    {locale === 'en' ? 'Dates' : '日期'}
+                  </p>
+                  <p className="text-base font-medium text-foreground">
+                    27 September – 18 October 2026
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4 pt-2 border-t border-gray-100">
+              <p className="type-body text-charcoal/80 leading-relaxed">
+                {locale === 'en'
+                  ? "I'll be returning to Hong Kong for a limited time during these dates."
+                  : '我將於以上日期短暫返港。'}
+              </p>
+              <p className="type-body text-charcoal/80 leading-relaxed">
+                {locale === 'en'
+                  ? 'Appointments are limited and will be confirmed on a first-confirmed basis.'
+                  : '名額有限，以先確認者為優先。'}
+              </p>
+              <p className="type-body text-charcoal/80 leading-relaxed">
+                {locale === 'en'
+                  ? "If you'd like to book a session during my Hong Kong visit, please contact me via WhatsApp."
+                  : '如有意於香港行程期間預約，請透過 WhatsApp 聯絡我。'}
+              </p>
+            </div>
+
+            <div>
+              <a
+                href="https://wa.me/61493552213?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Hong%20Kong%20appointment%20(27%20Sep%20%E2%80%93%2018%20Oct%202026)"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 bg-primary text-white px-7 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-primary/10"
+              >
+                <MessageCircle className="w-4 h-4" />
+                {locale === 'en' ? 'Book Hong Kong Appointment' : '預約香港療程'}
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Notice card */}
+          <div className="bg-primary/5 border border-primary/10 rounded-2xl p-8 space-y-5">
+            <MapPin className="w-6 h-6 text-primary" />
+            <h4 className="text-base font-medium text-foreground">
+              {locale === 'en' ? 'Important Booking Note' : '預約須知'}
+            </h4>
+            <ul className="space-y-3">
+              {[
+                locale === 'en'
+                  ? 'Appointments are available by prior arrangement only.'
+                  : '療程須事先安排，不接受即場預約。',
+                locale === 'en'
+                  ? 'Appointments are limited — early enquiry is recommended.'
+                  : '名額有限，建議盡早查詢。',
+                locale === 'en'
+                  ? 'Sessions will be confirmed upon receipt of deposit.'
+                  : '收到訂金後正式確認預約。',
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/80">
+                  <span className="mt-1.5 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs font-light text-charcoal/60 pt-2 border-t border-primary/10">
+              {locale === 'en'
+                ? 'All sessions follow the Shugaosha Appointment Etiquette.'
+                : '所有療程均遵循修顏社預約守則。'}
+            </p>
           </div>
         </div>
       </section>

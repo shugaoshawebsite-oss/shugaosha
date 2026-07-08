@@ -12,14 +12,7 @@ gsap.registerPlugin(useGSAP)
 
 interface HeroSectionProps {
   locale: 'en' | 'zh'
-  dict: {
-    home: {
-      hero: {
-        title: string
-        description: string
-      }
-    }
-  }
+  dict: any
 }
 
 export default function HeroSection({ locale, dict }: HeroSectionProps) {
@@ -142,10 +135,18 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Description */}
-        <p className="hero-desc text-base sm:text-lg font-light text-charcoal/80 leading-relaxed max-w-lg mx-auto md:mx-0">
-          {dict.home.hero.description}
-        </p>
+        {/* Description / Statement Block */}
+        <div className="hero-desc space-y-3 max-w-lg mx-auto md:mx-0 text-charcoal/90">
+          <p className="text-2xl sm:text-3xl font-light tracking-wide text-primary" style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}>
+            {dict.home.hero.tagline}
+          </p>
+          <p className="text-sm sm:text-base font-medium tracking-[0.2em] uppercase text-charcoal/70">
+            {dict.home.hero.subtitle}
+          </p>
+          <p className="text-base sm:text-lg font-light text-charcoal/80 leading-relaxed pt-1">
+            {dict.home.hero.description}
+          </p>
+        </div>
 
         {/* CTA Buttons */}
         <div className="hero-cta flex flex-col sm:flex-row items-center md:items-start gap-4 w-full justify-center md:justify-start">

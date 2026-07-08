@@ -11,13 +11,15 @@
   "home": {
     "hero": {
       "title": "THE SHUGAOSHA WAY",
-      "subtitle": "Balance • Harmony • Wellbeing",
-      "description": "A gentle hands-on approach that helps restore balance, alignment and harmony — supporting both how you look and how you feel."
+      "tagline": "More Than Beauty.",
+      "subtitle": "Balance • Harmony • Wellbeing.",
+      "description": "A gentle hands-on approach to facial balance, harmony and wellbeing."
     },
     "whatWeDo": {
       "title": "What Is The Shugaosha Way?",
-      "description1": "The Shugaosha Way is a gentle hands-on approach that focuses on balance, harmony and overall wellbeing.",
-      "description2": "It helps create a more lifted, refreshed and naturally balanced appearance without machines, needles or invasive procedures.",
+      "description1": "The Shugaosha Way is our signature hands-on approach to facial balance, harmony and overall wellbeing.",
+      "description2": "Developed through years of practice and continued education in Japan, it works with your natural facial structure to help create a more balanced, refreshed and naturally lifted appearance.",
+      "description3": "Rather than changing your face, our goal is to help it return to its natural balance.",
       "benefitsTitle": "Benefits of The Shugaosha Way",
       "benefits": [
         "Promotes a more lifted and refined appearance.",
@@ -66,22 +68,52 @@
       "subtitle": "Common Questions",
       "items": [
         {
-          "question": "Is the treatment painful or invasive?",
-          "answer": "No. The Shugaosha Method is 100% natural, non-invasive, and painless. We use gentle Japanese manual techniques without needles, machines, or surgery. Most clients find the session deeply relaxing and often fall asleep."
+          "question": "What is the Shugaosha Way?",
+          "answer": "The Shugaosha Way is a gentle, hands-on facial rebalancing technique that focuses on restoring natural balance, harmony and overall wellbeing."
         },
         {
-          "question": "How many sessions do I need to see results?",
-          "answer": "Many clients notice visible changes and a lighter, more lifted feeling after their very first session. For lasting and stable results, we generally recommend a complete course of 4 to 8 sessions, depending on your individual facial structure and goals."
+          "question": "How is the Shugaosha Way different from a facial massage?",
+          "answer": "The Shugaosha Way focuses on releasing facial tension and addressing areas of imbalance. As facial balance is restored, the face appears more harmonious, naturally refreshed and balanced."
+        },
+        {
+          "question": "Is the Shugaosha Way a regular facial treatment?",
+          "answer": "No. It does not involve skincare products, machines or facial equipment. However, many clients notice their skin appears brighter, firmer and more radiant after treatment."
+        },
+        {
+          "question": "Is the treatment painful?",
+          "answer": "The treatment is generally gentle and comfortable. Areas with more tension or imbalance may feel slightly more sensitive during the session, but this usually eases as the treatment progresses."
+        },
+        {
+          "question": "How many sessions do I need?",
+          "answer": "Most clients benefit from a series of 4–5 treatments. For the best results, sessions are ideally spaced 3–7 days apart, depending on your individual needs. Each session builds on the previous one, helping your face gradually establish better balance and longer-lasting results."
         },
         {
           "question": "How long do the results last?",
-          "answer": "After completing a full course of treatments, results can last for a long time. Because facial bones and muscles naturally shift with age, stress, and posture, we recommend periodic maintenance sessions (e.g., once a month) to maintain optimal alignment."
+          "answer": "Results vary from person to person. Like any form of self-care, regular maintenance treatments help support and maintain your results over time."
         },
         {
-          "question": "Who is this treatment suitable for?",
-          "answer": "It is suitable for anyone looking to improve facial symmetry, lift contours, reduce puffiness, or relieve jaw/TMJ tension naturally. It is popular among both women and men of all ages."
+          "question": "Is there any downtime?",
+          "answer": "No. There is no downtime. Many clients choose to book their treatment before a special occasion or event to look refreshed and naturally lifted."
+        },
+        {
+          "question": "Can I have treatment after Botox or fillers?",
+          "answer": "Yes, but we recommend waiting until Botox or fillers have fully settled. Please let us know before booking so we can advise the most suitable timing."
+        },
+        {
+          "question": "Who is not suitable for treatment?",
+          "answer": "Treatment may not be suitable if you are pregnant, have certain medical conditions, or have recently undergone cosmetic procedures. Please let us know before booking so we can advise whether the treatment is suitable for you."
+        },
+        {
+          "question": "How long is each appointment?",
+          "answer": "Approximately 45–60 minutes. Each treatment is tailored to your individual needs. We believe more time is not always better. Every session is carefully tailored to suit your face, allowing your tissues and muscles to respond naturally without unnecessary stress."
+        },
+        {
+          "question": "How do I book an appointment?",
+          "answer": "Simply contact us via WhatsApp or submit an enquiry through our website."
         }
-      ]
+      ],
+      "stillHaveQuestions": "Still have questions?",
+      "contactUsText": "We’d love to hear from you. Please feel free to contact us—we’re happy to help."
     }
   },
   "success": {
@@ -95,41 +127,32 @@
     "title": "Treatment",
     "subtitle": "The Shugaosha Method",
     "tagline": "Effective, Non-invasive, Safe & Natural",
-    "introTitle": "What Is Japanese Face Slimming Realignment?",
-    "introDesc": "Japanese face slimming realignment, also known as \"Kogao\" or \"small face\" in Japanese, is a beauty technique that has gained popularity in recent years as a safe and effective way to beautify, slim down, and achieve facial rejuvenation. The goal of this technique is to reshape the face by targeting the muscles, skin, and bones, resulting in a more youthful and refreshed appearance.",
-    "skullTitle": "Facial Imbalance and Aging: The Impact on Your Skull's Structure",
-    "skullDesc": "Our skull is made up of 22 bones. With age and improper posture, the gaps between the bones continue to widen, resulting in your face being crooked, an imbalance between the left and right side of the face, high cheekbones, wide jawline, protruding facial bones and a lack of soft facial lines.",
-    "techniqueTitle": "Refining Facial Contours: Non-Invasive Japanese Face Slimming Realignment",
-    "techniqueDesc": "Japanese face slimming realignment is a non-surgical hands-on treatment that uses massage techniques to help reshape and contour the face. It is based on the principles of traditional Japanese skill that refers to the most natural and professional techniques to correct the gaps between bones and reposition bone collaterals to achieve the effect of face slimming. When gaps are tightened, you will find your face becoming much firmer and refined.",
-    "muscleTitle": "Unlocking Facial Rejuvenation: The Power of Creating New Muscle Memory",
-    "muscleDesc": "This technique revitalizes the facial condition and creates new muscle memory, initiating a natural self-healing process. As this process unfolds, improved blood circulation within the skin layers enhances lymphatic drainage, reducing facial swelling. These combined effects work harmoniously to enhance the overall slimming of the face, resulting in a more youthful and rejuvenated appearance.",
-    "naturalTitle": "Embrace the Natural Approach: Safe, Comfortable & Non-Invasive",
-    "naturalDesc": "The entire treatment is completely natural, non-invasive, with no equipment or medications involved — safe with no side effects. By applying gentle Japanese techniques, the process is comfortable and painless.",
-    "methodTitle": "The Japanese Kogao Technique",
-    "methodDesc1": "Our skull is made up of 22 bones. With age and improper posture, the gaps between the bones continue to widen, resulting in facial misalignment, asymmetry and a heavier-looking face.",
-    "methodDesc2": "The Shugaosha Method corrects these bone gaps through precise, gentle manual pressure — repositioning bone collaterals to achieve a naturally refined and more symmetrical appearance. No machines. No needles. No surgery.",
-    "coreBenefitsTitle": "Core Benefits",
-    "coreBenefits": [
-      "Face slimming & V-line contouring",
-      "Facial symmetry & balance restoration",
-      "Reduction in puffiness & water retention",
-      "Lifted appearance without surgery",
-      "Jaw alignment & bite improvement",
-      "Skin circulation & glow enhancement"
-    ],
+    "introTitle": "How Does The Shugaosha Way Work?",
+    "introDesc1": "The Shugaosha Way is based on the belief that facial appearance is closely connected to balance, harmony and overall wellbeing.",
+    "introDesc2": "Through our signature hands-on approach, we work with the body’s natural structure rather than forcing change.",
+    "introDesc3": "Every treatment is personalised, respecting each client’s unique facial features while encouraging a naturally refreshed, balanced and lifted appearance.",
+    "introDesc4": "Our goal is not to change who you are, but to help you look and feel your natural best.",
+    "skullTitle": "Understanding Facial Balance",
+    "skullDesc1": "As we age, daily habits, posture and muscle tension can gradually influence facial balance and overall appearance.",
+    "skullDesc2": "The Shugaosha Way focuses on understanding these changes and working with the body’s natural structure through a gentle hands-on approach.",
+    "skullDesc3": "Rather than forcing change, our goal is to encourage better balance, harmony and a naturally refreshed appearance.",
+    "techniqueTitle": "Layer by Layer, With Care",
+    "techniqueDesc1": "The Shugaosha Way is performed using a carefully developed layer-by-layer hands-on approach.",
+    "techniqueDesc2": "Rather than focusing on a single feature, we consider how different areas of the face work together to support overall balance and harmony.",
+    "techniqueDesc3": "Every treatment is individually tailored to complement your unique facial structure and natural features, helping you achieve results that look balanced, refreshed and naturally you.",
     "additionalBenefitsTitle": "Additional Benefits",
     "additionalBenefits": [
-      "Deep muscle relaxation & tension release",
-      "Improved lymphatic drainage",
-      "Reduction in nasolabial folds",
-      "More defined cheekbone structure",
-      "Relief from TMJ discomfort",
-      "Natural, long-lasting results with maintenance"
+      "Deep Muscle Relaxation & Tension Release",
+      "Improved Lymphatic Drainage",
+      "Softer Nasolabial Folds",
+      "Reduced Jaw Tension",
+      "Improved Facial Circulation"
     ],
     "cta": {
-      "title": "Ready to Experience The Shugaosha Way?",
+      "title": "Ready to Begin Your Shugaosha Journey?",
       "button": "Book a Session via WhatsApp"
-    }
+    },
+    "coreBenefitsTitle": "Core Benefits"
   },
   "about": {
     "title": "About Us",

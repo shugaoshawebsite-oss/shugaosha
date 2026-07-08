@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import Link from 'next/link'
 
 interface FaqItem {
   question: string
@@ -70,6 +71,25 @@ export default function FaqSection({ dict, locale }: FaqSectionProps) {
           )
         })}
       </div>
+
+      {faqData.stillHaveQuestions && (
+        <div className="mt-16 text-center bg-soft-bg border border-gray-100 rounded-2xl p-8 max-w-2xl mx-auto space-y-4 hover:shadow-sm transition-all duration-300">
+          <h3 className="text-lg font-medium text-foreground">
+            {faqData.stillHaveQuestions}
+          </h3>
+          <p className="type-body text-charcoal/70 max-w-md mx-auto">
+            {faqData.contactUsText}
+          </p>
+          <div className="pt-2">
+            <Link
+              href={`/${locale}/contact`}
+              className="btn-primary inline-flex items-center gap-2 text-sm py-2.5 px-6 shadow-sm hover:shadow transition-all duration-300"
+            >
+              {dict.nav.contact}
+            </Link>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

@@ -28,8 +28,8 @@ export default function Footer({ locale }: FooterProps) {
             </Link>
             <p className="type-body-sm text-white/60 max-w-xs mx-auto md:mx-0">
               {locale === 'en' 
-                ? 'Authentic Japanese Face Slimming & Facial Realignment. A natural, non-invasive approach to balance, harmony and wellbeing.'
-                : '正宗日式小顏矯正與面部平衡術。以最自然、無入侵性的方式，為您找回對稱、和諧與健康狀態。'}
+                ? 'Helping people rediscover balance, harmony and confidence through gentle Japanese hands-on techniques.'
+                : '以溫和的日式徒手技術，幫助人們重新發現平衡、和諧與自信。'}
             </p>
             {/* Social Icons */}
             <div className="flex gap-4 pt-2 justify-center md:justify-start">
@@ -105,11 +105,7 @@ export default function Footer({ locale }: FooterProps) {
                   {dict.nav.aboutUs}
                 </Link>
               </li>
-              <li>
-                <Link href={`/${locale}/news-tours`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
-                  {dict.nav.newsTours}
-                </Link>
-              </li>
+
               <li>
                 <Link href={`/${locale}/contact`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
                   {dict.nav.contact}

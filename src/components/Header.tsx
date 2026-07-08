@@ -116,7 +116,6 @@ export default function Header({ locale }: HeaderProps) {
     { name: dict.nav.treatment,     path: `/${locale}/treatment` },
     { name: dict.nav.successStories,path: `/${locale}/success-stories` },
     { name: dict.nav.aboutUs,       path: `/${locale}/about` },
-    { name: dict.nav.newsTours,     path: `/${locale}/news-tours` },
     { name: dict.nav.training,      path: `/${locale}/training` },
     { name: dict.nav.contact,       path: `/${locale}/contact` },
   ]

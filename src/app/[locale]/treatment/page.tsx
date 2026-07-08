@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 import treatmentBg from '@/images/bg3.webp'
-import { Check, MessageCircle, ArrowRight, Shield, Sparkles, Heart, Zap, Scale, Smile } from 'lucide-react'
+import { Check, MessageCircle, ArrowRight, Shield, Sparkles, Heart, Zap, Scale, Smile, Calendar, Droplet, Sun } from 'lucide-react'
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -56,16 +56,19 @@ export default async function TreatmentPage({ params }: PageProps) {
           <div className="space-y-8">
             <div className="space-y-3 text-center md:text-left">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
-                {locale === 'en' ? 'The Method' : '技術核心'}
+                {locale === 'en' ? 'Our Approach' : '我們的理念'}
               </span>
               <h2 className="text-3xl sm:text-4xl font-light text-foreground tracking-tight">
                 {t.introTitle}
               </h2>
             </div>
 
-            <p className="text-base font-light text-charcoal/80 leading-relaxed">
-              {t.introDesc}
-            </p>
+            <div className="space-y-4 text-base font-light text-charcoal/80 leading-relaxed">
+              <p>{t.introDesc1}</p>
+              <p>{t.introDesc2}</p>
+              <p>{t.introDesc3}</p>
+              <p>{t.introDesc4}</p>
+            </div>
 
             {/* 3 icons above CTA */}
             <div className="grid grid-cols-3 gap-4 pb-2 pt-2">
@@ -125,30 +128,15 @@ export default async function TreatmentPage({ params }: PageProps) {
             {/* Right: text */}
             <div className="space-y-6 order-1 lg:order-2 text-center md:text-left">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
-                {locale === 'en' ? 'The Science' : '科學原理'}
+                {locale === 'en' ? 'Why Balance Matters' : '為何平衡至關重要'}
               </span>
               <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight leading-snug">
                 {t.skullTitle}
               </h2>
-              <p className="text-base font-light text-charcoal/80 leading-relaxed">
-                {t.skullDesc}
-              </p>
-
-              {/* 22 bones stat highlight */}
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-4 text-center sm:text-left">
-                <div className="text-6xl font-light text-primary tracking-tight leading-none shrink-0">22</div>
-                <div className="space-y-1">
-                  <p className="text-lg font-medium text-foreground tracking-tight">
-                    {locale === 'en'
-                      ? 'Bones make up the human skull'
-                      : '塊骨骼構成人類頭骨'}
-                  </p>
-                  <p className="text-sm font-light text-primary tracking-wide uppercase">
-                    {locale === 'en'
-                      ? '— and each gap matters.'
-                      : '— 每一個縫隙都至關重要。'}
-                  </p>
-                </div>
+              <div className="space-y-4 text-base font-light text-charcoal/80 leading-relaxed">
+                <p>{t.skullDesc1}</p>
+                <p>{t.skullDesc2}</p>
+                <p>{t.skullDesc3}</p>
               </div>
             </div>
           </div>
@@ -167,9 +155,11 @@ export default async function TreatmentPage({ params }: PageProps) {
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight leading-snug">
               {t.techniqueTitle}
             </h2>
-            <p className="text-base font-light text-charcoal/80 leading-relaxed">
-              {t.techniqueDesc}
-            </p>
+            <div className="space-y-4 text-base font-light text-charcoal/80 leading-relaxed">
+              <p>{t.techniqueDesc1}</p>
+              <p>{t.techniqueDesc2}</p>
+              <p>{t.techniqueDesc3}</p>
+            </div>
           </div>
 
           {/* Right: image */}
@@ -203,24 +193,52 @@ export default async function TreatmentPage({ params }: PageProps) {
 
         {/* Content */}
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
-          <div className="w-full lg:w-1/2 lg:ml-auto text-center lg:text-left space-y-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
-               {locale === 'en' ? 'How It Works' : '療程原理'}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight">
-              {locale === 'en' ? 'Creating New Muscle Memory for Natural Self-Healing' : '激活肌肉記憶與自然自我修復'}
-            </h2>
-            <div className="space-y-4 text-white/80 font-light leading-relaxed text-sm sm:text-base">
-              <p>
-                {locale === 'en'
-                  ? 'The Shugaosha Method is a 100% natural, non-invasive treatment that works by revitalizing your facial condition and creating new muscle memory. With no needles, machines, or surgery involved, our gentle Japanese manual techniques reposition bone structures and stimulate lymphatic drainage safely without side effects.'
-                  : '修顏社療法是100%自然且無入侵性的修復手法，透過激活深層面部肌肉記憶，引導面部組織自然重塑。本療程完全不使用儀器、針劑或手術，安全且無副作用。'}
-              </p>
-              <p>
-                {locale === 'en'
-                  ? 'As blood circulation and energy flow are restored, facial swelling is reduced, jaw tension is released, and your face achieves a firmer, V-line contour that is both balanced and naturally refreshed.'
-                  : '隨著面部血液循環與淋巴回流的改善，能迅速消腫排水、釋放顎關節緊繃，協助您在無痛舒適的過程中，找回對稱和諧、自然緊緻的精緻輪廓。'}
-              </p>
+          <div className="space-y-6">
+            <div className="text-center lg:text-left space-y-3">
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
+                 {locale === 'en' ? 'How It Works' : '療程步驟'}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight">
+                {locale === 'en' ? 'HOW IT WORKS' : '療程步驟'}
+              </h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6">
+              {[
+                {
+                  step: "01",
+                  title: locale === 'en' ? "Consultation & Assessment" : "諮詢與評估",
+                  desc: locale === 'en' 
+                    ? "Every session begins with a brief consultation to understand your concerns and goals. We then assess your facial balance and natural features to personalise your treatment."
+                    : "每次療程都從簡短的諮詢開始，以了解您的需求與目標。接著，我們評估您的面部對稱度與自然特徵，為您量身定制專屬療程。"
+                },
+                {
+                  step: "02",
+                  title: locale === 'en' ? "Personalised Hands-On Treatment" : "專屬徒手調理",
+                  desc: locale === 'en'
+                    ? "Using The Shugaosha Way, we work layer by layer with gentle hands-on techniques, carefully tailored to support your unique facial structure and natural balance."
+                    : "採用修顏社獨特的小顏手法，以溫和的徒手技術進行層層調理，精心契合您獨特的面部結構與自然平衡。"
+                },
+                {
+                  step: "03",
+                  title: locale === 'en' ? "Progressive Journey" : "漸進式調理旅程",
+                  desc: locale === 'en'
+                    ? "As your facial balance improves over a series of sessions, changes become more refined, harmonious and long-lasting. Regular sessions help support and maintain your natural progression."
+                    : "隨著您的面部平衡在連續的療程中不斷改善，效果將變得更加細緻、和諧且持久。定期的保養療程有助於支持並維持您的自然美麗進程。"
+                }
+              ].map((item, index) => (
+                <div key={index} className="space-y-3 text-left bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                  <div className="text-4xl font-light text-primary" style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}>
+                    {item.step}
+                  </div>
+                  <h3 className="text-base font-medium text-white tracking-wide">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm font-light text-white/80 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -243,32 +261,32 @@ export default async function TreatmentPage({ params }: PageProps) {
               {
                 icon: Sparkles,
                 title: locale === 'en' ? 'Lifted & Refined' : '提升與緊緻',
-                desc: locale === 'en' ? 'Promotes a firmer, contoured facial appearance.' : '促進面部輪廓更加緊緻立體。'
+                desc: locale === 'en' ? 'Promotes a firmer, more contoured facial appearance.' : '促進面部輪廓更加緊緻立體。'
               },
               {
                 icon: Scale,
-                title: locale === 'en' ? 'Facial Harmony' : '對稱平衡',
-                desc: locale === 'en' ? 'Encourages symmetrical balancing of facial features.' : '調整面部骨骼比例，促進對稱和諧。'
+                title: locale === 'en' ? 'Facial Harmony' : '面部和諧',
+                desc: locale === 'en' ? 'Encourages better balance between facial features.' : '促進面部特徵之間更好的對稱與平衡。'
               },
               {
-                icon: Heart,
-                title: locale === 'en' ? 'Reduced Puffiness' : '消腫排水',
-                desc: locale === 'en' ? 'Helps minimize fluid retention and facial swelling.' : '促進淋巴循環，減少水分滯留與面部浮腫。'
+                icon: Droplet,
+                title: locale === 'en' ? 'Reduced Puffiness' : '減少浮腫',
+                desc: locale === 'en' ? 'Helps minimize facial swelling and fluid retention.' : '有助於減少水分滯留與面部腫脹。'
               },
               {
-                icon: Zap,
-                title: locale === 'en' ? 'Refreshed Radiance' : '煥發光采',
-                desc: locale === 'en' ? 'Supports a vibrant and youthfully revitalized look.' : '改善面部血液循環，重塑健康紅潤氣色。'
+                icon: Sun,
+                title: locale === 'en' ? 'Refreshed Radiance' : '煥新光彩',
+                desc: locale === 'en' ? 'Supports a healthier, more radiant complexion.' : '改善面部血液循環，重塑健康紅潤氣色。'
               },
               {
                 icon: Smile,
                 title: locale === 'en' ? 'Tension Relief' : '舒緩緊繃',
-                desc: locale === 'en' ? 'Encourages deep relaxation of facial muscles.' : '深層放鬆咀嚼肌及面部肌肉，緩解日常緊張。'
+                desc: locale === 'en' ? 'Encourages relaxation of facial muscles and everyday tension.' : '促進面部肌肉深層放鬆，舒緩日常張力。'
               },
               {
                 icon: Shield,
                 title: locale === 'en' ? 'Youthful Glow' : '青春活力',
-                desc: locale === 'en' ? 'Supports healthy skin and natural revitalisation.' : '提升肌膚活力，帶來由內而外的自然健康光澤。'
+                desc: locale === 'en' ? 'Supports healthier-looking skin and a naturally refreshed appearance.' : '提升肌膚活力，帶來由內而外的自然健康光澤。'
               }
             ].map((benefit, i) => {
               const IconComponent = benefit.icon
@@ -300,7 +318,7 @@ export default async function TreatmentPage({ params }: PageProps) {
         <div className="space-y-10">
           <div className="space-y-3 text-center md:text-left">
             <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
-              {locale === 'en' ? 'Further Advantages' : '更多好處'}
+              {locale === 'en' ? 'ADDITIONAL BENEFITS' : '附加功效'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
               {t.additionalBenefitsTitle}
