@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { Star, Quote } from 'lucide-react'
 import MarqueeCarousel from './MarqueeCarousel'
@@ -55,6 +55,39 @@ export default function SuccessStoriesClient({
   locale,
   dict,
 }: SuccessStoriesClientProps) {
+  const [expandedQuotes, setExpandedQuotes] = useState<Record<string, boolean>>({})
+
+  const toggleExpand = (id: string) => {
+    setExpandedQuotes(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }))
+  }
+
+  const truncateText = (text: string, limit = 50) => {
+    const isZh = locale === 'zh'
+    if (isZh) {
+      if (text.length > 80) {
+        return {
+          truncated: text.slice(0, 80),
+          shouldTruncate: true
+        }
+      }
+    } else {
+      const words = text.split(/\s+/)
+      if (words.length > limit) {
+        return {
+          truncated: words.slice(0, limit).join(' '),
+          shouldTruncate: true
+        }
+      }
+    }
+    return {
+      truncated: text,
+      shouldTruncate: false
+    }
+  }
+
   // 7 slots for case studies: use real data if available, otherwise fallback/placeholder
   const beforeAfterSlots = Array.from({ length: 7 }, (_, i) => caseStudies[i] || null)
 
@@ -102,7 +135,7 @@ export default function SuccessStoriesClient({
                 </div>
 
                 {/* Bottom: Content Column */}
-                <div className="p-6 flex flex-col justify-between flex-grow space-y-4">
+                <div className="p-6 flex flex-col justify-start flex-grow space-y-4">
                   <div className="space-y-1">
                     <h3 className="text-lg font-medium text-foreground leading-tight text-center md:text-left">
                       {celebrity.name[locale] || celebrity.name.en}
@@ -115,7 +148,45 @@ export default function SuccessStoriesClient({
                   <div className="space-y-2 border-t border-gray-50 pt-4">
                     <Quote className="w-6 h-6 text-primary/15 mx-auto md:mx-0" />
                     <p className="text-sm font-light text-charcoal/85 italic leading-relaxed text-center md:text-left">
-                      {celebrity.quote[locale] || celebrity.quote.en}
+                      {(() => {
+                        const rawQuote = celebrity.quote[locale] || celebrity.quote.en
+                        const isExpanded = !!expandedQuotes[celebrity._id]
+                        const { truncated, shouldTruncate } = truncateText(rawQuote)
+                        
+                        if (isExpanded || !shouldTruncate) {
+                          return (
+                            <>
+                              {rawQuote}
+                              {shouldTruncate && (
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    toggleExpand(celebrity._id)
+                                  }}
+                                  className="ml-1 text-xs font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
+                                >
+                                  {locale === 'en' ? ' read less' : ' 收起'}
+                                </button>
+                              )}
+                            </>
+                          )
+                        }
+                        
+                        return (
+                          <>
+                            {truncated}
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                toggleExpand(celebrity._id)
+                              }}
+                              className="ml-1 text-xs font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
+                            >
+                              {locale === 'en' ? '... read more' : '... 閱讀更多'}
+                            </button>
+                          </>
+                        )
+                      })()}
                     </p>
                   </div>
                 </div>
