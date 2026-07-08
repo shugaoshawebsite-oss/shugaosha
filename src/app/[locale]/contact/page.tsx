@@ -160,15 +160,17 @@ export default async function ContactPage({ params }: PageProps) {
               />
             </div>
 
-            <a
-              href="https://maps.google.com/?q=5+Pittwater+Road,+Gladesville+NSW+2111"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary flex items-center gap-2"
-            >
-              <MapPin className="w-4 h-4" />
-              {locale === 'en' ? 'Open in Google Maps' : '在 Google 地圖中打開'}
-            </a>
+            <div className="flex justify-center md:justify-start">
+              <a
+                href="https://maps.google.com/?q=5+Pittwater+Road,+Gladesville+NSW+2111"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary flex items-center gap-2"
+              >
+                <MapPin className="w-4 h-4" />
+                {locale === 'en' ? 'Open in Google Maps' : '在 Google 地圖中打開'}
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -231,7 +233,7 @@ export default async function ContactPage({ params }: PageProps) {
               </p>
             </div>
 
-            <div>
+            <div className="flex justify-center md:justify-start">
               <a
                 href="https://wa.me/61493552213?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Hong%20Kong%20appointment%20(27%20Sep%20%E2%80%93%2018%20Oct%202026)"
                 target="_blank"

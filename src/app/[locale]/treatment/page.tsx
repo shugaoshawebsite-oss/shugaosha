@@ -293,9 +293,9 @@ export default async function TreatmentPage({ params }: PageProps) {
               return (
                 <div
                   key={i}
-                  className="bg-soft-bg border border-gray-100 rounded-2xl p-6 flex gap-4 items-start shadow-sm hover:shadow-md transition-shadow duration-300 group"
+                  className="bg-soft-bg border border-gray-100 rounded-2xl p-6 flex flex-col md:flex-row gap-4 items-center md:items-start shadow-sm hover:shadow-md transition-shadow duration-300 group text-center md:text-left"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300 mx-auto md:mx-0">
                     <IconComponent className="w-5 h-5" />
                   </div>
                   <div className="space-y-1">

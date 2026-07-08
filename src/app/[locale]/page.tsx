@@ -172,12 +172,12 @@ export default async function HomePage({ params }: PageProps) {
               return (
                 <div
                   key={i}
-                  className="flex gap-4 p-6 bg-[#f8f9fa] border border-gray-100 rounded-[2rem] hover:shadow-md transition-shadow duration-300"
+                  className="flex items-center md:items-start gap-4 p-6 bg-[#f8f9fa] border border-gray-100 rounded-[2rem] hover:shadow-md transition-shadow duration-300 flex-col md:flex-row text-center md:text-left"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto md:mx-0 md:mt-1">
                     <Icon className="w-5.5 h-5.5" />
                   </div>
-                  <div className="space-y-1.5 text-left">
+                  <div className="space-y-1.5">
                     <h3 className="type-card-title text-foreground">{item.title}</h3>
                     <p className="type-body-sm text-charcoal/80">{item.desc}</p>
                   </div>
@@ -374,10 +374,10 @@ export default async function HomePage({ params }: PageProps) {
                   &ldquo;{review.reviewText[locale] || review.reviewText.en}&rdquo;
                 </p>
               </div>
-              <div className="border-t border-gray-50 pt-4 flex flex-col sm:flex-row items-center gap-4 text-center md:text-left justify-center md:justify-start">
+              <div className="border-t border-gray-50 pt-4 flex items-center gap-4 justify-center md:justify-start">
                 <span className="text-3xl flex-shrink-0">{countryFlags[review.location] || '⭐'}</span>
                 <div>
-                  <span className="type-body-sm font-medium text-foreground block text-center md:text-left">{review.clientName}</span>
+                  <span className="type-body-sm font-medium text-foreground block text-left">{review.clientName}</span>
                 </div>
               </div>
             </div>
@@ -429,7 +429,7 @@ export default async function HomePage({ params }: PageProps) {
           <h2 className="type-heading text-foreground max-w-xl mx-auto md:mx-0">
             {dict.home.cta.title}
           </h2>
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="https://wa.me/61493552213"
               target="_blank"
