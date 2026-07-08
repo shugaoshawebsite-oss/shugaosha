@@ -140,48 +140,22 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
                 const cs = caseStudies[slot - 1]
                 return (
                   <div key={slot} className="bg-white border border-gray-100 rounded-2xl overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
-                    {/* Images */}
-                    <div className="grid grid-cols-2 gap-0.5 bg-gray-100 h-64 relative">
+                    {/* Image */}
+                    <div className="relative aspect-square bg-gray-100 w-full overflow-hidden">
                       {cs ? (
-                        <>
-                          <div className="relative h-full overflow-hidden">
-                            <Image
-                              src={cs.beforeImageRelativeUrl}
-                              alt={`${cs.title[locale] || cs.title.en} - Before`}
-                              fill
-                              sizes="(max-width: 768px) 50vw, 20vw"
-                              className="object-cover"
-                            />
-                            <span className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-[9px] uppercase font-semibold text-charcoal px-2 py-0.5 rounded z-10">
-                              {locale === 'en' ? 'Before' : '前'}
-                            </span>
-                          </div>
-                          <div className="relative h-full overflow-hidden">
-                            <Image
-                              src={cs.afterImageRelativeUrl}
-                              alt={`${cs.title[locale] || cs.title.en} - After`}
-                              fill
-                              sizes="(max-width: 768px) 50vw, 20vw"
-                              className="object-cover"
-                            />
-                            <span className="absolute top-2 left-2 bg-primary text-white text-[9px] uppercase font-semibold px-2 py-0.5 rounded shadow-sm z-10">
-                              {locale === 'en' ? 'After' : '後'}
-                            </span>
-                          </div>
-                        </>
+                        <Image
+                          src={cs.afterImageRelativeUrl}
+                          alt={cs.title[locale] || cs.title.en}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 30vw"
+                          className="object-cover"
+                        />
                       ) : (
-                        <>
-                          <div className="relative h-full bg-gray-100 flex items-center justify-center">
-                            <span className="text-[9px] uppercase font-semibold text-charcoal/30 tracking-widest">
-                              {locale === 'en' ? 'Before' : '前'}
-                            </span>
-                          </div>
-                          <div className="relative h-full bg-gray-50 flex items-center justify-center">
-                            <span className="text-[9px] uppercase font-semibold text-primary/30 tracking-widest">
-                              {locale === 'en' ? 'After' : '後'}
-                            </span>
-                          </div>
-                        </>
+                        <div className="w-full h-full flex items-center justify-center bg-gray-50">
+                          <span className="text-xs uppercase font-semibold text-charcoal/30 tracking-wider">
+                            {locale === 'en' ? 'Coming Soon' : '即將推出'}
+                          </span>
+                        </div>
                       )}
                     </div>
 
@@ -189,25 +163,25 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
                     <div className="p-6 space-y-3">
                       {cs ? (
                         <>
-                          <span className="text-[10px] font-semibold tracking-wider text-primary uppercase">
+                          <span className="text-[10px] font-semibold tracking-wider text-primary uppercase block text-center md:text-left">
                             {cs.category === '4-session' ? (locale === 'en' ? '4-Session Progression' : '4次療程對照') :
                              cs.category === '8-session' ? (locale === 'en' ? '8-Session Progression' : '8次療程對照') :
                              (locale === 'en' ? 'Long Term Maintenance' : '長期保養維持')}
                           </span>
-                          <h3 className="text-base font-medium text-foreground">
+                          <h3 className="text-base font-medium text-foreground text-center md:text-left">
                             {cs.title[locale] || cs.title.en}
                           </h3>
                           {cs.description && (
-                            <p className="text-sm font-light text-charcoal/75 leading-relaxed">
+                            <p className="text-sm font-light text-charcoal/75 leading-relaxed text-center md:text-left">
                               {cs.description[locale] || cs.description.en}
                             </p>
                           )}
                         </>
                       ) : (
                         <div className="space-y-2">
-                          <div className="h-3 bg-gray-100 rounded-full w-1/3" />
-                          <div className="h-4 bg-gray-100 rounded-full w-2/3" />
-                          <p className="text-xs font-light text-charcoal/40 italic pt-1">
+                          <div className="h-3 bg-gray-100 rounded-full w-1/3 mx-auto md:mx-0" />
+                          <div className="h-4 bg-gray-100 rounded-full w-2/3 mx-auto md:mx-0" />
+                          <p className="text-xs font-light text-charcoal/40 italic pt-1 text-center md:text-left">
                             {locale === 'en' ? 'Case study coming soon' : '療程案例即將更新'}
                           </p>
                         </div>
