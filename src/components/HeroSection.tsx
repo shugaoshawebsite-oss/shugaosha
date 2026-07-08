@@ -104,8 +104,36 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
       className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden text-charcoal bg-white"
       aria-label="Hero"
     >
+      {/* Background Images */}
+      <div className="absolute inset-0 z-0">
+        {/* Mobile background */}
+        <div className="absolute inset-0 block md:hidden">
+          <Image
+            src="/images/mobile-hero.jpg"
+            alt="The Shugaosha Way mobile background"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
+        {/* Desktop background */}
+        <div className="absolute inset-0 hidden md:block">
+          <Image
+            src="/images/desktop-hero.jpg"
+            alt="The Shugaosha Way background"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
+        {/* White transparent overlay */}
+        <div className="absolute inset-0 bg-white/75" />
+      </div>
+
       {/* Content — centered on mobile, bottom-left on desktop, vertically middle in tablet/desktop */}
-      <div className="w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 md:py-0 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 md:py-0 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
 
         {/* Portrait Logo */}
         <div className="hero-logo w-[150px] md:w-[200px] mx-auto md:mx-0">
