@@ -3,9 +3,11 @@ import Image from 'next/image'
 import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
 import { getServices, getCelebrities, getCaseStudies, getReviews } from '@/utils/dataService'
-import { Check, ArrowRight, MessageCircle, Star, Quote, Sparkles, Scale, Droplet, Sun, Heart, Leaf, Smile, Shield } from 'lucide-react'
+import { ArrowRight, MessageCircle, Star, Sparkles, Scale, Droplet, Sun, Smile, Shield } from 'lucide-react'
 import FaqSection from '@/components/FaqSection'
 import HeroSection from '@/components/HeroSection'
+import HomeCaseStudies from '@/components/HomeCaseStudies'
+import HomeCelebrities from '@/components/HomeCelebrities'
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -32,42 +34,7 @@ export default async function HomePage({ params }: PageProps) {
     { src: '/assets/cert/Outstanding Beauty Services_s.webp', alt: locale === 'en' ? 'Outstanding Beauty Services Finalist' : '卓越美容服務決賽入圍' },
   ]
 
-  const featuredCelebrity = celebrities[0]
-  const featuredCase = caseStudies[0]
-
-  const beforeAfterImages = featuredCase ? (
-    <div className="w-full">
-      <div className="grid grid-cols-2 gap-1.5 rounded-2xl overflow-hidden shadow-lg w-full">
-        <div className="relative aspect-3-4 w-full">
-          <Image
-            src="/assets/bna/before1.jpg"
-            alt={locale === 'en' ? 'Original' : '原狀'}
-            fill
-            sizes="(max-width: 768px) 50vw, 35vw"
-            className="object-cover"
-          />
-          <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] font-semibold text-charcoal uppercase px-2.5 py-1 rounded">
-            {locale === 'en' ? 'Original' : '原狀'}
-          </span>
-        </div>
-        <div className="relative aspect-3-4 w-full">
-          <Image
-            src="/assets/bna/after1.jpg"
-            alt={locale === 'en' ? '3rd Session' : '第 3 次療程'}
-            fill
-            sizes="(max-width: 768px) 50vw, 35vw"
-            className="object-cover"
-          />
-          <span className="absolute top-3 left-3 bg-primary text-white text-[10px] font-semibold uppercase px-2.5 py-1 rounded shadow-sm">
-            {locale === 'en' ? '3rd Session' : '第 3 次療程'}
-          </span>
-        </div>
-      </div>
-      <p className="type-caption text-charcoal/50 text-center mt-4">
-        {locale === 'en' ? '3 sessions · Natural, hands-on results' : '3 次療程 · 自然純手工效果'}
-      </p>
-    </div>
-  ) : null
+  // No static featured objects needed as we render all items inside marquee carousels
 
   return (
     <div className="flex flex-col space-y-24 md:space-y-36 pb-24">
@@ -228,115 +195,11 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
-          <div className="md:col-span-5 space-y-6 w-full flex flex-col items-center md:items-start text-center md:text-left">
-            <span className="type-label text-primary">
-              {locale === 'en' ? 'Visual Evidence' : '療效對比'}
-            </span>
-            <h2 className="type-heading text-foreground">
-              {locale === 'en' ? 'Real Results' : '真實療效'}
-            </h2>
-            <p className="type-body text-charcoal/80">
-              {locale === 'en'
-                ? 'These are real client progressions. Natural, consistent, and honest results from dedicated sessions.'
-                : '以下均為真實客戶的療程進展對照，展示持續堅持後帶來的自然、誠實的效果。'}
-            </p>
-            <div className="block md:hidden w-full">
-              {beforeAfterImages}
-            </div>
-            {featuredCase && (
-              <div className="space-y-2">
-                <p className="type-body-sm font-medium text-foreground">{featuredCase.title[locale] || featuredCase.title.en}</p>
-                <p className="type-body-sm text-charcoal/75">
-                  {featuredCase.description ? (featuredCase.description[locale] || featuredCase.description.en) : ''}
-                </p>
-              </div>
-            )}
-            <Link
-              href={`/${locale}/success-stories#before-after`}
-              className="btn-secondary flex items-center gap-2 mx-auto md:mx-0"
-            >
-              {locale === 'en' ? 'More Success Stories' : '更多療效見證'}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+      {/* 5. Before & After (Case Studies) */}
+      <HomeCaseStudies caseStudies={caseStudies} locale={locale} />
 
-          <div className="hidden md:block md:col-span-7 w-full">
-            {beforeAfterImages}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-soft-bg border-y border-gray-100 py-24">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
-
-            {/* Celebrity portrait */}
-            {featuredCelebrity && (
-              <div className="md:col-span-6 w-full">
-                <div className="relative aspect-3-2 md:aspect-3-4 w-full rounded-2xl overflow-hidden bg-gray-100 shadow-xl">
-                  {featuredCelebrity.imageRelativeUrl ? (
-                    <Image
-                      src={featuredCelebrity.imageRelativeUrl}
-                      alt={featuredCelebrity.name[locale] || featuredCelebrity.name.en}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-primary text-6xl font-light">
-                      {(featuredCelebrity.name[locale] || featuredCelebrity.name.en).charAt(0)}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Celebrity content */}
-            {featuredCelebrity && (
-              <div className="md:col-span-6 space-y-8 w-full text-center md:text-left flex flex-col items-center md:items-start">
-                <div className="space-y-3">
-                  <span className="type-label text-primary">
-                    {locale === 'en' ? 'Celebrity Endorsements' : '名人明星推薦'}
-                  </span>
-                  <h2 className="type-heading text-foreground">
-                    {locale === 'en'
-                      ? "Trusted by Hong Kong Celebrities"
-                      : '深受香港著名明星信賴'}
-                  </h2>
-                </div>
-
-                <div className="space-y-4">
-                  <Quote className="w-10 h-10 text-primary/15 mx-auto md:mx-0" />
-                  <p className="type-body text-charcoal/85 italic text-center md:text-left">
-                    {featuredCelebrity.quote[locale] || featuredCelebrity.quote.en}
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-center md:flex-row md:items-center gap-4 border-t border-gray-100 pt-6 w-full">
-                  <div className="text-center md:text-left">
-                    <p className="type-body font-medium text-foreground text-center md:text-left">
-                      {featuredCelebrity.name[locale] || featuredCelebrity.name.en}
-                    </p>
-                    <p className="type-caption text-charcoal/65 text-center md:text-left">
-                      {featuredCelebrity.role[locale] || featuredCelebrity.role.en}
-                    </p>
-                  </div>
-                </div>
-
-                <Link
-                  href={`/${locale}/success-stories#celebrities`}
-                  className="btn-secondary flex items-center gap-2 mx-auto md:mx-0"
-                >
-                  {locale === 'en' ? 'More Celebrity Stories' : '更多明星見證'}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      {/* 6. Celebrity Endorsements */}
+      <HomeCelebrities celebrities={celebrities} locale={locale} />
 
       {/* 7. Google Reviews + flags */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">

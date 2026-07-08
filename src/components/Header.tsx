@@ -114,15 +114,21 @@ export default function Header({ locale }: HeaderProps) {
   const navLinks = [
     { name: dict.nav.home,          path: `/${locale}` },
     { name: dict.nav.treatment,     path: `/${locale}/treatment` },
-    { name: dict.nav.successStories,path: `/${locale}/success-stories` },
+    { name: dict.nav.successStories,path: `/${locale}#real-results` },
     { name: dict.nav.aboutUs,       path: `/${locale}/about` },
     { name: dict.nav.training,      path: `/${locale}/training` },
     { name: dict.nav.contact,       path: `/${locale}/contact` },
   ]
 
   const isActive = (path: string) => {
-    if (path === `/${locale}`) return pathname === path
-    return pathname.startsWith(path)
+    if (path === `/${locale}`) {
+      return pathname === path
+    }
+    const cleanPath = path.split('#')[0]
+    if (cleanPath === `/${locale}`) {
+      return false
+    }
+    return pathname.startsWith(cleanPath)
   }
 
   const getLanguageSwitchPath = (targetLocale: 'en' | 'zh') => {

@@ -96,7 +96,7 @@ export default function Footer({ locale }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/success-stories`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
+                <Link href={`/${locale}#real-results`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
                   {dict.nav.successStories}
                 </Link>
               </li>
