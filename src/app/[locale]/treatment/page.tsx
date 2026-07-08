@@ -53,8 +53,8 @@ export default async function TreatmentPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Left: Intro text */}
-          <div className="space-y-8">
-            <div className="space-y-3 text-center md:text-left">
+          <div className="space-y-8 text-center md:text-left">
+            <div className="space-y-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
                 {locale === 'en' ? 'Our Approach' : '我們的理念'}
               </span>
