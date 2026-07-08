@@ -254,24 +254,26 @@ export default async function ContactPage({ params }: PageProps) {
             <h4 className="text-base font-medium text-foreground text-center lg:text-left">
               {locale === 'en' ? 'Important Booking Note' : '預約須知'}
             </h4>
-            <ul className="space-y-3">
-              {[
-                locale === 'en'
-                  ? 'Appointments are available by prior arrangement only.'
-                  : '療程須事先安排，不接受即場預約。',
-                locale === 'en'
-                  ? 'Appointments are limited — early enquiry is recommended.'
-                  : '名額有限，建議盡早查詢。',
-                locale === 'en'
-                  ? 'Sessions will be confirmed upon receipt of deposit.'
-                  : '收到訂金後正式確認預約。',
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/80">
-                  <span className="mt-1.5 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="flex justify-center lg:justify-start">
+              <ul className="space-y-3 inline-block text-left">
+                {[
+                  locale === 'en'
+                    ? 'Appointments are available by prior arrangement only.'
+                    : '療程須事先安排，不接受即場預約。',
+                  locale === 'en'
+                    ? 'Appointments are limited — early enquiry is recommended.'
+                    : '名額有限，建議盡早查詢。',
+                  locale === 'en'
+                    ? 'Sessions will be confirmed upon receipt of deposit.'
+                    : '收到訂金後正式確認預約。',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/80">
+                    <span className="mt-1.5 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
             <p className="text-xs font-light text-charcoal/60 pt-2 border-t border-primary/10">
               {locale === 'en'
                 ? 'All sessions follow the Shugaosha Appointment Etiquette.'

@@ -48,7 +48,7 @@ export default function FaqSection({ dict, locale }: FaqSectionProps) {
                 className="w-full flex justify-between items-center px-6 sm:px-8 py-5 text-left focus:outline-none group"
                 aria-expanded={isOpen}
               >
-                <span className={`type-card-title transition-colors duration-300 ${isOpen ? 'text-primary' : 'text-charcoal group-hover:text-primary'}`}>
+                <span className={`type-card-title transition-colors duration-300 text-left ${isOpen ? 'text-primary' : 'text-charcoal group-hover:text-primary'}`}>
                   {item.question}
                 </span>
                 <ChevronDown

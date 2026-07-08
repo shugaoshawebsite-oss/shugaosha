@@ -245,7 +245,7 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
                   className="bg-white border border-gray-100 rounded-2xl p-8 flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow duration-300"
                 >
                   <div className="space-y-4">
-                    <div className="flex gap-1 text-primary">
+                    <div className="flex gap-1 text-primary justify-center md:justify-start">
                       {[...Array(review.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
@@ -255,10 +255,10 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
                     </p>
                   </div>
 
-                  <div className="border-t border-gray-50 pt-4 flex items-center gap-4">
+                  <div className="border-t border-gray-50 pt-4 flex items-center gap-4 justify-center md:justify-start">
                     <span className="text-3xl flex-shrink-0">{countryFlags[review.location] || '⭐'}</span>
                     <div>
-                      <span className="text-sm font-medium text-foreground block">{review.clientName}</span>
+                      <span className="text-sm font-medium text-foreground block text-left">{review.clientName}</span>
                     </div>
                   </div>
                 </div>

@@ -132,8 +132,8 @@ export default async function TrainingPage({ params }: PageProps) {
                   : '包括理論、實踐示範、指導實習及最終實踐評估。',
               },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-2xl p-6 space-y-3 border border-gray-100">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <div key={title} className="bg-white rounded-2xl p-6 space-y-3 border border-gray-100 text-center md:text-left">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto md:mx-0">
                   <Icon className="w-5 h-5 text-primary" />
                 </div>
                 <h3 className="text-sm font-semibold text-foreground">{title}</h3>
@@ -157,7 +157,7 @@ export default async function TrainingPage({ params }: PageProps) {
               </h2>
             </div>
 
-            <ul className="space-y-3">
+            <ul className="space-y-3 inline-block text-left mx-auto lg:mx-0 block">
               {[
                 locale === 'en' ? 'Founder of Shugaosha' : '修顏社創辦人',
                 locale === 'en'
@@ -249,14 +249,16 @@ export default async function TrainingPage({ params }: PageProps) {
                 ? 'This programme is suitable for anyone interested in learning a professional hands-on facial technique. It is ideal for:'
                 : '此課程適合任何有興趣學習專業手感面部技術的人士，尤其適合：'}
             </p>
-            <ul className="space-y-3">
-              {whoIsItFor[locale].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-light text-charcoal/80">
-                  <ArrowRight className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="flex justify-center lg:justify-start">
+              <ul className="space-y-3 inline-block text-left">
+                {whoIsItFor[locale].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm font-light text-charcoal/80">
+                    <ArrowRight className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
             <p className="text-sm font-medium text-primary pt-2">
               {locale === 'en'
                 ? 'No previous experience is required.'
@@ -264,24 +266,28 @@ export default async function TrainingPage({ params }: PageProps) {
             </p>
           </div>
 
-          <div className="bg-soft-bg border border-gray-100 rounded-2xl p-8 space-y-5">
-            <Clock className="w-6 h-6 text-primary" />
+          <div className="bg-soft-bg border border-gray-100 rounded-2xl p-8 space-y-5 text-center lg:text-left">
+            <div className="flex justify-center lg:justify-start">
+              <Clock className="w-6 h-6 text-primary" />
+            </div>
             <h3 className="text-base font-medium text-foreground">
               {locale === 'en' ? 'Course Format' : '課程形式'}
             </h3>
-            <ul className="space-y-3">
-              {[
-                locale === 'en' ? 'Structured theory sessions' : '系統化理論課堂',
-                locale === 'en' ? 'Practical demonstrations' : '實踐示範',
-                locale === 'en' ? 'Guided hands-on practice' : '指導實習練習',
-                locale === 'en' ? 'Final practical assessment' : '最終實踐評估',
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/80">
-                  <span className="mt-2 w-1 h-1 rounded-full bg-primary/60 flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="flex justify-center lg:justify-start">
+              <ul className="space-y-3 inline-block text-left">
+                {[
+                  locale === 'en' ? 'Structured theory sessions' : '系統化理論課堂',
+                  locale === 'en' ? 'Practical demonstrations' : '實踐示範',
+                  locale === 'en' ? 'Guided hands-on practice' : '指導實習練習',
+                  locale === 'en' ? 'Final practical assessment' : '最終實踐評估',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/80">
+                    <span className="mt-2 w-1 h-1 rounded-full bg-primary/60 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -321,8 +327,8 @@ export default async function TrainingPage({ params }: PageProps) {
                 : '畢業後，學生將具備實務技能和自信，可開始在其專業服務或未來業務中提供正宗日本小顏矯正療程。',
             },
           ].map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="bg-white border border-gray-100 rounded-2xl p-7 space-y-4 hover:shadow-sm transition-shadow duration-300">
-              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
+            <div key={title} className="bg-white border border-gray-100 rounded-2xl p-7 space-y-4 hover:shadow-sm transition-shadow duration-300 text-center md:text-left">
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mx-auto md:mx-0">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
               <h3 className="text-sm font-semibold text-foreground">{title}</h3>
