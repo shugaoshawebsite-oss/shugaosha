@@ -150,12 +150,12 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         {/* Typography: Montserrat font and golden color */}
         <h1 className="space-y-2 leading-none w-full text-center md:text-left font-sans">
           <span
-            className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-light uppercase tracking-tight text-[#d5a848]"
+            className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-sans font-light uppercase tracking-tight text-[#d5a848]"
           >
             {titleSans}
           </span>
           <span
-            className="hero-title-serif block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-light uppercase tracking-tight text-[#d5a848]"
+            className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-sans font-light uppercase tracking-tight text-[#d5a848]"
           >
             {titleSerif}
           </span>
@@ -166,7 +166,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           <p className="text-2xl sm:text-3xl font-light tracking-wide text-primary" style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}>
             {dict.home.hero.tagline}
           </p>
-          <p className="text-sm sm:text-base font-medium tracking-[0.2em] uppercase text-charcoal/70">
+          <p className="text-xs sm:text-sm font-small tracking-[0.2em] uppercase text-charcoal/70">
             {dict.home.hero.subtitle}
           </p>
         </div>
