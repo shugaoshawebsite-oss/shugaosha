@@ -9,8 +9,7 @@ interface CaseStudy {
   title: { en: string; zh: string }
   sessionsCount: number
   category: '4-session' | '8-session' | 'maintenance'
-  beforeImageRelativeUrl: string
-  afterImageRelativeUrl: string
+  imageRelativeUrl: string
   description?: { en: string; zh: string }
 }
 
@@ -53,7 +52,7 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
               <div className="relative aspect-square bg-gray-100 w-full overflow-hidden">
                 {cs ? (
                   <Image
-                    src={cs.afterImageRelativeUrl}
+                    src={cs.imageRelativeUrl}
                     alt={cs.title[locale] || cs.title.en}
                     fill
                     sizes="(max-width: 768px) 100vw, 360px"

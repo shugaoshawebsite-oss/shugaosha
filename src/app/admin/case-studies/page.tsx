@@ -14,8 +14,7 @@ interface CaseStudy {
   title: LocalizedString
   sessionsCount: number
   category: '4-session' | '8-session' | 'maintenance'
-  beforeImageRelativeUrl: string
-  afterImageRelativeUrl: string
+  imageRelativeUrl: string
   description?: LocalizedString
 }
 
@@ -74,8 +73,7 @@ export default function CaseStudiesAdmin() {
       title: { en: '', zh: '' },
       sessionsCount: 4,
       category: '4-session',
-      beforeImageRelativeUrl: '',
-      afterImageRelativeUrl: '',
+      imageRelativeUrl: '',
       description: { en: '', zh: '' }
     }
     setEditForm(newStudy)
@@ -133,7 +131,7 @@ export default function CaseStudiesAdmin() {
             <tr>
               <th className="px-6 py-4 font-medium">Title (EN/ZH)</th>
               <th className="px-6 py-4 font-medium">Category / Sessions</th>
-              <th className="px-6 py-4 font-medium">Image Paths</th>
+              <th className="px-6 py-4 font-medium">Image Path</th>
               <th className="px-6 py-4 font-medium text-right">Actions</th>
             </tr>
           </thead>
@@ -149,8 +147,7 @@ export default function CaseStudiesAdmin() {
                   <div className="text-charcoal/50 text-xs">{study.sessionsCount} sessions</div>
                 </td>
                 <td className="px-6 py-4 font-mono text-xs text-charcoal/60">
-                  <div>B: {study.beforeImageRelativeUrl || 'None'}</div>
-                  <div>A: {study.afterImageRelativeUrl || 'None'}</div>
+                  {study.imageRelativeUrl || 'None'}
                 </td>
                 <td className="px-6 py-4 flex justify-end gap-2">
                   <button onClick={() => handleEdit(study)} disabled={editingId !== null} className="p-2 text-charcoal/40 hover:text-primary transition-colors disabled:opacity-50">
@@ -221,18 +218,11 @@ export default function CaseStudiesAdmin() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <ImageUpload 
-                  label="Before Image"
-                  value={editForm.beforeImageRelativeUrl || ''} 
-                  onChange={(url) => setEditForm({...editForm, beforeImageRelativeUrl: url})} 
-                />
-                <ImageUpload 
-                  label="After Image"
-                  value={editForm.afterImageRelativeUrl || ''} 
-                  onChange={(url) => setEditForm({...editForm, afterImageRelativeUrl: url})} 
-                />
-              </div>
+              <ImageUpload 
+                label="Progression Image"
+                value={editForm.imageRelativeUrl || ''} 
+                onChange={(url) => setEditForm({...editForm, imageRelativeUrl: url})} 
+              />
 
               <div className="pt-4 flex justify-end gap-3 border-t border-gray-100">
                 <button onClick={() => setEditingId(null)} className="px-4 py-2 text-sm font-medium text-charcoal/70 hover:bg-gray-100 rounded-lg transition-colors">Cancel</button>

@@ -78,11 +78,10 @@ The JSON structure for each file conforms to:
       "title": { "$ref": "#/localeString" },
       "sessionsCount": { "type": "number" },
       "category": { "type": "string", "enum": ["4-session", "8-session", "maintenance"] },
-      "beforeImageRelativeUrl": { "type": "string" },
-      "afterImageRelativeUrl": { "type": "string" },
+      "imageRelativeUrl": { "type": "string" },
       "description": { "$ref": "#/localeText" }
     },
-    "required": ["_id", "title", "sessionsCount", "category", "beforeImageRelativeUrl", "afterImageRelativeUrl"]
+    "required": ["_id", "title", "sessionsCount", "category", "imageRelativeUrl"]
   },
   "clientReview": {
     "type": "object",

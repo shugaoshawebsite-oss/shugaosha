@@ -30,7 +30,7 @@ def verify_github_cms():
     files_to_verify = [
         ('services.json', ['_id', 'title', 'slug', 'description', 'benefits'], 'imageRelativeUrl'),
         ('celebrities.json', ['_id', 'name', 'role', 'quote'], 'imageRelativeUrl'),
-        ('caseStudies.json', ['_id', 'title', 'sessionsCount', 'category', 'beforeImageRelativeUrl', 'afterImageRelativeUrl'], None),
+        ('caseStudies.json', ['_id', 'title', 'sessionsCount', 'category', 'imageRelativeUrl'], 'imageRelativeUrl'),
         ('reviews.json', ['_id', 'clientName', 'location', 'rating', 'reviewText'], None),
         ('team.json', ['_id', 'name', 'role', 'bio'], 'imageRelativeUrl'),
         ('tours.json', ['_id', 'city', 'dates', 'isActive'], None)
@@ -79,17 +79,6 @@ def verify_github_cms():
                 img_path = item[image_field]
                 if not check_image_exists(img_path, workspace_root):
                     print(f"  ❌ Item {idx} in {filename} references non-existent image: {img_path}")
-                    overall_success = False
-
-            # Special checks for Case Studies
-            if filename == 'caseStudies.json':
-                before_img = item.get('beforeImageRelativeUrl')
-                after_img = item.get('afterImageRelativeUrl')
-                if not check_image_exists(before_img, workspace_root):
-                    print(f"  ❌ Item {idx} in {filename} references non-existent before image: {before_img}")
-                    overall_success = False
-                if not check_image_exists(after_img, workspace_root):
-                    print(f"  ❌ Item {idx} in {filename} references non-existent after image: {after_img}")
                     overall_success = False
 
     if overall_success:
