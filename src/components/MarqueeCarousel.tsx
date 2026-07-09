@@ -24,6 +24,7 @@ export default function MarqueeCarousel<T>({
   const animationFrameId = useRef<number | null>(null)
   const lastTime = useRef<number | null>(null)
   const hasInitialized = useRef(false)
+  const exactScrollLeft = useRef<number | null>(null)
 
   const originalCount = items.length
   // Duplicate items to ensure seamless marquee looping
@@ -68,8 +69,10 @@ export default function MarqueeCarousel<T>({
     // Seamless wrap-around in both directions
     if (container.scrollLeft >= halfWidth) {
       container.scrollLeft -= halfWidth
+      if (exactScrollLeft.current !== null) exactScrollLeft.current -= halfWidth
     } else if (container.scrollLeft <= threshold) {
       container.scrollLeft += halfWidth
+      if (exactScrollLeft.current !== null) exactScrollLeft.current += halfWidth
     }
 
     updateActiveIndex()
@@ -84,6 +87,7 @@ export default function MarqueeCarousel<T>({
       const halfWidth = container.scrollWidth / 2
       if (halfWidth > 0) {
         container.scrollLeft = halfWidth
+        exactScrollLeft.current = halfWidth
         updateActiveIndex()
         hasInitialized.current = true
       }
@@ -105,8 +109,12 @@ export default function MarqueeCarousel<T>({
 
       const container = containerRef.current
       if (container && !isDragging.current && !isHovered.current && hasInitialized.current) {
+        if (exactScrollLeft.current === null) {
+          exactScrollLeft.current = container.scrollLeft
+        }
         const frameAdjust = delta / 16.666
-        container.scrollLeft += speed * frameAdjust
+        exactScrollLeft.current += speed * frameAdjust
+        container.scrollLeft = exactScrollLeft.current
       }
 
       animationFrameId.current = requestAnimationFrame(animate)
@@ -142,6 +150,7 @@ export default function MarqueeCarousel<T>({
 
   const handleDragEnd = () => {
     isDragging.current = false
+    exactScrollLeft.current = null
   }
 
   const handleDotClick = (index: number) => {
@@ -157,6 +166,7 @@ export default function MarqueeCarousel<T>({
         left: targetScrollLeft,
         behavior: 'smooth',
       })
+      exactScrollLeft.current = null
     }
   }
 
@@ -176,7 +186,7 @@ export default function MarqueeCarousel<T>({
         ref={containerRef}
         onScroll={handleScroll}
         onMouseEnter={() => { isHovered.current = true }}
-        onMouseLeave={() => { isHovered.current = false; handleDragEnd() }}
+        onMouseLeave={() => { isHovered.current = false; handleDragEnd(); exactScrollLeft.current = null; }}
         onMouseDown={handleDragStart}
         onMouseMove={handleDragMove}
         onMouseUp={handleDragEnd}

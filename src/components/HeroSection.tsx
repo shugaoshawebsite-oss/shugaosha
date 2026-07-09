@@ -136,12 +136,12 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 md:py-0 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
 
         {/* Portrait Logo */}
-        <div className="hero-logo w-[150px] md:w-[200px] mx-auto md:mx-0">
+        <div className="hero-logo w-[140px] md:w-[170px] mx-auto md:mx-0">
           <Image
             src={logoPortrait}
             alt="Shugaosha"
-            width={200}
-            height={200}
+            width={180}
+            height={180}
             priority
             className="w-full h-auto mb-2 object-contain"
           />
@@ -150,13 +150,13 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         {/* Typography: same font size, "THE SHUGAOSHA" in primary, "WAY" in charcoal */}
         <div className="space-y-2 leading-none w-full text-center md:text-left">
           <div
-            className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light uppercase tracking-tight text-primary"
+            className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-light uppercase tracking-tight text-primary"
             style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}
           >
             {titleSans}
           </div>
           <div
-            className="hero-title-serif block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light uppercase tracking-tight text-charcoal"
+            className="hero-title-serif block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-light uppercase tracking-tight text-charcoal"
             style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}
           >
             {titleSerif}

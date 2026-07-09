@@ -7,9 +7,29 @@ const defaultLocale = 'en'
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Don't run middleware on Sanity Studio paths
+  // --- ADMIN & API AUTHENTICATION ---
+  if (pathname.startsWith('/admin') || pathname.startsWith('/api/cms')) {
+    // Allow public access to login page and auth APIs
+    if (pathname === '/admin/login' || pathname === '/api/cms/login' || pathname === '/api/cms/logout') {
+      return NextResponse.next()
+    }
+
+    // Check for session cookie
+    const session = request.cookies.get('cms_session')
+    if (!session || session.value !== 'authenticated') {
+      if (pathname.startsWith('/api/cms')) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+      }
+      return NextResponse.redirect(new URL('/admin/login', request.url))
+    }
+    
+    // Authenticated - skip i18n logic for admin/api routes
+    return NextResponse.next()
+  }
+
+  // Don't run i18n middleware on Sanity Studio paths
   if (pathname.startsWith('/studio')) {
-    return
+    return NextResponse.next()
   }
 
   // Check if pathname already has a supported locale
@@ -32,7 +52,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Match all paths except static files, favicons, next-images, api routes, and Sanity studio
-    '/((?!api|_next/static|_next/image|favicon.ico|studio|.*\\..*).*)',
+    // Match all paths except static files, favicons, next-images, and Sanity studio
+    '/((?!_next/static|_next/image|favicon.ico|studio|.*\\..*).*)',
   ],
 }
