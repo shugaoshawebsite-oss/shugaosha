@@ -147,21 +147,19 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           />
         </div>
 
-        {/* Typography: same font size, "THE SHUGAOSHA" in primary, "WAY" in charcoal */}
-        <div className="space-y-2 leading-none w-full text-center md:text-left">
-          <div
-            className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-light uppercase tracking-tight text-primary"
-            style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}
+        {/* Typography: Montserrat font and golden color */}
+        <h1 className="space-y-2 leading-none w-full text-center md:text-left font-sans">
+          <span
+            className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-light uppercase tracking-tight text-[#d5a848]"
           >
             {titleSans}
-          </div>
-          <div
-            className="hero-title-serif block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-light uppercase tracking-tight text-charcoal"
-            style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}
+          </span>
+          <span
+            className="hero-title-serif block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-light uppercase tracking-tight text-[#d5a848]"
           >
             {titleSerif}
-          </div>
-        </div>
+          </span>
+        </h1>
 
         {/* Description / Statement Block */}
         <div className="hero-desc space-y-3 max-w-lg mx-auto md:mx-0 text-charcoal/90">
@@ -170,9 +168,6 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           </p>
           <p className="text-sm sm:text-base font-medium tracking-[0.2em] uppercase text-charcoal/70">
             {dict.home.hero.subtitle}
-          </p>
-          <p className="text-base sm:text-lg font-light text-charcoal/80 leading-relaxed pt-1">
-            {dict.home.hero.description}
           </p>
         </div>
 
