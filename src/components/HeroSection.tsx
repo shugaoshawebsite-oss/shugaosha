@@ -132,11 +132,11 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         <div className="absolute inset-0 bg-white/75" />
       </div>
 
-      {/* Content — centered on mobile, bottom-left on desktop, vertically middle in tablet/desktop */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 md:py-0 space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
+      {/* Content — centered on mobile, tablet, and desktop viewports */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 md:py-0 space-y-8 flex flex-col items-center text-center">
 
         {/* Portrait Logo */}
-        <div className="hero-logo w-[140px] md:w-[170px] mx-auto md:mx-0">
+        <div className="hero-logo w-[140px] md:w-[150px] mx-auto">
           <Image
             src={logoPortrait}
             alt="Shugaosha"
@@ -148,22 +148,22 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         </div>
 
         {/* Typography: Montserrat font and golden color */}
-        <h1 className="space-y-2 leading-none w-full text-center md:text-left font-sans">
+        <h1 className="space-y-2 leading-none w-full text-center font-sans">
           <span
-            className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-sans font-light uppercase tracking-tight text-[#d5a848]"
+            className="hero-title-sans block text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-sans font-light uppercase tracking-tight text-[#d5a848]"
           >
             {titleSans}
           </span>
           <span
-            className="hero-title-sans block text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-sans font-light uppercase tracking-tight text-[#d5a848]"
+            className="hero-title-sans block text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-sans font-light uppercase tracking-tight text-[#d5a848]"
           >
             {titleSerif}
           </span>
         </h1>
 
         {/* Description / Statement Block */}
-        <div className="hero-desc space-y-3 max-w-lg mx-auto md:mx-0 text-charcoal/90">
-          <p className="text-2xl sm:text-3xl font-light tracking-wide text-primary" style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}>
+        <div className="hero-desc space-y-3 max-w-lg mx-auto text-charcoal/90">
+          <p className="text-xl sm:text-2xl font-light tracking-wide text-primary" style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}>
             {dict.home.hero.tagline}
           </p>
           <p className="text-xs sm:text-sm font-small tracking-[0.2em] uppercase text-charcoal/70">
@@ -172,7 +172,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         </div>
 
         {/* CTA Buttons */}
-        <div className="hero-cta flex flex-col sm:flex-row items-center md:items-start gap-4 w-full justify-center md:justify-start">
+        <div className="hero-cta flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
           <a
             href="https://wa.me/61493552213"
             target="_blank"

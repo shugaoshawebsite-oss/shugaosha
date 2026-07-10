@@ -46,7 +46,7 @@ export default async function ContactPage({ params }: PageProps) {
 
           {/* Left: Contact Methods */}
           <div className="space-y-6">
-            <h2 className="text-xl font-medium text-foreground tracking-wide text-center lg:text-left">
+            <h2 className="text-xl font-medium text-foreground tracking-wide text-left">
               {locale === 'en' ? 'Book Your Appointment' : '預約您的療程'}
             </h2>
 
@@ -55,15 +55,15 @@ export default async function ContactPage({ params }: PageProps) {
               href="https://wa.me/61493552213"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-5 p-6 bg-primary text-white rounded-2xl hover:bg-primary/95 transition-all duration-300 shadow-lg shadow-primary/20 group max-w-sm mx-auto lg:max-w-none lg:mx-0"
+              className="flex items-center gap-5 p-6 bg-primary text-white rounded-2xl hover:bg-primary/95 transition-all duration-300 shadow-lg shadow-primary/20 group w-full"
             >
               <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                 <MessageCircle className="w-7 h-7" />
               </div>
-              <div className="space-y-1 text-left">
-                <h3 className="text-base font-medium">WhatsApp</h3>
-                <p className="text-white/80 text-sm font-light">+61 493 552 213</p>
-                <span className="text-xs text-white/60 uppercase tracking-wider font-light block">
+              <div className="space-y-1 !text-left">
+                <h3 className="text-base font-medium !text-left">WhatsApp</h3>
+                <p className="text-white/80 text-sm font-light !text-left">+61 493 552 213</p>
+                <span className="text-xs text-white/60 uppercase tracking-wider font-light block !text-left">
                   {locale === 'en' ? 'Tap to message now — fastest response' : '點擊立即傳訊 — 最快回覆'}
                 </span>
               </div>
@@ -72,15 +72,15 @@ export default async function ContactPage({ params }: PageProps) {
             {/* SMS - secondary */}
             <a
               href="sms:+61493552213"
-              className="flex items-center gap-5 p-6 bg-soft-bg border border-gray-100 rounded-2xl hover:border-primary/30 hover:shadow-sm transition-all duration-300 group max-w-sm mx-auto lg:max-w-none lg:mx-0"
+              className="flex items-center gap-5 p-6 bg-soft-bg border border-gray-100 rounded-2xl hover:border-primary/30 hover:shadow-sm transition-all duration-300 group w-full"
             >
               <div className="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                 <Phone className="w-6 h-6" />
               </div>
-              <div className="space-y-1 text-left">
-                <h3 className="text-base font-medium text-foreground">SMS</h3>
-                <p className="text-charcoal/70 text-sm font-light">+61 493 552 213</p>
-                <span className="text-xs text-charcoal/50 uppercase tracking-wider font-light block">
+              <div className="space-y-1 !text-left">
+                <h3 className="text-base font-medium text-foreground !text-left">SMS</h3>
+                <p className="text-charcoal/70 text-sm font-light !text-left">+61 493 552 213</p>
+                <span className="text-xs text-charcoal/50 uppercase tracking-wider font-light block !text-left">
                   {locale === 'en' ? 'Send a text message' : '發送短訊'}
                 </span>
               </div>
@@ -89,24 +89,24 @@ export default async function ContactPage({ params }: PageProps) {
             {/* Email */}
             <a
               href="mailto:shugaosha@gmail.com"
-              className="flex items-center gap-5 p-6 bg-soft-bg border border-gray-100 rounded-2xl hover:border-primary/30 hover:shadow-sm transition-all duration-300 group max-w-sm mx-auto lg:max-w-none lg:mx-0"
+              className="flex items-center gap-5 p-6 bg-soft-bg border border-gray-100 rounded-2xl hover:border-primary/30 hover:shadow-sm transition-all duration-300 group w-full"
             >
               <div className="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                 <Mail className="w-6 h-6" />
               </div>
-              <div className="space-y-1 text-left">
-                <h3 className="text-base font-medium text-foreground">
+              <div className="space-y-1 !text-left">
+                <h3 className="text-base font-medium text-foreground !text-left">
                   {locale === 'en' ? 'Email' : '電子郵件'}
                 </h3>
-                <p className="text-charcoal/70 text-sm font-light">shugaosha@gmail.com</p>
-                <span className="text-xs text-charcoal/50 uppercase tracking-wider font-light block">
+                <p className="text-charcoal/70 text-sm font-light !text-left">shugaosha@gmail.com</p>
+                <span className="text-xs text-charcoal/50 uppercase tracking-wider font-light block !text-left">
                   {locale === 'en' ? 'Send us an email' : '發送電子郵件'}
                 </span>
               </div>
             </a>
 
             {/* Response time note */}
-            <div className="bg-white border border-gray-100 rounded-xl p-5 flex gap-4 max-w-sm mx-auto lg:max-w-none lg:mx-0">
+            <div className="bg-white border border-gray-100 rounded-xl p-5 flex gap-4 w-full">
               <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
               <div className="space-y-1 text-left">
                 <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider">

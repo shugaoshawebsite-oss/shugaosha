@@ -2,8 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
-import { getServices, getCelebrities, getCaseStudies, getReviews } from '@/utils/dataService'
-import { ArrowRight, MessageCircle, Star, Sparkles, Scale, Droplet, Sun, Smile, Shield } from 'lucide-react'
+import { getServices, getCelebrities, getCaseStudies } from '@/utils/dataService'
+import { ArrowRight, MessageCircle, Sparkles, Scale, Droplet, Sun, Smile, Shield } from 'lucide-react'
 import FaqSection from '@/components/FaqSection'
 import HeroSection from '@/components/HeroSection'
 import HomeCaseStudies from '@/components/HomeCaseStudies'
@@ -28,7 +28,6 @@ export default async function HomePage({ params }: PageProps) {
   const dict = getDictionary(locale)
   const celebrities = await getCelebrities()
   const caseStudies = await getCaseStudies()
-  const reviews = await getReviews()
 
   const certImages = [
     { src: '/assets/cert/Outstanding Beauty Services_s.webp', alt: locale === 'en' ? 'Outstanding Beauty Services Finalist' : '卓越美容服務決賽入圍' },
@@ -102,7 +101,7 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           {/* 6 Benefit Cards in Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {[
               {
                 icon: Sparkles,
@@ -139,7 +138,7 @@ export default async function HomePage({ params }: PageProps) {
               return (
                 <div
                   key={i}
-                  className="flex items-center md:items-start gap-4 p-6 bg-[#f8f9fa] border border-gray-100 rounded-[2rem] hover:shadow-md transition-shadow duration-300 flex-col md:flex-row text-center md:text-left"
+                  className="flex items-center md:items-start gap-4 p-4 sm:p-5 md:p-6 bg-[#f8f9fa] border border-gray-100 rounded-[2rem] hover:shadow-md transition-shadow duration-300 flex-col md:flex-row text-center md:text-left"
                 >
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto md:mx-0 md:mt-1">
                     <Icon className="w-5.5 h-5.5" />
@@ -224,28 +223,8 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review) => (
-            <div key={review._id} className="bg-white border border-gray-100 rounded-2xl p-8 flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-              <div className="space-y-4">
-                <div className="flex gap-1 text-primary justify-center md:justify-start">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
-                  ))}
-                </div>
-                <p className="type-body-sm text-charcoal/80 italic">
-                  &ldquo;{review.reviewText[locale] || review.reviewText.en}&rdquo;
-                </p>
-              </div>
-              <div className="border-t border-gray-50 pt-4 flex items-center gap-4 justify-center md:justify-start">
-                <span className="text-3xl flex-shrink-0">{countryFlags[review.location] || '⭐'}</span>
-                <div>
-                  <span className="type-body-sm font-medium text-foreground block text-left">{review.clientName}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+        <div className="elfsight-app-2e95f4e7-4c5c-433a-b79d-392da72b4ca2" data-elfsight-app-lazy></div>
       </section>
 
       {/* 8. Our Process */}
