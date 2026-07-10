@@ -91,6 +91,11 @@ export default function Footer({ locale }: FooterProps) {
                 </Link>
               </li>
               <li>
+                <Link href={`/${locale}/about`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
+                  {dict.nav.aboutUs}
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${locale}/treatment`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
                   {dict.nav.treatment}
                 </Link>
@@ -101,11 +106,15 @@ export default function Footer({ locale }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/about`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
-                  {dict.nav.aboutUs}
+                <Link href={`/${locale}/training`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
+                  {dict.nav.training}
                 </Link>
               </li>
-
+              <li>
+                <Link href={`/${locale}#faq`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
+                  {dict.nav.faq}
+                </Link>
+              </li>
               <li>
                 <Link href={`/${locale}/contact`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
                   {dict.nav.contact}

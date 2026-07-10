@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Plus, Edit2, Trash2, Save, X } from 'lucide-react'
+import { Plus, Edit2, Trash2, Save, X, GripVertical } from 'lucide-react'
 import ImageUpload from '@/components/ImageUpload'
 
 interface LocalizedString {
@@ -24,6 +24,33 @@ export default function CelebritiesAdmin() {
   
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editForm, setEditForm] = useState<Partial<Celebrity>>({})
+
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+
+  const handleDragStart = (e: React.DragEvent, index: number) => {
+    setDraggedIndex(index)
+    e.dataTransfer.effectAllowed = 'move'
+  }
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault()
+  }
+
+  const handleDrop = (e: React.DragEvent, index: number) => {
+    e.preventDefault()
+    if (draggedIndex === null || draggedIndex === index) return
+
+    const updated = [...celebrities]
+    const [draggedItem] = updated.splice(draggedIndex, 1)
+    updated.splice(index, 0, draggedItem)
+
+    setCelebrities(updated)
+    handleSaveAll(updated)
+  }
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null)
+  }
 
   useEffect(() => {
     fetchCelebrities()
@@ -127,6 +154,7 @@ export default function CelebritiesAdmin() {
         <table className="w-full text-left text-sm min-w-[600px]">
           <thead className="bg-gray-50 text-charcoal/60 border-b border-gray-100">
             <tr>
+              <th className="px-4 py-4 w-10"></th>
               <th className="px-6 py-4 font-medium">Name (EN/ZH)</th>
               <th className="px-6 py-4 font-medium">Role</th>
               <th className="px-6 py-4 font-medium">Image Path</th>
@@ -134,8 +162,19 @@ export default function CelebritiesAdmin() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {celebrities.map((celeb) => (
-              <tr key={celeb._id} className="hover:bg-gray-50/50">
+            {celebrities.map((celeb, index) => (
+              <tr
+                key={celeb._id}
+                draggable={!saving && editingId === null}
+                onDragStart={(e) => handleDragStart(e, index)}
+                onDragOver={(e) => handleDragOver(e, index)}
+                onDrop={(e) => handleDrop(e, index)}
+                onDragEnd={handleDragEnd}
+                className={`hover:bg-gray-50/50 transition-all duration-150 ${draggedIndex === index ? 'opacity-40 bg-gray-100' : ''}`}
+              >
+                <td className="px-4 py-4 cursor-grab active:cursor-grabbing text-charcoal/40 hover:text-charcoal transition-colors">
+                  <GripVertical className="w-4 h-4" />
+                </td>
                 <td className="px-6 py-4">
                   <div className="font-medium text-charcoal">{celeb.name.en}</div>
                   <div className="text-charcoal/50 text-xs">{celeb.name.zh}</div>
@@ -159,7 +198,7 @@ export default function CelebritiesAdmin() {
             ))}
             {celebrities.length === 0 && (
               <tr>
-                <td colSpan={4} className="px-6 py-8 text-center text-charcoal/50">No celebrities found. Add one to get started.</td>
+                <td colSpan={5} className="px-6 py-8 text-center text-charcoal/50">No celebrities found. Add one to get started.</td>
               </tr>
             )}
           </tbody>
@@ -204,11 +243,11 @@ export default function CelebritiesAdmin() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Quote (English)</label>
-                  <textarea rows={3} value={editForm.quote?.en || ''} onChange={(e) => setEditForm({...editForm, quote: {...editForm.quote!, en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+                  <textarea rows={8} value={editForm.quote?.en || ''} onChange={(e) => setEditForm({...editForm, quote: {...editForm.quote!, en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Quote (Chinese)</label>
-                  <textarea rows={3} value={editForm.quote?.zh || ''} onChange={(e) => setEditForm({...editForm, quote: {...editForm.quote!, zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+                  <textarea rows={8} value={editForm.quote?.zh || ''} onChange={(e) => setEditForm({...editForm, quote: {...editForm.quote!, zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
                 </div>
               </div>
 

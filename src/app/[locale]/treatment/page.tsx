@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
-import treatmentBg from '@/images/bg3.webp'
-import { Check, MessageCircle, ArrowRight, Shield, Sparkles, Heart, Zap, Scale, Smile, Calendar, Droplet, Sun } from 'lucide-react'
+import { Check, ArrowRight, Shield, Sparkles, Heart, Zap, Scale, Smile, Calendar, Droplet, Sun } from 'lucide-react'
+import WhatsAppIcon from '@/components/WhatsAppIcon'
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -15,8 +15,8 @@ export default async function TreatmentPage({ params }: PageProps) {
   const t = dict.treatment
 
   const images = [
-    '/assets/Artboard 3photo3.webp',
-    '/assets/Artboard 3photo2.webp',
+    '/assets/images/img3.webp',
+    '/assets/images/img2.webp',
     '/assets/Artboard 3 copyphoto.webp',
   ]
 
@@ -27,7 +27,7 @@ export default async function TreatmentPage({ params }: PageProps) {
       <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
         <div className="absolute inset-0 z-0">
           <Image
-            src={treatmentBg}
+            src="/assets/images/hero3.webp"
             alt="Treatment Heading Background"
             fill
             priority
@@ -196,19 +196,19 @@ export default async function TreatmentPage({ params }: PageProps) {
           <div className="space-y-6">
             <div className="text-center lg:text-left space-y-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary block">
-                 {locale === 'en' ? 'How It Works' : '療程步驟'}
+                {locale === 'en' ? 'How It Works' : '療程步驟'}
               </span>
               <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight">
                 {locale === 'en' ? 'HOW IT WORKS' : '療程步驟'}
               </h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6">
               {[
                 {
                   step: "01",
                   title: locale === 'en' ? "Consultation & Assessment" : "諮詢與評估",
-                  desc: locale === 'en' 
+                  desc: locale === 'en'
                     ? "Every session begins with a brief consultation to understand your concerns and goals. We then assess your facial balance and natural features to personalise your treatment."
                     : "每次療程都從簡短的諮詢開始，以了解您的需求與目標。接著，我們評估您的面部對稱度與自然特徵，為您量身定制專屬療程。"
                 },
@@ -351,7 +351,7 @@ export default async function TreatmentPage({ params }: PageProps) {
               rel="noopener noreferrer"
               className="btn-primary flex items-center gap-3"
             >
-              <MessageCircle className="w-5 h-5" />
+              <WhatsAppIcon className="w-5 h-5" />
               {locale === 'en' ? 'Book via WhatsApp' : 'WhatsApp 線上預約'}
             </a>
             <a

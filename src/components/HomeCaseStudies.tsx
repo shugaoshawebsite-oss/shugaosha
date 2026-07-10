@@ -6,16 +6,32 @@ import MarqueeCarousel from './MarqueeCarousel'
 
 interface CaseStudy {
   _id: string
-  title: { en: string; zh: string }
+  title?: { en: string; zh: string }
   sessionsCount: number
-  category: '4-session' | '8-session' | 'maintenance'
+  category?: '4-session' | '8-session' | 'maintenance'
   imageRelativeUrl: string
   description?: { en: string; zh: string }
+  specialist: 'Teresa Soo' | 'Charles Cho'
 }
 
 interface HomeCaseStudiesProps {
   caseStudies: CaseStudy[]
   locale: 'en' | 'zh'
+}
+
+function getOrdinalSessionText(count: number, locale: 'en' | 'zh') {
+  if (locale === 'zh') {
+    return `第 ${count} 次療程`
+  }
+  const limit = Math.min(20, Math.max(1, count))
+  const suffix = (c: number) => {
+    if (c === 1) return 'st'
+    if (c === 2) return 'nd'
+    if (c === 3) return 'rd'
+    return 'th'
+  }
+  const word = limit === 1 ? 'Session' : 'Sessions'
+  return `The ${limit}${suffix(limit)} ${word}`
 }
 
 export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudiesProps) {
@@ -53,7 +69,7 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
                 {cs ? (
                   <Image
                     src={cs.imageRelativeUrl}
-                    alt={cs.title[locale] || cs.title.en}
+                    alt={locale === 'en' ? 'Before and after progression' : '療程前後對照'}
                     fill
                     sizes="(max-width: 768px) 100vw, 360px"
                     className="object-cover"
@@ -72,17 +88,17 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
               <div className="p-6 space-y-3 flex-grow flex flex-col justify-between">
                 {cs ? (
                   <div className="space-y-2">
-                    <span className="text-[10px] font-semibold tracking-wider text-primary uppercase block text-center md:text-left">
-                      {cs.category === '4-session' ? (locale === 'en' ? '4-Session Progression' : '4次療程對照') :
-                       cs.category === '8-session' ? (locale === 'en' ? '8-Session Progression' : '8次療程對照') :
-                       (locale === 'en' ? 'Long Term Maintenance' : '長期保養維持')}
-                    </span>
-                    <h3 className="text-base font-medium text-foreground text-center md:text-left">
-                      {cs.title[locale] || cs.title.en}
+                    <h3 className="text-base font-semibold text-primary text-center md:text-left mb-2">
+                      {getOrdinalSessionText(cs.sessionsCount || 1, locale)}
                     </h3>
                     {cs.description && (
-                      <p className="text-sm font-light text-charcoal/75 leading-relaxed text-center md:text-left">
+                      <p className="text-sm font-light text-charcoal/75 leading-relaxed text-center md:text-left whitespace-pre-line">
                         {cs.description[locale] || cs.description.en}
+                      </p>
+                    )}
+                    {cs.specialist && (
+                      <p className="text-xs font-semibold text-primary pt-2 text-center md:text-left">
+                        Specialist: {cs.specialist}
                       </p>
                     )}
                   </div>

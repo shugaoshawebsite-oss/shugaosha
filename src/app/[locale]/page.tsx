@@ -3,7 +3,8 @@ import Image from 'next/image'
 import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
 import { getServices, getCelebrities, getCaseStudies } from '@/utils/dataService'
-import { ArrowRight, MessageCircle, Sparkles, Scale, Droplet, Sun, Smile, Shield } from 'lucide-react'
+import { ArrowRight, Sparkles, Scale, Droplet, Sun, Smile, Shield } from 'lucide-react'
+import WhatsAppIcon from '@/components/WhatsAppIcon'
 import FaqSection from '@/components/FaqSection'
 import HeroSection from '@/components/HeroSection'
 import HomeCaseStudies from '@/components/HomeCaseStudies'
@@ -73,9 +74,9 @@ export default async function HomePage({ params }: PageProps) {
 
           {/* Image */}
           <div className="relative order-2 lg:order-2 w-full">
-            <div className="relative aspect-4-5 w-full rounded-2xl overflow-hidden bg-gray-50">
+            <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-gray-50">
               <Image
-                src="/assets/Artboard 3photo3.webp"
+                src="/assets/images/home1.webp"
                 alt={locale === 'en' ? 'Shugaosha treatment' : '修顏社療程'}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -160,7 +161,7 @@ export default async function HomePage({ params }: PageProps) {
               rel="noopener noreferrer"
               className="btn-primary flex items-center gap-3"
             >
-              <MessageCircle className="w-4 h-4" />
+              <WhatsAppIcon className="w-4 h-4" />
               {locale === 'en' ? 'Book a Session' : '立即預約'}
             </a>
           </div>
@@ -278,7 +279,7 @@ export default async function HomePage({ params }: PageProps) {
               rel="noopener noreferrer"
               className="btn-primary flex items-center gap-3"
             >
-              <MessageCircle className="w-5 h-5" />
+              <WhatsAppIcon className="w-5 h-5" />
               {locale === 'en' ? 'Book via WhatsApp' : 'WhatsApp 線上預約'}
             </a>
             <a

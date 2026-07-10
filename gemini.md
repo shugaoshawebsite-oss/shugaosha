@@ -75,13 +75,12 @@ The JSON structure for each file conforms to:
     "type": "object",
     "properties": {
       "_id": { "type": "string" },
-      "title": { "$ref": "#/localeString" },
       "sessionsCount": { "type": "number" },
-      "category": { "type": "string", "enum": ["4-session", "8-session", "maintenance"] },
       "imageRelativeUrl": { "type": "string" },
-      "description": { "$ref": "#/localeText" }
+      "description": { "$ref": "#/localeText" },
+      "specialist": { "type": "string", "enum": ["Teresa Soo", "Charles Cho"] }
     },
-    "required": ["_id", "title", "sessionsCount", "category", "imageRelativeUrl"]
+    "required": ["_id", "sessionsCount", "imageRelativeUrl", "specialist"]
   },
   "clientReview": {
     "type": "object",

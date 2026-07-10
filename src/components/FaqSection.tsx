@@ -25,7 +25,7 @@ export default function FaqSection({ dict, locale }: FaqSectionProps) {
   }
 
   return (
-    <section className="max-w-4xl mx-auto px-6 w-full">
+    <section id="faq" className="max-w-4xl mx-auto px-6 w-full">
       <div className="text-center md:text-left space-y-4 mb-16">
         <span className="type-label text-primary">
           {faqData.subtitle}

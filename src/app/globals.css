@@ -92,6 +92,7 @@ html[lang="zh"] h2 {
 
 html {
   font-size: 15px;
+  scroll-behavior: smooth;
 }
 
 html[lang="en"] p.font-light,

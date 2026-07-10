@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 import { getCaseStudies, getCelebrities, getReviews } from '@/utils/dataService'
 import successBg from '@/images/bg5.webp'
-import { MessageCircle } from 'lucide-react'
+import WhatsAppIcon from '@/components/WhatsAppIcon'
 import StickySubNav from '@/components/StickySubNav'
 import SuccessStoriesClient from '@/components/SuccessStoriesClient'
 
@@ -80,7 +80,7 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
               rel="noopener noreferrer"
               className="btn-primary flex items-center gap-3"
             >
-              <MessageCircle className="w-5 h-5" />
+              <WhatsAppIcon className="w-5 h-5" />
               {locale === 'en' ? 'Book via WhatsApp' : 'WhatsApp 線上預約'}
             </a>
             <a

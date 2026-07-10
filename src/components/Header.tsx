@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Globe, MessageCircle } from 'lucide-react'
+import { Menu, X, Globe } from 'lucide-react'
+import WhatsAppIcon from './WhatsAppIcon'
 import { getDictionary } from '@/utils/dictionary'
 
 interface HeaderProps {
@@ -113,9 +114,9 @@ export default function Header({ locale }: HeaderProps) {
 
   const navLinks = [
     { name: dict.nav.home,          path: `/${locale}` },
+    { name: dict.nav.aboutUs,       path: `/${locale}/about` },
     { name: dict.nav.treatment,     path: `/${locale}/treatment` },
     { name: dict.nav.successStories,path: `/${locale}#real-results` },
-    { name: dict.nav.aboutUs,       path: `/${locale}/about` },
     { name: dict.nav.training,      path: `/${locale}/training` },
     { name: dict.nav.contact,       path: `/${locale}/contact` },
   ]
@@ -235,7 +236,7 @@ export default function Header({ locale }: HeaderProps) {
               className="btn-book-nav flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase px-4 py-2 rounded-[3rem] bg-primary text-white hover:bg-primary/90 hover:scale-[1.03]"
               style={{ transition: 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), background 0.3s ease' }}
             >
-              <MessageCircle className="w-3.5 h-3.5" />
+              <WhatsAppIcon className="w-3.5 h-3.5" />
               <span>{locale === 'en' ? 'Book' : '預約'}</span>
             </a>
           </nav>

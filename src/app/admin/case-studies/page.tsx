@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Plus, Edit2, Trash2, Save, X } from 'lucide-react'
+import { Plus, Edit2, Trash2, Save, X, GripVertical } from 'lucide-react'
 import ImageUpload from '@/components/ImageUpload'
 
 interface LocalizedString {
@@ -11,11 +11,12 @@ interface LocalizedString {
 
 interface CaseStudy {
   _id: string
-  title: LocalizedString
+  title?: LocalizedString
   sessionsCount: number
-  category: '4-session' | '8-session' | 'maintenance'
+  category?: '4-session' | '8-session' | 'maintenance'
   imageRelativeUrl: string
   description?: LocalizedString
+  specialist: 'Teresa Soo' | 'Charles Cho'
 }
 
 export default function CaseStudiesAdmin() {
@@ -25,6 +26,33 @@ export default function CaseStudiesAdmin() {
   
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editForm, setEditForm] = useState<Partial<CaseStudy>>({})
+
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+
+  const handleDragStart = (e: React.DragEvent, index: number) => {
+    setDraggedIndex(index)
+    e.dataTransfer.effectAllowed = 'move'
+  }
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault()
+  }
+
+  const handleDrop = (e: React.DragEvent, index: number) => {
+    e.preventDefault()
+    if (draggedIndex === null || draggedIndex === index) return
+
+    const updated = [...caseStudies]
+    const [draggedItem] = updated.splice(draggedIndex, 1)
+    updated.splice(index, 0, draggedItem)
+
+    setCaseStudies(updated)
+    handleSaveAll(updated)
+  }
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null)
+  }
 
   useEffect(() => {
     fetchCaseStudies()
@@ -70,11 +98,10 @@ export default function CaseStudiesAdmin() {
     const newId = `cs${Date.now()}`
     const newStudy: CaseStudy = {
       _id: newId,
-      title: { en: '', zh: '' },
       sessionsCount: 4,
-      category: '4-session',
       imageRelativeUrl: '',
-      description: { en: '', zh: '' }
+      description: { en: '', zh: '' },
+      specialist: 'Teresa Soo'
     }
     setEditForm(newStudy)
     setEditingId(newId)
@@ -129,22 +156,32 @@ export default function CaseStudiesAdmin() {
         <table className="w-full text-left text-sm min-w-[600px]">
           <thead className="bg-gray-50 text-charcoal/60 border-b border-gray-100">
             <tr>
-              <th className="px-6 py-4 font-medium">Title (EN/ZH)</th>
-              <th className="px-6 py-4 font-medium">Category / Sessions</th>
+              <th className="px-4 py-4 w-10"></th>
+              <th className="px-6 py-4 font-medium">Sessions</th>
+              <th className="px-6 py-4 font-medium">Specialist</th>
               <th className="px-6 py-4 font-medium">Image Path</th>
               <th className="px-6 py-4 font-medium text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {caseStudies.map((study) => (
-              <tr key={study._id} className="hover:bg-gray-50/50">
-                <td className="px-6 py-4">
-                  <div className="font-medium text-charcoal">{study.title.en}</div>
-                  <div className="text-charcoal/50 text-xs">{study.title.zh}</div>
+            {caseStudies.map((study, index) => (
+              <tr
+                key={study._id}
+                draggable={!saving && editingId === null}
+                onDragStart={(e) => handleDragStart(e, index)}
+                onDragOver={(e) => handleDragOver(e, index)}
+                onDrop={(e) => handleDrop(e, index)}
+                onDragEnd={handleDragEnd}
+                className={`hover:bg-gray-50/50 transition-all duration-150 ${draggedIndex === index ? 'opacity-40 bg-gray-100' : ''}`}
+              >
+                <td className="px-4 py-4 cursor-grab active:cursor-grabbing text-charcoal/40 hover:text-charcoal transition-colors">
+                  <GripVertical className="w-4 h-4" />
                 </td>
                 <td className="px-6 py-4">
-                  <div className="text-charcoal capitalize">{study.category}</div>
-                  <div className="text-charcoal/50 text-xs">{study.sessionsCount} sessions</div>
+                  <div className="font-medium text-charcoal">{study.sessionsCount} sessions</div>
+                </td>
+                <td className="px-6 py-4">
+                  <div className="text-charcoal font-medium">{study.specialist || 'Teresa Soo'}</div>
                 </td>
                 <td className="px-6 py-4 font-mono text-xs text-charcoal/60">
                   {study.imageRelativeUrl || 'None'}
@@ -161,7 +198,7 @@ export default function CaseStudiesAdmin() {
             ))}
             {caseStudies.length === 0 && (
               <tr>
-                <td colSpan={4} className="px-6 py-8 text-center text-charcoal/50">No case studies found. Add one to get started.</td>
+                <td colSpan={5} className="px-6 py-8 text-center text-charcoal/50">No case studies found. Add one to get started.</td>
               </tr>
             )}
           </tbody>
@@ -183,22 +220,10 @@ export default function CaseStudiesAdmin() {
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-charcoal uppercase">Title (English)</label>
-                  <input type="text" value={editForm.title?.en || ''} onChange={(e) => setEditForm({...editForm, title: {...editForm.title!, en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-semibold text-charcoal uppercase">Title (Chinese)</label>
-                  <input type="text" value={editForm.title?.zh || ''} onChange={(e) => setEditForm({...editForm, title: {...editForm.title!, zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-xs font-semibold text-charcoal uppercase">Category</label>
-                  <select value={editForm.category || '4-session'} onChange={(e) => setEditForm({...editForm, category: e.target.value as any})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white">
-                    <option value="4-session">4-session</option>
-                    <option value="8-session">8-session</option>
-                    <option value="maintenance">Maintenance</option>
+                  <label className="text-xs font-semibold text-charcoal uppercase">Specialist</label>
+                  <select value={editForm.specialist || 'Teresa Soo'} onChange={(e) => setEditForm({...editForm, specialist: e.target.value as any})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white">
+                    <option value="Teresa Soo">Teresa Soo</option>
+                    <option value="Charles Cho">Charles Cho</option>
                   </select>
                 </div>
                 <div className="space-y-2">
@@ -210,11 +235,11 @@ export default function CaseStudiesAdmin() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Description (English)</label>
-                  <textarea rows={2} value={editForm.description?.en || ''} onChange={(e) => setEditForm({...editForm, description: {...(editForm.description || {zh: ''}), en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+                  <textarea rows={6} value={editForm.description?.en || ''} onChange={(e) => setEditForm({...editForm, description: {...(editForm.description || {zh: ''}), en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Description (Chinese)</label>
-                  <textarea rows={2} value={editForm.description?.zh || ''} onChange={(e) => setEditForm({...editForm, description: {...(editForm.description || {en: ''}), zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+                  <textarea rows={6} value={editForm.description?.zh || ''} onChange={(e) => setEditForm({...editForm, description: {...(editForm.description || {en: ''}), zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
                 </div>
               </div>
 

@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import aboutBg from '@/images/bg2.webp'
 import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
 import { getTeam } from '@/utils/dataService'
-import { MessageCircle } from 'lucide-react'
+import WhatsAppIcon from '@/components/WhatsAppIcon'
 import InteriorSlideshow from '@/components/InteriorSlideshow'
 import CertGallery from '@/components/CertGallery'
 
@@ -49,7 +48,7 @@ export default async function AboutPage({ params }: PageProps) {
       <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
         <div className="absolute inset-0 z-0">
           <Image
-            src={aboutBg}
+            src="/assets/images/hero2.webp"
             alt="Hero Background"
             fill
             priority
@@ -216,7 +215,7 @@ export default async function AboutPage({ params }: PageProps) {
               rel="noopener noreferrer"
               className="btn-primary flex items-center gap-3"
             >
-              <MessageCircle className="w-5 h-5" />
+              <WhatsAppIcon className="w-5 h-5" />
               {locale === 'en' ? 'Book via WhatsApp' : 'WhatsApp 線上預約'}
             </a>
             <a

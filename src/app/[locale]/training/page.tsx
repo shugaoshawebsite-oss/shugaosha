@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
-import trainingBg from '@/images/bg5.webp'
+import WhatsAppIcon from '@/components/WhatsAppIcon'
 import {
-  MessageCircle,
   BookOpen,
   Award,
   Users,
@@ -21,14 +20,14 @@ interface PageProps {
 }
 
 const courseModules = [
-  { icon: BookOpen,     en: 'Japanese Kogao Philosophy',             zh: '日本小顏哲學' },
-  { icon: Eye,          en: 'Facial Observation & Assessment',        zh: '面部觀察與評估' },
-  { icon: Heart,        en: 'Authentic Japanese Hands-on Techniques', zh: '正宗日式手感技術' },
-  { icon: Users,        en: 'Guided Practical Training',              zh: '指導實踐訓練' },
-  { icon: Clipboard,    en: 'Treatment Flow',                         zh: '療程流程' },
-  { icon: Briefcase,    en: 'Professional Consultation',              zh: '專業諮詢' },
-  { icon: Shield,       en: 'Safety & Contraindications',             zh: '安全事項與禁忌' },
-  { icon: CheckSquare,  en: 'Final Practical Assessment',             zh: '最終實踐評估' },
+  { icon: BookOpen, en: 'Japanese Kogao Philosophy', zh: '日本小顏哲學' },
+  { icon: Eye, en: 'Facial Observation & Assessment', zh: '面部觀察與評估' },
+  { icon: Heart, en: 'Authentic Japanese Hands-on Techniques', zh: '正宗日式手感技術' },
+  { icon: Users, en: 'Guided Practical Training', zh: '指導實踐訓練' },
+  { icon: Clipboard, en: 'Treatment Flow', zh: '療程流程' },
+  { icon: Briefcase, en: 'Professional Consultation', zh: '專業諮詢' },
+  { icon: Shield, en: 'Safety & Contraindications', zh: '安全事項與禁忌' },
+  { icon: CheckSquare, en: 'Final Practical Assessment', zh: '最終實踐評估' },
 ]
 
 const whoIsItFor = {
@@ -62,7 +61,7 @@ export default async function TrainingPage({ params }: PageProps) {
       {/* ── Hero ── */}
       <section className="relative min-h-[40vh] flex items-center overflow-hidden w-full">
         <div className="absolute inset-0 z-0">
-          <Image src={trainingBg} alt="Training" fill priority className="object-cover opacity-80" />
+          <Image src="/assets/images/hero4.webp" alt="Training" fill priority className="object-cover opacity-80" />
         </div>
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24">
           <span className="type-label text-charcoal/70 block mb-3">
@@ -181,19 +180,17 @@ export default async function TrainingPage({ params }: PageProps) {
             </p>
           </div>
 
-          {/* Instructor photo placeholder */}
+          {/* Instructor photo */}
           <div className="space-y-4">
-            <div className="aspect-[4/3] rounded-2xl bg-soft-bg border border-gray-100 flex items-center justify-center">
-              <div className="text-center space-y-2 p-8">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
-                  <Users className="w-6 h-6 text-primary/50" />
-                </div>
-                <p className="text-xs font-light text-charcoal/40">
-                  {locale === 'en'
-                    ? 'Professional portrait · Photo with Japanese instructor · Official certificate'
-                    : 'Teresa 專業相 · 日本老師合照 · 官方證書'}
-                </p>
-              </div>
+            <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-gray-50 border border-gray-100">
+              <Image
+                src="/assets/images/img17.webp"
+                alt={locale === 'en' ? 'Professional portrait · Photo with Japanese instructor · Official certificate' : 'Teresa 專業相 · 日本老師合照 · 官方證書'}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -337,17 +334,23 @@ export default async function TrainingPage({ params }: PageProps) {
           ))}
         </div>
 
-        {/* Certification photo placeholder */}
+        {/* Graduation Photos */}
         <div className="grid grid-cols-2 gap-4">
           {[
-            locale === 'en' ? 'JSFA Official Certificate' : 'JSFA 官方證書',
-            locale === 'en' ? 'Graduation Photo' : '畢業相片',
-          ].map((label, i) => (
+            { src: '/assets/images/img16.webp', alt: locale === 'en' ? 'Graduation Photo 1' : '畢業相片 1' },
+            { src: '/assets/images/img20.webp', alt: locale === 'en' ? 'Graduation Photo 2' : '畢業相片 2' },
+          ].map((img, i) => (
             <div
               key={i}
-              className="aspect-video rounded-2xl bg-soft-bg border border-gray-100 flex items-center justify-center"
+              className="relative aspect-square rounded-2xl overflow-hidden bg-gray-50 border border-gray-100"
             >
-              <p className="text-xs font-light text-charcoal/40 text-center px-4">{label}</p>
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 768px) 50vw, 33vw"
+                className="object-cover"
+              />
             </div>
           ))}
         </div>
@@ -406,19 +409,25 @@ export default async function TrainingPage({ params }: PageProps) {
           </p>
         </div>
 
-        {/* Gallery placeholders */}
+        {/* Gallery */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            locale === 'en' ? 'Training Session' : '培訓課堂',
-            locale === 'en' ? 'Hands-on Practice' : '實習練習',
-            locale === 'en' ? 'Graduation' : '畢業典禮',
-            locale === 'en' ? 'Certificates' : '證書頒授',
-          ].map((label, i) => (
+            { src: '/assets/images/img22.webp', label: locale === 'en' ? 'Training Session' : '培訓課堂' },
+            { src: '/assets/images/img27.webp', label: locale === 'en' ? 'Hands-on Practice' : '實習練習' },
+            { src: '/assets/images/img29.webp', label: locale === 'en' ? 'Graduation' : '畢業典禮' },
+            { src: '/assets/images/img21.webp', label: locale === 'en' ? 'Certificates' : '證書頒授' },
+          ].map((img, i) => (
             <div
               key={i}
-              className="aspect-square rounded-2xl bg-soft-bg border border-gray-100 flex items-center justify-center"
+              className="relative aspect-square rounded-2xl overflow-hidden bg-gray-50 border border-gray-100"
             >
-              <p className="text-xs font-light text-charcoal/40 text-center px-3">{label}</p>
+              <Image
+                src={img.src}
+                alt={img.label}
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
+              />
             </div>
           ))}
         </div>
@@ -444,7 +453,7 @@ export default async function TrainingPage({ params }: PageProps) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 bg-primary text-white px-8 py-4 rounded-full text-sm font-medium tracking-wide hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02]"
           >
-            <MessageCircle className="w-4 h-4" />
+            <WhatsAppIcon className="w-4 h-4" />
             {locale === 'en' ? 'Enquire About Training' : '查詢培訓課程'}
           </a>
         </div>

@@ -33,11 +33,12 @@ export interface Celebrity {
 
 export interface CaseStudy {
   _id: string
-  title: LocaleString
+  title?: LocaleString
   sessionsCount: number
-  category: '4-session' | '8-session' | 'maintenance'
+  category?: '4-session' | '8-session' | 'maintenance'
   imageRelativeUrl: string
   description?: LocaleText
+  specialist: 'Teresa Soo' | 'Charles Cho'
 }
 
 export interface ClientReview {
@@ -212,36 +213,33 @@ const fallbackReviews: ClientReview[] = [
 const fallbackCaseStudies: CaseStudy[] = [
   {
     _id: 'cs1',
-    title: { en: 'Client Progression A', zh: '客戶療程對照 A' },
     sessionsCount: 4,
-    category: '4-session',
     imageRelativeUrl: '/images/case_study_1_after.jpg',
     description: {
       en: 'Significant reduction in cheek width, jaw alignment, and cheekbone symmetry after 4 sessions.',
       zh: '進行4次小顏療程後，顴骨寬度明顯內收，下頜輪廓更具V字感，左右平衡度大幅提升。'
-    }
+    },
+    specialist: 'Teresa Soo'
   },
   {
     _id: 'cs2',
-    title: { en: 'Client Progression B', zh: '客戶療程對照 B' },
     sessionsCount: 8,
-    category: '8-session',
     imageRelativeUrl: '/images/case_study_2_after.jpg',
     description: {
       en: '8-session journey showcasing nose bridge elevation, nasolabial folds reduction, and skin firming.',
       zh: '8次療程的完整蛻變：鼻樑視覺上顯得更高挺，法令紋與笑紋顯著減淡，面部組織整體提拉。'
-    }
+    },
+    specialist: 'Teresa Soo'
   },
   {
     _id: 'cs3',
-    title: { en: 'Maintenance Client C', zh: '日常保養客戶 C' },
     sessionsCount: 12,
-    category: 'maintenance',
     imageRelativeUrl: '/images/case_study_3_after.jpg',
     description: {
       en: 'Long term maintenance result showing sustained face slimming and tone over 12 months.',
       zh: '維持期保養對照：每月一次的例行微調，使精緻的小顏曲線在一年後依然保持完美不反彈。'
-    }
+    },
+    specialist: 'Teresa Soo'
   }
 ]
 

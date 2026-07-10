@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { MessageCircle } from 'lucide-react'
+import WhatsAppIcon from './WhatsAppIcon'
 import logoPortrait from '@/images/logo-portrait.svg'
 
 gsap.registerPlugin(useGSAP)
@@ -179,7 +179,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
             rel="noopener noreferrer"
             className="btn-primary flex items-center gap-2"
           >
-            <MessageCircle className="w-4 h-4 relative z-10" />
+            <WhatsAppIcon className="w-4 h-4 relative z-10" />
             <span className="relative z-10">
               {locale === 'en' ? 'Book a Session' : '立即預約'}
             </span>
