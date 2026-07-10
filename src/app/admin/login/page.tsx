@@ -31,9 +31,8 @@ export default function AdminLoginPage() {
       const data = await res.json()
 
       if (res.ok) {
-        // Redirect to dashboard
-        router.push('/admin')
-        router.refresh()
+        // Force hard redirect to reload cookies and session state
+        window.location.href = '/admin'
       } else {
         setError(data.error || 'Login failed')
       }
