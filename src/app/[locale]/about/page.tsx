@@ -13,10 +13,10 @@ interface PageProps {
 
 const certGroups = [
   {
-    titleEn: 'Northern Districts Local Business Awards — Outstanding Beauty Services Finalist',
-    titleZh: 'Northern Districts 本地商業獎 — 卓越美容服務決賽入圍',
-    descEn: 'Being selected as a Finalist in the 2026 Northern Districts Local Business Awards reflects our ongoing commitment to providing authentic Japanese facial realignment with professionalism, integrity and personalised care.\n\nThis recognition celebrates our dedication to continuous learning, exceptional client experiences and helping every client achieve natural, balanced results through The Shugaosha Way.',
-    descZh: '入圍 2026 年 Northern Districts 本地商業獎決賽，反映了我們一直致力於以專業、誠信和個性化的護理提供正宗的日式小顏矯正。\n\n這一認可肯定了我們對持續學習、卓越客戶體驗的專注，以及幫助每位客戶透過 The Shugaosha Way 實現自然平衡效果的努力。',
+    titleEn: 'Northern Districts Local Business Awards – Outstanding Beauty Services Finalist',
+    titleZh: 'Northern Districts 本地商業大獎 — 卓越美容服務決賽入圍',
+    descEn: 'Being named a Finalist in the 2026 Northern Districts Local Business Awards – Outstanding Beauty Services is a significant recognition of our commitment to excellence, professionalism and exceptional client care.',
+    descZh: '入圍 2026 年 Northern Districts 本地商業大獎（Outstanding Beauty Services）決賽，是對我們追求卓越、專業精神和卓越客戶護理的重大肯定。',
     thumbs: [
       { thumbSrc: '/assets/cert/Outstanding Beauty Services_s.webp', fullSrc: '/assets/cert/Outstanding Beauty Services.png', labelEn: 'Outstanding Beauty Services Finalist', labelZh: '卓越美容服務決賽入圍' },
     ],
@@ -24,6 +24,7 @@ const certGroups = [
 ]
 
 const interiorImages = [
+  '/images/studio-9.jpeg',
   '/images/studio-1.jpeg',
   '/images/studio-2.jpeg',
   '/images/studio-3.jpeg',
@@ -32,7 +33,6 @@ const interiorImages = [
   '/images/studio-6.jpeg',
   '/images/studio-7.jpeg',
   '/images/studio-8.jpeg',
-  '/images/studio-9.jpeg',
 ]
 
 export default async function AboutPage({ params }: PageProps) {
@@ -65,8 +65,8 @@ export default async function AboutPage({ params }: PageProps) {
           </h1>
           <p className="type-body text-charcoal/80 max-w-xl mt-4">
             {locale === 'en'
-              ? 'Our mission is to help restore balance, alignment, and harmony through non-surgical Japanese techniques.'
-              : '我們致力於透過溫和的日式小顏手法，協助您恢復平衡、對稱與身心和諧。'}
+              ? 'Helping you achieve a naturally lifted, firmer and more balanced appearance through gentle Japanese hands-on techniques.'
+              : '我們致力於透過溫和的日式徒手手法，幫助您獲得自然提升、緊緻且更加對稱平衡的面容。'}
           </p>
         </div>
       </section>
@@ -165,13 +165,13 @@ export default async function AboutPage({ params }: PageProps) {
             <div className="type-body text-charcoal/80 space-y-4">
               {locale === 'en' ? (
                 <>
-                  <p>Located in Gladesville, The Shugaosha Studio is a private, light-filled space created for comfort, relaxation and personalised care.</p>
-                  <p>Every visit is designed to provide a peaceful, unhurried experience, allowing you to unwind while enjoying authentic Japanese facial realignment through The Shugaosha Way.</p>
+                  <p>Located in Gladesville, The Shugaosha Studio is a private, light-filled space designed for comfort, relaxation and personalised care.</p>
+                  <p>Many clients tell us they feel deeply relaxed during and after their treatment. In this peaceful, unhurried environment, you can fully unwind while experiencing The Shugaosha Way and restoring your natural facial balance.</p>
                 </>
               ) : (
                 <>
                   <p>位於 Gladesville 的 Shugaosha 護理工作室，是一個私密、採光充足的空間，專為舒適、放鬆和個性化護理而設計。</p>
-                  <p>每一次的到訪都旨在提供寧靜、從容的體驗，讓您在透過 The Shugaosha Way 享受正宗日式小顏矯正的同時，徹底放鬆身心。</p>
+                  <p>許多客戶反映，在療程期間和之後都感到深度放鬆。在這個寧靜、不疾不徐的環境中，您可以徹底放鬆身心，同時體驗「修顏社小顏術」並恢復面部的自然平衡。</p>
                 </>
               )}
             </div>

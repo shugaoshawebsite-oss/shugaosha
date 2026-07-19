@@ -26,7 +26,7 @@ export default function Footer({ locale }: FooterProps) {
                 className="w-[150px] md:w-[200px] h-auto object-contain"
               />
             </Link>
-            <p className="type-body-sm text-white/60 max-w-xs mx-auto md:mx-0">
+            <p className="text-sm font-light text-white/60 max-w-xs mx-auto md:mx-0 leading-relaxed">
               {locale === 'en' 
                 ? 'Helping people rediscover balance, harmony and confidence through gentle Japanese hands-on techniques.'
                 : '以溫和的日式徒手技術，幫助人們重新發現平衡、和諧與自信。'}
@@ -82,11 +82,11 @@ export default function Footer({ locale }: FooterProps) {
             </div>
           </div>
 
-          {/* Quick links block — sitemap text removed, nav links styled for dark footer */}
+          {/* Quick links block */}
           <div className="flex flex-col items-center md:items-start space-y-4">
             <ul className="space-y-2.5 text-center md:text-left">
               <li>
-                <Link href={`/${locale}`} className="type-body-sm text-white/70 hover:text-primary transition-colors duration-300">
+                <Link href={`/${locale}`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
                   {dict.nav.home}
                 </Link>
               </li>
@@ -98,11 +98,6 @@ export default function Footer({ locale }: FooterProps) {
               <li>
                 <Link href={`/${locale}/treatment`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
                   {dict.nav.treatment}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}#real-results`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
-                  {dict.nav.successStories}
                 </Link>
               </li>
               <li>
@@ -120,16 +115,21 @@ export default function Footer({ locale }: FooterProps) {
                   {dict.nav.contact}
                 </Link>
               </li>
+              <li>
+                <Link href={`/${locale}/appointment-policy`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
+                  {dict.nav.appointmentPolicy}
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Contact / Location block */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 w-full">
-            <span className="type-label text-white block text-center md:text-left">
+            <span className="text-xs font-semibold uppercase tracking-wider text-white block text-center md:text-left">
               {locale === 'en' ? 'Get in Touch' : '聯絡資訊'}
             </span>
             <div className="space-y-3 w-full">
-              <p className="type-body-sm text-white/70">
+              <p className="text-sm font-light text-white/70">
                 <span className="font-medium text-white block mb-1">
                   {locale === 'en' ? 'Gladesville Clinic:' : '主要診所地址:'}
                 </span>
@@ -151,11 +151,31 @@ export default function Footer({ locale }: FooterProps) {
         </div>
 
         {/* Bottom footer */}
-        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 text-xs font-light text-white/40 space-y-4 sm:space-y-0">
-          <p className="type-caption text-white/40">© {new Date().getFullYear()} Shugaosha.com. All rights reserved.</p>
-          <div className="flex space-x-6">
-            <span className="type-caption text-white/40">{locale === 'en' ? 'Japanese Kogao Association Certified' : '日本小顏矯正協會認證'}</span>
+        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 space-y-3 sm:space-y-0">
+          <p className="text-xs font-light text-white/40">© {new Date().getFullYear()} Shugaosha.com. All rights reserved.</p>
+          <div className="text-center sm:text-left py-1 sm:py-0">
+            <span className="text-xs font-medium tracking-widest uppercase text-white/50 block">
+              PRECISION • BALANCE • HARMONY
+            </span>
           </div>
+          <div className="flex space-x-6">
+            <span className="text-xs font-light text-white/40">{locale === 'en' ? 'Japanese Kogao Association Certified' : '日本小顏矯正協會認證'}</span>
+          </div>
+        </div>
+
+        {/* Web development attribution */}
+        <div className="text-center sm:text-right pt-4 text-xs font-light text-white/30">
+          <p>
+            {locale === 'en' ? 'Web development by ' : '網頁開發：'}
+            <a
+              href="https://rydesign.com.au"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-white/60 transition-colors"
+            >
+              Ryandesign
+            </a>
+          </p>
         </div>
       </div>
     </footer>

@@ -2,20 +2,20 @@
   {
     "_id": "t1",
     "name": { "en": "Teresa Soo", "zh": "Teresa Soo" },
-    "role": { "en": "Co-Founder | Certified Specialist / Trainer", "zh": "聯合創辦人 | 認證小顏矯正師 / 導師" },
+    "role": { "en": "CO-FOUNDER | CERTIFIED SPECIALIST / TRAINER", "zh": "聯合創辦人 | 認證小顏矯正師 / 導師" },
     "bio": {
-      "en": "Teresa is the co-founder of Shugaosha and the Australian Representative of the Japan Small Face Correction Association. After completing advanced training in Japan, she became a certified trainer and has dedicated herself to restoring natural facial balance through gentle, hands-on techniques.\n\nCommitted to excellence in both treatment and education, Teresa continues to refine The Shugaosha Way while upholding the highest standards of care, professionalism and continuous learning.",
-      "zh": "Teresa 是 Shugaosha 的聯合創辦人及日本小顏矯正協會的澳洲代表。在日本完成進階培訓後，她成為認證導師，並致力於透過溫和的手法恢復自然的面部平衡。\n\nTeresa 致力於在治療和教育方面追求卓越，在秉持護理、專業和持續學習的最高標準的同時，不斷完善 The Shugaosha Way。"
+      "en": "Teresa is the co-founder of Shugaosha and the Australian Representative of the Japan Small Face Correction Association.\n\nAfter completing advanced training in Japan, she became a certified trainer and developed The Shugaosha Way—a gentle hands-on approach that helps restore natural facial balance for a more lifted, firmer and harmonious appearance.\n\nWith years of clinical experience and continued education, Teresa has helped thousands of clients achieve natural-looking results while training the next generation of practitioners.",
+      "zh": "Teresa 是 Shugaosha 的聯合創辦人及日本小顏矯正協會的澳洲代表。\n\n在日本完成進階培訓後，她成為認證導師，並創立了「修顏社小顏術」（The Shugaosha Way）——一種溫和的徒手調整手法，幫助恢復自然的面部平衡，塑造更加提升、緊緻且和諧的面容。\n\n憑藉多年的臨床經驗和持續深造，Teresa 已幫助成千上萬名客戶獲得自然平衡的效果，同時致力於培訓新一代的小顏矯正師。"
     },
     "imageRelativeUrl": "/images/teresa_soo.jpg"
   },
   {
     "_id": "t2",
     "name": { "en": "Charles Cho", "zh": "Charles Cho" },
-    "role": { "en": "Co-Founder | Certified Specialist / Trainer", "zh": "聯合創辦人 | 認證小顏矯正師 / 導師" },
+    "role": { "en": "CO-FOUNDER | CERTIFIED SPECIALIST / TRAINER", "zh": "聯合創辦人 | 認證小顏矯正師 / 導師" },
     "bio": {
-      "en": "Charles is the co-founder of Shugaosha and is dedicated to restoring natural facial balance through gentle, hands-on techniques. Every treatment is thoughtfully tailored to the individual, creating a calm, comfortable and personalised experience.\n\nCommitted to the values of The Shugaosha Way, Charles strives to provide professional care with consistency, respect and genuine attention to every client’s individual needs.",
-      "zh": "Charles 是 Shugaosha 的聯合創辦人，致力於透過溫和的手法恢復自然的面部平衡。每一次治療都是針對個人精心量身定制，營造出寧靜、舒適和個性化的體驗。\n\nCharles 秉承 The Shugaosha Way 的價值觀，力求以一致、尊重和真誠的態度關注每位客戶的個人需求，提供專業的護理。"
+      "en": "Charles is the co-founder of Shugaosha and a certified specialist dedicated to restoring natural facial balance through gentle Japanese hands-on techniques.\n\nKnown for his calm and meticulous approach, Charles tailors every treatment to each individual’s facial structure, helping clients achieve a more lifted, firmer and naturally balanced appearance.\n\nWith years of hands-on experience, Charles has helped thousands of clients achieve natural-looking results while continuing to refine The Shugaosha Way.",
+      "zh": "Charles 是 Shugaosha 的聯合創辦人，也是一名認證小顏矯正師，致力於透過溫和的日式徒手手法恢復自然的面部平衡。\n\nCharles 以溫和、細緻的手法著稱，針對每位客人的個人面部結構精心調整，幫助客戶實現更加提升、緊緻且自然對稱的面容。\n\n憑藉多年的實踐經驗，Charles 已幫助成千上萬名客戶獲得自然的效果，同時不斷完善與精進「修顏社小顏術」。"
     },
     "imageRelativeUrl": "/images/charles_cho.jpg"
   }

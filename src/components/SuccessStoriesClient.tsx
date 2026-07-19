@@ -50,17 +50,11 @@ const countryFlags: Record<string, string> = {
 
 function getOrdinalSessionText(count: number, locale: 'en' | 'zh') {
   if (locale === 'zh') {
-    return `第 ${count} 次療程`
+    return `${count} 次療程後`
   }
-  const limit = Math.min(20, Math.max(1, count))
-  const suffix = (c: number) => {
-    if (c === 1) return 'st'
-    if (c === 2) return 'nd'
-    if (c === 3) return 'rd'
-    return 'th'
-  }
+  const limit = Math.max(1, count)
   const word = limit === 1 ? 'Session' : 'Sessions'
-  return `The ${limit}${suffix(limit)} ${word}`
+  return `After ${limit} ${word}`
 }
 
 export default function SuccessStoriesClient({

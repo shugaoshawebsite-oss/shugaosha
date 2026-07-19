@@ -30,9 +30,7 @@ export default async function HomePage({ params }: PageProps) {
   const celebrities = await getCelebrities()
   const caseStudies = await getCaseStudies()
 
-  const certImages = [
-    { src: '/assets/cert/Outstanding Beauty Services_s.webp', alt: locale === 'en' ? 'Outstanding Beauty Services Finalist' : '卓越美容服務決賽入圍' },
-  ]
+
 
   // No static featured objects needed as we render all items inside marquee carousels
 
@@ -153,6 +151,31 @@ export default async function HomePage({ params }: PageProps) {
             })}
           </div>
 
+          {/* Award/Trust Badge */}
+          <div className="max-w-3xl mx-auto p-6 sm:p-8 rounded-[2rem] bg-[#f8f9fa] border border-gray-100/80 flex flex-col sm:flex-row items-center text-center sm:text-left gap-6 sm:gap-8 hover:shadow-sm transition-shadow duration-300">
+            <div className="flex-shrink-0 flex justify-center items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100/50">
+              <Image
+                src="/assets/cert/Outstanding Beauty Services_s.webp"
+                alt={locale === 'en' ? 'Outstanding Beauty Services Finalist' : '卓越美容服務決賽入圍'}
+                width={150}
+                height={100}
+                className="h-20 w-auto object-contain"
+                sizes="150px"
+              />
+            </div>
+            <div className="space-y-2 flex-1">
+              <h4 className="type-card-title text-foreground font-semibold">
+                {locale === 'en' ? 'Local Business Awards Finalist' : '地方商業大獎決賽入圍'}
+              </h4>
+              <p className="type-body-sm text-charcoal/80 leading-relaxed">
+                {locale === 'en'
+                  ? 'Proudly recognised as a Finalist in the 2026 Northern Districts Local Business Awards, recognising our dedication to helping clients achieve natural, balanced results through The Shugaosha Way.'
+                  : '榮幸入圍 2026 年北區地方商業大獎（Northern Districts Local Business Awards）決賽，肯定了我們致力於通過「修顏社小顏術」幫助客戶獲得自然平衡效果的付出。'
+                }
+              </p>
+            </div>
+          </div>
+
           {/* Book button */}
           <div className="flex justify-center">
             <a
@@ -164,33 +187,6 @@ export default async function HomePage({ params }: PageProps) {
               <WhatsAppIcon className="w-4 h-4" />
               {locale === 'en' ? 'Book a Session' : '立即預約'}
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Certificates & Awards — Light grey background, compact y spacing */}
-      <section className="w-full bg-[#f8f9fa] border-y border-gray-100 py-12">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-8">
-          <div className="text-center">
-            <span className="type-label text-primary">
-              {locale === 'en' ? 'Certificate & Award' : '證書與獎項'}
-            </span>
-          </div>
-
-          {/* Horizontal strip — no box, no shadow, max-height 100px */}
-          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-12">
-            {certImages.map((cert, i) => (
-              <div key={i} className="flex-shrink-0">
-                <Image
-                  src={cert.src}
-                  alt={cert.alt}
-                  width={150}
-                  height={100}
-                  className="object-contain h-[80px] w-auto"
-                  sizes="120px"
-                />
-              </div>
-            ))}
           </div>
         </div>
       </section>

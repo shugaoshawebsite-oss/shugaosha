@@ -113,12 +113,13 @@ export default function Header({ locale }: HeaderProps) {
   const headerActive = scrolled || !isHome
 
   const navLinks = [
-    { name: dict.nav.home,          path: `/${locale}` },
-    { name: dict.nav.aboutUs,       path: `/${locale}/about` },
-    { name: dict.nav.treatment,     path: `/${locale}/treatment` },
-    { name: dict.nav.successStories,path: `/${locale}#real-results` },
-    { name: dict.nav.training,      path: `/${locale}/training` },
-    { name: dict.nav.contact,       path: `/${locale}/contact` },
+    { name: dict.nav.home,              path: `/${locale}` },
+    { name: dict.nav.aboutUs,           path: `/${locale}/about` },
+    { name: dict.nav.treatment,         path: `/${locale}/treatment` },
+    { name: dict.nav.training,          path: `/${locale}/training` },
+    { name: dict.nav.faq,               path: `/${locale}#faq` },
+    { name: dict.nav.contact,           path: `/${locale}/contact` },
+    { name: dict.nav.appointmentPolicy,  path: `/${locale}/appointment-policy` },
   ]
 
   const isActive = (path: string) => {

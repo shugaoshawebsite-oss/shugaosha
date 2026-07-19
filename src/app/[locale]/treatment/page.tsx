@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
 import { Check, ArrowRight, Shield, Sparkles, Heart, Zap, Scale, Smile, Calendar, Droplet, Sun } from 'lucide-react'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
+import TreatmentVideo from '@/components/TreatmentVideo'
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -96,12 +97,8 @@ export default async function TreatmentPage({ params }: PageProps) {
           {/* Right: Portrait video */}
           <div>
             <div className="relative aspect-[9/16] max-h-[600px] w-full max-w-[337px] mx-auto bg-black border border-gray-200 rounded-2xl overflow-hidden shadow-lg">
-              <video
+              <TreatmentVideo
                 src="/assets/treatment.mp4"
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full h-full object-cover"
                 poster="/assets/specialist/specialist_teresa_soo.avif"
               />
             </div>

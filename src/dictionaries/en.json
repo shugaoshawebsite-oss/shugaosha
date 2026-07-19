@@ -1,13 +1,14 @@
 {
   "nav": {
     "home": "Home",
-    "treatment": "Treatment",
+    "treatment": "The Shugaosha Way",
     "successStories": "Success Stories",
     "aboutUs": "About",
     "newsTours": "News",
     "training": "Training",
     "contact": "Contact",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "appointmentPolicy": "Appointment Policy"
   },
   "home": {
     "hero": {
@@ -19,8 +20,8 @@
     "whatWeDo": {
       "title": "What Is The Shugaosha Way?",
       "description1": "The Shugaosha Way is our signature hands-on approach to facial balance, harmony and overall wellbeing.",
-      "description2": "Developed through years of practice and continued education in Japan, it works with your natural facial structure to help create a more balanced, refreshed and naturally lifted appearance.",
-      "description3": "Rather than changing your face, our goal is to help it return to its natural balance.",
+      "description2": "Developed through years of practice and ongoing training in Japan, it works with your natural facial structure to help create a more balanced, refreshed and naturally lifted appearance.",
+      "description3": "Rather than changing your face, our goal is to help your face return to its natural balance.",
       "benefitsTitle": "Benefits of The Shugaosha Way",
       "benefits": [
         "Promotes a more lifted and refined appearance.",
@@ -46,22 +47,22 @@
         {
           "number": "1",
           "title": "Scan & Plan",
-          "desc": "We analyze your facial balance and create a custom realignment plan."
+          "desc": "We assess your facial balance and create a personalised treatment plan tailored to your individual needs."
         },
         {
           "number": "2",
           "title": "Treatment",
-          "desc": "A gentle, non-invasive hands-on treatment using specialized Japanese techniques."
+          "desc": "Every treatment is tailored to your unique facial balance, with each area carefully adjusted according to your individual needs using The Shugaosha Way."
         },
         {
           "number": "3",
           "title": "Maintain",
-          "desc": "Follow-up recommendations and simple routines to maintain your natural balance."
+          "desc": "We’ll guide you on the most suitable next step based on your individual progress."
         }
       ]
     },
     "cta": {
-      "title": "Ready to transform your facial contours naturally?",
+      "title": "Ready to experience The Shugaosha Way?",
       "button": "Book Your Session via WhatsApp/SMS: +61 493552213"
     },
     "faq": {
@@ -69,12 +70,8 @@
       "subtitle": "Common Questions",
       "items": [
         {
-          "question": "What is the Shugaosha Way?",
-          "answer": "The Shugaosha Way is a gentle, hands-on facial rebalancing technique that focuses on restoring natural balance, harmony and overall wellbeing."
-        },
-        {
           "question": "How is the Shugaosha Way different from a facial massage?",
-          "answer": "The Shugaosha Way focuses on releasing facial tension and addressing areas of imbalance. As facial balance is restored, the face appears more harmonious, naturally refreshed and balanced."
+          "answer": "Unlike a traditional facial massage, The Shugaosha Way is a hands-on facial rebalancing technique. Rather than simply relaxing facial muscles, it works with your natural facial balance and structure to help restore harmony and create a naturally lifted, refreshed appearance."
         },
         {
           "question": "Is the Shugaosha Way a regular facial treatment?",
@@ -86,7 +83,7 @@
         },
         {
           "question": "How many sessions do I need?",
-          "answer": "Most clients benefit from a series of 4–5 treatments. For the best results, sessions are ideally spaced 3–7 days apart, depending on your individual needs. Each session builds on the previous one, helping your face gradually establish better balance and longer-lasting results."
+          "answer": "The number of sessions depends on your individual goals and facial condition. We’ll recommend the most suitable approach based on your needs and progress."
         },
         {
           "question": "How long do the results last?",
@@ -179,7 +176,7 @@
   "contact": {
     "title": "Contact Us",
     "subtitle": "Get in Touch",
-    "desc": "To ensure personalized care and scheduling, we handle all appointments directly via messaging.",
+    "desc": "To provide personalised care and flexible scheduling, all appointments are arranged directly via WhatsApp, SMS or Email.",
     "locationsTitle": "Our Locations",
     "primaryClinic": "Primary Clinic: 5 Pittwater Road, Gladesville NSW 2111, Australia."
   }
