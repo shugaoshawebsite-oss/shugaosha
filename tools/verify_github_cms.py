@@ -30,7 +30,7 @@ def verify_github_cms():
     files_to_verify = [
         ('services.json', ['_id', 'title', 'slug', 'description', 'benefits'], 'imageRelativeUrl'),
         ('celebrities.json', ['_id', 'name', 'role', 'quote'], 'imageRelativeUrl'),
-        ('caseStudies.json', ['_id', 'title', 'sessionsCount', 'category', 'imageRelativeUrl'], 'imageRelativeUrl'),
+        ('caseStudies.json', ['_id', 'sessionsCount', 'imageRelativeUrl', 'specialist'], 'imageRelativeUrl'),
         ('reviews.json', ['_id', 'clientName', 'location', 'rating', 'reviewText'], None),
         ('team.json', ['_id', 'name', 'role', 'bio'], 'imageRelativeUrl'),
         ('tours.json', ['_id', 'city', 'dates', 'isActive'], None)

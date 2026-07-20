@@ -1,8 +1,14 @@
 [
   {
     "_id": "c1",
-    "name": { "en": "Luisa Leitao", "zh": "黎芷珊" },
-    "role": { "en": "Renowned host / actress of Hong Kong", "zh": "著名主持人 / 演員" },
+    "name": {
+      "en": "Luisa Leitao",
+      "zh": "黎芷珊"
+    },
+    "role": {
+      "en": "Renowned host / actress of Hong Kong",
+      "zh": "著名主持人 / 演員"
+    },
     "quote": {
       "en": "I feel that the Kogao treatment is really useful for me. Because I had puffiness and a baby face, I feel my face is much less puffy after the treatment. Now that I can feel my facial bones are more defined, it makes me feel very good. I think the most important thing in Kogao is the technique; everyone's hand technique is different, but Teresa and Charles have excellent technique and the results last a long time. I love eating and used to have a round face, but after Kogao, I noticed my face doesn't get fat again even if I eat more, maintaining the contoured Kogao effect. Furthermore, my face used to be slightly asymmetrical with the right side being larger, but after the treatment, I feel my face is balanced and no longer uneven—it feels like my facial structure has been realigned to the correct position. Since it is non-invasive, I find it really great.",
       "zh": "我覺得小顏術對我嚟講真係好有用，因為我本身有水腫同埋包包面，做咗小顏之後我覺得我塊面冇咁水腫，依家摸到個面骨細咗令我感覺非常之好。我覺得做小顏最緊要係個手勢，每個人做嘅手勢都唔同，但係Teresa 同 Charles 嘅手勢係非常之好，效果可以last好耐。我本身好鍾意食嘢，都好包包面，但係做咗小顏之後，我發覺我就算食多咗嘢都唔會肥返，即係keep到小顏個感覺。加上本身我塊面係有啲鴛鴦，右邊面大啲，但係做咗小顏之後我覺得塊面balance左，冇之前咁鴛鴦，即係幫我塊面啪返啱個位，而且因為小顏冇入侵性，所以我覺得幾好。"
@@ -11,8 +17,14 @@
   },
   {
     "_id": "c2",
-    "name": { "en": "Helen Tam", "zh": "譚玉瑛" },
-    "role": { "en": "Renowned host / actress of Hong Kong", "zh": "著名主持人 / 演員" },
+    "name": {
+      "en": "Helen Tam",
+      "zh": "譚玉瑛"
+    },
+    "role": {
+      "en": "Renowned host / actress of Hong Kong",
+      "zh": "著名主持人 / 演員"
+    },
     "quote": {
       "en": "Although I am not an overweight person, after doing the Kogao treatment recently, I really feel Teresa has her ways. I feel my facial contours are significantly more defined, and my blood circulation has improved. It is truly unbelievable that such results can be achieved using only manual techniques without any machinery.",
       "zh": "我雖然唔係一個肥人，本來最近做咗小顏呢一個事情呢，我又覺得Teresa真係有啲辦法喎, 我覺得自己嘅輪廓呢… 就好明顯就更加突出啦… 同埋自己嘅血氣都循環得好啲，相對呢我就覺得只係用人手唔係機器又可以有一個咁嘅效果, 某程度真係匪夷所思👍"
@@ -21,8 +33,14 @@
   },
   {
     "_id": "c3",
-    "name": { "en": "Max Cheung", "zh": "張達倫" },
-    "role": { "en": "Renowned actor of Hong Kong and China", "zh": "著名演員" },
+    "name": {
+      "en": "Max Cheung",
+      "zh": "張達倫"
+    },
+    "role": {
+      "en": "Renowned actor of Hong Kong and China",
+      "zh": "著名演員"
+    },
     "quote": {
       "en": "Thank you Charles and Teresa for showing me what authentic Japanese Kogao is all about. It started with their warm hands, making me completely relaxed, and they explained every step along the way. I realized that aging causes facial features to shift, which in turn affects blood circulation. After the treatment, my contours are visibly restored, and I feel much more energetic. Those who know me know that I previously suffered from facial paralysis, leaving some of my facial muscles weaker. After just two Kogao sessions, I have already seen improvement! Thank you Teresa & Charles.",
       "zh": "多謝 Charles 同 Teresa,令我認識正宗日式小顏是什麼。一齊從溫暖嘅雙手開始，令我整個人都放鬆，每做一個步驟都會講解，原來人會因為歲月而令五官走位，繼而影響血液流通，做完之後，明顯輪廓出返嚟，同精神咗好多。認識我嘅人都知道，我曾經面癱，有啲面部肌肉力量會差啲，當我做完兩次小顏後，已有改善！Thx Teresa & Charles"
@@ -31,8 +49,14 @@
   },
   {
     "_id": "c4",
-    "name": { "en": "Vivian Lai", "zh": "黎瑞恩" },
-    "role": { "en": "Famous singer of Hong Kong and China", "zh": "著名歌星" },
+    "name": {
+      "en": "Vivian Lai",
+      "zh": "黎瑞恩"
+    },
+    "role": {
+      "en": "Famous singer of Hong Kong and China",
+      "zh": "著名歌星"
+    },
     "quote": {
       "en": "Thank you Teresa for making me more beautiful. I now have full confidence.",
       "zh": "多謝 Teresa 另我變得更靚, 我現在信心十足."
@@ -41,8 +65,14 @@
   },
   {
     "_id": "c5",
-    "name": { "en": "Ben Wong", "zh": "黄智賢" },
-    "role": { "en": "Renowned actor of Hong Kong and China", "zh": "著名演員" },
+    "name": {
+      "en": "Ben Wong",
+      "zh": "黄智賢"
+    },
+    "role": {
+      "en": "Renowned actor of Hong Kong and China",
+      "zh": "著名演員"
+    },
     "quote": {
       "en": "Although I have only done Kogao once, I can really see the improvement! 👍",
       "zh": "雖然只做了一次小顏，但真係見到有改善👍🏻"

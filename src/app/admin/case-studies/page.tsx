@@ -26,6 +26,7 @@ export default function CaseStudiesAdmin() {
   
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editForm, setEditForm] = useState<Partial<CaseStudy>>({})
+  const [deletingId, setDeletingId] = useState<string | null>(null)
 
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
 
@@ -113,10 +114,7 @@ export default function CaseStudiesAdmin() {
   }
 
   const handleDelete = (id: string) => {
-    if (confirm('Are you sure you want to delete this case study?')) {
-      const updated = caseStudies.filter(c => c._id !== id)
-      handleSaveAll(updated)
-    }
+    setDeletingId(id)
   }
 
   const handleSaveEdit = () => {
@@ -255,6 +253,33 @@ export default function CaseStudiesAdmin() {
                   <Save className="w-4 h-4" /> {saving ? 'Saving...' : 'Save Changes'}
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {deletingId && (
+        <div className="fixed inset-0 bg-black/20 flex items-center justify-center p-4 z-50 animate-fade-in">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl space-y-4 border border-gray-100 transform scale-100 transition-transform">
+            <h2 className="text-lg font-semibold text-charcoal">Delete Case Study</h2>
+            <p className="text-sm text-charcoal/60 leading-relaxed">Are you sure you want to delete this case study? This action cannot be undone.</p>
+            <div className="flex justify-end gap-3 pt-2">
+              <button
+                onClick={() => setDeletingId(null)}
+                className="px-4 py-2 text-sm font-medium text-charcoal/70 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  const updated = caseStudies.filter(c => c._id !== deletingId)
+                  handleSaveAll(updated)
+                  setDeletingId(null)
+                }}
+                className="px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-lg transition-colors cursor-pointer"
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>

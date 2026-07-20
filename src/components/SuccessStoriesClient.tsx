@@ -123,7 +123,7 @@ export default function SuccessStoriesClient({
             speed={0.4}
             renderItem={(celebrity) => (
               <div
-                className="w-[75vw] sm:w-[320px] md:w-[360px] flex-shrink-0 bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full"
+                className="w-full bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full"
               >
                 {/* Top: Photo Column (Square) */}
                 <div className="relative aspect-square w-full bg-gray-50">
@@ -225,7 +225,7 @@ export default function SuccessStoriesClient({
             speed={0.5}
             renderItem={(cs) => (
               <div
-                className="w-[75vw] sm:w-[320px] md:w-[360px] flex-shrink-0 bg-white border border-gray-100 rounded-2xl overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300 h-full"
+                className="w-full bg-white border border-gray-100 rounded-2xl overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300 h-full"
               >
                 {/* Image */}
                 <div className="relative aspect-square bg-gray-100 w-full overflow-hidden">

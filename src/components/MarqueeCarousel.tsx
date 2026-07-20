@@ -1,236 +1,355 @@
 'use client'
 
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useCallback } from 'react'
 
 interface MarqueeCarouselProps<T> {
   items: T[]
   renderItem: (item: T, index: number, isClone: boolean) => React.ReactNode
-  speed?: number // pixels per frame at 60fps
+  speed?: number // kept for API compat, unused
+}
+
+// ─── Config ──────────────────────────────────────────────────────────────────
+const PAUSE_MS       = 5000   // 5s pause between slides
+const SLIDE_MS       = 2000   // 2s slide duration
+const GAP_PX         = 24     // gap between cards
+const PEEK_PX        = 56     // adjacent-card peek width on each side
+
+// Silky curves:
+const EASE_AUTO      = 'cubic-bezier(0.4, 0, 0.2, 1)'      // smooth start/stop for auto-slide
+const EASE_RELEASE   = 'cubic-bezier(0.25, 1, 0.5, 1)'     // soft ease-out for momentum-release (no double-ease-in)
+
+function getPerView(w: number): number {
+  if (w >= 1024) return 3
+  if (w >= 640)  return 2
+  return 1
 }
 
 export default function MarqueeCarousel<T>({
   items,
   renderItem,
-  speed = 0.5,
 }: MarqueeCarouselProps<T>) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const trackRef = useRef<HTMLDivElement>(null)
+  const trackRef     = useRef<HTMLDivElement>(null)
+  const n = items.length
+
+  // ── Layout & Page-based clone state ────────────────────────────────────────
+  const [perView,      setPerView]      = useState(3)
+  const [cardWidthPx,  setCardWidthPx]  = useState(0)
+  const [totalSets,    setTotalSets]    = useState(1)
+  const [activeDot,    setActiveDot]    = useState(0)
+
+  // ── All mutable state inside S ref to avoid stale closure issues ──────────
+  const S = useRef({
+    perView:    3,
+    cardWidth:  0,
+    totalSets:  1,
+    virtualIdx: 3,       // current virtual index (starts at perView)
+    isSliding:  false,
+    isHovered:  false,
+    isDragging: false,
+    hasDragged: false,
+    dragStartX: 0,
+    dragBaseX:  0,
+    timer:      null as ReturnType<typeof setTimeout> | null,
+  })
+
+  // ── Page-based cloning setup ───────────────────────────────────────────────
+  const baseCount = totalSets * perView
+  const displayItems: T[] = []
   
-  const [activeIndex, setActiveIndex] = useState(0)
-  const isDragging = useRef(false)
-  const isHovered = useRef(false)
-  const startX = useRef(0)
-  const scrollLeftStart = useRef(0)
-  const animationFrameId = useRef<number | null>(null)
-  const lastTime = useRef<number | null>(null)
-  const hasInitialized = useRef(false)
-  const exactScrollLeft = useRef<number | null>(null)
-
-  const originalCount = items.length
-  // Duplicate items to ensure seamless marquee looping
-  const duplicatedItems = [...items, ...items]
-
-  const updateActiveIndex = () => {
-    const container = containerRef.current
-    const track = trackRef.current
-    if (!container || !track) return
-
-    const children = track.children
-    if (children.length === 0) return
-
-    let closestIndex = 0
-    let minDiff = Infinity
-    const containerCenter = container.scrollLeft + container.clientWidth / 2
-
-    // Search the first half of children to map to the correct active index dot
-    for (let i = 0; i < originalCount; i++) {
-      const child = children[i] as HTMLElement
-      if (!child) continue
-      const childCenter = child.offsetLeft + child.clientWidth / 2
-      const diff = Math.abs(childCenter - containerCenter)
-      if (diff < minDiff) {
-        minDiff = diff
-        closestIndex = i
-      }
+  if (n > 0) {
+    // 1. Prepend clone of last set (length = perView)
+    for (let i = 0; i < perView; i++) {
+      const idx = ((totalSets - 1) * perView + i) % n
+      displayItems.push(items[idx])
     }
-
-    setActiveIndex(closestIndex % originalCount)
+    // 2. Base sequence (length = totalSets * perView)
+    for (let i = 0; i < baseCount; i++) {
+      displayItems.push(items[i % n])
+    }
+    // 3. Append clone of first set (length = perView)
+    for (let i = 0; i < perView; i++) {
+      displayItems.push(items[i % n])
+    }
   }
 
-  const handleScroll = () => {
-    const container = containerRef.current
-    if (!container) return
-    
-    const halfWidth = container.scrollWidth / 2
-    if (halfWidth <= 0) return
+  // ── DOM Helpers ────────────────────────────────────────────────────────────
+  const calcX = (vi: number, cw: number) => PEEK_PX - vi * (cw + GAP_PX)
 
-    const threshold = 20 // pixels threshold to wrap before hitting the scroll wall
-
-    // Seamless wrap-around in both directions
-    if (container.scrollLeft >= halfWidth) {
-      container.scrollLeft -= halfWidth
-      if (exactScrollLeft.current !== null) exactScrollLeft.current -= halfWidth
-    } else if (container.scrollLeft <= threshold) {
-      container.scrollLeft += halfWidth
-      if (exactScrollLeft.current !== null) exactScrollLeft.current += halfWidth
+  const applyTransform = (x: number, animate = false, duration = SLIDE_MS, easing = EASE_AUTO) => {
+    const el = trackRef.current
+    if (!el) return
+    if (animate) {
+      el.style.transition = 'none'
+      void el.offsetHeight // Force browser reflow to register current layout state
+      el.style.transition = `transform ${duration}ms ${easing}`
+    } else {
+      el.style.transition = 'none'
     }
-
-    updateActiveIndex()
+    el.style.transform  = `translateX(${x}px)`
   }
 
-  // Initialize scroll position to the middle (halfWidth) for infinite scrolling in both directions
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container || hasInitialized.current) return
-
-    const initScroll = () => {
-      const halfWidth = container.scrollWidth / 2
-      if (halfWidth > 0) {
-        container.scrollLeft = halfWidth
-        exactScrollLeft.current = halfWidth
-        updateActiveIndex()
-        hasInitialized.current = true
+  // ── Schedule Next Slide ────────────────────────────────────────────────────
+  const scheduleNext = () => {
+    const s = S.current
+    if (s.timer) clearTimeout(s.timer)
+    s.timer = setTimeout(() => {
+      if (!s.isHovered && !s.isDragging && !s.isSliding) {
+        doSlide(1)
       }
+    }, PAUSE_MS)
+  }
+
+  // ── Perform Slide ──────────────────────────────────────────────────────────
+  const doSlide = (direction: 1 | -1, targetVI?: number, customDuration?: number, easing = EASE_AUTO) => {
+    const s = S.current
+    if (s.isSliding || s.cardWidth === 0) return
+    s.isSliding = true
+
+    const cw = s.cardWidth
+    const pv = s.perView
+    const nextVI = targetVI ?? s.virtualIdx + direction * pv
+
+    // Calculate next active dot
+    if (targetVI === undefined) {
+      setActiveDot(d => (d + direction + s.totalSets) % s.totalSets)
     }
 
-    const timer = setTimeout(initScroll, 150)
-    return () => clearTimeout(timer)
-  }, [originalCount])
+    const targetX = calcX(nextVI, cw)
+    const duration = customDuration ?? SLIDE_MS
 
-  // Auto-scroll loop using requestAnimationFrame
-  useEffect(() => {
-    const animate = (time: number) => {
-      if (lastTime.current === null) {
-        lastTime.current = time
+    applyTransform(targetX, true, duration, easing)
+    s.virtualIdx = nextVI
+
+    const onEnd = () => {
+      trackRef.current?.removeEventListener('transitionend', onEnd)
+      s.isSliding = false
+      
+      // Snap silently if we reached clones
+      if (s.virtualIdx >= (s.totalSets + 1) * pv) {
+        s.virtualIdx = pv
+      } else if (s.virtualIdx <= 0) {
+        s.virtualIdx = s.totalSets * pv
       }
       
-      const delta = time - lastTime.current
-      lastTime.current = time
-
-      const container = containerRef.current
-      if (container && !isDragging.current && !isHovered.current && hasInitialized.current) {
-        if (exactScrollLeft.current === null) {
-          exactScrollLeft.current = container.scrollLeft
-        }
-        const frameAdjust = delta / 16.666
-        exactScrollLeft.current += speed * frameAdjust
-        container.scrollLeft = exactScrollLeft.current
-      }
-
-      animationFrameId.current = requestAnimationFrame(animate)
+      applyTransform(calcX(s.virtualIdx, cw), false)
+      scheduleNext()
     }
-
-    animationFrameId.current = requestAnimationFrame(animate)
-    return () => {
-      if (animationFrameId.current) {
-        cancelAnimationFrame(animationFrameId.current)
-      }
-    }
-  }, [speed])
-
-  // Mouse / Touch Drag handlers
-  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
-    const container = containerRef.current
-    if (!container) return
-
-    isDragging.current = true
-    const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX
-    startX.current = pageX
-    scrollLeftStart.current = container.scrollLeft
-    lastTime.current = null
+    trackRef.current?.addEventListener('transitionend', onEnd, { once: true })
   }
 
-  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isDragging.current || !containerRef.current) return
+  // ── Measure ────────────────────────────────────────────────────────────────
+  const measure = useCallback(() => {
+    const el = containerRef.current
+    if (!el) return
+    const w  = el.clientWidth
+    const pv = getPerView(w)
+    const cw = Math.max(100, Math.floor((w - 2 * PEEK_PX - (pv - 1) * GAP_PX) / pv))
+    const ts = Math.ceil(n / pv)
 
-    const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX
-    const walk = pageX - startX.current
-    containerRef.current.scrollLeft = scrollLeftStart.current - walk
-  }
+    const s = S.current
+    s.perView    = pv
+    s.cardWidth  = cw
+    s.totalSets  = ts
+    s.virtualIdx = pv // starts at index perView (after prepend clone)
+    s.isSliding  = false
 
-  const handleDragEnd = () => {
-    isDragging.current = false
-    exactScrollLeft.current = null
-  }
+    setPerView(pv)
+    setCardWidthPx(cw)
+    setTotalSets(ts)
+    setActiveDot(0)
 
-  const handleDotClick = (index: number) => {
-    const container = containerRef.current
-    const track = trackRef.current
-    if (!container || !track) return
+    applyTransform(calcX(pv, cw), false)
+    scheduleNext()
+  }, [n])
 
-    const children = track.children
-    const targetChild = children[index] as HTMLElement
-    if (targetChild) {
-      const targetScrollLeft = targetChild.offsetLeft - (container.clientWidth - targetChild.clientWidth) / 2
-      container.scrollTo({
-        left: targetScrollLeft,
-        behavior: 'smooth',
-      })
-      exactScrollLeft.current = null
-    }
-  }
-
-  // Handle window resize to keep layout and index alignment correct
   useEffect(() => {
-    const handleResize = () => {
-      updateActiveIndex()
+    measure()
+    const ro = new ResizeObserver(measure)
+    if (containerRef.current) ro.observe(containerRef.current)
+
+    // Global mouse event handlers
+    const onGlobalMove = (e: MouseEvent) => {
+      const s = S.current
+      if (!s.isDragging) return
+      const delta = e.clientX - s.dragStartX
+      if (Math.abs(delta) > 5) s.hasDragged = true
+      if (s.hasDragged) applyTransform(s.dragBaseX + delta, false)
     }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [originalCount])
+
+    const onGlobalUp = (e: MouseEvent) => {
+      const s = S.current
+      if (!s.isDragging) return
+      s.isDragging = false
+      if (!s.hasDragged) { if (!s.isHovered) scheduleNext(); return }
+      
+      const delta = e.clientX - s.dragStartX
+      const step  = s.cardWidth + GAP_PX
+      const totalDist = s.perView * step
+      
+      if (delta < -step * 0.2) {
+        const nextVI = s.virtualIdx + s.perView
+        const currentX = s.dragBaseX + delta
+        const targetX = calcX(nextVI, s.cardWidth)
+        const dist = Math.abs(targetX - currentX)
+        // Non-linear duration scaling for a smoother transition deceleration
+        const duration = Math.max(800, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
+        doSlide(1, undefined, duration, EASE_RELEASE)
+      } else if (delta > step * 0.2) {
+        const prevVI = s.virtualIdx - s.perView
+        const currentX = s.dragBaseX + delta
+        const targetX = calcX(prevVI, s.cardWidth)
+        const dist = Math.abs(targetX - currentX)
+        const duration = Math.max(800, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
+        doSlide(-1, undefined, duration, EASE_RELEASE)
+      } else {
+        const currentX = s.dragBaseX + delta
+        const dist = Math.abs(s.dragBaseX - currentX)
+        const duration = Math.max(500, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
+        applyTransform(s.dragBaseX, true, duration, EASE_RELEASE)
+        scheduleNext()
+      }
+    }
+
+    document.addEventListener('mousemove', onGlobalMove)
+    document.addEventListener('mouseup',   onGlobalUp)
+
+    return () => {
+      ro.disconnect()
+      document.removeEventListener('mousemove', onGlobalMove)
+      document.removeEventListener('mouseup',   onGlobalUp)
+      if (S.current.timer) clearTimeout(S.current.timer)
+    }
+  }, [measure])
+
+  // ── Hover ──────────────────────────────────────────────────────────────────
+  const onMouseEnter = () => {
+    S.current.isHovered = true
+    if (S.current.timer) clearTimeout(S.current.timer)
+  }
+  const onMouseLeave = () => {
+    S.current.isHovered = false
+    if (!S.current.isSliding && !S.current.isDragging) scheduleNext()
+  }
+
+  // ── Drag Start ─────────────────────────────────────────────────────────────
+  const onMouseDown = (e: React.MouseEvent) => {
+    const s = S.current
+    if (s.isSliding) return
+    e.preventDefault()
+    s.isDragging  = true
+    s.hasDragged  = false
+    s.dragStartX  = e.clientX
+    s.dragBaseX   = calcX(s.virtualIdx, s.cardWidth)
+    applyTransform(s.dragBaseX, false)
+  }
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    const s = S.current
+    if (s.isSliding) return
+    s.isDragging  = true
+    s.hasDragged  = false
+    s.dragStartX  = e.touches[0].clientX
+    s.dragBaseX   = calcX(s.virtualIdx, s.cardWidth)
+    applyTransform(s.dragBaseX, false)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    const s = S.current
+    if (!s.isDragging) return
+    const delta = e.touches[0].clientX - s.dragStartX
+    if (Math.abs(delta) > 5) s.hasDragged = true
+    if (s.hasDragged) applyTransform(s.dragBaseX + delta, false)
+  }
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const s = S.current
+    if (!s.isDragging) return
+    s.isDragging = false
+    if (!s.hasDragged) { if (!s.isHovered) scheduleNext(); return }
+    
+    const delta = e.changedTouches[0].clientX - s.dragStartX
+    const step  = s.cardWidth + GAP_PX
+    const totalDist = s.perView * step
+    
+    if (delta < -step * 0.2) {
+      const nextVI = s.virtualIdx + s.perView
+      const currentX = s.dragBaseX + delta
+      const targetX = calcX(nextVI, s.cardWidth)
+      const dist = Math.abs(targetX - currentX)
+      const duration = Math.max(800, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
+      doSlide(1, undefined, duration, EASE_RELEASE)
+    } else if (delta > step * 0.2) {
+      const prevVI = s.virtualIdx - s.perView
+      const currentX = s.dragBaseX + delta
+      const targetX = calcX(prevVI, s.cardWidth)
+      const dist = Math.abs(targetX - currentX)
+      const duration = Math.max(800, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
+      doSlide(-1, undefined, duration, EASE_RELEASE)
+    } else {
+      const currentX = s.dragBaseX + delta
+      const dist = Math.abs(s.dragBaseX - currentX)
+      const duration = Math.max(500, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
+      applyTransform(s.dragBaseX, true, duration, EASE_RELEASE)
+      scheduleNext()
+    }
+  }
+
+  // ── Dot click ──────────────────────────────────────────────────────────────
+  const onDotClick = (idx: number) => {
+    const s = S.current
+    if (s.isSliding || idx === activeDot) return
+    setActiveDot(idx)
+    doSlide(1, perView + idx * perView)
+  }
 
   return (
     <div className="w-full space-y-6">
-      {/* Scroll Viewport with Alpha Mask */}
       <div
         ref={containerRef}
-        onScroll={handleScroll}
-        onMouseEnter={() => { isHovered.current = true }}
-        onMouseLeave={() => { isHovered.current = false; handleDragEnd(); exactScrollLeft.current = null; }}
-        onMouseDown={handleDragStart}
-        onMouseMove={handleDragMove}
-        onMouseUp={handleDragEnd}
-        onTouchStart={handleDragStart}
-        onTouchMove={handleDragMove}
-        onTouchEnd={handleDragEnd}
-        className="overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing no-scrollbar select-none py-4 w-full"
-        style={{
-          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-        }}
+        className="overflow-hidden w-full py-4 cursor-grab active:cursor-grabbing"
+        style={{ touchAction: 'pan-y', userSelect: 'none' }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onMouseDown={onMouseDown}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
-        {/* Track holding all items with symmetric spacing via item padding-right */}
-        <div
-          ref={trackRef}
-          className="flex flex-row w-max"
-        >
-          {duplicatedItems.map((item, idx) => {
-            const isClone = idx >= originalCount
-            return (
-              <div
-                key={idx}
-                className="select-none pr-6" // Symmetric gap spacing (24px) for perfect infinite loop
-                style={{ userSelect: 'none' }}
-              >
-                {renderItem(item, idx % originalCount, isClone)}
-              </div>
-            )
-          })}
-        </div>
+        {cardWidthPx > 0 && (
+          <div
+            ref={trackRef}
+            className="flex"
+            style={{ gap: `${GAP_PX}px`, willChange: 'transform' }}
+          >
+            {displayItems.map((item, idx) => {
+              const isClone = idx < perView || idx >= (totalSets + 1) * perView
+              const origIdx = idx < perView ? ((totalSets - 1) * perView + idx) % n : (idx - perView) % n
+              return (
+                <div
+                  key={idx}
+                  className="flex-shrink-0"
+                  style={{ width: `${cardWidthPx}px`, userSelect: 'none' }}
+                >
+                  {renderItem(item, origIdx, isClone)}
+                </div>
+              )
+            })}
+          </div>
+        )}
       </div>
 
-      {/* Dots Indicator */}
       <div className="flex justify-center items-center gap-2 pt-2">
-        {Array.from({ length: originalCount }).map((_, idx) => (
+        {Array.from({ length: totalSets }).map((_, idx) => (
           <button
             key={idx}
-            onClick={() => handleDotClick(idx)}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-              activeIndex === idx
+            onClick={() => onDotClick(idx)}
+            className={`h-2.5 rounded-full transition-all duration-300 ${
+              activeDot === idx
                 ? 'bg-primary w-6'
-                : 'bg-charcoal/20 hover:bg-charcoal/40'
+                : 'bg-charcoal/20 hover:bg-charcoal/40 w-2.5'
             }`}
-            aria-label={`Go to slide ${idx + 1}`}
+            aria-label={`Go to slide set ${idx + 1}`}
           />
         ))}
       </div>

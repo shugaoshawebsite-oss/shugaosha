@@ -56,7 +56,7 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
           speed={0.5}
           renderItem={(cs) => (
             <div
-              className="w-[75vw] sm:w-[320px] md:w-[360px] flex-shrink-0 bg-white border border-gray-100 rounded-2xl overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300 h-full text-left"
+              className="w-full bg-white border border-gray-100 rounded-2xl overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300 h-full text-left"
             >
               {/* Image */}
               <div className="relative aspect-square bg-gray-100 w-full overflow-hidden">

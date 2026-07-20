@@ -71,7 +71,7 @@ export default function HomeCelebrities({ celebrities, locale }: HomeCelebrities
           speed={0.4}
           renderItem={(celebrity) => (
             <div
-              className="w-[75vw] sm:w-[320px] md:w-[360px] flex-shrink-0 bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full text-left"
+              className="w-full bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full text-left"
             >
               {/* Top: Photo (Square) */}
               <div className="relative aspect-square w-full bg-gray-50">
