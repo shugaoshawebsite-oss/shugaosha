@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 
@@ -17,6 +17,32 @@ interface FaqSectionProps {
 export default function FaqSection({ dict, locale }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
+  useEffect(() => {
+    const handleHashScroll = () => {
+      if (window.location.hash === '#faq') {
+        const el = document.getElementById('faq')
+        if (el) {
+          // Scroll immediately to handle quick clicks
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          
+          // Scroll again after 600ms to compensate for delayed layout shifts (MarqueeCarousels, images loading)
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }, 600)
+        }
+      }
+    }
+
+    // Run on mount (handles navigating from subpages)
+    handleHashScroll()
+
+    // Listen to hashchange events (handles clicking when already on home page)
+    window.addEventListener('hashchange', handleHashScroll)
+    return () => {
+      window.removeEventListener('hashchange', handleHashScroll)
+    }
+  }, [])
+
   const faqData = dict.home.faq
   if (!faqData || !faqData.items) return null
 
@@ -25,7 +51,8 @@ export default function FaqSection({ dict, locale }: FaqSectionProps) {
   }
 
   return (
-    <section id="faq" className="max-w-4xl mx-auto px-6 w-full">
+    <section id="faq" className="max-w-4xl mx-auto px-6 w-full scroll-mt-[100px]">
+
       <div className="text-center md:text-left space-y-4 mb-16">
         <span className="type-label text-primary">
           {faqData.subtitle}

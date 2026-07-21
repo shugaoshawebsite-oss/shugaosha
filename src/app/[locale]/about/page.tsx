@@ -191,8 +191,9 @@ export default async function AboutPage({ params }: PageProps) {
 
       {/* Instagram Plugin */}
       <section className="max-w-7xl mx-auto w-full px-0">
-        <div className="elfsight-app-79831042-0a38-4901-8e6a-93cc7c0dadcf" data-elfsight-app-lazy></div>
-        <Script src="https://elfsightcdn.com/platform.js" async />
+        {/* Elfsight Instagram Feed | Shugaosha Instagram Feed */}
+        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+        <div className="elfsight-app-053d3d7a-69da-4f5a-a15a-eb53ed990fb7" data-elfsight-app-lazy></div>
       </section>
 
       {/* CTA */}

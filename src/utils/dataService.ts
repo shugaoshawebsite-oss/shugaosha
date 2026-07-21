@@ -64,6 +64,23 @@ export interface TourSchedule {
   isActive: boolean
 }
 
+export interface GoogleReview {
+  author_name: string
+  author_url: string
+  profile_photo_url: string
+  rating: number
+  text: string
+  time: number
+  relative_time_description: string
+}
+
+export interface GooglePlaceData {
+  rating: number
+  user_ratings_total: number
+  reviews: GoogleReview[]
+  cachedAt: string
+}
+
 // ==========================================
 // FALLBACK / SEED DATA FROM SHUGAOSHA.COM
 // ==========================================
@@ -337,4 +354,30 @@ export async function getTeam(): Promise<TeamMember[]> {
 
 export async function getTours(): Promise<TourSchedule[]> {
   return fetchContent<TourSchedule[]>('tours.json', fallbackTours)
+}
+
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000 // 24 hours
+
+const fallbackGooglePlaceData: GooglePlaceData = {
+  rating: 5.0,
+  user_ratings_total: 45,
+  reviews: [],
+  cachedAt: '2000-01-01T00:00:00.000Z',
+}
+
+export async function getGoogleReviews(): Promise<GooglePlaceData> {
+  // Try to read from the local cache file
+  const cached = await fetchContent<GooglePlaceData>('googleReviews.json', fallbackGooglePlaceData)
+
+  // If the cache is stale, trigger a background refresh via the API route
+  // This is a best-effort fire-and-forget — the current request still returns cached data
+  const isStale = !cached.cachedAt || (Date.now() - new Date(cached.cachedAt).getTime()) > CACHE_TTL_MS
+  if (isStale) {
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000'
+    fetch(`${baseUrl}/api/google-reviews`, { cache: 'no-store' }).catch(() => {})
+  }
+
+  return cached
 }

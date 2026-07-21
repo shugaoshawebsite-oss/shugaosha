@@ -2,13 +2,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
-import { getServices, getCelebrities, getCaseStudies } from '@/utils/dataService'
+import { getServices, getCelebrities, getCaseStudies, getGoogleReviews } from '@/utils/dataService'
 import { ArrowRight, Sparkles, Scale, Droplet, Sun, Smile, Shield } from 'lucide-react'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 import FaqSection from '@/components/FaqSection'
 import HeroSection from '@/components/HeroSection'
 import HomeCaseStudies from '@/components/HomeCaseStudies'
 import HomeCelebrities from '@/components/HomeCelebrities'
+import HomeGoogleReviews from '@/components/HomeGoogleReviews'
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -29,6 +30,7 @@ export default async function HomePage({ params }: PageProps) {
   const dict = getDictionary(locale)
   const celebrities = await getCelebrities()
   const caseStudies = await getCaseStudies()
+  const googleReviews = await getGoogleReviews()
 
 
 
@@ -197,32 +199,8 @@ export default async function HomePage({ params }: PageProps) {
       {/* 6. Celebrity Endorsements */}
       <HomeCelebrities celebrities={celebrities} locale={locale} />
 
-      {/* 7. Google Reviews + flags */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-4 mb-14">
-          <span className="type-label text-primary">
-            {locale === 'en' ? 'Client Voices' : '客戶心聲'}
-          </span>
-          <div className="flex justify-center md:justify-start items-center py-2">
-            <Image
-              src="/assets/Google_Review_light.svg"
-              alt="Google Reviews"
-              width={360}
-              height={200}
-              className="h-20 w-auto object-contain"
-            />
-          </div>
-          {/* Flag row */}
-          <div className="flex justify-center md:justify-start items-center gap-5 pt-0 flex-wrap">
-            {['🇭🇰', '🇦🇺', '🇺🇸', '🇨🇦'].map((flag, idx) => (
-              <span key={idx} className="text-3xl">{flag}</span>
-            ))}
-          </div>
-        </div>
-
-        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
-        <div className="elfsight-app-2e95f4e7-4c5c-433a-b79d-392da72b4ca2" data-elfsight-app-lazy></div>
-      </section>
+      {/* 7. Google Reviews */}
+      <HomeGoogleReviews placeData={googleReviews} locale={locale} />
 
       {/* 8. Our Process */}
       <section className="bg-soft-bg border-y border-gray-100 py-24">
@@ -311,9 +289,36 @@ export default async function HomePage({ params }: PageProps) {
       <FaqSection dict={dict} locale={locale} />
 
       {/* 11. Instagram Section */}
-      <section className="max-w-7xl mx-auto w-full px-0">
-        <div className="elfsight-app-79831042-0a38-4901-8e6a-93cc7c0dadcf" data-elfsight-app-lazy></div>
-        <Script src="https://elfsightcdn.com/platform.js" async />
+      <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-6 pb-12">
+        {/* Elfsight Instagram Feed | Shugaosha Instagram Feed */}
+        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+        <div className="elfsight-app-053d3d7a-69da-4f5a-a15a-eb53ed990fb7 w-full" data-elfsight-app-lazy></div>
+        <div className="mt-4">
+          <a
+            href="https://www.instagram.com/shugaosha"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary inline-flex items-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+            {locale === 'en' ? 'Follow @shugaosha' : '追蹤 @shugaosha'}
+          </a>
+        </div>
       </section>
 
     </div>

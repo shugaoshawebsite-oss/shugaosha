@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { getDictionary } from '@/utils/dictionary'
-import { Mail, MapPin, Clock, Phone, Calendar } from 'lucide-react'
+import { Mail, MapPin, Clock, Phone, Calendar, Shield } from 'lucide-react'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 import { getTours } from '@/utils/dataService'
 
@@ -111,9 +111,9 @@ export default async function ContactPage({ params }: PageProps) {
             </a>
 
             {/* Response time note */}
-            <div className="bg-white border border-gray-100 rounded-xl p-5 flex gap-4 w-full">
-              <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div className="space-y-1 text-left">
+            <div className="bg-white border border-gray-100 rounded-xl p-5 flex flex-col items-center text-center gap-3 w-full md:flex-row md:items-start md:text-left md:gap-4">
+              <Clock className="w-5 h-5 text-primary flex-shrink-0 md:mt-0.5" />
+              <div className="space-y-1 text-center md:text-left">
                 <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider">
                   {locale === 'en' ? 'Response Time' : '回覆時間'}
                 </h4>
@@ -124,7 +124,38 @@ export default async function ContactPage({ params }: PageProps) {
                 </p>
               </div>
             </div>
+
+            {/* Booking Terms defensive box */}
+            <div className="bg-white border border-gray-100 rounded-xl p-5 flex flex-col items-center text-center gap-3 w-full md:flex-row md:items-start md:text-left md:gap-4">
+              <Shield className="w-5 h-5 text-primary flex-shrink-0 md:mt-0.5" />
+              <div className="space-y-1 text-center md:text-left">
+                <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider">
+                  {locale === 'en' ? 'Booking Terms' : '預約條款'}
+                </h4>
+                <p className="text-sm font-light text-charcoal/80 leading-relaxed">
+                  {locale === 'en' ? (
+                    <>
+                      All bookings assume agreement to our{' '}
+                      <Link href={`/${locale}/appointment-policy`} className="text-primary hover:underline font-medium">
+                        Appointment Policy
+                      </Link>
+                      . Please read it carefully before scheduling.
+                    </>
+                  ) : (
+                    <>
+                      所有預約皆視同您同意我們的{' '}
+                      <Link href={`/${locale}/appointment-policy`} className="text-primary hover:underline font-medium">
+                        預約須知與條款
+                      </Link>
+                      。預約前請務必詳閱。
+                    </>
+                  )}
+                </p>
+              </div>
+            </div>
           </div>
+
+
 
           {/* Right: Shop details + Map */}
           <div className="space-y-8">
@@ -204,9 +235,9 @@ export default async function ContactPage({ params }: PageProps) {
               return (
                 <div key={tour._id} className="space-y-6 pb-8 border-b border-gray-100 last:border-0 last:pb-0">
                   <div className="space-y-4">
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-col items-center justify-center text-center gap-2 md:flex-row md:items-center md:justify-start md:text-left md:gap-3">
                       <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
-                      <div>
+                      <div className="text-center md:text-left">
                         <p className="type-label text-primary mb-1">
                           {locale === 'en' ? 'Destination' : '巡迴城市'}
                         </p>
@@ -216,9 +247,9 @@ export default async function ContactPage({ params }: PageProps) {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3 pt-2">
-                      <Calendar className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <div>
+                    <div className="flex flex-col items-center justify-center text-center gap-2 md:flex-row md:items-start md:justify-start md:text-left md:gap-3 pt-2">
+                      <Calendar className="w-5 h-5 text-primary flex-shrink-0 md:mt-0.5" />
+                      <div className="text-center md:text-left">
                         <p className="type-label text-charcoal/50 mb-1">
                           {locale === 'en' ? 'Dates' : '日期'}
                         </p>
@@ -232,6 +263,7 @@ export default async function ContactPage({ params }: PageProps) {
                       </div>
                     </div>
                   </div>
+
 
                   <div className="space-y-4 pt-2 border-t border-gray-100">
                     <p className="type-body text-charcoal/80 leading-relaxed">

@@ -223,9 +223,9 @@ export default async function TrainingPage({ params }: PageProps) {
           {courseModules.map(({ icon: Icon, en, zh }) => (
             <div
               key={en}
-              className="bg-white border border-gray-100 rounded-2xl p-5 space-y-3 hover:border-primary/20 hover:shadow-sm transition-all duration-300 group"
+              className="bg-white border border-gray-100 rounded-2xl p-5 space-y-3 hover:border-primary/20 hover:shadow-sm transition-all duration-300 group text-center sm:text-left"
             >
-              <div className="w-9 h-9 rounded-xl bg-primary/8 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300">
+              <div className="w-9 h-9 rounded-xl bg-primary/8 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300 mx-auto sm:mx-0">
                 <Icon className="w-4.5 h-4.5 text-primary" />
               </div>
               <p className="text-xs font-medium text-charcoal/85 leading-snug">
@@ -234,6 +234,7 @@ export default async function TrainingPage({ params }: PageProps) {
             </div>
           ))}
         </div>
+
       </section>
 
       {/* ── Who Is This For ── */}

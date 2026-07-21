@@ -27,6 +27,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // Public API routes — skip i18n locale redirect
+  if (pathname.startsWith('/api/')) {
+    return NextResponse.next()
+  }
+
   // Don't run i18n middleware on Sanity Studio paths
   if (pathname.startsWith('/studio')) {
     return NextResponse.next()

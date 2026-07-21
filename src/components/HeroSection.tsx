@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { gsap } from 'gsap'
@@ -17,6 +17,17 @@ interface HeroSectionProps {
 
 export default function HeroSection({ locale, dict }: HeroSectionProps) {
   const containerRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    // Force scroll to top on mount when there's no hash (e.g. returning to Home from a subpage)
+    if (!window.location.hash) {
+      window.scrollTo(0, 0)
+      const timer = setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 50)
+      return () => clearTimeout(timer)
+    }
+  }, [])
 
   useGSAP(
     () => {
