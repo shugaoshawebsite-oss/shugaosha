@@ -224,8 +224,8 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         </svg>
       </button>
 
-      {/* Social Links — vertical on right side */}
-      <div className="hero-social-v absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-5 z-20">
+      {/* Social Links — vertical on right side (desktop only) */}
+      <div className="hero-social-v absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-5 z-20">
         <a
           href="https://www.facebook.com/shugaosha"
           target="_blank"

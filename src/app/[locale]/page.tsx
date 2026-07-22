@@ -37,7 +37,7 @@ export default async function HomePage({ params }: PageProps) {
   // No static featured objects needed as we render all items inside marquee carousels
 
   return (
-    <div className="flex flex-col space-y-24 md:space-y-36 pb-24">
+    <div className="flex flex-col space-y-24 md:space-y-36 pb-24 max-w-full overflow-x-hidden">
 
       {/* 1. Hero Section — GSAP animated, bottom-left layout */}
       <HeroSection locale={locale} dict={dict} />
@@ -292,7 +292,7 @@ export default async function HomePage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-6 pb-12">
         {/* Elfsight Instagram Feed | Shugaosha Instagram Feed */}
         <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
-        <div className="elfsight-app-053d3d7a-69da-4f5a-a15a-eb53ed990fb7 w-full" data-elfsight-app-lazy></div>
+        <div className="elfsight-app-053d3d7a-69da-4f5a-a15a-eb53ed990fb7 w-full max-w-full overflow-hidden" data-elfsight-app-lazy></div>
         <div className="mt-4">
           <a
             href="https://www.instagram.com/shugaosha"

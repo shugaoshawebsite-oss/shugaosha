@@ -262,8 +262,8 @@ export default function Header({ locale }: HeaderProps) {
 
       {/* ── Drawer (mobile & tablet, below lg) ── */}
       <div
-        className={`fixed inset-y-0 right-0 w-72 bg-white/95 backdrop-blur-2xl shadow-2xl z-[60] transform transition-transform duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] lg:hidden
-          ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed inset-y-0 right-0 w-72 bg-white/95 backdrop-blur-2xl shadow-2xl z-[60] transform transition-all duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] lg:hidden
+          ${isOpen ? 'translate-x-0 opacity-100 visible' : 'translate-x-full opacity-0 invisible pointer-events-none'}`}
       >
         <div className="flex justify-end p-6">
           <button onClick={() => setIsOpen(false)} className="text-charcoal hover:text-primary p-2 transition-colors">

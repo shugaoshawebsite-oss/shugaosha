@@ -40,7 +40,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   return (
     <html lang={locale} className={`${montserrat.variable} ${notoSansTC.variable} ${gilda.variable}`}>
-      <body className="bg-white text-foreground flex flex-col min-h-screen">
+      <body className="bg-white text-foreground flex flex-col min-h-screen max-w-full overflow-x-hidden">
         {/* Floating Island Navbar */}
         <Header locale={locale} />
 
@@ -48,10 +48,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <div id="hero-sentinel" aria-hidden="true" />
 
         {/* Main content — no top padding; Hero handles its own 100dvh */}
-        <main className="flex-grow">
+        <main className="flex-grow max-w-full overflow-x-hidden">
           {children}
         </main>
-
         <Footer locale={locale} />
       </body>
     </html>

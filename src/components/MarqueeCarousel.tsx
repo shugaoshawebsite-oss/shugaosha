@@ -304,10 +304,10 @@ export default function MarqueeCarousel<T>({
   }
 
   return (
-    <div className="w-full space-y-6">
+    <div className="w-full max-w-full space-y-6 overflow-hidden">
       <div
         ref={containerRef}
-        className="overflow-hidden w-full py-4 cursor-grab active:cursor-grabbing"
+        className="overflow-hidden w-full max-w-full py-4 cursor-grab active:cursor-grabbing"
         style={{ touchAction: 'pan-y', userSelect: 'none' }}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
