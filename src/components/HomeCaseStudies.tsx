@@ -37,7 +37,7 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
       <div className="space-y-12 px-6 sm:px-8 lg:px-12 text-center md:text-left">
         <div className="space-y-3">
           <span className="type-label text-primary">
-            {locale === 'en' ? 'Visual Evidence' : '視覺對比'}
+            {locale === 'en' ? 'Visual Evidence' : '真實案例'}
           </span>
           <h2 className="type-heading text-foreground">
             {locale === 'en' ? 'Real Results' : '真實療效'}

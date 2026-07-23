@@ -211,17 +211,17 @@ export default async function TreatmentPage({ params }: PageProps) {
                 },
                 {
                   step: "02",
-                  title: locale === 'en' ? "Personalised Hands-On Treatment" : "專屬徒手調理",
+                  title: locale === 'en' ? "Personalised Hands-On Treatment" : "專屬徒手療程",
                   desc: locale === 'en'
                     ? "Using The Shugaosha Way, we work layer by layer with gentle hands-on techniques, carefully tailored to support your unique facial structure and natural balance."
                     : "採用修顏社獨特的小顏手法，以溫和的徒手技術進行層層調理，精心契合您獨特的面部結構與自然平衡。"
                 },
                 {
                   step: "03",
-                  title: locale === 'en' ? "Progressive Journey" : "漸進式調理旅程",
+                  title: locale === 'en' ? "Progressive Journey" : "漸進式改善旅程",
                   desc: locale === 'en'
-                    ? "As your facial balance improves over a series of sessions, changes become more refined, harmonious and long-lasting. Regular sessions help support and maintain your natural progression."
-                    : "隨著您的面部平衡在連續的療程中不斷改善，效果將變得更加細緻、和諧且持久。定期的保養療程有助於支持並維持您的自然美麗進程。"
+                    ? "As your facial balance improves over a series of sessions, changes become more refined, harmonious and long-lasting. Regular sessions help support and maintain your results over time."
+                    : "隨著您的面部平衡在連續的療程中不斷改善，效果將變得更加細緻、和諧且持久。定期療程有助支持並維持逐步累積的改善效果。"
                 }
               ].map((item, index) => (
                 <div key={index} className="space-y-3 text-left bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
@@ -282,7 +282,7 @@ export default async function TreatmentPage({ params }: PageProps) {
               },
               {
                 icon: Shield,
-                title: locale === 'en' ? 'Youthful Glow' : '青春活力',
+                title: locale === 'en' ? 'Youthful Glow' : '年輕光采',
                 desc: locale === 'en' ? 'Supports healthier-looking skin and a naturally refreshed appearance.' : '提升肌膚活力，帶來由內而外的自然健康光澤。'
               }
             ].map((benefit, i) => {

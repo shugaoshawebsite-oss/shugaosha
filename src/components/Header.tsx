@@ -119,6 +119,7 @@ export default function Header({ locale }: HeaderProps) {
     { name: dict.nav.training,          path: `/${locale}/training` },
     { name: dict.nav.faq,               path: `/${locale}#faq` },
     { name: dict.nav.contact,           path: `/${locale}/contact` },
+    { name: dict.nav.appointmentPolicy, path: `/${locale}/appointment-policy` },
   ]
 
   const isActive = (path: string) => {

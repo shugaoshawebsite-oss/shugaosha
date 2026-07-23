@@ -46,7 +46,7 @@ const whoIsItFor = {
     '健康養生專業人士',
     '有意轉換職業的人士',
     '育兒後重返工作的父母',
-    '希望學習靈活專業技能的人士',
+    '希望掌握專業徒手技術的人士',
     '無任何相關經驗的初學者',
   ],
 }
@@ -72,8 +72,8 @@ export default async function TrainingPage({ params }: PageProps) {
           </h1>
           <p className="type-body text-charcoal/80 max-w-xl mt-4">
             {locale === 'en'
-              ? 'Learn Authentic Japanese Kogao. Build a Professional Career.'
-              : '學習正宗日本小顏術，建立專業職業生涯。'}
+              ? 'Learn Authentic Japanese Small Face Correction. Build a Professional Career.'
+              : '學習正宗日本小顏術，建立專業事業。'}
           </p>
         </div>
       </section>
@@ -82,8 +82,8 @@ export default async function TrainingPage({ params }: PageProps) {
       <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-6">
         <p className="text-base sm:text-lg font-light text-charcoal/80 leading-relaxed">
           {locale === 'en'
-            ? 'Shugaosha offers professional training in authentic Japanese Small Face Correction (Japanese Kogao), based on the official curriculum of the Japan Small Face Correction Association (JSFA), Japan.'
-            : '修顏社提供正宗日本小顏矯正（Japanese Kogao）的專業培訓，基於日本小顏矯正協會（JSFA）官方課程編排。'}
+            ? 'Shugaosha offers professional training in authentic Japanese Small Face Correction, based on the official curriculum of the Japan Small Face Correction Association (JSFA), Japan.'
+            : '修顏社提供正宗日本小顏矯正術（Japanese Small Face Correction）的專業培訓，基於日本小顏矯正協會（JSFA）官方課程編排。'}
         </p>
         <p className="text-base sm:text-lg font-light text-charcoal/80 leading-relaxed">
           {locale === 'en'
@@ -100,7 +100,7 @@ export default async function TrainingPage({ params }: PageProps) {
               {locale === 'en' ? 'Official Certification' : '官方認證'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-              {locale === 'en' ? 'Official Japanese Kogao Certification' : '日本官方小顏矯正認證'}
+              {locale === 'en' ? 'Official Japanese Small Face Correction Certification' : '日本官方小顏矯正認證'}
             </h2>
             <p className="text-base font-medium text-foreground">
               {locale === 'en' ? 'Learn through Australia’s Official JSFA Representative' : '跟隨日本小顏矯正協會官方澳洲代表學習'}
@@ -118,7 +118,7 @@ export default async function TrainingPage({ params }: PageProps) {
               },
               {
                 icon: Users,
-                title: locale === 'en' ? "Australia’s Official JSFA Representative" : '官方澳洲 JSFA 代表',
+                title: locale === 'en' ? "Australia’s Official JSFA Representative" : 'JSFA 官方澳洲代表',
                 desc: locale === 'en'
                   ? 'Learn directly from Teresa Soo, the Official Australian Representative of the Japan Small Face Correction Association (JSFA) and Australia’s only JSFA Certified Instructor.'
                   : '直接師從 Teresa Soo，她是日本小顏矯正協會（JSFA）官方澳洲代表，也是澳洲唯一的 JSFA 認證導師。',
@@ -183,7 +183,7 @@ export default async function TrainingPage({ params }: PageProps) {
             <p className="text-sm font-light text-charcoal/75 leading-relaxed">
               {locale === 'en'
                 ? 'As both an instructor and practising therapist, Teresa continues to work with real clients while teaching. Her combination of authentic Japanese training, clinical experience and practical application allows students to develop confidence, precision and professional skills that can be applied immediately in practice.'
-                : '作為既是導師又是執業治療師的 Teresa，在授課的同時持續為真實客戶提供服務。她將正宗的日式培訓、豐富的臨床經驗與實際應用相結合，幫助學生建立自信、精準度與專業技能，並能立即應用於日常實踐中。'}
+                : 'Teresa 同時身兼官方認證導師及執業治療師，在授課的同時持續為真實客戶提供療程。'}
             </p>
           </div>
 
@@ -326,7 +326,7 @@ export default async function TrainingPage({ params }: PageProps) {
             },
             {
               icon: Users,
-              title: locale === 'en' ? 'Professional Confidence' : '專業自信',
+              title: locale === 'en' ? 'Professional Confidence' : '建立專業自信',
               desc: locale === 'en'
                 ? 'Upon graduation, students will have the practical skills and confidence to begin offering authentic Japanese Small Face Correction treatments as part of their professional services or future business.'
                 : '畢業後，學生將具備實務技能和自信，可開始在其專業服務或未來業務中提供正宗日本小顏矯正療程。',
@@ -388,7 +388,7 @@ export default async function TrainingPage({ params }: PageProps) {
             <p className="text-sm font-light text-charcoal/60">
               {locale === 'en'
                 ? 'Further details will be announced as the programme continues to develop.'
-                : '詳情將隨課程持續發展而公佈。'}
+                : '更多詳情將於日後公布。'}
             </p>
           </div>
 

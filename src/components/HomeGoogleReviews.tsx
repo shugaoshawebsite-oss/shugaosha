@@ -200,8 +200,7 @@ function ReviewCard({ review, onReadMore }: ReviewCardProps) {
 }
 
 // ─── Main export ───────────────────────────────────────────────────────────────
-const MAPS_REVIEW_URL =
-  'https://www.google.com/maps/place/Shugaosha+%E4%BF%AE%E9%A1%8D%E7%A4%BE+%E2%80%93+Japanese+Facial+Realignment/@-33.8319306,151.2351459,17z/data=!4m18!1m9!3m8!1s0x6b12ada7ccd39b9f:0xc5e318565d8bad32!2zU2h1Z2Fvc2hhIOS_rumhj-ekviDigJMgSmFwYW5lc2UgRmFjaWFsIFJlYWxpZ25tZW50!8m2!3d-33.8319351!4d151.2377262!9m1!1b1!16s%2Fg%2F11v59ft4qm!3m7!1s0x6b12ada7ccd39b9f:0xc5e318565d8bad32!8m2!3d-33.8319351!4d151.2377262!9m1!1b1!16s%2Fg%2F11v59ft4qm?entry=ttu'
+const MAPS_REVIEW_URL = 'https://g.page/r/CTKti11WGOPFEBE/review'
 
 export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleReviewsProps) {
   const [lightboxReview, setLightboxReview] = useState<GoogleReview | null>(null)
@@ -246,7 +245,7 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
             id="google-review-cta"
           >
             <GoogleLogo className="w-4 h-4 flex-shrink-0" />
-            {locale === 'en' ? 'Review us on Google' : '在 Google 留下評論'}
+            {locale === 'en' ? 'LEAVE A GOOGLE REVIEW' : '在 GOOGLE 留下評論'}
           </a>
         </div>
 

@@ -92,11 +92,54 @@ h2 {
   letter-spacing: normal !important;
 }
 
-/* Chinese locale — keep headings in light sans-serif (Noto Sans TC) */
+/* Chinese locale — bigger, bolder and darker text for optimal legibility */
+html[lang="zh"] {
+  font-size: 16.5px;
+}
+
+html[lang="zh"] body {
+  color: #1a1b1e;
+}
+
 html[lang="zh"] h1,
-html[lang="zh"] h2 {
+html[lang="zh"] h2,
+html[lang="zh"] h3,
+html[lang="zh"] h4 {
   font-family: var(--font-noto-sans-tc), var(--font-montserrat), sans-serif;
-  font-weight: 300;
+  font-weight: 400;
+  color: #111215;
+}
+
+html[lang="zh"] p,
+html[lang="zh"] li,
+html[lang="zh"] span,
+html[lang="zh"] div {
+  font-weight: 400;
+}
+
+html[lang="zh"] .font-light,
+html[lang="zh"] p.font-light,
+html[lang="zh"] span.font-light {
+  font-weight: 400 !important;
+}
+
+/* Darken semi-transparent text classes specifically for Chinese text */
+html[lang="zh"] .text-charcoal\/80,
+html[lang="zh"] .text-charcoal\/75,
+html[lang="zh"] .text-charcoal\/70,
+html[lang="zh"] .text-charcoal\/65,
+html[lang="zh"] .text-charcoal\/60 {
+  color: #222326;
+}
+
+html[lang="zh"] .text-charcoal\/50,
+html[lang="zh"] .text-charcoal\/45,
+html[lang="zh"] .text-charcoal\/40 {
+  color: #383a3f;
+}
+
+html[lang="zh"] .text-charcoal {
+  color: #1a1b1e;
 }
 
 html {

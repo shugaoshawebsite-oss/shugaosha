@@ -137,7 +137,7 @@ export default async function ContactPage({ params }: PageProps) {
                     <>
                       All bookings assume agreement to our{' '}
                       <Link href={`/${locale}/appointment-policy`} className="text-primary hover:underline font-medium">
-                        Appointment Policy
+                        Booking Policy
                       </Link>
                       . Please read it carefully before scheduling.
                     </>
@@ -337,7 +337,7 @@ export default async function ContactPage({ params }: PageProps) {
                 <>
                   All sessions follow the{' '}
                   <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors">
-                    Appointment Policy
+                    Booking Policy
                   </Link>
                   .
                 </>

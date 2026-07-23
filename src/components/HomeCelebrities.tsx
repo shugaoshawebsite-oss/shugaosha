@@ -61,7 +61,7 @@ export default function HomeCelebrities({ celebrities, locale }: HomeCelebrities
               {locale === 'en' ? 'Celebrity Endorsements' : '名人明星推薦'}
             </span>
             <h2 className="type-heading text-foreground">
-              {locale === 'en' ? 'Trusted by Hong Kong Celebrities' : '深受香港著名明星信賴'}
+              {locale === 'en' ? 'Trusted by Hong Kong Celebrities' : '深受香港明星信賴'}
             </h2>
           </div>
         </div>

@@ -8,13 +8,13 @@
     "training": "Training",
     "contact": "Contact",
     "faq": "FAQ",
-    "appointmentPolicy": "Appointment Policy"
+    "appointmentPolicy": "Booking Policy"
   },
   "home": {
     "hero": {
       "title": "THE SHUGAOSHA WAY",
-      "tagline": "Beyond Beauty.",
-      "subtitle": "Balance • Harmony • Wellbeing.",
+      "tagline": "Beyond Beauty",
+      "subtitle": "PRECISION • BALANCE • HARMONY",
       "description": "A gentle hands-on approach to facial balance, harmony and wellbeing."
     },
     "whatWeDo": {
@@ -46,8 +46,8 @@
       "steps": [
         {
           "number": "1",
-          "title": "Scan & Plan",
-          "desc": "We assess your facial balance and create a personalised treatment plan tailored to your individual needs."
+          "title": "Consultation & Assessment",
+          "desc": "We begin with a consultation to understand your concerns and assess your facial balance, ensuring every treatment is tailored to your individual needs."
         },
         {
           "number": "2",
@@ -56,8 +56,8 @@
         },
         {
           "number": "3",
-          "title": "Maintain",
-          "desc": "We’ll guide you on the most suitable next step based on your individual progress."
+          "title": "Ongoing Care",
+          "desc": "We’ll recommend the most suitable next step based on your individual progress."
         }
       ]
     },
@@ -123,19 +123,19 @@
   },
   "treatment": {
     "title": "Treatment",
-    "subtitle": "The Shugaosha Method",
+    "subtitle": "The Shugaosha Way",
     "tagline": "Effective, Non-invasive, Safe & Natural",
     "introTitle": "How Does The Shugaosha Way Work?",
     "introDesc1": "The Shugaosha Way is based on the belief that facial appearance is closely connected to balance, harmony and overall wellbeing.",
     "introDesc2": "Through our signature hands-on approach, we work with the body’s natural structure rather than forcing change.",
     "introDesc3": "Every treatment is personalised, respecting each client’s unique facial features while encouraging a naturally refreshed, balanced and lifted appearance.",
-    "introDesc4": "Our goal is not to change who you are, but to help you look and feel your natural best.",
+    "introDesc4": "Our goal is not to change your appearance, but to help you rediscover your natural balance.",
     "skullTitle": "Understanding Facial Balance",
     "skullDesc1": "As we age, daily habits, posture and muscle tension can gradually influence facial balance and overall appearance.",
     "skullDesc2": "The Shugaosha Way focuses on understanding these changes and working with the body’s natural structure through a gentle hands-on approach.",
     "skullDesc3": "Rather than forcing change, our goal is to encourage better balance, harmony and a naturally refreshed appearance.",
     "techniqueTitle": "Layer by Layer, With Care",
-    "techniqueDesc1": "The Shugaosha Way is performed using a carefully developed layer-by-layer hands-on approach.",
+    "techniqueDesc1": "The Shugaosha Way is performed through our carefully developed layer-by-layer hands-on approach.",
     "techniqueDesc2": "Rather than focusing on a single feature, we consider how different areas of the face work together to support overall balance and harmony.",
     "techniqueDesc3": "Every treatment is individually tailored to complement your unique facial structure and natural features, helping you achieve results that look balanced, refreshed and naturally you.",
     "additionalBenefitsTitle": "Additional Benefits",
@@ -163,7 +163,7 @@
       "5-Star Google Reviews"
     ],
     "philosophyTitle": "The Science & Philosophy",
-    "philosophyDesc": "The Shugaosha Philosophy: Balance, Harmony, Wellbeing. The Shugaosha Way: Less Force. More Understanding. We Don't Change Your Face.",
+    "philosophyDesc": "The Shugaosha Philosophy: PRECISION • BALANCE • HARMONY. The Shugaosha Way: Less Force. More Understanding. We Don't Change Your Face.",
     "locationNotice": "We have moved to Gladesville!"
   },
   "newsTours": {

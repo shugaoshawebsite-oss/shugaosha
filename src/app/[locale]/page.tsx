@@ -94,10 +94,10 @@ export default async function HomePage({ params }: PageProps) {
           {/* Header */}
           <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-3">
             <span className="type-label text-primary">
-              {locale === 'en' ? 'Why Shugaosha' : '小顏矯正的好處'}
+              {locale === 'en' ? 'Why Shugaosha' : '為什麼選擇修顏社小顏術'}
             </span>
             <h2 className="type-heading text-foreground">
-              {locale === 'en' ? 'Benefits of The Shugaosha Way' : '修顏社療法的益處'}
+              {locale === 'en' ? 'Benefits of The Shugaosha Way' : '修顏社小顏術的好處'}
             </h2>
           </div>
 
@@ -131,7 +131,7 @@ export default async function HomePage({ params }: PageProps) {
               },
               {
                 icon: Shield,
-                title: locale === 'en' ? 'Youthful Glow' : '青春活力',
+                title: locale === 'en' ? 'Youthful Glow' : '年輕光采',
                 desc: locale === 'en' ? 'Supports healthier-looking skin and a naturally refreshed appearance.' : '提升肌膚活力，帶來由內而外的自然健康光澤。'
               }
             ].map((item, i) => {
@@ -167,12 +167,12 @@ export default async function HomePage({ params }: PageProps) {
             </div>
             <div className="space-y-2 flex-1">
               <h4 className="type-card-title text-foreground font-semibold">
-                {locale === 'en' ? 'Local Business Awards Finalist' : '地方商業大獎決賽入圍'}
+                {locale === 'en' ? 'Local Business Awards Finalist' : '地區商業大獎最終決賽入圍'}
               </h4>
               <p className="type-body-sm text-charcoal/80 leading-relaxed">
                 {locale === 'en'
                   ? 'Proudly recognised as a Finalist in the 2026 Northern Districts Local Business Awards, recognising our dedication to helping clients achieve natural, balanced results through The Shugaosha Way.'
-                  : '榮幸入圍 2026 年北區地方商業大獎（Northern Districts Local Business Awards）決賽，肯定了我們致力於通過「修顏社小顏術」幫助客戶獲得自然平衡效果的付出。'
+                  : '榮幸入圍 2026 年北區地區商業大獎（Northern Districts Local Business Awards）最終決賽，肯定了我們致力透過「修顏社小顏術（The Shugaosha Way）」幫助客戶重拾自然平衡、和諧與自信的努力。'
                 }
               </p>
             </div>

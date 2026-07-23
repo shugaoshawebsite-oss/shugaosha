@@ -210,7 +210,7 @@ export default function SuccessStoriesClient({
         <div className="space-y-12 px-6 sm:px-8 lg:px-12">
           <div className="border-b border-gray-100 pb-6">
             <span className="text-xs font-semibold uppercase tracking-wider text-primary block mb-3">
-              {locale === 'en' ? 'Visual Evidence' : '視覺對比'}
+              {locale === 'en' ? 'Visual Evidence' : '真實案例'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
               {dict.success.visualEvidence}

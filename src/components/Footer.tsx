@@ -28,8 +28,8 @@ export default function Footer({ locale }: FooterProps) {
             </Link>
             <p className="text-sm font-light text-white/60 max-w-xs mx-auto md:mx-0 leading-relaxed">
               {locale === 'en' 
-                ? 'Helping people rediscover balance, harmony and confidence through gentle Japanese hands-on techniques.'
-                : '以溫和的日式徒手技術，幫助人們重新發現平衡、和諧與自信。'}
+                ? 'Helping people rediscover balance, harmony and confidence through The Shugaosha Way.'
+                : '以溫和的修顏社小顏術，幫助您重拾自然平衡、和諧與自信。'}
             </p>
             {/* Social Icons */}
             <div className="flex gap-4 pt-2 justify-center md:justify-start">
@@ -131,13 +131,13 @@ export default function Footer({ locale }: FooterProps) {
             <div className="space-y-3 w-full">
               <p className="text-sm font-light text-white/70">
                 <span className="font-medium text-white block mb-1">
-                  {locale === 'en' ? 'Gladesville Clinic:' : '主要診所地址:'}
+                  {locale === 'en' ? 'Sydney Studio:' : 'Sydney 工作室:'}
                 </span>
                 5 Pittwater Road, Gladesville NSW 2111, Australia
               </p>
               <div className="text-sm font-light text-white/70 space-y-1">
                 <p>
-                  <span className="font-medium">{locale === 'en' ? 'WhatsApp / SMS:' : '預約專線:'}</span>{' '}
+                  <span className="font-medium">{locale === 'en' ? 'WhatsApp / SMS:' : 'WhatsApp／SMS:'}</span>{' '}
                   <a href="tel:+61493552213" className="hover:text-primary transition-colors">+61 493552213</a>
                 </p>
                 <p>
@@ -155,7 +155,7 @@ export default function Footer({ locale }: FooterProps) {
           <p className="text-xs font-light text-white/40">© {new Date().getFullYear()} Shugaosha.com. All rights reserved.</p>
           <div className="text-center sm:text-left py-1 sm:py-0">
             <span className="text-xs font-medium tracking-widest uppercase text-white/50 block">
-              PRECISION • BALANCE • HARMONY
+              {locale === 'en' ? 'PRECISION • BALANCE • HARMONY' : '精準・平衡・和諧'}
             </span>
           </div>
           <div className="flex space-x-6">
