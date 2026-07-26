@@ -2,8 +2,8 @@
   {
     "_id": "tour1",
     "city": {
-      "en": "Hong Kong (Causeway Bay)",
-      "zh": "香港 (銅鑼灣)"
+      "en": "Hong Kong\\",
+      "zh": "香港"
     },
     "dates": [
       "27 September – 18 October 2026"
