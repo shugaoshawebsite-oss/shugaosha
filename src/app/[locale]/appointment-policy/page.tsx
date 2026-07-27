@@ -106,7 +106,7 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
             {locale === 'en' ? 'Policy' : '預約政策'}
           </span>
           <h1 className="type-hero text-charcoal">
-            {locale === 'en' ? 'Booking Policy' : '預約政策'}
+            {locale === 'en' ? 'Appointment Policy' : '預約政策'}
           </h1>
           <p className="type-body text-charcoal/80 max-w-xl mt-4">
             {locale === 'en'
@@ -156,7 +156,7 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
           </p>
           <p className="text-xs font-light text-charcoal/50 pt-2 max-w-md mx-auto">
             {locale === 'en'
-              ? 'Booking an appointment with Shugaosha indicates acceptance of our Booking Policy.'
+              ? 'Booking an appointment with Shugaosha indicates acceptance of our Appointment Policy.'
               : '向修顏社預約即表示接受我們的預約政策。'}
           </p>
         </div>

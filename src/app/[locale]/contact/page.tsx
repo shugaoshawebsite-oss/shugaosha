@@ -125,32 +125,32 @@ export default async function ContactPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Booking Terms defensive box */}
-            <div className="bg-white border border-gray-100 rounded-xl p-5 flex flex-col items-center text-center gap-3 w-full md:flex-row md:items-start md:text-left md:gap-4">
-              <Shield className="w-5 h-5 text-primary flex-shrink-0 md:mt-0.5" />
-              <div className="space-y-1 text-center md:text-left">
-                <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider">
-                  {locale === 'en' ? 'Booking Terms' : '預約條款'}
-                </h4>
-                <p className="text-sm font-light text-charcoal/80 leading-relaxed">
-                  {locale === 'en' ? (
-                    <>
-                      All bookings assume agreement to our{' '}
-                      <Link href={`/${locale}/appointment-policy`} className="text-primary hover:underline font-medium">
-                        Booking Policy
-                      </Link>
-                      . Please read it carefully before scheduling.
-                    </>
-                  ) : (
-                    <>
-                      所有預約皆視同您同意我們的{' '}
-                      <Link href={`/${locale}/appointment-policy`} className="text-primary hover:underline font-medium">
-                        預約須知與條款
-                      </Link>
-                      。預約前請務必詳閱。
-                    </>
-                  )}
-                </p>
+            {/* Booking Terms defensive card */}
+            <div className="bg-white border border-primary/20 rounded-2xl p-6 shadow-sm flex flex-col items-center text-center gap-4 w-full md:flex-row md:items-start md:text-left md:gap-5">
+              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                <Shield className="w-6 h-6" />
+              </div>
+              <div className="space-y-3 text-center md:text-left flex-1">
+                <div>
+                  <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+                    {locale === 'en' ? 'Booking Terms' : '預約條款'}
+                  </h4>
+                  <p className="text-sm font-light text-charcoal/80 leading-relaxed mt-1">
+                    {locale === 'en'
+                      ? 'By making a booking, you acknowledge and agree to our Appointment Policy. Please read it carefully before scheduling.'
+                      : '當您進行預約，即表示您同意我們的預約政策。預約前請務必詳閱。'}
+                  </p>
+                </div>
+                <div>
+                  <Link
+                    href={`/${locale}/appointment-policy`}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl text-xs font-medium tracking-wide transition-all duration-300 shadow-sm hover:shadow group/btn"
+                  >
+                    <Shield className="w-3.5 h-3.5" />
+                    <span>{locale === 'en' ? 'Read Our Appointment Policy' : '閱讀預約政策'}</span>
+                    <span className="transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -273,7 +273,7 @@ export default async function ContactPage({ params }: PageProps) {
                     </p>
                     <p className="type-body text-charcoal/80 leading-relaxed">
                       {locale === 'en'
-                        ? 'Appointments are limited and will be confirmed on a first-confirmed basis.'
+                        ? 'Appointments are limited and will be confirmed on a first-come, first-served basis.'
                         : '名額有限，以先確認者為優先。'}
                     </p>
                     <p className="type-body text-charcoal/80 leading-relaxed">
@@ -336,15 +336,15 @@ export default async function ContactPage({ params }: PageProps) {
               {locale === 'en' ? (
                 <>
                   All sessions follow the{' '}
-                  <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors">
-                    Booking Policy
+                  <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors font-medium">
+                    Appointment Policy
                   </Link>
                   .
                 </>
               ) : (
                 <>
                   所有療程均遵循{' '}
-                  <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors">
+                  <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors font-medium">
                     預約政策
                   </Link>
                   。

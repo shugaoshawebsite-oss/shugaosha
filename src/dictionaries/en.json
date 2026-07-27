@@ -8,7 +8,7 @@
     "training": "Training",
     "contact": "Contact",
     "faq": "FAQ",
-    "appointmentPolicy": "Booking Policy"
+    "appointmentPolicy": "Appointment Policy"
   },
   "home": {
     "hero": {
@@ -170,7 +170,7 @@
     "title": "International Visits",
     "newsTitle": "Latest News & Updates",
     "tourTitle": "International Visits",
-    "tourIntro": "From time to time, I travel to visit clients in other cities. Below are confirmed upcoming visits. Appointments are limited and will be confirmed on a first-confirmed basis.",
+    "tourIntro": "From time to time, I travel to visit clients in other cities. Below are confirmed upcoming visits. Appointments are limited and will be confirmed on a first-come, first-served basis.",
     "bookingNote": "Appointments are limited. Please message via WhatsApp to secure your session."
   },
   "contact": {
