@@ -42,15 +42,20 @@ export default function ImageUpload({ value, onChange, label = 'Image' }: ImageU
         body: formData,
       })
 
+      const data = await res.json().catch(() => ({}))
+
       if (!res.ok) {
-        throw new Error('Upload failed')
+        throw new Error(data.error || 'Upload failed')
       }
 
-      const data = await res.json()
+      if (!data.url) {
+        throw new Error('No URL returned from server')
+      }
+
       onChange(data.url)
-    } catch (err) {
-      setError('Failed to upload image')
-      console.error(err)
+    } catch (err: any) {
+      setError(err?.message || 'Failed to upload image')
+      console.error('Image upload error:', err)
     } finally {
       setIsUploading(false)
       if (fileInputRef.current) {
@@ -71,7 +76,7 @@ export default function ImageUpload({ value, onChange, label = 'Image' }: ImageU
         <div className="relative inline-block w-full">
           <div className="relative aspect-video w-full max-w-sm rounded-lg overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center">
             <Image 
-              src={value} 
+              src={encodeURI(value)} 
               alt="Uploaded preview" 
               fill 
               className="object-cover"

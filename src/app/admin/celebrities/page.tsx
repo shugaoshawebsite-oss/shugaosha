@@ -219,33 +219,33 @@ export default function CelebritiesAdmin() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Name (English)</label>
-                  <input type="text" value={editForm.name?.en || ''} onChange={(e) => setEditForm({...editForm, name: {...editForm.name!, en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                  <input type="text" value={editForm.name?.en || ''} onChange={(e) => setEditForm({...editForm, name: { zh: editForm.name?.zh || '', en: e.target.value }})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Name (Chinese)</label>
-                  <input type="text" value={editForm.name?.zh || ''} onChange={(e) => setEditForm({...editForm, name: {...editForm.name!, zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                  <input type="text" value={editForm.name?.zh || ''} onChange={(e) => setEditForm({...editForm, name: { en: editForm.name?.en || '', zh: e.target.value }})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Role (English)</label>
-                  <input type="text" value={editForm.role?.en || ''} onChange={(e) => setEditForm({...editForm, role: {...editForm.role!, en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                  <input type="text" value={editForm.role?.en || ''} onChange={(e) => setEditForm({...editForm, role: { zh: editForm.role?.zh || '', en: e.target.value }})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Role (Chinese)</label>
-                  <input type="text" value={editForm.role?.zh || ''} onChange={(e) => setEditForm({...editForm, role: {...editForm.role!, zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                  <input type="text" value={editForm.role?.zh || ''} onChange={(e) => setEditForm({...editForm, role: { en: editForm.role?.en || '', zh: e.target.value }})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                 </div>
               </div>
 
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Quote (English)</label>
-                  <textarea rows={8} value={editForm.quote?.en || ''} onChange={(e) => setEditForm({...editForm, quote: {...editForm.quote!, en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+                  <textarea rows={8} value={editForm.quote?.en || ''} onChange={(e) => setEditForm({...editForm, quote: { zh: editForm.quote?.zh || '', en: e.target.value }})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Quote (Chinese)</label>
-                  <textarea rows={8} value={editForm.quote?.zh || ''} onChange={(e) => setEditForm({...editForm, quote: {...editForm.quote!, zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+                  <textarea rows={8} value={editForm.quote?.zh || ''} onChange={(e) => setEditForm({...editForm, quote: { en: editForm.quote?.en || '', zh: e.target.value }})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
                 </div>
               </div>
 

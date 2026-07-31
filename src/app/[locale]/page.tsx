@@ -72,9 +72,9 @@ export default async function HomePage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Image */}
-          <div className="relative order-2 lg:order-2 w-full">
-            <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-gray-50">
+          {/* Images */}
+          <div className="relative order-2 lg:order-2 w-full space-y-6">
+            <div className="relative aspect-[3/2] w-full rounded-2xl overflow-hidden bg-gray-50">
               <Image
                 src="/assets/images/home1.webp"
                 alt={locale === 'en' ? 'Shugaosha treatment' : '修顏社療程'}
@@ -82,6 +82,15 @@ export default async function HomePage({ params }: PageProps) {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
                 priority
+              />
+            </div>
+            <div className="relative aspect-[3/2] w-full rounded-2xl overflow-hidden bg-gray-50">
+              <Image
+                src="/assets/cha_wht.webp"
+                alt={locale === 'en' ? 'Shugaosha environment' : '修顏社環境'}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
           </div>

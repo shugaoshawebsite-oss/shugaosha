@@ -6,6 +6,7 @@ import { getTeam } from '@/utils/dataService'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 import InteriorSlideshow from '@/components/InteriorSlideshow'
 import CertGallery from '@/components/CertGallery'
+import { Globe } from 'lucide-react'
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -146,6 +147,67 @@ export default async function AboutPage({ params }: PageProps) {
 
           {/* CertGallery handles lightbox state internally */}
           <CertGallery groups={certGroups} locale={locale} />
+        </div>
+      </section>
+
+      {/* Our Journey Section */}
+      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-3">
+              <span className="type-label text-primary">
+                {locale === 'en' ? 'Global Reach' : '環球足跡'}
+              </span>
+              <h2 className="type-heading text-foreground">
+                {locale === 'en' ? 'Our Journey' : '我們的旅程'}
+              </h2>
+            </div>
+            <p className="type-body text-charcoal/80 leading-relaxed">
+              {locale === 'en'
+                ? 'We are proud to have brought our tours to audiences across multiple international cities over the years. Our experience reflects our passion for sharing culture and creating memorable experiences.'
+                : '多年來，我們非常榮幸能夠將巡迴服務帶到多個國際城市的客戶面前。我們的豐富經驗體現了我們對分享文化與創造難忘體驗的熱情。'}
+            </p>
+            <p className="type-body-sm text-charcoal/70 border-l-2 border-primary/30 pl-4 py-1">
+              {locale === 'en'
+                ? 'We look forward to bringing our tours to even more destinations in the future.'
+                : '我們期待在未來將我們的巡迴服務帶到更多目的地。'}
+            </p>
+          </div>
+
+          {/* Right Column - Cities Visited Grid */}
+          <div className="lg:col-span-7 bg-[#f8f9fa] border border-gray-100 rounded-[2rem] p-8 sm:p-10 space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <Globe className="w-5 h-5" />
+              </div>
+              <h3 className="type-card-title text-foreground">
+                {locale === 'en' ? "Cities We've Visited" : '我們曾造訪的城市'}
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+              {[
+                { en: 'San Francisco', zh: '舊金山', flag: '🇺🇸' },
+                { en: 'Los Angeles', zh: '洛杉磯', flag: '🇺🇸' },
+                { en: 'Las Vegas', zh: '拉斯維加斯', flag: '🇺🇸' },
+                { en: 'Vancouver', zh: '溫哥華', flag: '🇨🇦' },
+                { en: 'Tokyo', zh: '東京', flag: '🇯🇵' },
+                { en: 'Ho Chi Minh City', zh: '胡志明市', flag: '🇻🇳' },
+              ].map((city, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-3 p-4 bg-white border border-gray-100/80 rounded-xl shadow-xs hover:border-primary/20 transition-colors"
+                >
+                  <span className="text-xl">{city.flag}</span>
+                  <div>
+                    <div className="font-medium text-foreground text-sm">{locale === 'en' ? city.en : city.zh}</div>
+                    {locale === 'zh' && <div className="text-xs text-charcoal/50">{city.en}</div>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
