@@ -59,7 +59,7 @@ export default function CelebritiesAdmin() {
 
   const fetchCelebrities = async () => {
     try {
-      const res = await fetch('/api/cms/celebrities')
+      const res = await fetch('/api/cms/celebrities', { cache: 'no-store' })
       if (res.ok) {
         const data = await res.json()
         setCelebrities(data)

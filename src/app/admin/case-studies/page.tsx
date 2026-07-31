@@ -61,7 +61,7 @@ export default function CaseStudiesAdmin() {
 
   const fetchCaseStudies = async () => {
     try {
-      const res = await fetch('/api/cms/caseStudies')
+      const res = await fetch('/api/cms/caseStudies', { cache: 'no-store' })
       if (res.ok) {
         const data = await res.json()
         setCaseStudies(data)

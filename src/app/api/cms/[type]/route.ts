@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { promises as fs } from 'fs'
 import path from 'path'
+import { revalidatePath } from 'next/cache'
 
 // Define the valid content types and their corresponding file names
 const validTypes = {
@@ -98,17 +99,22 @@ export async function GET(
   }
 
   try {
-    // If GITHUB_TOKEN is present, fetch raw live data directly from GitHub (helps during Vercel builds)
+    let data: any
+    // If GITHUB_TOKEN is present, fetch raw live data directly from GitHub API
     if (process.env.GITHUB_TOKEN && process.env.GITHUB_CONTENT_REPO) {
-      const data = await fetchFromGitHub(validTypes[typeKey])
-      return NextResponse.json(data)
+      data = await fetchFromGitHub(validTypes[typeKey])
+    } else {
+      // Otherwise fall back to reading from local file system
+      const filePath = path.join(process.cwd(), 'content', validTypes[typeKey])
+      const fileContent = await fs.readFile(filePath, 'utf8')
+      data = JSON.parse(fileContent)
     }
 
-    // Otherwise fall back to reading from local file system
-    const filePath = path.join(process.cwd(), 'content', validTypes[typeKey])
-    const fileContent = await fs.readFile(filePath, 'utf8')
-    const data = JSON.parse(fileContent)
-    return NextResponse.json(data)
+    return NextResponse.json(data, {
+      headers: {
+        'Cache-Control': 'no-store, max-age=0',
+      },
+    })
   } catch (error) {
     console.error(`Error reading ${type}:`, error)
     return NextResponse.json({ error: `Failed to read ${type}` }, { status: 500 })
@@ -133,14 +139,16 @@ export async function POST(
     // If GITHUB_TOKEN is present, write directly to the GitHub Repo (for Vercel production CMS)
     if (process.env.GITHUB_TOKEN && process.env.GITHUB_CONTENT_REPO) {
       await writeToGitHub(validTypes[typeKey], jsonString)
-      return NextResponse.json({ success: true, message: `Successfully updated ${type} on GitHub` })
+    } else {
+      // Otherwise, write locally for dev environment
+      const filePath = path.join(process.cwd(), 'content', validTypes[typeKey])
+      await fs.writeFile(filePath, jsonString, 'utf8')
     }
 
-    // Otherwise, write locally for dev environment
-    const filePath = path.join(process.cwd(), 'content', validTypes[typeKey])
-    await fs.writeFile(filePath, jsonString, 'utf8')
-    
-    return NextResponse.json({ success: true, message: `Successfully updated ${type} locally` })
+    // Trigger on-demand revalidation across the entire app so Vercel updates the frontend immediately
+    revalidatePath('/', 'layout')
+
+    return NextResponse.json({ success: true, message: `Successfully updated ${type}` })
   } catch (error) {
     console.error(`Error writing ${type}:`, error)
     return NextResponse.json({ error: `Failed to write ${type}` }, { status: 500 })

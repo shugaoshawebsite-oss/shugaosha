@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { promises as fs } from 'fs'
 import path from 'path'
 import { v2 as cloudinary } from 'cloudinary'
+import { revalidatePath } from 'next/cache'
 
 // Configure Cloudinary if credentials exist
 if (
@@ -75,6 +76,8 @@ export async function POST(request: Request) {
     const originalName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_')
     const filename = `${Date.now()}-${originalName}`
 
+    let finalUrl = ''
+
     // 1. Try Cloudinary upload if fully configured
     if (
       process.env.CLOUDINARY_CLOUD_NAME &&
@@ -83,30 +86,34 @@ export async function POST(request: Request) {
     ) {
       try {
         const result = await uploadToCloudinary(buffer)
-        return NextResponse.json({ success: true, url: result.secure_url })
+        finalUrl = result.secure_url
       } catch (cloudErr) {
         console.error('Cloudinary upload failed, attempting fallback:', cloudErr)
       }
     }
 
     // 2. Try GitHub commit if configured (for production Vercel serverless)
-    if (process.env.GITHUB_TOKEN && process.env.GITHUB_CONTENT_REPO) {
+    if (!finalUrl && process.env.GITHUB_TOKEN && process.env.GITHUB_CONTENT_REPO) {
       try {
-        const url = await uploadToGitHub(filename, buffer)
-        return NextResponse.json({ success: true, url })
+        finalUrl = await uploadToGitHub(filename, buffer)
       } catch (ghErr) {
         console.error('GitHub image upload failed, attempting local fallback:', ghErr)
       }
     }
 
     // 3. Fallback to local file system storage (development)
-    const uploadDir = path.join(process.cwd(), 'public', 'assets', 'uploads')
-    await fs.mkdir(uploadDir, { recursive: true })
-    const filePath = path.join(uploadDir, filename)
-    await fs.writeFile(filePath, buffer)
+    if (!finalUrl) {
+      const uploadDir = path.join(process.cwd(), 'public', 'assets', 'uploads')
+      await fs.mkdir(uploadDir, { recursive: true })
+      const filePath = path.join(uploadDir, filename)
+      await fs.writeFile(filePath, buffer)
+      finalUrl = `/assets/uploads/${filename}`
+    }
 
-    const url = `/assets/uploads/${filename}`
-    return NextResponse.json({ success: true, url })
+    // Revalidate app pages so uploaded image renders everywhere
+    revalidatePath('/', 'layout')
+
+    return NextResponse.json({ success: true, url: finalUrl })
   } catch (error: any) {
     console.error('Error uploading file:', error)
     return NextResponse.json(

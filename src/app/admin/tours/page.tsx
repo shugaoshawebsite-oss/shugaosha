@@ -30,7 +30,7 @@ export default function ToursAdmin() {
 
   const fetchTours = async () => {
     try {
-      const res = await fetch('/api/cms/tours')
+      const res = await fetch('/api/cms/tours', { cache: 'no-store' })
       if (res.ok) {
         const data = await res.json()
         setTours(data)

@@ -302,22 +302,25 @@ async function fetchContent<T>(fileName: string, fallback: T): Promise<T> {
   const token = process.env.GITHUB_TOKEN
 
   if (repo) {
-    const url = `https://raw.githubusercontent.com/${repo}/${branch}/content/${fileName}`
+    // Fetch directly via GitHub REST API with raw header to avoid raw.githubusercontent.com 5-minute CDN cache
+    const url = `https://api.github.com/repos/${repo}/contents/content/${fileName}?ref=${branch}`
     try {
-      const headers: Record<string, string> = {}
+      const headers: Record<string, string> = {
+        Accept: 'application/vnd.github.v3.raw',
+      }
       if (token) {
         headers['Authorization'] = `token ${token}`
       }
       const response = await fetch(url, {
         headers,
-        next: { revalidate: 60 }
+        cache: 'no-store',
       })
       if (response.ok) {
         return await response.json() as T
       }
-      console.warn(`Failed to fetch ${fileName} from GitHub (status: ${response.status}), trying local filesystem`)
+      console.warn(`Failed to fetch ${fileName} from GitHub API (status: ${response.status}), trying local filesystem`)
     } catch (error) {
-      console.error(`Error fetching ${fileName} from GitHub:`, error)
+      console.error(`Error fetching ${fileName} from GitHub API:`, error)
     }
   }
 
