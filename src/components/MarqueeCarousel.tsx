@@ -16,7 +16,7 @@ const PEEK_PX        = 56     // adjacent-card peek width on each side
 
 // Silky curves:
 const EASE_AUTO      = 'cubic-bezier(0.4, 0, 0.2, 1)'      // smooth start/stop for auto-slide
-const EASE_RELEASE   = 'cubic-bezier(0.25, 1, 0.5, 1)'     // soft ease-out for momentum-release (no double-ease-in)
+const EASE_RELEASE   = 'cubic-bezier(0.25, 1, 0.5, 1)'     // soft ease-out for momentum-release
 
 function getPerView(w: number): number {
   if (w >= 1024) return 3
@@ -38,7 +38,7 @@ export default function MarqueeCarousel<T>({
   const [totalSets,    setTotalSets]    = useState(1)
   const [activeDot,    setActiveDot]    = useState(0)
 
-  // ── All mutable state inside S ref to avoid stale closure issues ──────────
+  // ── All mutable state inside S ref ────────────────────────────────────────
   const S = useRef({
     perView:    3,
     cardWidth:  0,
@@ -50,28 +50,29 @@ export default function MarqueeCarousel<T>({
     hasDragged: false,
     dragStartX: 0,
     dragBaseX:  0,
-    lastX:      0,
-    lastTime:   0,
     timer:      null as ReturnType<typeof setTimeout> | null,
   })
 
-  // ── Page-based cloning setup ───────────────────────────────────────────────
-  const baseCount = totalSets * perView
+  // ── Cloning setup ─────────────────────────────────────────────────────────
   const displayItems: T[] = []
   
   if (n > 0) {
-    // 1. Prepend clone of last set (length = perView)
-    for (let i = 0; i < perView; i++) {
-      const idx = ((totalSets - 1) * perView + i) % n
-      displayItems.push(items[idx])
-    }
-    // 2. Base sequence (length = totalSets * perView)
-    for (let i = 0; i < baseCount; i++) {
-      displayItems.push(items[i % n])
-    }
-    // 3. Append clone of first set (length = perView)
-    for (let i = 0; i < perView; i++) {
-      displayItems.push(items[i % n])
+    if (n <= perView) {
+      displayItems.push(...items)
+    } else {
+      // 1. Prepend clone of last perView items
+      for (let i = 0; i < perView; i++) {
+        const idx = (n - perView + i) % n
+        displayItems.push(items[idx])
+      }
+      // 2. Base sequence (EXACTLY n items)
+      for (let i = 0; i < n; i++) {
+        displayItems.push(items[i])
+      }
+      // 3. Append clone of first perView items
+      for (let i = 0; i < perView; i++) {
+        displayItems.push(items[i % n])
+      }
     }
   }
 
@@ -83,7 +84,7 @@ export default function MarqueeCarousel<T>({
     if (!el) return
     if (animate) {
       el.style.transition = 'none'
-      void el.offsetHeight // Force browser reflow to register current layout state
+      void el.offsetHeight // Force browser reflow
       el.style.transition = `transform ${duration}ms ${easing}`
     } else {
       el.style.transition = 'none'
@@ -95,6 +96,7 @@ export default function MarqueeCarousel<T>({
   const scheduleNext = () => {
     const s = S.current
     if (s.timer) clearTimeout(s.timer)
+    if (n <= s.perView) return
     s.timer = setTimeout(() => {
       if (!s.isHovered && !s.isDragging && !s.isSliding) {
         doSlide(1)
@@ -105,14 +107,13 @@ export default function MarqueeCarousel<T>({
   // ── Perform Slide ──────────────────────────────────────────────────────────
   const doSlide = (direction: 1 | -1, targetVI?: number, customDuration?: number, easing = EASE_AUTO) => {
     const s = S.current
-    if (s.isSliding || s.cardWidth === 0) return
+    if (s.isSliding || s.cardWidth === 0 || n <= s.perView) return
     s.isSliding = true
 
     const cw = s.cardWidth
     const pv = s.perView
     const nextVI = targetVI ?? s.virtualIdx + direction * pv
 
-    // Calculate next active dot
     if (targetVI === undefined) {
       setActiveDot(d => (d + direction + s.totalSets) % s.totalSets)
     }
@@ -128,13 +129,18 @@ export default function MarqueeCarousel<T>({
       s.isSliding = false
       
       // Snap silently if we reached clones
-      if (s.virtualIdx >= (s.totalSets + 1) * pv) {
-        s.virtualIdx = pv
-      } else if (s.virtualIdx <= 0) {
-        s.virtualIdx = s.totalSets * pv
+      if (s.virtualIdx >= pv + n) {
+        s.virtualIdx -= n
+        applyTransform(calcX(s.virtualIdx, cw), false)
+      } else if (s.virtualIdx < pv) {
+        s.virtualIdx += n
+        applyTransform(calcX(s.virtualIdx, cw), false)
       }
+
+      // Sync active dot after snap
+      const baseIdx = (s.virtualIdx - pv + n * 100) % n
+      setActiveDot(Math.floor(baseIdx / pv) % s.totalSets)
       
-      applyTransform(calcX(s.virtualIdx, cw), false)
       scheduleNext()
     }
     trackRef.current?.addEventListener('transitionend', onEnd, { once: true })
@@ -145,15 +151,16 @@ export default function MarqueeCarousel<T>({
     const el = containerRef.current
     if (!el) return
     const w  = el.clientWidth
-    const pv = getPerView(w)
+    const rawPv = getPerView(w)
+    const pv = Math.min(rawPv, n > 0 ? n : 1)
     const cw = Math.max(100, Math.floor((w - 2 * PEEK_PX - (pv - 1) * GAP_PX) / pv))
-    const ts = Math.ceil(n / pv)
+    const ts = n > pv ? Math.ceil(n / pv) : 1
 
     const s = S.current
     s.perView    = pv
     s.cardWidth  = cw
     s.totalSets  = ts
-    s.virtualIdx = pv // starts at index perView (after prepend clone)
+    s.virtualIdx = n > pv ? pv : 0
     s.isSliding  = false
 
     setPerView(pv)
@@ -161,8 +168,10 @@ export default function MarqueeCarousel<T>({
     setTotalSets(ts)
     setActiveDot(0)
 
-    applyTransform(calcX(pv, cw), false)
-    scheduleNext()
+    applyTransform(calcX(s.virtualIdx, cw), false)
+    if (n > pv) {
+      scheduleNext()
+    }
   }, [n])
 
   useEffect(() => {
@@ -170,20 +179,13 @@ export default function MarqueeCarousel<T>({
     const ro = new ResizeObserver(measure)
     if (containerRef.current) ro.observe(containerRef.current)
 
-    // Global mouse event handlers (Desktop)
+    // Global mouse event handlers
     const onGlobalMove = (e: MouseEvent) => {
       const s = S.current
       if (!s.isDragging) return
       const delta = e.clientX - s.dragStartX
       if (Math.abs(delta) > 5) s.hasDragged = true
-      if (s.hasDragged) {
-        applyTransform(s.dragBaseX + delta, false)
-        const now = performance.now()
-        if (now - s.lastTime > 16) {
-          s.lastX = e.clientX
-          s.lastTime = now
-        }
-      }
+      if (s.hasDragged) applyTransform(s.dragBaseX + delta, false)
     }
 
     const onGlobalUp = (e: MouseEvent) => {
@@ -194,50 +196,29 @@ export default function MarqueeCarousel<T>({
       
       const delta = e.clientX - s.dragStartX
       const step  = s.cardWidth + GAP_PX
+      const totalDist = s.perView * step
       
-      // Desktop: Smooth momentum glide without snapping rigidly to card positions
-      const now = performance.now()
-      const dt = Math.max(16, now - s.lastTime)
-      const velocity = (e.clientX - s.lastX) / dt
-      const momentum = velocity * 300
-
-      const currentX = s.dragBaseX + delta
-      let targetX = currentX + momentum
-
-      // Soft clamp target within clone bounds
-      const minX = PEEK_PX - (s.totalSets + 1) * s.perView * step
-      const maxX = PEEK_PX
-
-      if (targetX < minX) targetX = minX + 20
-      if (targetX > maxX) targetX = maxX - 20
-
-      const dist = Math.abs(targetX - currentX)
-      const duration = Math.min(1200, Math.max(500, Math.round(dist * 1.2)))
-
-      // Update dot & virtualIdx based on final position
-      const approxVI = (PEEK_PX - targetX) / step
-      const nextVI = Math.max(0, Math.min(Math.round(approxVI), (s.totalSets + 1) * s.perView))
-      s.virtualIdx = nextVI
-
-      const dotIdx = Math.max(0, Math.min(s.totalSets - 1, Math.floor(((nextVI - s.perView) % s.totalSets + s.totalSets) % s.totalSets)))
-      setActiveDot(dotIdx)
-
-      applyTransform(targetX, true, duration, EASE_RELEASE)
-
-      const onDesktopEnd = () => {
-        trackRef.current?.removeEventListener('transitionend', onDesktopEnd)
-        s.isSliding = false
-
-        // Wrap silently if landed on clones
-        if (s.virtualIdx >= (s.totalSets + 1) * s.perView) {
-          s.virtualIdx = s.perView
-          applyTransform(calcX(s.virtualIdx, s.cardWidth), false)
-        } else if (s.virtualIdx <= 0) {
-          s.virtualIdx = s.totalSets * s.perView
-          applyTransform(calcX(s.virtualIdx, s.cardWidth), false)
-        }
+      if (delta < -step * 0.2) {
+        const nextVI = s.virtualIdx + s.perView
+        const currentX = s.dragBaseX + delta
+        const targetX = calcX(nextVI, s.cardWidth)
+        const dist = Math.abs(targetX - currentX)
+        const duration = Math.max(800, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
+        doSlide(1, undefined, duration, EASE_RELEASE)
+      } else if (delta > step * 0.2) {
+        const prevVI = s.virtualIdx - s.perView
+        const currentX = s.dragBaseX + delta
+        const targetX = calcX(prevVI, s.cardWidth)
+        const dist = Math.abs(targetX - currentX)
+        const duration = Math.max(800, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
+        doSlide(-1, undefined, duration, EASE_RELEASE)
+      } else {
+        const currentX = s.dragBaseX + delta
+        const dist = Math.abs(s.dragBaseX - currentX)
+        const duration = Math.max(500, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
+        applyTransform(s.dragBaseX, true, duration, EASE_RELEASE)
+        scheduleNext()
       }
-      trackRef.current?.addEventListener('transitionend', onDesktopEnd, { once: true })
     }
 
     document.addEventListener('mousemove', onGlobalMove)
@@ -264,20 +245,18 @@ export default function MarqueeCarousel<T>({
   // ── Drag Start ─────────────────────────────────────────────────────────────
   const onMouseDown = (e: React.MouseEvent) => {
     const s = S.current
-    if (s.isSliding) return
+    if (s.isSliding || n <= s.perView) return
     e.preventDefault()
     s.isDragging  = true
     s.hasDragged  = false
     s.dragStartX  = e.clientX
-    s.lastX       = e.clientX
-    s.lastTime    = performance.now()
     s.dragBaseX   = calcX(s.virtualIdx, s.cardWidth)
     applyTransform(s.dragBaseX, false)
   }
 
   const onTouchStart = (e: React.TouchEvent) => {
     const s = S.current
-    if (s.isSliding) return
+    if (s.isSliding || n <= s.perView) return
     s.isDragging  = true
     s.hasDragged  = false
     s.dragStartX  = e.touches[0].clientX
@@ -329,9 +308,10 @@ export default function MarqueeCarousel<T>({
   // ── Dot click ──────────────────────────────────────────────────────────────
   const onDotClick = (idx: number) => {
     const s = S.current
-    if (s.isSliding || idx === activeDot) return
+    if (s.isSliding || idx === activeDot || n <= perView) return
     setActiveDot(idx)
-    doSlide(1, perView + idx * perView)
+    const targetVI = perView + idx * perView
+    doSlide(1, targetVI)
   }
 
   return (
@@ -354,8 +334,8 @@ export default function MarqueeCarousel<T>({
             style={{ gap: `${GAP_PX}px`, willChange: 'transform' }}
           >
             {displayItems.map((item, idx) => {
-              const isClone = idx < perView || idx >= (totalSets + 1) * perView
-              const origIdx = idx < perView ? ((totalSets - 1) * perView + idx) % n : (idx - perView) % n
+              const isClone = n > perView && (idx < perView || idx >= perView + n)
+              const origIdx = n > perView ? (idx - perView + n * 100) % n : idx
               return (
                 <div
                   key={idx}
@@ -370,20 +350,22 @@ export default function MarqueeCarousel<T>({
         )}
       </div>
 
-      <div className="flex justify-center items-center gap-2 pt-2">
-        {Array.from({ length: totalSets }).map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => onDotClick(idx)}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
-              activeDot === idx
-                ? 'bg-primary w-6'
-                : 'bg-charcoal/20 hover:bg-charcoal/40 w-2.5'
-            }`}
-            aria-label={`Go to slide set ${idx + 1}`}
-          />
-        ))}
-      </div>
+      {totalSets > 1 && (
+        <div className="flex justify-center items-center gap-2 pt-2">
+          {Array.from({ length: totalSets }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => onDotClick(idx)}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                activeDot === idx
+                  ? 'bg-primary w-6'
+                  : 'bg-charcoal/20 hover:bg-charcoal/40 w-2.5'
+              }`}
+              aria-label={`Go to slide set ${idx + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
