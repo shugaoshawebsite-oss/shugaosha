@@ -186,7 +186,7 @@ export default async function AboutPage({ params }: PageProps) {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-6">
               {[
                 { en: 'San Francisco', zh: '舊金山', flag: '🇺🇸' },
                 { en: 'Los Angeles', zh: '洛杉磯', flag: '🇺🇸' },
@@ -197,9 +197,9 @@ export default async function AboutPage({ params }: PageProps) {
               ].map((city, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-3 p-4 bg-white border border-gray-100/80 rounded-xl shadow-xs hover:border-primary/20 transition-colors"
+                  className="flex items-center gap-2.5"
                 >
-                  <span className="text-xl">{city.flag}</span>
+                  <span className="text-base">{city.flag}</span>
                   <div>
                     <div className="font-medium text-foreground text-sm">{locale === 'en' ? city.en : city.zh}</div>
                     {locale === 'zh' && <div className="text-xs text-charcoal/50">{city.en}</div>}
