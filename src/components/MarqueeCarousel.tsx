@@ -50,6 +50,8 @@ export default function MarqueeCarousel<T>({
     hasDragged: false,
     dragStartX: 0,
     dragBaseX:  0,
+    lastX:      0,
+    lastTime:   0,
     timer:      null as ReturnType<typeof setTimeout> | null,
   })
 
@@ -168,13 +170,20 @@ export default function MarqueeCarousel<T>({
     const ro = new ResizeObserver(measure)
     if (containerRef.current) ro.observe(containerRef.current)
 
-    // Global mouse event handlers
+    // Global mouse event handlers (Desktop)
     const onGlobalMove = (e: MouseEvent) => {
       const s = S.current
       if (!s.isDragging) return
       const delta = e.clientX - s.dragStartX
       if (Math.abs(delta) > 5) s.hasDragged = true
-      if (s.hasDragged) applyTransform(s.dragBaseX + delta, false)
+      if (s.hasDragged) {
+        applyTransform(s.dragBaseX + delta, false)
+        const now = performance.now()
+        if (now - s.lastTime > 16) {
+          s.lastX = e.clientX
+          s.lastTime = now
+        }
+      }
     }
 
     const onGlobalUp = (e: MouseEvent) => {
@@ -185,30 +194,50 @@ export default function MarqueeCarousel<T>({
       
       const delta = e.clientX - s.dragStartX
       const step  = s.cardWidth + GAP_PX
-      const totalDist = s.perView * step
       
-      if (delta < -step * 0.2) {
-        const nextVI = s.virtualIdx + s.perView
-        const currentX = s.dragBaseX + delta
-        const targetX = calcX(nextVI, s.cardWidth)
-        const dist = Math.abs(targetX - currentX)
-        // Non-linear duration scaling for a smoother transition deceleration
-        const duration = Math.max(800, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
-        doSlide(1, undefined, duration, EASE_RELEASE)
-      } else if (delta > step * 0.2) {
-        const prevVI = s.virtualIdx - s.perView
-        const currentX = s.dragBaseX + delta
-        const targetX = calcX(prevVI, s.cardWidth)
-        const dist = Math.abs(targetX - currentX)
-        const duration = Math.max(800, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
-        doSlide(-1, undefined, duration, EASE_RELEASE)
-      } else {
-        const currentX = s.dragBaseX + delta
-        const dist = Math.abs(s.dragBaseX - currentX)
-        const duration = Math.max(500, Math.round(SLIDE_MS * Math.pow(dist / totalDist, 0.5)))
-        applyTransform(s.dragBaseX, true, duration, EASE_RELEASE)
-        scheduleNext()
+      // Desktop: Smooth momentum glide without snapping rigidly to card positions
+      const now = performance.now()
+      const dt = Math.max(16, now - s.lastTime)
+      const velocity = (e.clientX - s.lastX) / dt
+      const momentum = velocity * 300
+
+      const currentX = s.dragBaseX + delta
+      let targetX = currentX + momentum
+
+      // Soft clamp target within clone bounds
+      const minX = PEEK_PX - (s.totalSets + 1) * s.perView * step
+      const maxX = PEEK_PX
+
+      if (targetX < minX) targetX = minX + 20
+      if (targetX > maxX) targetX = maxX - 20
+
+      const dist = Math.abs(targetX - currentX)
+      const duration = Math.min(1200, Math.max(500, Math.round(dist * 1.2)))
+
+      // Update dot & virtualIdx based on final position
+      const approxVI = (PEEK_PX - targetX) / step
+      const nextVI = Math.max(0, Math.min(Math.round(approxVI), (s.totalSets + 1) * s.perView))
+      s.virtualIdx = nextVI
+
+      const dotIdx = Math.max(0, Math.min(s.totalSets - 1, Math.floor(((nextVI - s.perView) % s.totalSets + s.totalSets) % s.totalSets)))
+      setActiveDot(dotIdx)
+
+      applyTransform(targetX, true, duration, EASE_RELEASE)
+
+      const onDesktopEnd = () => {
+        trackRef.current?.removeEventListener('transitionend', onDesktopEnd)
+        s.isSliding = false
+
+        // Wrap silently if landed on clones
+        if (s.virtualIdx >= (s.totalSets + 1) * s.perView) {
+          s.virtualIdx = s.perView
+          applyTransform(calcX(s.virtualIdx, s.cardWidth), false)
+        } else if (s.virtualIdx <= 0) {
+          s.virtualIdx = s.totalSets * s.perView
+          applyTransform(calcX(s.virtualIdx, s.cardWidth), false)
+        }
       }
+      trackRef.current?.addEventListener('transitionend', onDesktopEnd, { once: true })
     }
 
     document.addEventListener('mousemove', onGlobalMove)
@@ -240,6 +269,8 @@ export default function MarqueeCarousel<T>({
     s.isDragging  = true
     s.hasDragged  = false
     s.dragStartX  = e.clientX
+    s.lastX       = e.clientX
+    s.lastTime    = performance.now()
     s.dragBaseX   = calcX(s.virtualIdx, s.cardWidth)
     applyTransform(s.dragBaseX, false)
   }
