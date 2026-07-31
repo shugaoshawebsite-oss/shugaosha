@@ -97,8 +97,8 @@ export default function SuccessStoriesClient({
     }
   }
 
-  // 7 slots for case studies: use real data if available, otherwise fallback/placeholder
-  const beforeAfterSlots = Array.from({ length: 7 }, (_, i) => caseStudies[i] || null)
+  // Use real case studies from CMS, or fallback to placeholder slots if empty
+  const beforeAfterSlots = caseStudies && caseStudies.length > 0 ? caseStudies : Array.from({ length: 4 }, () => null)
 
   return (
     <div className="flex flex-col space-y-28 mt-20">

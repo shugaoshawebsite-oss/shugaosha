@@ -29,8 +29,8 @@ function getOrdinalSessionText(count: number, locale: 'en' | 'zh') {
 }
 
 export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudiesProps) {
-  // 7 slots for case studies
-  const beforeAfterSlots = Array.from({ length: 7 }, (_, i) => caseStudies[i] || null)
+  // Use real case studies from CMS, or fallback to placeholder slots if empty
+  const beforeAfterSlots = caseStudies && caseStudies.length > 0 ? caseStudies : Array.from({ length: 4 }, () => null)
 
   return (
     <section id="real-results" className="max-w-7xl mx-auto w-full scroll-mt-40">
