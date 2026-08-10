@@ -123,7 +123,7 @@ export default async function AboutPage({ params }: PageProps) {
                       {member.role[locale] || member.role.en}
                     </span>
                   </div>
-                  <p className="type-body-sm text-charcoal/80">
+                  <p className="type-body-sm text-charcoal/80 whitespace-pre-line">
                     {member.bio[locale] || member.bio.en}
                   </p>
                 </div>
@@ -182,13 +182,14 @@ export default async function AboutPage({ params }: PageProps) {
                 <Globe className="w-5 h-5" />
               </div>
               <h3 className="type-card-title text-foreground">
-                {locale === 'en' ? "Cities We've Visited" : '我們曾造訪的城市'}
+                {locale === 'en' ? "Cities We've Served" : '我們曾提供服務的城市'}
               </h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-6">
               {[
-                { en: 'San Francisco', zh: '舊金山', flag: '🇺🇸' },
+                { en: 'Hong Kong', zh: '香港', flag: '🇭🇰' },
+                { en: 'San Francisco', zh: '三藩市', flag: '🇺🇸' },
                 { en: 'Los Angeles', zh: '洛杉磯', flag: '🇺🇸' },
                 { en: 'Las Vegas', zh: '拉斯維加斯', flag: '🇺🇸' },
                 { en: 'Vancouver', zh: '溫哥華', flag: '🇨🇦' },
@@ -218,22 +219,22 @@ export default async function AboutPage({ params }: PageProps) {
           <div className="lg:col-span-4 space-y-6">
             <div className="space-y-3">
               <span className="type-label text-primary">
-                {locale === 'en' ? 'Our Clinic' : '我們的診所'}
+                {locale === 'en' ? 'Our Studio' : '我們的工作室'}
               </span>
               <h2 className="type-subheading text-foreground">
-                {locale === 'en' ? 'The Shugaosha Studio' : 'The Shugaosha Studio 工作室'}
+                {locale === 'en' ? 'The Shugaosha Studio' : 'Shugaosha 工作室'}
               </h2>
             </div>
             <div className="type-body text-charcoal/80 space-y-4">
               {locale === 'en' ? (
                 <>
                   <p>Located in Gladesville, The Shugaosha Studio is a private, light-filled space designed for comfort, relaxation and personalised care.</p>
-                  <p>Many clients tell us they feel deeply relaxed during and after their treatment. In this peaceful, unhurried environment, you can fully unwind while experiencing The Shugaosha Way and restoring your natural facial balance.</p>
+                  <p>Many clients tell us they feel deeply relaxed during and after their session. In this peaceful, unhurried environment, you can fully unwind while experiencing The Shugaosha Way and restoring your natural facial balance.</p>
                 </>
               ) : (
                 <>
-                  <p>位於 Gladesville 的 Shugaosha 護理工作室，是一個私密、採光充足的空間，專為舒適、放鬆和個性化護理而設計。</p>
-                  <p>許多客戶反映，在療程期間和之後都感到深度放鬆。在這個寧靜、不疾不徐的環境中，您可以徹底放鬆身心，同時體驗「修顏社小顏術」並恢復面部的自然平衡。</p>
+                  <p>位於 Gladesville 的 Shugaosha 工作室，是一個私密、採光充足的空間，專為舒適、放鬆和個性化體驗而設計。</p>
+                  <p>許多客戶反映，在體驗期間和之後都感到深度放鬆。在這個寧靜、不疾不徐的環境中，您可以徹底放鬆身心，同時體驗「修顏社小顏術」並恢復面部的自然平衡。</p>
                 </>
               )}
             </div>

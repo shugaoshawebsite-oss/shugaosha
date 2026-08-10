@@ -202,7 +202,7 @@ const fallbackReviews: ClientReview[] = [
     rating: 5,
     reviewText: {
       en: "So happy to meet Teresa and Charles, and get to know Japanese Kogao beauty tech. Charles introduced the concept of 'small face' in a professional perspective. Throughout the entire process, Teresa was skillful, friendly and professional. After the treatment, the face slimming effect is obvious, I surely will recommend to my friends.",
-      zh: "很高興認識了Teresa和Charles，並了解到日本小顔美容技術。Charles以專業的角度介紹了“小颜”概念。深入而簡潔的解釋使我對接受治療感到興趣和信心。在整個過程中，Teresa既熟練又友善，專業至極。治療後，臉部瘦臉效果顯著，我一定會向我的朋友推薦。"
+      zh: "很高興認識了Teresa和Charles，並了解到日本小顔美容技術。Charles以專業的角度介紹了“小顏”概念。深入而簡潔的解釋使我對接受小顏調整感到興趣和信心。在整個過程中，Teresa既熟練又友善，專業至極。調整後，臉部瘦臉效果顯著，我一定會向我的朋友推薦。"
     }
   },
   {
@@ -264,20 +264,20 @@ const fallbackTeam: TeamMember[] = [
   {
     _id: 't1',
     name: { en: 'Teresa Soo', zh: 'Teresa Soo' },
-    role: { en: 'Co-Founder | Certified Specialist / Trainer', zh: '聯合創辦人 | 認證小顏矯正師 / 導師' },
+    role: { en: 'CO-FOUNDER | CERTIFIED TRAINER', zh: '聯合創辦人｜認證導師' },
     bio: {
-      en: "Teresa is the co-founder of Shugaosha and the Australian Representative of the Japan Small Face Correction Association. After completing advanced training in Japan, she became a certified trainer and has dedicated herself to restoring natural facial balance through gentle, hands-on techniques.\n\nCommitted to excellence in both treatment and education, Teresa continues to refine The Shugaosha Way while upholding the highest standards of care, professionalism and continuous learning.",
-      zh: "Teresa 是 Shugaosha 的聯合創辦人及日本小顏矯正協會的澳洲代表。在日本完成進階培訓後，她成為認證導師，並致力於透過溫和的手法恢復自然的面部平衡。\n\nTeresa 致力於在治療和教育方面追求卓越，在秉持護理、專業 and 持續學習的最高標準的同時，不斷完善 The Shugaosha Way。"
+      en: "Teresa Soo is the co-founder of Shugaosha and the Australian Representative of the Japan Small Face Correction Certification Association. After completing her advanced training in Japan, she became a certified trainer and went on to develop The Shugaosha Way—a gentle hands-on approach that helps restore natural facial balance for a more lifted, firmer, youthful and harmonious appearance.\n\nWith years of hands-on experience and a commitment to continuous education, Teresa has treated over 2,000 faces, while mentoring the next generation of practitioners.",
+      zh: "Teresa 是 Shugaosha 修顏社聯合創辦人，同時擔任日本小顏矯正認定協會澳洲代表。完成日本進階培訓後，她成為認證導師，並創立了「修顏社小顏術（The Shugaosha Way）」，以溫和徒手方式協助恢復自然面部平衡，塑造更提升、更緊緻、更年輕、更和諧的面容。\n\n憑藉多年實踐經驗及持續深造，Teresa 已完成超過 2,000 張面孔的療程，同時培育新一代小顏矯正專業人才。"
     },
     imageRelativeUrl: '/images/teresa_soo.jpg'
   },
   {
     _id: 't2',
     name: { en: 'Charles Cho', zh: 'Charles Cho' },
-    role: { en: 'Co-Founder | Certified Specialist / Trainer', zh: '聯合創辦人 | 認證小顏矯正師 / 導師' },
+    role: { en: 'CO-FOUNDER | CERTIFIED SPECIALIST', zh: '聯合創辦人｜認證小顏矯正師' },
     bio: {
-      en: "Charles is the co-founder of Shugaosha and is dedicated to restoring natural facial balance through gentle, hands-on techniques. Every treatment is thoughtfully tailored to the individual, creating a calm, comfortable and personalised experience.\n\nCommitted to the values of The Shugaosha Way, Charles strives to provide professional care with consistency, respect and genuine attention to every client’s individual needs.",
-      zh: "Charles 是 Shugaosha 的聯合創辦人，致力於透過溫和的手法恢復自然的面部平衡。每一次治療都是針對個人精心量身定制，營造出寧靜、舒適和個性化的體驗。\n\nCharles 秉承 The Shugaosha Way 的價值觀，力求以一致、尊重和真誠的態度關注每位客戶的個人需求，提供專業的護理。"
+      en: "Charles Cho is the co-founder of Shugaosha and a certified specialist of the Japan Small Face Correction Certification Association. Known for his calm and meticulous approach, he tailors every treatment to each individual’s facial structure, helping clients achieve a more balanced, youthful, lifted and harmonious appearance.\n\nWith years of hands-on experience, Charles has treated over 1,000 faces while continuing to refine The Shugaosha Way.",
+      zh: "Charles 是 Shugaosha 修顏社聯合創辦人，同時為日本小顏矯正認定協會認證小顏矯正師。他以溫和、細緻及講求平衡的徒手手法見稱，按照每位客人的面部結構制定適合的調整方式，協助塑造更平衡、更年輕、更提升、更和諧的面部輪廓。\n\n憑藉多年實踐經驗，Charles 已完成超過 1,000 張面孔的療程，並持續完善及精進「修顏社小顏術（The Shugaosha Way）」。"
     },
     imageRelativeUrl: '/images/charles_cho.jpg'
   }

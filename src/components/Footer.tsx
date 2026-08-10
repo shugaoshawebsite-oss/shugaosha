@@ -10,14 +10,13 @@ export default function Footer({ locale }: FooterProps) {
   const dict = getDictionary(locale)
 
   return (
-    <footer className="bg-[#1a1b1e] text-white/90 pt-16 pb-12">
+    <footer className="bg-[#1a1b1e] text-white/90 pt-10 pb-8 sm:pt-14 sm:pb-12">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 pb-8 md:pb-12 border-b border-white/10">
           
-          {/* Brand block */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+          {/* Brand & Social Media block */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3 sm:space-y-4">
             <Link href={`/${locale}`} className="flex items-center justify-center md:justify-start">
-              {/* Using logo_dark.svg (white/light version) for dark background footer */}
               <Image
                 src="/images/logo_dark.svg"
                 alt="Shugaosha Logo"
@@ -28,11 +27,11 @@ export default function Footer({ locale }: FooterProps) {
             </Link>
             <p className="text-sm font-light text-white/60 max-w-xs mx-auto md:mx-0 leading-relaxed">
               {locale === 'en' 
-                ? 'Helping people rediscover balance, harmony and confidence through The Shugaosha Way.'
-                : '以溫和的修顏社小顏術，幫助您重拾自然平衡、和諧與自信。'}
+                ? 'Helping people rediscover balance, harmony, confidence and a more youthful appearance through The Shugaosha Way.'
+                : '透過修顏社小顏術，幫助人們重拾平衡、和諧、自信，以及更年輕自然的面容。'}
             </p>
             {/* Social Icons */}
-            <div className="flex gap-4 pt-2 justify-center md:justify-start">
+            <div className="flex gap-4 pt-1 justify-center md:justify-start">
               <a
                 href="https://www.facebook.com/shugaosha"
                 target="_blank"
@@ -82,9 +81,9 @@ export default function Footer({ locale }: FooterProps) {
             </div>
           </div>
 
-          {/* Quick links block */}
-          <div className="flex flex-col items-center md:items-start space-y-4">
-            <ul className="space-y-2.5 text-center md:text-left">
+          {/* Quick links / Menu block */}
+          <div className="flex flex-col items-center md:items-start space-y-3 sm:space-y-4">
+            <ul className="space-y-2 text-center md:text-left">
               <li>
                 <Link href={`/${locale}`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
                   {dict.nav.home}
@@ -124,25 +123,36 @@ export default function Footer({ locale }: FooterProps) {
           </div>
 
           {/* Contact / Location block */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 w-full">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3 sm:space-y-4 w-full">
             <span className="text-xs font-semibold uppercase tracking-wider text-white block text-center md:text-left">
               {locale === 'en' ? 'Get in Touch' : '聯絡資訊'}
             </span>
-            <div className="space-y-3 w-full">
+            <div className="space-y-2.5 w-full">
               <p className="text-sm font-light text-white/70">
                 <span className="font-medium text-white block mb-1">
                   {locale === 'en' ? 'Sydney Studio:' : 'Sydney 工作室:'}
                 </span>
-                5 Pittwater Road, Gladesville NSW 2111, Australia
+                <a
+                  href="https://maps.google.com/?q=5+Pittwater+Road,+Gladesville+NSW+2111,+Australia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors underline decoration-white/20 underline-offset-4"
+                >
+                  5 Pittwater Road, Gladesville NSW 2111, Australia
+                </a>
               </p>
               <div className="text-sm font-light text-white/70 space-y-1">
                 <p>
                   <span className="font-medium">{locale === 'en' ? 'WhatsApp / SMS:' : 'WhatsApp／SMS:'}</span>{' '}
-                  <a href="tel:+61493552213" className="hover:text-primary transition-colors">+61 493552213</a>
+                  <a href="https://wa.me/61493552213" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                    +61 493552213
+                  </a>
                 </p>
                 <p>
                   <span className="font-medium">Email:</span>{' '}
-                  <a href="mailto:shugaosha@gmail.com" className="hover:text-primary transition-colors">shugaosha@gmail.com</a>
+                  <a href="mailto:shugaosha@gmail.com" className="hover:text-primary transition-colors">
+                    shugaosha@gmail.com
+                  </a>
                 </p>
               </div>
             </div>
@@ -151,31 +161,28 @@ export default function Footer({ locale }: FooterProps) {
         </div>
 
         {/* Bottom footer */}
-        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 space-y-3 sm:space-y-0">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-6 space-y-2.5 md:space-y-0 text-center md:text-left">
           <p className="text-xs font-light text-white/40">© {new Date().getFullYear()} Shugaosha.com. All rights reserved.</p>
-          <div className="text-center sm:text-left py-1 sm:py-0">
+          
+          <div className="py-1 md:py-0">
             <span className="text-xs font-medium tracking-widest uppercase text-white/50 block">
-              {locale === 'en' ? 'PRECISION • BALANCE • HARMONY' : '精準・平衡・和諧'}
+              {locale === 'en' ? 'Precision • Balance • Harmony' : '精準・平衡・和諧'}
             </span>
           </div>
-          <div className="flex space-x-6">
-            <span className="text-xs font-light text-white/40">{locale === 'en' ? 'Japanese Kogao Association Certified' : '日本小顏矯正協會認證'}</span>
-          </div>
-        </div>
 
-        {/* Web development attribution */}
-        <div className="text-center sm:text-right pt-4 text-xs font-light text-white/30">
-          <p>
-            {locale === 'en' ? 'Web development by ' : '網頁開發：'}
-            <a
-              href="https://rydesign.com.au"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-white/60 transition-colors"
-            >
-              Ryandesign
-            </a>
-          </p>
+          <div className="text-xs font-light text-white/30">
+            <p>
+              {locale === 'en' ? 'Website by ' : '網頁開發：'}
+              <a
+                href="https://rydesign.com.au"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-white/60 transition-colors"
+              >
+                RyDesign
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

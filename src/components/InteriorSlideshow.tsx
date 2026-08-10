@@ -23,7 +23,7 @@ export default function InteriorSlideshow({ images, locale }: InteriorSlideshowP
       <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-50 group">
         <Image
           src={images[current]}
-          alt={locale === 'en' ? `Shugaosha clinic interior ${current + 1}` : `修顏社診所內部 ${current + 1}`}
+          alt={locale === 'en' ? `Shugaosha studio interior ${current + 1}` : `修顏社工作室內部 ${current + 1}`}
           fill
           sizes="(max-width: 768px) 100vw, 70vw"
           className="object-cover transition-all duration-500"

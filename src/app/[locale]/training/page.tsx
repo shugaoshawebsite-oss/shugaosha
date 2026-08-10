@@ -32,8 +32,8 @@ const courseModules = [
 
 const whoIsItFor = {
   en: [
-    'Beauty therapists and facial practitioners',
-    'Salon and clinic owners',
+    'Beauty professionals and facial practitioners',
+    'Salon and studio owners',
     'Wellness professionals',
     'Individuals looking for a career change',
     'Parents returning to work after raising children',
@@ -41,8 +41,8 @@ const whoIsItFor = {
     'Beginners with no previous experience',
   ],
   zh: [
-    '美容治療師及面部護理師',
-    '美容院及診所負責人',
+    '美容師及面部護理師',
+    '美容院及工作室負責人',
     '健康養生專業人士',
     '有意轉換職業的人士',
     '育兒後重返工作的父母',
@@ -82,8 +82,8 @@ export default async function TrainingPage({ params }: PageProps) {
       <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-6">
         <p className="text-base sm:text-lg font-light text-charcoal/80 leading-relaxed">
           {locale === 'en'
-            ? 'Shugaosha offers professional training in authentic Japanese Small Face Correction, based on the official curriculum of the Japan Small Face Correction Association (JSFA), Japan.'
-            : '修顏社提供正宗日本小顏矯正術（Japanese Small Face Correction）的專業培訓，基於日本小顏矯正協會（JSFA）官方課程編排。'}
+            ? 'Shugaosha offers professional training in authentic Japanese Small Face Correction, based on the official curriculum of the Japan Small Face Correction Certification Association (JSFA), Japan.'
+            : '修顏社提供正宗日本小顏矯正術（Japanese Small Face Correction）的專業培訓，基於日本小顏矯正認定協會（JSFA）官方課程編排。'}
         </p>
         <p className="text-base sm:text-lg font-light text-charcoal/80 leading-relaxed">
           {locale === 'en'
@@ -103,7 +103,7 @@ export default async function TrainingPage({ params }: PageProps) {
               {locale === 'en' ? 'Official Japanese Small Face Correction Certification' : '日本官方小顏矯正認證'}
             </h2>
             <p className="text-base font-medium text-foreground">
-              {locale === 'en' ? 'Learn through Australia’s Official JSFA Representative' : '跟隨日本小顏矯正協會官方澳洲代表學習'}
+              {locale === 'en' ? 'Learn through Australia’s Official JSFA Representative' : '跟隨日本小顏矯正認定協會官方澳洲代表學習'}
             </p>
           </div>
 
@@ -113,22 +113,22 @@ export default async function TrainingPage({ params }: PageProps) {
                 icon: Clipboard,
                 title: locale === 'en' ? 'Official JSFA Curriculum' : '官方 JSFA 課程',
                 desc: locale === 'en'
-                  ? 'Based on the official curriculum of the Japan Small Face Correction Association (JSFA), Japan.'
-                  : '基於日本小顏矯正協會（JSFA）的官方課程編排。',
+                  ? 'Based on the official curriculum of the Japan Small Face Correction Certification Association (JSFA), Japan.'
+                  : '基於日本小顏矯正認定協會（JSFA）的官方課程編排。',
               },
               {
                 icon: Users,
                 title: locale === 'en' ? "Australia’s Official JSFA Representative" : 'JSFA 官方澳洲代表',
                 desc: locale === 'en'
-                  ? 'Learn directly from Teresa Soo, the Official Australian Representative of the Japan Small Face Correction Association (JSFA) and Australia’s only JSFA Certified Instructor.'
-                  : '直接師從 Teresa Soo，她是日本小顏矯正協會（JSFA）官方澳洲代表，也是澳洲唯一的 JSFA 認證導師。',
+                  ? 'Learn directly from Teresa Soo, the Official Australian Representative of the Japan Small Face Correction Certification Association (JSFA) and Australia’s only JSFA Certified Instructor.'
+                  : '直接師從 Teresa Soo，她是日本小顏矯正認定協會（JSFA）官方澳洲代表，也是澳洲唯一的 JSFA 認證導師。',
               },
               {
                 icon: Award,
                 title: locale === 'en' ? 'Official Japanese Certification' : '日本官方認證',
                 desc: locale === 'en'
-                  ? 'Students who successfully complete the final practical assessment receive an Official Certificate issued by the Japan Small Face Correction Association (JSFA), Japan.'
-                  : '成功通過最終實踐評估的學生將獲得由日本小顏矯正協會（JSFA）頒發的官方證書。',
+                  ? 'Students who successfully complete the final practical assessment receive an Official Certificate issued by the Japan Small Face Correction Certification Association (JSFA), Japan.'
+                  : '成功通過最終實踐評估的學生將獲得由日本小顏矯正認定協會（JSFA）頒發的官方證書。',
               },
               {
                 icon: BookOpen,
@@ -167,8 +167,8 @@ export default async function TrainingPage({ params }: PageProps) {
               {[
                 locale === 'en' ? 'Founder of Shugaosha' : '修顏社創辦人',
                 locale === 'en'
-                  ? 'Official Australian Representative of the Japanese Small Face Correction Association (JSFA)'
-                  : 'JSFA 日本小顏矯正協會官方澳洲代表',
+                  ? 'Official Australian Representative of the Japan Small Face Correction Certification Association (JSFA)'
+                  : 'JSFA 日本小顏矯正認定協會官方澳洲代表',
                 locale === 'en'
                   ? "Australia's Only JSFA Certified Instructor"
                   : '澳洲唯一 JSFA 認證導師',
@@ -182,8 +182,8 @@ export default async function TrainingPage({ params }: PageProps) {
 
             <p className="text-sm font-light text-charcoal/75 leading-relaxed">
               {locale === 'en'
-                ? 'As both an instructor and practising therapist, Teresa continues to work with real clients while teaching. Her combination of authentic Japanese training, clinical experience and practical application allows students to develop confidence, precision and professional skills that can be applied immediately in practice.'
-                : 'Teresa 同時身兼官方認證導師及執業治療師，在授課的同時持續為真實客戶提供療程。'}
+                ? 'As both an instructor and practising practitioner, Teresa continues to work with real clients while teaching. Her combination of authentic Japanese training, practical experience and application allows students to develop confidence, precision and professional skills that can be applied immediately in practice.'
+                : 'Teresa 同時身兼官方認證導師及高級小顏師，在授課的同時持續為真實客戶提供服務。'}
             </p>
           </div>
 
@@ -314,8 +314,8 @@ export default async function TrainingPage({ params }: PageProps) {
               icon: Award,
               title: locale === 'en' ? 'Official JSFA Certificate' : 'JSFA 官方證書',
               desc: locale === 'en'
-                ? 'Students who successfully pass the final practical assessment will receive an Official Certificate issued by the Japan Small Face Correction Association (JSFA), Japan.'
-                : '成功通過最終實踐評估的學生將獲得由日本小顏矯正協會（JSFA）頒發的官方證書。',
+                ? 'Students who successfully pass the final practical assessment will receive an Official Certificate issued by the Japan Small Face Correction Certification Association (JSFA), Japan.'
+                : '成功通過最終實踐評估的學生將獲得由日本小顏矯正認定協會（JSFA）頒發的官方證書。',
             },
             {
               icon: Briefcase,
@@ -382,8 +382,8 @@ export default async function TrainingPage({ params }: PageProps) {
             </h2>
             <p className="type-body text-charcoal/70 leading-relaxed">
               {locale === 'en'
-                ? "The Shugaosha Way represents Teresa's ongoing professional development pathway, built upon years of clinical experience and practical application. Designed for practitioners wishing to further refine their skills beyond the official Japanese certification, this advanced training focuses on observation, precision, treatment planning and professional confidence."
-                : '修顏社之道代表 Teresa 持續的專業發展路徑，建立於多年臨床經驗與實踐應用之上。專為希望在官方日本認證基礎上進一步精進技能的從業者而設，此進階培訓聚焦於觀察、精準度、療程規劃及專業自信。'}
+                ? "The Shugaosha Way represents Teresa's ongoing professional development pathway, built upon years of practical experience and application. Designed for practitioners wishing to further refine their skills beyond the official Japanese certification, this advanced training focuses on observation, precision, personalised planning and professional confidence."
+                : '修顏社之道代表 Teresa 持續的專業發展路徑，建立於多年實踐經驗與應用之上。專為希望在官方日本認證基礎上進一步精進技能的從業者而設，此進階培訓聚焦於觀察、精準度、個人化規劃及專業自信。'}
             </p>
             <p className="text-sm font-light text-charcoal/60">
               {locale === 'en'

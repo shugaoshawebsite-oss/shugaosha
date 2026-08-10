@@ -167,7 +167,7 @@ export default async function ContactPage({ params }: PageProps) {
             <div className="space-y-4">
               <div className="bg-soft-bg border border-gray-100 rounded-xl p-6 space-y-3">
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-                  {locale === 'en' ? 'Gladesville Clinic (Primary)' : '主要診所 — Gladesville'}
+                  {locale === 'en' ? 'Gladesville Studio' : 'Gladesville 工作室'}
                 </p>
                 <div className="space-y-1 text-sm font-light text-charcoal/85">
                   <p className="font-medium text-foreground">5 Pittwater Road</p>
@@ -176,8 +176,8 @@ export default async function ContactPage({ params }: PageProps) {
                 </div>
                 <p className="text-xs font-light text-charcoal/65 pt-2">
                   {locale === 'en'
-                    ? 'Convenient council parking is available directly opposite the clinic. Close to public transport.'
-                    : '診所正對面設有便利的市政停車場（council parking）。鄰近大眾運輸。'}
+                    ? 'Convenient council parking is available directly opposite the studio. Close to public transport.'
+                    : '工作室正對面設有便利的市政停車場（council parking）。鄰近大眾運輸。'}
                 </p>
               </div>
             </div>
