@@ -242,13 +242,7 @@ export default function Header({ locale }: HeaderProps) {
           </nav>
 
           {/* ── Mobile / Tablet hamburger (below lg) — always right with ml-auto ── */}
-          <div className="lg:hidden flex items-center space-x-3 ml-auto">
-            <Link
-              href={getLanguageSwitchPath(locale === 'en' ? 'zh' : 'en')}
-              className="text-xs border rounded-full px-2.5 py-1 transition-colors text-charcoal border-gray-200 hover:border-primary hover:text-primary"
-            >
-              {locale === 'en' ? '中文' : 'Eng'}
-            </Link>
+          <div className="lg:hidden flex items-center ml-auto">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 transition-colors text-charcoal hover:text-primary"
@@ -271,21 +265,33 @@ export default function Header({ locale }: HeaderProps) {
           </button>
         </div>
 
-        <nav className="flex flex-col space-y-6 px-8 mt-4">
+        <nav className="flex flex-col items-center space-y-6 px-8 mt-4">
+          {/* Mobile Book Now CTA Button */}
+          <a
+            href="https://wa.me/61493552213"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+            className="btn-book-nav flex items-center justify-center gap-2 w-full py-3 px-5 rounded-[3rem] bg-primary text-white text-xs font-medium tracking-widest uppercase shadow-md shadow-primary/20 hover:bg-primary/90 hover:scale-[1.02] transition-all duration-300 mb-6"
+          >
+            <WhatsAppIcon className="w-4 h-4" />
+            <span>{locale === 'en' ? 'Book Now' : '立即預約'}</span>
+          </a>
+
           {navLinks.map((link) => (
             <Link
               key={link.path}
               href={link.path}
               onClick={() => setIsOpen(false)}
-              className={`text-base tracking-wide transition-all duration-300
+              className={`text-base text-center tracking-wide transition-all duration-300
                 ${isActive(link.path) ? 'text-primary font-medium' : 'text-charcoal font-light hover:text-primary'}`}
             >
               {link.name}
             </Link>
           ))}
 
-          <div className="pt-6 border-t border-gray-100">
-            <div className="flex space-x-4">
+          <div className="pt-6 border-t border-gray-100 w-full flex justify-center">
+            <div className="flex space-x-6">
               <Link
                 href={getLanguageSwitchPath('en')}
                 onClick={() => setIsOpen(false)}
