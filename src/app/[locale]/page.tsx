@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
 import { getServices, getCelebrities, getCaseStudies, getGoogleReviews } from '@/utils/dataService'
-import { ArrowRight, Sparkles, Scale, Droplet, Sun, Smile, Shield } from 'lucide-react'
+import { ArrowRight, Sparkles, Scale, Droplet, Sun, Smile, Shield, Calendar } from 'lucide-react'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 import FaqSection from '@/components/FaqSection'
 import HeroSection from '@/components/HeroSection'
@@ -190,12 +190,12 @@ export default async function HomePage({ params }: PageProps) {
           {/* Book button */}
           <div className="flex justify-center">
             <a
-              href="https://wa.me/61493552213"
+              href="https://benotely.com/shugaosha/book"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary flex items-center gap-3"
             >
-              <WhatsAppIcon className="w-4 h-4" />
+              <Calendar className="w-4 h-4" />
               {locale === 'en' ? 'Book a Session' : '立即預約'}
             </a>
           </div>
@@ -257,39 +257,25 @@ export default async function HomePage({ params }: PageProps) {
           </h2>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://wa.me/61493552213"
+              href="https://benotely.com/shugaosha/book"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary flex items-center gap-3"
             >
-              <WhatsAppIcon className="w-5 h-5" />
-              {locale === 'en' ? 'Book via WhatsApp' : 'WhatsApp 線上預約'}
+              <Calendar className="w-5 h-5" />
+              {locale === 'en' ? 'Book a Session' : '立即預約'}
             </a>
-            <a
-              href="sms:+61493552213"
+            <Link
+              href={`/${locale}/contact`}
               className="btn-secondary flex items-center gap-3 bg-white"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-              >
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-              {locale === 'en' ? 'Book via SMS' : 'SMS 簡訊預約'}
-            </a>
+              {locale === 'en' ? 'Contact Us' : '聯絡我們'}
+            </Link>
           </div>
           <p className="type-caption text-charcoal/60">
             {locale === 'en'
-              ? 'Appointments are highly personalized. WhatsApp or SMS messaging is our fastest booking channel.'
-              : '專屬一對一客製化服務，敬請透過 WhatsApp 或簡訊進行即時預約與諮詢。'}
+              ? 'Appointments can be booked online instantly. Feel free to contact us for personalized enquiries.'
+              : '您可以透過線上預約系統即時預約時段，亦歡迎隨時聯絡我們進行個別諮詢。'}
           </p>
         </div>
       </section>

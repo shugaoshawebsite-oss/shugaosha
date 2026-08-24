@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Globe } from 'lucide-react'
+import { Menu, X, Globe, Calendar } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import { getDictionary } from '@/utils/dictionary'
 
@@ -230,13 +230,13 @@ export default function Header({ locale }: HeaderProps) {
 
             {/* CTA Book Button */}
             <a
-              href="https://wa.me/61493552213"
+              href="https://benotely.com/shugaosha/book"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-book-nav flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase px-4 py-2 rounded-[3rem] bg-primary text-white hover:bg-primary/90 hover:scale-[1.03]"
               style={{ transition: 'transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), background 0.3s ease' }}
             >
-              <WhatsAppIcon className="w-3.5 h-3.5" />
+              <Calendar className="w-3.5 h-3.5" />
               <span>{locale === 'en' ? 'Book' : '預約'}</span>
             </a>
           </nav>
@@ -268,13 +268,13 @@ export default function Header({ locale }: HeaderProps) {
         <nav className="flex flex-col items-center space-y-6 px-8 mt-4">
           {/* Mobile Book Now CTA Button */}
           <a
-            href="https://wa.me/61493552213"
+            href="https://benotely.com/shugaosha/book"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
             className="btn-book-nav flex items-center justify-center gap-2 w-full py-3 px-5 rounded-[3rem] bg-primary text-white text-xs font-medium tracking-widest uppercase shadow-md shadow-primary/20 hover:bg-primary/90 hover:scale-[1.02] transition-all duration-300 mb-6"
           >
-            <WhatsAppIcon className="w-4 h-4" />
+            <Calendar className="w-4 h-4" />
             <span>{locale === 'en' ? 'Book Now' : '立即預約'}</span>
           </a>
 

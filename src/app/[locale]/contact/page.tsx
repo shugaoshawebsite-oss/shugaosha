@@ -48,30 +48,55 @@ export default async function ContactPage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-          {/* Left: Contact Methods */}
+            {/* Left: Contact Methods */}
           <div className="space-y-6">
             <h2 className="text-xl font-medium text-foreground tracking-wide text-left">
               {locale === 'en' ? 'Book Your Appointment' : '預約您的療程'}
             </h2>
 
-            {/* WhatsApp - primary */}
+            {/* Online Booking - Preferred Method */}
+            <a
+              href="https://benotely.com/shugaosha/book"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-5 p-6 bg-primary text-white rounded-2xl hover:bg-primary/95 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.01] group w-full relative overflow-hidden"
+            >
+              <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <Calendar className="w-7 h-7" />
+              </div>
+              <div className="space-y-1 !text-left flex-1">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="text-base font-medium !text-left">
+                    {locale === 'en' ? 'Book a Session' : '線上預約療程'}
+                  </h3>
+                  <span className="text-[10px] font-medium uppercase tracking-wider bg-white/20 text-white px-2.5 py-0.5 rounded-full">
+                    {locale === 'en' ? 'Preferred Method' : '首選方式'}
+                  </span>
+                </div>
+                <p className="text-white/90 text-sm font-light !text-left">
+                  {locale === 'en' ? 'Instant Online Booking' : '即時線上預約系統'}
+                </p>
+                <span className="text-xs text-white/80 font-light block !text-left">
+                  {locale === 'en' ? 'Instant confirmation for your session' : '即時確認您的專屬療程時段'}
+                </span>
+              </div>
+            </a>
+
+            {/* WhatsApp - enquiries & consultations */}
             <a
               href="https://wa.me/61493552213"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-5 p-6 bg-primary text-white rounded-2xl hover:bg-primary/95 transition-all duration-300 shadow-lg shadow-primary/20 group w-full"
+              className="flex items-center gap-5 p-6 bg-soft-bg border border-gray-100 rounded-2xl hover:border-primary/30 hover:shadow-sm transition-all duration-300 group w-full"
             >
-              <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <div className="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                 <WhatsAppIcon className="w-7 h-7" />
               </div>
               <div className="space-y-1 !text-left">
-                <h3 className="text-base font-medium !text-left">WhatsApp</h3>
-                <p className="text-white/80 text-sm font-light !text-left">+61 493 552 213</p>
-                <span className="text-xs text-white/90 font-light block !text-left">
-                  {locale === 'en' ? 'Our preferred contact method' : '我們首選的聯絡方式'}
-                </span>
-                <span className="text-[10px] text-white/60 uppercase tracking-wider font-light block mt-0.5 !text-left">
-                  {locale === 'en' ? 'Fastest response' : '最快回覆'}
+                <h3 className="text-base font-medium text-foreground !text-left">WhatsApp</h3>
+                <p className="text-charcoal/70 text-sm font-light !text-left">+61 493 552 213</p>
+                <span className="text-xs text-charcoal/50 uppercase tracking-wider font-light block !text-left">
+                  {locale === 'en' ? 'Enquiries & Consultations' : '諮詢與問答'}
                 </span>
               </div>
             </a>

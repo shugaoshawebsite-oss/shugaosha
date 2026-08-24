@@ -63,7 +63,7 @@
     },
     "cta": {
       "title": "Ready to experience The Shugaosha Way?",
-      "button": "Book Your Session via WhatsApp/SMS: +61 493552213"
+      "button": "Book a Session"
     },
     "faq": {
       "title": "Frequently Asked Questions",
@@ -107,7 +107,7 @@
         },
         {
           "question": "How do I book an appointment?",
-          "answer": "Simply contact us via WhatsApp or submit an enquiry through our website."
+          "answer": "You can book directly through our online booking system, or contact us via WhatsApp, SMS, or Email if you have any questions before scheduling."
         }
       ],
       "stillHaveQuestions": "Still have questions?",
@@ -148,7 +148,7 @@
     ],
     "cta": {
       "title": "Ready to Begin Your Shugaosha Journey?",
-      "button": "Book a Session via WhatsApp"
+      "button": "Book a Session"
     },
     "coreBenefitsTitle": "Core Benefits"
   },
@@ -176,7 +176,7 @@
   "contact": {
     "title": "Contact Us",
     "subtitle": "Get in Touch",
-    "desc": "To provide personalised care and flexible scheduling, all appointments are arranged directly via WhatsApp, SMS or Email.",
+    "desc": "Book your session directly online, or get in touch with us via WhatsApp, SMS or Email for personalised enquiries.",
     "locationsTitle": "Our Locations",
     "primaryClinic": "Studio: 5 Pittwater Road, Gladesville NSW 2111, Australia."
   }

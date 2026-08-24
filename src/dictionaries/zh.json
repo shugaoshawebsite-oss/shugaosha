@@ -63,7 +63,7 @@
     },
     "cta": {
       "title": "準備好親身體驗「修顏社小顏術」了嗎？",
-      "button": "立即透過 WhatsApp/SMS 預約: +61 493552213"
+      "button": "立即預約"
     },
     "faq": {
       "title": "常見問題解答",
@@ -107,7 +107,7 @@
         },
         {
           "question": "如何預約？",
-          "answer": "只需透過 WhatsApp 與我們聯絡，或透過我們的網站提交諮詢表單。"
+          "answer": "您可以直接透過我們的線上預約系統預約療程，若在預約前有任何疑問，亦歡迎透過 WhatsApp、SMS 或電子郵件與我們聯絡諮詢。"
         }
       ],
       "stillHaveQuestions": "還有其他問題嗎？",
@@ -148,7 +148,7 @@
     ],
     "cta": {
       "title": "準備好開啟您的修顏社旅程了嗎？",
-      "button": "立即透過 WhatsApp 預約"
+      "button": "立即預約"
     },
     "coreBenefitsTitle": "核心功效"
   },
@@ -176,7 +176,7 @@
   "contact": {
     "title": "聯絡我們",
     "subtitle": "預約諮詢",
-    "desc": "為了提供個性化服務和靈活的預約安排，所有預約均直接透過 WhatsApp、SMS 或電子郵件進行。",
+    "desc": "您可以直接透過線上系統預約療程，或隨時透過 WhatsApp、SMS 或電子郵件與我們聯絡諮詢。",
     "locationsTitle": "服務地點",
     "primaryClinic": "工作室: 5 Pittwater Road, Gladesville NSW 2111, Australia."
   }

@@ -6,7 +6,7 @@ import { getTeam } from '@/utils/dataService'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 import InteriorSlideshow from '@/components/InteriorSlideshow'
 import CertGallery from '@/components/CertGallery'
-import { Globe } from 'lucide-react'
+import { Globe, Calendar } from 'lucide-react'
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -274,34 +274,20 @@ export default async function AboutPage({ params }: PageProps) {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <a
-              href="https://wa.me/61493552213"
+              href="https://benotely.com/shugaosha/book"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary flex items-center gap-3"
             >
-              <WhatsAppIcon className="w-5 h-5" />
-              {locale === 'en' ? 'Book via WhatsApp' : 'WhatsApp 線上預約'}
+              <Calendar className="w-5 h-5" />
+              {locale === 'en' ? 'Book a Session' : '立即預約'}
             </a>
-            <a
-              href="sms:+61493552213"
+            <Link
+              href={`/${locale}/contact`}
               className="btn-secondary flex items-center gap-3 bg-white"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-              >
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-              {locale === 'en' ? 'Book via SMS' : 'SMS 簡訊預約'}
-            </a>
+              {locale === 'en' ? 'Contact Us' : '聯絡我們'}
+            </Link>
           </div>
         </div>
       </section>

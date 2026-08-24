@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { Calendar } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import logoPortrait from '@/images/logo-portrait.svg'
 
@@ -185,12 +186,12 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         {/* CTA Buttons */}
         <div className="hero-cta flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
           <a
-            href="https://wa.me/61493552213"
+            href="https://benotely.com/shugaosha/book"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary flex items-center gap-2"
           >
-            <WhatsAppIcon className="w-4 h-4 relative z-10" />
+            <Calendar className="w-4 h-4 relative z-10" />
             <span className="relative z-10">
               {locale === 'en' ? 'Book a Session' : '立即預約'}
             </span>
