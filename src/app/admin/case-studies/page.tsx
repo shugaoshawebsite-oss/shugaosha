@@ -151,13 +151,13 @@ export default function CaseStudiesAdmin() {
       </div>
 
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-x-auto">
-        <table className="w-full text-left text-sm min-w-[600px]">
+        <table className="w-full text-left text-sm min-w-full sm:min-w-[600px]">
           <thead className="bg-gray-50 text-charcoal/60 border-b border-gray-100">
             <tr>
               <th className="px-4 py-4 w-10"></th>
               <th className="px-6 py-4 font-medium">Sessions</th>
               <th className="px-6 py-4 font-medium">Specialist</th>
-              <th className="px-6 py-4 font-medium">Image Path</th>
+              <th className="hidden md:table-cell px-6 py-4 font-medium">Image Path</th>
               <th className="px-6 py-4 font-medium text-right">Actions</th>
             </tr>
           </thead>
@@ -181,7 +181,7 @@ export default function CaseStudiesAdmin() {
                 <td className="px-6 py-4">
                   <div className="text-charcoal font-medium">{study.specialist || 'Teresa Soo'}</div>
                 </td>
-                <td className="px-6 py-4 font-mono text-xs text-charcoal/60">
+                <td className="hidden md:table-cell px-6 py-4 font-mono text-xs text-charcoal/60">
                   {study.imageRelativeUrl || 'None'}
                 </td>
                 <td className="px-6 py-4 flex justify-end gap-2">
@@ -219,25 +219,25 @@ export default function CaseStudiesAdmin() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Specialist</label>
-                  <select value={editForm.specialist || 'Teresa Soo'} onChange={(e) => setEditForm({...editForm, specialist: e.target.value as any})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white">
+                  <select value={editForm.specialist || 'Teresa Soo'} onChange={(e) => setEditForm({...editForm, specialist: e.target.value as any})} className="w-full px-3 py-2 border border-gray-200 rounded-[4px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white">
                     <option value="Teresa Soo">Teresa Soo</option>
                     <option value="Charles Cho">Charles Cho</option>
                   </select>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Sessions Count</label>
-                  <input type="number" value={editForm.sessionsCount || 0} onChange={(e) => setEditForm({...editForm, sessionsCount: parseInt(e.target.value) || 0})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                  <input type="number" value={editForm.sessionsCount || 0} onChange={(e) => setEditForm({...editForm, sessionsCount: parseInt(e.target.value) || 0})} className="w-full px-3 py-2 border border-gray-200 rounded-[4px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                 </div>
               </div>
 
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Description (English)</label>
-                  <textarea rows={6} value={editForm.description?.en || ''} onChange={(e) => setEditForm({...editForm, description: {...(editForm.description || {zh: ''}), en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+                  <textarea rows={6} value={editForm.description?.en || ''} onChange={(e) => setEditForm({...editForm, description: {...(editForm.description || {zh: ''}), en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-[4px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">Description (Chinese)</label>
-                  <textarea rows={6} value={editForm.description?.zh || ''} onChange={(e) => setEditForm({...editForm, description: {...(editForm.description || {en: ''}), zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
+                  <textarea rows={6} value={editForm.description?.zh || ''} onChange={(e) => setEditForm({...editForm, description: {...(editForm.description || {en: ''}), zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-[4px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"></textarea>
                 </div>
               </div>
 

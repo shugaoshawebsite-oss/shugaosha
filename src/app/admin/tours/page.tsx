@@ -196,11 +196,11 @@ export default function ToursAdmin() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">City (English)</label>
-                  <input type="text" value={editForm.city?.en || ''} onChange={(e) => setEditForm({...editForm, city: {...editForm.city!, en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                  <input type="text" value={editForm.city?.en || ''} onChange={(e) => setEditForm({...editForm, city: {...editForm.city!, en: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-[4px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-charcoal uppercase">City (Chinese)</label>
-                  <input type="text" value={editForm.city?.zh || ''} onChange={(e) => setEditForm({...editForm, city: {...editForm.city!, zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                  <input type="text" value={editForm.city?.zh || ''} onChange={(e) => setEditForm({...editForm, city: {...editForm.city!, zh: e.target.value}})} className="w-full px-3 py-2 border border-gray-200 rounded-[4px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                 </div>
               </div>
 
@@ -209,7 +209,7 @@ export default function ToursAdmin() {
                 <div className="space-y-2">
                   {(editForm.dates || []).map((date, index) => (
                     <div key={index} className="flex gap-2">
-                      <input type="text" placeholder="e.g. 27 September – 18 October 2026" value={date} onChange={(e) => updateDate(index, e.target.value)} className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                      <input type="text" placeholder="e.g. 27 September – 18 October 2026" value={date} onChange={(e) => updateDate(index, e.target.value)} className="flex-1 px-3 py-2 border border-gray-200 rounded-[4px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                       <button onClick={() => removeDate(index)} className="px-3 py-2 text-charcoal/50 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors">
                         <Trash2 className="w-4 h-4" />
                       </button>

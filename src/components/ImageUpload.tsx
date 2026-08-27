@@ -74,12 +74,12 @@ export default function ImageUpload({ value, onChange, label = 'Image' }: ImageU
       
       {value ? (
         <div className="relative inline-block w-full">
-          <div className="relative aspect-video w-full max-w-sm rounded-lg overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center">
+          <div className="relative aspect-video w-full max-w-sm rounded-[4px] overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center">
             <Image 
               src={encodeURI(value)} 
               alt="Uploaded preview" 
               fill 
-              className="object-cover"
+              className="object-cover rounded-[4px]"
               unoptimized // Preview uploaded file directly
             />
           </div>
@@ -106,7 +106,7 @@ export default function ImageUpload({ value, onChange, label = 'Image' }: ImageU
             type="button"
             onClick={() => fileInputRef.current?.click()}
             disabled={isUploading}
-            className="w-full flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-xl p-6 hover:bg-gray-50 hover:border-primary/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed group"
+            className="w-full flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-[4px] p-6 hover:bg-gray-50 hover:border-primary/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed group"
           >
             {isUploading ? (
               <Loader2 className="w-8 h-8 text-primary/50 animate-spin mb-2" />

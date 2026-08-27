@@ -32,8 +32,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Don't run i18n middleware on Sanity Studio paths
-  if (pathname.startsWith('/studio')) {
+  // Don't run i18n middleware on Sanity Studio or standalone booking paths
+  if (pathname.startsWith('/studio') || pathname.startsWith('/booking')) {
     return NextResponse.next()
   }
 
