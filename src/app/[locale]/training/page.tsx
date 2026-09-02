@@ -354,7 +354,7 @@ export default async function TrainingPage({ params }: PageProps) {
         </div>
 
         {/* Graduate & Diploma Photos */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-3 sm:gap-5">
           {[
             { src: '/assets/images/img16.webp', alt: locale === 'en' ? 'Graduate receiving official Japanese Diploma' : '畢業學員獲頒日本官方 Diploma' },
             { src: '/assets/images/img20.webp', alt: locale === 'en' ? 'Graduate Certificate Presentation' : '學員證書頒發' },
@@ -362,13 +362,13 @@ export default async function TrainingPage({ params }: PageProps) {
           ].map((img, i) => (
             <div
               key={i}
-              className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm"
+              className="relative aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm"
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 768px) 33vw, 33vw"
                 className="object-cover"
               />
             </div>
