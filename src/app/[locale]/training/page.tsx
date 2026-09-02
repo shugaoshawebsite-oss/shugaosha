@@ -441,19 +441,19 @@ export default async function TrainingPage({ params }: PageProps) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
           {[
             {
-              src: '/assets/training/kimmy_training_2.jpg',
-              title: locale === 'en' ? 'Practical Training' : '徒手技術實習',
-              desc: locale === 'en' ? 'Hands-on facial technique' : '徒手技術實習照片（Brisbane）',
-            },
-            {
               src: '/assets/training/kimmy_training_1.jpg',
               title: locale === 'en' ? 'Guided Application' : '指導實習',
               desc: locale === 'en' ? 'Guided practice with instructor' : '導師從旁指導實習（Brisbane）',
             },
             {
+              src: '/assets/training/kimmy_training_2.jpg',
+              title: locale === 'en' ? 'Practical Training' : '徒手技術實習',
+              desc: locale === 'en' ? 'Hands-on facial technique' : '徒手技術實習照片（Brisbane）',
+            },
+            {
               src: '/assets/training/kimmy_training_3.jpg',
-              title: locale === 'en' ? 'Precision Alignment' : '精準操作',
-              desc: locale === 'en' ? 'Real application practice' : '實際操作練習（Brisbane）',
+              title: locale === 'en' ? 'Japanese JSFA Diploma' : '日本官方 Diploma',
+              desc: locale === 'en' ? 'Kimmy receiving JSFA Diploma' : '獲頒日本官方 Diploma（Brisbane）',
             },
             {
               src: '/assets/training/kimmy_training_4.jpg',
