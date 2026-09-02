@@ -1,7 +1,19 @@
 {
   "rating": 5,
-  "user_ratings_total": 51,
+  "user_ratings_total": 52,
   "reviews": [
+    {
+      "author_name": "Lily Y",
+      "author_url": "https://www.google.com/maps/contrib/106643554203877895278/reviews",
+      "language": "en",
+      "original_language": "en",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjW0RjkL0uRvI0p-W4JPOQfMAlF9-n2mcg_aloznXN07peGzy22W=s128-c0x00000000-cc-rp-mo-ba2",
+      "rating": 5,
+      "relative_time_description": "in the last week",
+      "text": "It’s a comfortable and relaxing experience! You can definitely the difference after one session. Teresa is so lovely, warm and welcoming.",
+      "time": 1787919755,
+      "translated": false
+    },
     {
       "author_name": "zhe yu Deng",
       "author_url": "https://www.google.com/maps/contrib/107388997235197174649/reviews",
@@ -9,7 +21,7 @@
       "original_language": "zh-Hant",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWokWVI9Po9ySdu_czQoymBkFj0PWwHJJyaSZCBErRP-mh2Bsw=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "a week ago",
+      "relative_time_description": "2 weeks ago",
       "text": "This was amazing! An exceptionally wonderful experience! My whole face felt lifted after the treatment. Teresa's technique is superb, and it was incredibly comfortable and relaxing. 💗",
       "time": 1787022121,
       "translated": true
@@ -19,7 +31,7 @@
       "author_url": "https://www.google.com/maps/contrib/116312876580276849509/reviews",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjX7xIPT3ANwHb5r495Vh5aI0jTRGW0mHqGcHyS5xSwHYGKNskQB=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "2 weeks ago",
+      "relative_time_description": "3 weeks ago",
       "text": "",
       "time": 1786333916,
       "translated": false
@@ -31,7 +43,7 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLXa9LoN1lMvT3f3usJ4rjnqvMw9pQ_X3iMeyMT2aYmck2nNQ=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "2 weeks ago",
+      "relative_time_description": "3 weeks ago",
       "text": "I’ve been seeing Teresa for treatments and couldn’t recommend her more highly. She is professional, attentive and genuinely cares about her clients. Teresa always takes the time to understand what I’m looking for and makes me feel completely comfortable and relaxed throughout the treatment.\n\nHer attention to detail is fantastic, and I’m always so happy with the results. She is also such a lovely person, which makes every appointment something I look forward to.\n\nHighly recommend Teresa if you’re looking for a skilled, caring and professional therapist! ⭐️⭐️⭐️⭐️⭐️",
       "time": 1786312512,
       "translated": false
@@ -43,23 +55,11 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocI-nG3y61sV8MmgoNJnx94mhyyx8OdtitPJRsXsxk28YoWKwQ=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "2 weeks ago",
+      "relative_time_description": "3 weeks ago",
       "text": "I had such a great experience with Teresa. This technique is amazing, I’ve honestly never experienced anything like it before!\nThe results from just one session were incredible. I could see and feel a noticeable difference straight away.\nTeresa truly has miracle hands!\nHighly recommend.",
       "time": 1786262151,
       "translated": false
-    },
-    {
-      "author_name": "Artika Nair",
-      "author_url": "https://www.google.com/maps/contrib/110648835874811232023/reviews",
-      "language": "en",
-      "original_language": "en",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWGCdxShBVR5jwpvaK5SS384G2Le66Qmm7uk2UwijiZhUmLrLwu=s128-c0x00000000-cc-rp-mo-ba3",
-      "rating": 5,
-      "relative_time_description": "2 weeks ago",
-      "text": "I had the Japanese Facial Realignment treatment with Teresa when she was in Brisbane and absolutely loved it. Teresa is so lovely and made me feel comfortable from the moment I met her.\n\nThe treatment was so relaxing, especially the work around my jaw, face, neck and scalp. I hold quite a bit of tension in my jaw, and afterwards it felt noticeably more relaxed and my whole face just felt lighter.\n\nSuch a beautiful treatment and experience. I really hope Teresa comes back to Brisbane soon because I would definitely book in again!",
-      "time": 1786245612,
-      "translated": false
     }
   ],
-  "cachedAt": "2026-08-27T00:47:46.035Z"
+  "cachedAt": "2026-09-01T23:00:27.987Z"
 }

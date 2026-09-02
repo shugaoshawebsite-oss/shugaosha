@@ -116,6 +116,7 @@ export default function Header({ locale }: HeaderProps) {
     { name: dict.nav.home,              path: `/${locale}` },
     { name: dict.nav.aboutUs,           path: `/${locale}/about` },
     { name: dict.nav.treatment,         path: `/${locale}/treatment` },
+    { name: dict.nav.giftCertificates,  path: `/${locale}/gift-certificates` },
     { name: dict.nav.training,          path: `/${locale}/training` },
     { name: dict.nav.faq,               path: `/${locale}#faq` },
     { name: dict.nav.contact,           path: `/${locale}/contact` },
@@ -291,18 +292,19 @@ export default function Header({ locale }: HeaderProps) {
           ))}
 
           <div className="pt-6 border-t border-gray-100 w-full flex justify-center">
-            <div className="flex space-x-6">
+            <div className="flex items-center space-x-3">
               <Link
                 href={getLanguageSwitchPath('en')}
                 onClick={() => setIsOpen(false)}
-                className={`text-sm ${locale === 'en' ? 'text-primary font-medium' : 'text-charcoal font-light'}`}
+                className={`text-sm ${locale === 'en' ? 'text-primary font-medium' : 'text-charcoal font-light hover:text-primary'}`}
               >
                 Eng
               </Link>
+              <span className="text-charcoal/30">|</span>
               <Link
                 href={getLanguageSwitchPath('zh')}
                 onClick={() => setIsOpen(false)}
-                className={`text-sm ${locale === 'zh' ? 'text-primary font-medium' : 'text-charcoal font-light'}`}
+                className={`text-sm ${locale === 'zh' ? 'text-primary font-medium' : 'text-charcoal font-light hover:text-primary'}`}
               >
                 中文
               </Link>

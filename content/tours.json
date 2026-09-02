@@ -6,19 +6,7 @@
       "zh": "香港"
     },
     "dates": [
-      "27 September – 18 October 2026"
-    ],
-    "isActive": true
-  },
-  {
-    "_id": "tour1785464067935",
-    "city": {
-      "en": "test",
-      "zh": "test"
-    },
-    "dates": [
-      "15oct",
-      "18Nov"
+      "26 September – 16 October 2026"
     ],
     "isActive": true
   }

@@ -41,7 +41,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           delay: 0.15,
         })
 
-        gsap.from('.hero-title-sans', {
+        gsap.from('.hero-title', {
           y: 40,
           opacity: 0,
           duration: 1.0,
@@ -49,20 +49,12 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           delay: 0.3,
         })
 
-        gsap.from('.hero-title-serif', {
-          y: 50,
-          opacity: 0,
-          duration: 1.1,
-          ease: 'power3.out',
-          delay: 0.45,
-        })
-
         gsap.from('.hero-desc', {
           y: 30,
           opacity: 0,
           duration: 0.9,
           ease: 'power3.out',
-          delay: 0.62,
+          delay: 0.5,
         })
 
         gsap.from('.hero-cta > *', {
@@ -71,7 +63,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           duration: 0.8,
           ease: 'power3.out',
           stagger: 0.08,
-          delay: 0.78,
+          delay: 0.68,
         })
 
         gsap.from('.hero-social-v > *', {
@@ -80,7 +72,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           duration: 0.7,
           ease: 'power3.out',
           stagger: 0.1,
-          delay: 0.95,
+          delay: 0.85,
         })
 
         gsap.from('.hero-scroll-indicator', {
@@ -88,7 +80,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
           opacity: 0,
           duration: 0.8,
           ease: 'power3.out',
-          delay: 1.1,
+          delay: 1.0,
         })
       }, containerRef)
 
@@ -104,12 +96,6 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
     })
   }
 
-  // Split the title into the two visual parts
-  // EN: "THE SHUGAOSHA" (sans) + "WAY" (serif italic)
-  // ZH: Use the title as-is with a stylistic split
-  const titleSans = locale === 'en' ? 'THE SHUGAOSHA' : 'THE SHUGAOSHA'
-  const titleSerif = locale === 'en' ? 'WAY' : 'WAY'
-
   return (
     <section
       ref={containerRef}
@@ -122,7 +108,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         <div className="absolute inset-0 block md:hidden">
           <Image
             src="/images/mobile-hero.jpg"
-            alt="The Shugaosha Way mobile background"
+            alt="Hero mobile background"
             fill
             priority
             className="object-cover"
@@ -133,7 +119,7 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
         <div className="absolute inset-0 hidden md:block">
           <Image
             src="/images/desktop-hero.jpg"
-            alt="The Shugaosha Way background"
+            alt="Hero background"
             fill
             priority
             className="object-cover"
@@ -145,40 +131,30 @@ export default function HeroSection({ locale, dict }: HeroSectionProps) {
       </div>
 
       {/* Content — centered on mobile, tablet, and desktop viewports */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 py-20 md:py-0 space-y-8 flex flex-col items-center text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 py-20 md:py-0 space-y-6 sm:space-y-8 flex flex-col items-center text-center">
 
         {/* Portrait Logo */}
-        <div className="hero-logo w-[140px] md:w-[150px] mx-auto">
+        <div className="hero-logo w-[130px] sm:w-[140px] md:w-[150px] mx-auto">
           <Image
             src={logoPortrait}
             alt="Shugaosha"
             width={180}
             height={180}
             priority
-            className="w-full h-auto mb-2 object-contain"
+            className="w-full h-auto mb-1 object-contain"
           />
         </div>
 
-        {/* Typography: Montserrat font and golden color */}
-        <h1 className="space-y-2 leading-none w-full text-center font-sans">
-          <span
-            className="hero-title-sans block text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-sans font-light uppercase tracking-tight text-[#d5a848]"
-          >
-            {titleSans}
-          </span>
-          <span
-            className="hero-title-sans block text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-sans font-light uppercase tracking-tight text-[#d5a848]"
-          >
-            {titleSerif}
+        {/* Typography: Gold title */}
+        <h1 className="hero-title max-w-4xl mx-auto leading-tight w-full text-center">
+          <span className="block text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light uppercase tracking-tight text-[#d5a848]">
+            {dict.home.hero.title}
           </span>
         </h1>
 
-        {/* Description / Statement Block */}
-        <div className="hero-desc space-y-3 max-w-lg mx-auto text-charcoal/90">
-          <p className="text-xl sm:text-2xl font-light tracking-wide text-primary" style={{ fontFamily: 'var(--font-gilda-display), Georgia, serif' }}>
-            {dict.home.hero.tagline}
-          </p>
-          <p className="text-xs sm:text-sm font-small tracking-[0.2em] uppercase text-charcoal/70">
+        {/* Subtitle Block */}
+        <div className="hero-desc max-w-lg mx-auto text-charcoal/90">
+          <p className="text-xs sm:text-sm font-medium tracking-[0.22em] uppercase text-charcoal/75">
             {dict.home.hero.subtitle}
           </p>
         </div>

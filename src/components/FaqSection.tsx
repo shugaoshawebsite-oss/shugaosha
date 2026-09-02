@@ -87,10 +87,10 @@ export default function FaqSection({ dict, locale }: FaqSectionProps) {
               
               <div
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                  isOpen ? 'max-h-96 opacity-100 border-t border-gray-50' : 'max-h-0 opacity-0'
+                  isOpen ? 'max-h-[600px] opacity-100 border-t border-gray-50' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-6 sm:px-8 py-5 type-body text-charcoal/80 bg-soft-bg">
+                <div className="px-6 sm:px-8 py-5 type-body text-charcoal/80 bg-soft-bg whitespace-pre-line leading-relaxed">
                   {item.answer}
                 </div>
               </div>

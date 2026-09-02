@@ -10,7 +10,7 @@ export default function Footer({ locale }: FooterProps) {
   const dict = getDictionary(locale)
 
   return (
-    <footer className="bg-[#1a1b1e] text-white/90 pt-10 pb-8 sm:pt-14 sm:pb-12">
+    <footer className="bg-[#1a1b1e] text-white/90 pt-16 pb-12 sm:pt-20 sm:pb-16 mt-12 sm:mt-16">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 pb-8 md:pb-12 border-b border-white/10">
           
@@ -27,8 +27,8 @@ export default function Footer({ locale }: FooterProps) {
             </Link>
             <p className="text-sm font-light text-white/60 max-w-xs mx-auto md:mx-0 leading-relaxed">
               {locale === 'en' 
-                ? 'Helping people rediscover balance, harmony, confidence and a more youthful appearance through The Shugaosha Way.'
-                : '透過修顏社小顏術，幫助人們重拾平衡、和諧、自信，以及更年輕自然的面容。'}
+                ? 'Supporting balance, alignment, confidence and a more lifted, refined appearance through precise, hands-on facial correction.'
+                : '透過精準的徒手面部矯正，支持面部平衡、對齊、自信，以及更提升細緻的外觀。'}
             </p>
             {/* Social Icons */}
             <div className="flex gap-4 pt-1 justify-center md:justify-start">
@@ -96,7 +96,12 @@ export default function Footer({ locale }: FooterProps) {
               </li>
               <li>
                 <Link href={`/${locale}/treatment`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
-                  {dict.nav.treatment}
+                  {locale === 'en' ? 'Services' : '服務'}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/gift-certificates`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
+                  {dict.nav.giftCertificates}
                 </Link>
               </li>
               <li>
@@ -143,9 +148,9 @@ export default function Footer({ locale }: FooterProps) {
               </p>
               <div className="text-sm font-light text-white/70 space-y-1">
                 <p>
-                  <span className="font-medium">{locale === 'en' ? 'WhatsApp / SMS:' : 'WhatsApp／SMS:'}</span>{' '}
+                  <span className="font-medium">{locale === 'en' ? 'WhatsApp / SMS:' : 'WhatsApp／短訊:'}</span>{' '}
                   <a href="https://wa.me/61493552213" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                    +61 493552213
+                    +61 493 552 213
                   </a>
                 </p>
                 <p>

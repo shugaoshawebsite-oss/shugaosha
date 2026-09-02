@@ -14,10 +14,10 @@ interface PageProps {
 
 const certGroups = [
   {
-    titleEn: 'Northern Districts Local Business Awards – Outstanding Beauty Services Finalist',
-    titleZh: 'Northern Districts 本地商業大獎 — 卓越美容服務決賽入圍',
-    descEn: 'Being named a Finalist in the 2026 Northern Districts Local Business Awards – Outstanding Beauty Services is a significant recognition of our commitment to excellence, professionalism and exceptional client care.',
-    descZh: '入圍 2026 年 Northern Districts 本地商業大獎（Outstanding Beauty Services）決賽，是對我們追求卓越、專業精神和卓越客戶護理的重大肯定。',
+    titleEn: '2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist',
+    titleZh: '2026 年 Northern Districts 當地商業大獎 — 卓越美容服務決賽入圍',
+    descEn: 'Proudly recognised as a Finalist in the 2026 Northern Districts Local Business Awards — Outstanding Beauty Services category, reflecting our commitment to precision, professionalism and exceptional client care.',
+    descZh: '榮幸入圍 2026 年 Northern Districts 當地商業大獎 — 卓越美容服務（Outstanding Beauty Services）類別最終決賽，肯定了我們對精準手法、專業精神與卓越客戶護理的堅持。',
     thumbs: [
       { thumbSrc: '/assets/cert/Outstanding Beauty Services_s.webp', fullSrc: '/assets/cert/Outstanding Beauty Services.png', labelEn: 'Outstanding Beauty Services Finalist', labelZh: '卓越美容服務決賽入圍' },
     ],
@@ -65,9 +65,7 @@ export default async function AboutPage({ params }: PageProps) {
             {dict.about.subtitle}
           </h1>
           <p className="type-body text-charcoal/80 max-w-xl mt-4">
-            {locale === 'en'
-              ? 'Helping you achieve a naturally lifted, firmer and more balanced appearance through gentle Japanese hands-on techniques.'
-              : '我們致力於透過溫和的日式徒手手法，幫助您獲得自然提升、緊緻且更加對稱平衡的面容。'}
+            {dict.about.description}
           </p>
         </div>
       </section>
@@ -76,7 +74,7 @@ export default async function AboutPage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
         <div className="border-b border-gray-100 pb-6">
           <span className="type-label text-primary block mb-3">
-            {locale === 'en' ? 'Meet the Team' : '認識我們的團隊'}
+            {dict.about.teamTag}
           </span>
           <h2 className="type-heading text-foreground">
             {dict.about.foundersTitle}
@@ -123,7 +121,7 @@ export default async function AboutPage({ params }: PageProps) {
                       {member.role[locale] || member.role.en}
                     </span>
                   </div>
-                  <p className="type-body-sm text-charcoal/80 whitespace-pre-line">
+                  <p className="type-body-sm text-charcoal/80 whitespace-pre-line text-left leading-relaxed">
                     {member.bio[locale] || member.bio.en}
                   </p>
                 </div>
@@ -138,10 +136,10 @@ export default async function AboutPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
           <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-4">
             <span className="type-label text-primary">
-              {locale === 'en' ? 'Credentials & Recognition' : '認證與榮譽'}
+              {dict.about.awardsTag}
             </span>
             <h2 className="type-heading text-foreground">
-              {locale === 'en' ? 'Certificate & Award' : '證書與獎項'}
+              {dict.about.awardsTitle}
             </h2>
           </div>
 
@@ -157,22 +155,17 @@ export default async function AboutPage({ params }: PageProps) {
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
               <span className="type-label text-primary">
-                {locale === 'en' ? 'Global Reach' : '環球足跡'}
+                {dict.about.journeyTag}
               </span>
               <h2 className="type-heading text-foreground">
-                {locale === 'en' ? 'Our Journey' : '我們的旅程'}
+                {dict.about.journeyTitle}
               </h2>
             </div>
-            <p className="type-body text-charcoal/80 leading-relaxed">
-              {locale === 'en'
-                ? 'We are proud to have brought our tours to audiences across multiple international cities over the years. Our experience reflects our passion for sharing culture and creating memorable experiences.'
-                : '多年來，我們非常榮幸能夠將巡迴服務帶到多個國際城市的客戶面前。我們的豐富經驗體現了我們對分享文化與創造難忘體驗的熱情。'}
-            </p>
-            <p className="type-body-sm text-charcoal/70 border-l-2 border-primary/30 pl-4 py-1">
-              {locale === 'en'
-                ? 'We look forward to bringing our tours to even more destinations in the future.'
-                : '我們期待在未來將我們的巡迴服務帶到更多目的地。'}
-            </p>
+            <div className="type-body text-charcoal/80 leading-relaxed space-y-4">
+              <p>{dict.about.journeyP1}</p>
+              <p>{dict.about.journeyP2}</p>
+              <p>{dict.about.journeyP3}</p>
+            </div>
           </div>
 
           {/* Right Column - Cities Visited Grid */}
@@ -182,13 +175,16 @@ export default async function AboutPage({ params }: PageProps) {
                 <Globe className="w-5 h-5" />
               </div>
               <h3 className="type-card-title text-foreground">
-                {locale === 'en' ? "Cities We've Served" : '我們曾提供服務的城市'}
+                {dict.about.citiesServedTitle}
               </h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-6">
               {[
                 { en: 'Hong Kong', zh: '香港', flag: '🇭🇰' },
+                { en: 'Sydney', zh: '悉尼', flag: '🇦🇺' },
+                { en: 'Melbourne', zh: '墨爾本', flag: '🇦🇺' },
+                { en: 'Brisbane', zh: '布里斯本', flag: '🇦🇺' },
                 { en: 'San Francisco', zh: '三藩市', flag: '🇺🇸' },
                 { en: 'Los Angeles', zh: '洛杉磯', flag: '🇺🇸' },
                 { en: 'Las Vegas', zh: '拉斯維加斯', flag: '🇺🇸' },
@@ -219,24 +215,15 @@ export default async function AboutPage({ params }: PageProps) {
           <div className="lg:col-span-4 space-y-6">
             <div className="space-y-3">
               <span className="type-label text-primary">
-                {locale === 'en' ? 'Our Studio' : '我們的工作室'}
+                {dict.about.studioTag}
               </span>
               <h2 className="type-subheading text-foreground">
-                {locale === 'en' ? 'The Shugaosha Studio' : 'Shugaosha 工作室'}
+                {dict.about.studioTitle}
               </h2>
             </div>
             <div className="type-body text-charcoal/80 space-y-4">
-              {locale === 'en' ? (
-                <>
-                  <p>Located in Gladesville, The Shugaosha Studio is a private, light-filled space designed for comfort, relaxation and personalised care.</p>
-                  <p>Many clients tell us they feel deeply relaxed during and after their session. In this peaceful, unhurried environment, you can fully unwind while experiencing The Shugaosha Way and restoring your natural facial balance.</p>
-                </>
-              ) : (
-                <>
-                  <p>位於 Gladesville 的 Shugaosha 工作室，是一個私密、採光充足的空間，專為舒適、放鬆和個性化體驗而設計。</p>
-                  <p>許多客戶反映，在體驗期間和之後都感到深度放鬆。在這個寧靜、不疾不徐的環境中，您可以徹底放鬆身心，同時體驗「修顏社小顏術」並恢復面部的自然平衡。</p>
-                </>
-              )}
+              <p>{dict.about.studioP1}</p>
+              <p>{dict.about.studioP2}</p>
             </div>
             <div className="space-y-2 text-sm font-light text-charcoal/70">
               <p className="font-medium text-foreground">5 Pittwater Road</p>
@@ -263,14 +250,10 @@ export default async function AboutPage({ params }: PageProps) {
       <section className="w-full bg-primary/5 border-y border-primary/10 py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-6 text-center md:text-left space-y-8">
           <h2 className="type-heading text-foreground max-w-xl mx-auto md:mx-0">
-            {locale === 'en'
-              ? 'Experience The Shugaosha Way'
-              : '體驗 The Shugaosha Way'}
+            {dict.about.cta.title}
           </h2>
           <p className="type-body-sm text-charcoal/70 max-w-md mx-auto md:mx-0">
-            {locale === 'en'
-              ? 'Book your personalized consultation or treatment session today.'
-              : '立即預約您的個人化諮詢或療程。'}
+            {dict.about.cta.desc}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <a
@@ -280,13 +263,13 @@ export default async function AboutPage({ params }: PageProps) {
               className="btn-primary flex items-center gap-3"
             >
               <Calendar className="w-5 h-5" />
-              {locale === 'en' ? 'Book a Session' : '立即預約'}
+              {dict.about.cta.bookButton}
             </a>
             <Link
               href={`/${locale}/contact`}
               className="btn-secondary flex items-center gap-3 bg-white"
             >
-              {locale === 'en' ? 'Contact Us' : '聯絡我們'}
+              {dict.about.cta.contactButton}
             </Link>
           </div>
         </div>

@@ -1,9 +1,10 @@
 {
   "nav": {
     "home": "Home",
-    "treatment": "The Shugaosha Way",
-    "successStories": "Success Stories",
     "aboutUs": "About",
+    "treatment": "Our Services",
+    "giftCertificates": "Gift Certificates",
+    "successStories": "Success Stories",
     "newsTours": "News",
     "training": "Training",
     "contact": "Contact",
@@ -12,25 +13,47 @@
   },
   "home": {
     "hero": {
-      "title": "THE SHUGAOSHA WAY",
-      "tagline": "Beyond Beauty",
+      "title": "THE FACIAL CORRECTION SPECIALIST",
       "subtitle": "PRECISION • BALANCE • HARMONY",
       "description": "A gentle hands-on approach to facial balance, harmony and wellbeing."
     },
     "whatWeDo": {
-      "title": "What Is The Shugaosha Way?",
-      "description1": "The Shugaosha Way is our signature hands-on approach to facial balance, harmony and overall wellbeing.",
-      "description2": "Developed through years of practice and ongoing training in Japan, it works with your natural facial structure to help create a more balanced, refreshed and naturally lifted appearance.",
-      "description3": "Rather than changing your face, our goal is to help your face return to its natural balance.",
-      "benefitsTitle": "Benefits of The Shugaosha Way",
+      "approach": "OUR APPROACH",
+      "title": "What Is Shugaosha?",
+      "description1": "Shugaosha is a specialist facial correction practice focused on facial balance, alignment, structure and overall wellbeing.",
+      "description2": "Built on years of hands-on experience and ongoing professional training in Japan, our approach uses precise, layered rebalancing to work with the face as a whole.",
+      "description3": "We offer two distinct hands-on services, each with a different focus — The Shugaosha Way — Foundation and The Shugaosha Lift.",
+      "button": "EXPLORE OUR SERVICES",
+      "benefitsTitle": "Benefits of Shugaosha",
       "benefits": [
-        "Promotes a more lifted and refined appearance.",
-        "Encourages facial balance and harmony.",
-        "Helps reduce the appearance of puffiness.",
-        "Supports a fresher and more refreshed look.",
-        "Encourages relaxation and release of tension.",
-        "Supports overall wellbeing and a lighter feeling."
+        "Supports a firmer, more lifted and refined appearance.",
+        "Supports better balance, alignment and harmony across the face.",
+        "Helps support a fresher, less puffy facial appearance.",
+        "Helps create clearer, more sculpted and three-dimensional facial contours.",
+        "Helps release built-up tension through the face and connected areas.",
+        "Supports balance and alignment through the upper body, neck, head and face."
       ]
+    },
+    "servicesSection": {
+      "tag": "OUR SERVICES",
+      "title": "Explore Our Services",
+      "subtitle": "Two distinct hands-on services designed with a different focus.",
+      "foundation": {
+        "badge": "Core Facial Correction",
+        "title": "The Shugaosha Way — Foundation",
+        "p1": "Our core facial correction service, focused closely on restoring facial balance, alignment and harmony.",
+        "p2": "Using precise, layered rebalancing, it works with the face as a whole to help correct visible imbalance, refine the contours and support a more lifted, firmer and three-dimensional appearance.",
+        "p3": "Many clients can see a visible change from their first session, with the face often appearing more balanced, centred and refined, with clearer contours and a fresher, more youthful overall appearance.",
+        "bookButton": "Book a Session"
+      },
+      "lift": {
+        "badge": "Upper Body & Facial Lifting",
+        "title": "The Shugaosha Lift",
+        "p1": "The Shugaosha Lift is a separate hands-on service that works progressively through the upper body, shoulders, neck, head and face, helping release built-up tension in connected areas that can influence how the face is supported.",
+        "p2": "By easing tension through these areas, many clients can feel a difference from their first session, with greater openness, ease and freedom of movement through the shoulders, neck and head.",
+        "p3": "The facial work places a stronger focus on lifting, helping the lifting effect feel better supported, more stable and longer-lasting over time.",
+        "bookButton": "Book a Session"
+      }
     },
     "celebrityTeaser": {
       "title": "Trusted by celebrities, professionals and clients from Australia, Hong Kong and beyond.",
@@ -70,44 +93,32 @@
       "subtitle": "Common Questions",
       "items": [
         {
-          "question": "How is the Shugaosha Way different from a facial massage?",
-          "answer": "Unlike a traditional facial massage, The Shugaosha Way is a hands-on facial rebalancing technique. Rather than simply relaxing facial muscles, it works with your natural facial balance and structure to help restore harmony and create a naturally lifted, refreshed appearance."
+          "question": "Which Shugaosha service should I choose?",
+          "answer": "For first-time clients, we recommend starting with The Shugaosha Way — Foundation. It is our core facial correction service and allows us to first work closely with your facial balance, alignment and contours.\n\nOnce that foundation has been established, The Shugaosha Lift can be introduced if you would like to work more broadly through the upper body, shoulders, neck, head and face, with a stronger focus on release and supporting the lifting effect."
         },
         {
-          "question": "Is the Shugaosha Way a regular facial treatment?",
-          "answer": "No. It does not involve skincare products, machines or facial equipment. However, many clients notice their skin appears brighter, firmer and more radiant after treatment."
-        },
-        {
-          "question": "Is the treatment painful?",
-          "answer": "The treatment is generally gentle and comfortable. Areas with more tension or imbalance may feel slightly more sensitive during the session, but this usually eases as the treatment progresses."
-        },
-        {
-          "question": "How many sessions do I need?",
-          "answer": "The number of sessions depends on your individual goals and facial condition. We’ll recommend the most suitable approach based on your needs and progress."
+          "question": "Can I see a visible change after one session?",
+          "answer": "Many clients can see a visible change from their first session.\n\nWith The Shugaosha Way — Foundation, this may include a more balanced, lifted and refined facial appearance, with clearer contours.\n\nWith The Shugaosha Lift, clients may also feel a noticeable difference through the shoulders, neck and head, with a greater sense of release and openness."
         },
         {
           "question": "How long do the results last?",
-          "answer": "Results vary from person to person. Like any form of self-care, regular maintenance treatments help support and maintain your results over time."
+          "answer": "How long the results last can vary depending on factors such as facial tension, posture, stress and everyday habits.\n\nOngoing sessions help support the balance and changes that have already been built, while regular maintenance is recommended to help keep the results more stable over time.\n\nA simple way to think about it is a little like going to the gym — if you want to maintain the progress, regular maintenance is important."
         },
         {
-          "question": "Is there any downtime?",
-          "answer": "No. There is no downtime. Many clients choose to book their treatment before a special occasion or event to look refreshed and naturally lifted."
+          "question": "How long is each session and why?",
+          "answer": "Each session is approximately 45–60 minutes.\n\nFacial tissues can become overworked if unnecessary pressure is applied for too long, so we carefully adjust the duration, pace and pressure according to what your face needs, rather than overworking the area. This allows us to work effectively while avoiding unnecessary stress on the tissues."
         },
         {
-          "question": "Can I have treatment after Botox or fillers?",
-          "answer": "Yes, but we recommend waiting until Botox or fillers have fully settled. Please let us know before booking so we can advise the most suitable timing."
+          "question": "How many sessions do I need?",
+          "answer": "Many clients can see a visible change from their first session.\n\nFor a more balanced and settled result, we generally recommend around 4–5 sessions initially, with each session building on the previous one and helping the facial balance, alignment and contours become more established over time.\n\nAfter that, the frequency can be adjusted according to your individual progress and needs."
         },
         {
-          "question": "Who is not suitable for treatment?",
-          "answer": "Treatment may not be suitable if you are pregnant, have certain medical conditions, or have recently undergone cosmetic procedures. Please let us know before booking so we can advise whether the treatment is suitable for you."
+          "question": "Can I have a session after Botox, fillers or other injectables?",
+          "answer": "We recommend waiting at least 4 weeks after Botox.\n\nFor fillers, Sculptra or other injectable treatments, we recommend waiting at least 6 months before having a session.\n\nIf you have had any of the above procedures, please contact us before making a booking. We’ll first confirm whether it is suitable for you to proceed."
         },
         {
-          "question": "How long is each appointment?",
-          "answer": "Approximately 45–60 minutes. Each treatment is tailored to your individual needs. We believe more time is not always better. Every session is carefully tailored to suit your face, allowing your tissues and muscles to respond naturally without unnecessary stress."
-        },
-        {
-          "question": "How do I book an appointment?",
-          "answer": "You can book directly through our online booking system, or contact us via WhatsApp, SMS, or Email if you have any questions before scheduling."
+          "question": "Who may not be suitable for a Shugaosha session?",
+          "answer": "A Shugaosha session may not be suitable if you have active skin inflammation, eczema, open wounds, recent facial surgery or thread lifts.\n\nFor male clients, heavy facial hair or a full beard can also make it more difficult for us to work directly with the face and may reduce how clearly visible changes can be seen.\n\nIf any of these apply to you, please contact us before booking so we can confirm whether it is suitable to proceed."
         }
       ],
       "stillHaveQuestions": "Still have questions?",
@@ -122,48 +133,102 @@
     "everydayTitle": "Google Reviews"
   },
   "treatment": {
-    "title": "Treatment",
-    "subtitle": "The Shugaosha Way",
-    "tagline": "Effective, Non-invasive, Safe & Natural",
-    "introTitle": "How Does The Shugaosha Way Work?",
-    "introDesc1": "The Shugaosha Way is based on the belief that facial appearance is closely connected to balance, harmony and overall wellbeing.",
-    "introDesc2": "Through our signature hands-on approach, we work with the body’s natural structure rather than forcing change.",
-    "introDesc3": "Every treatment is personalised, respecting each client’s unique facial features while encouraging a naturally refreshed, balanced and lifted appearance.",
-    "introDesc4": "Our goal is not to change your appearance, but to help you rediscover your natural balance.",
-    "skullTitle": "Understanding Facial Balance",
-    "skullDesc1": "As we age, daily habits, posture and muscle tension can gradually influence facial balance and overall appearance.",
-    "skullDesc2": "The Shugaosha Way focuses on understanding these changes and working with the body’s natural structure through a gentle hands-on approach.",
-    "skullDesc3": "Rather than forcing change, our goal is to encourage better balance, harmony and a naturally refreshed appearance.",
-    "techniqueTitle": "Layer by Layer, With Care",
-    "techniqueDesc1": "The Shugaosha Way is performed through our carefully developed layer-by-layer hands-on approach.",
-    "techniqueDesc2": "Rather than focusing on a single feature, we consider how different areas of the face work together to support overall balance and harmony.",
-    "techniqueDesc3": "Every treatment is individually tailored to complement your unique facial structure and natural features, helping you achieve results that look balanced, refreshed and naturally you.",
-    "additionalBenefitsTitle": "Additional Benefits",
-    "additionalBenefits": [
-      "Deep Muscle Relaxation & Tension Release",
-      "Improved Lymphatic Drainage",
-      "Softer Nasolabial Folds",
-      "Reduced Jaw Tension",
-      "Improved Facial Circulation"
+    "tag": "OUR SERVICES",
+    "title": "Choose Your Shugaosha Experience",
+    "tagline": "Two distinct hands-on services, each with its own focus.",
+    "diffTag": "HOW ARE THEY DIFFERENT?",
+    "foundation": {
+      "title": "The Shugaosha Way — Foundation",
+      "p1": "Our core facial correction service and the recommended starting point for new clients.",
+      "p2": "It focuses closely on the face through precise, layered rebalancing to support facial balance, alignment and structure, a more lifted and firmer appearance, and clearer, more refined contours.",
+      "p3": "Many clients can see a visible change from their first session, with the face often appearing more balanced, centred, refined and youthful."
+    },
+    "lift": {
+      "title": "The Shugaosha Lift",
+      "p1": "A separate hands-on service that works progressively through the upper body, neck, head and face.",
+      "p2": "It focuses on releasing built-up tension through these connected areas, supporting overall alignment and creating a stronger facial lifting and tightening effect."
+    },
+    "together": {
+      "title": "How They Work Together",
+      "p1": "Each service has its own distinct focus. Foundation works in greater detail with the face, while The Shugaosha Lift extends the work through the connected areas of the upper body, neck and head.",
+      "p2": "When combined, they support and enhance each other from both a detailed facial and wider structural perspective."
+    },
+    "expectTag": "WHAT TO EXPECT",
+    "expectTitle": "How It Works",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Choose Your Service",
+        "desc": "For new clients, The Shugaosha Way — Foundation is the recommended starting point. It allows us to first understand and work closely with your facial balance, alignment and structure."
+      },
+      {
+        "step": "02",
+        "title": "Your Personalised Hands-On Session",
+        "desc": "Each session is carefully guided by your individual facial structure and areas of focus. Our precise hands-on approach is adapted to the service you choose and what your face needs at that time."
+      },
+      {
+        "step": "03",
+        "title": "Build and Maintain Your Progress",
+        "desc": "Many clients can see a visible change from their first session. Continuing over a series of sessions allows the work to build progressively, helping the changes become more refined and established over time."
+      }
+    ],
+    "benefitsTag": "WHAT YOU CAN EXPECT",
+    "benefitsTitle": "Core Benefits",
+    "benefits": [
+      {
+        "title": "Facial Balance & Alignment",
+        "desc": "Supports a more balanced, centred and harmonious facial appearance."
+      },
+      {
+        "title": "Lifted & Firmer",
+        "desc": "Supports a more lifted, firmer and refreshed overall appearance."
+      },
+      {
+        "title": "Clearer, Refined Contours",
+        "desc": "Helps create clearer definition and a more refined, three-dimensional appearance."
+      },
+      {
+        "title": "Overall Alignment & Wellbeing",
+        "desc": "Supports greater ease, overall alignment and a more refreshed sense of wellbeing."
+      }
     ],
     "cta": {
-      "title": "Ready to Begin Your Shugaosha Journey?",
-      "button": "Book a Session"
-    },
-    "coreBenefitsTitle": "Core Benefits"
+      "title": "Ready to Choose Your Shugaosha Experience?",
+      "bookButton": "BOOK A SESSION",
+      "contactButton": "CONTACT US"
+    }
   },
   "about": {
-    "title": "About Us",
-    "subtitle": "The Shugaosha Difference",
+    "title": "ABOUT US",
+    "subtitle": "The People Behind Shugaosha",
+    "description": "Founded by Teresa Soo and Charles Cho, Shugaosha brings together years of hands-on experience, professional training in Japan and a shared commitment to precise, thoughtful facial correction.",
+    "teamTag": "MEET THE TEAM",
     "foundersTitle": "Our Specialists",
+    "awardsTag": "CREDENTIALS & RECOGNITION",
     "awardsTitle": "Awards & Recognition",
     "awards": [
-      "🏆 2026 Northern Districts Local Business Awards Finalist",
+      "🏆 2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist",
       "Outstanding Beauty Services",
       "5-Star Google Reviews"
     ],
-    "philosophyTitle": "The Science & Philosophy",
-    "philosophyDesc": "The Shugaosha Philosophy: PRECISION • BALANCE • HARMONY. The Shugaosha Way: Less Force. More Understanding. We Don't Change Your Face.",
+    "awardItemTitle": "2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist",
+    "awardItemDesc": "Proudly recognised as a Finalist in the 2026 Northern Districts Local Business Awards — Outstanding Beauty Services category, reflecting our commitment to precision, professionalism and exceptional client care.",
+    "journeyTag": "OUR JOURNEY",
+    "journeyTitle": "Where Our Journey Has Taken Us",
+    "journeyP1": "Shugaosha’s journey began in Hong Kong and is now based in Sydney, Australia.",
+    "journeyP2": "Each year, we travel to selected cities to bring the Shugaosha experience to clients in different locations. Our journey also continues through ongoing professional training and exchange.",
+    "journeyP3": "Over the years, this has taken Shugaosha across Australia, Asia and North America, with each experience contributing to the continued development and refinement of our hands-on approach.",
+    "citiesServedTitle": "CITIES WE’VE SERVED",
+    "studioTag": "OUR STUDIO",
+    "studioTitle": "The Shugaosha Studio",
+    "studioP1": "Located in Gladesville, The Shugaosha Studio is a private, light-filled space designed for comfort, relaxation and personalised care.",
+    "studioP2": "Many clients tell us they feel deeply relaxed during and after their session. In this peaceful, unhurried environment, you can fully unwind while experiencing Shugaosha’s precise, hands-on approach.",
+    "cta": {
+      "title": "BEGIN YOUR SHUGAOSHA EXPERIENCE",
+      "desc": "Explore our services and book your Experience Session online.",
+      "bookButton": "BOOK A SESSION",
+      "contactButton": "CONTACT US"
+    },
     "locationNotice": "We have moved to Gladesville!"
   },
   "newsTours": {
@@ -174,10 +239,10 @@
     "bookingNote": "Appointments are limited. Please message via WhatsApp to secure your session."
   },
   "contact": {
-    "title": "Contact Us",
+    "title": "CONTACT US",
     "subtitle": "Get in Touch",
-    "desc": "Book your session directly online, or get in touch with us via WhatsApp, SMS or Email for personalised enquiries.",
-    "locationsTitle": "Our Locations",
+    "desc": "Book your Sydney session directly online, or contact us via WhatsApp, SMS or email for personalised enquiries.",
+    "locationsTitle": "OUR LOCATION",
     "primaryClinic": "Studio: 5 Pittwater Road, Gladesville NSW 2111, Australia."
   }
 }

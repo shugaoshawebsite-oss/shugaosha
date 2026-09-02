@@ -15,6 +15,27 @@ interface Celebrity {
   role: LocalizedString
   quote: LocalizedString
   imageRelativeUrl: string
+  updatedAt?: string
+}
+
+function formatLastEdit(dateString?: string, fallbackId?: string) {
+  if (dateString) {
+    const d = new Date(dateString)
+    if (!isNaN(d.getTime())) {
+      return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+    }
+  }
+  if (fallbackId) {
+    const match = fallbackId.match(/\d{10,13}/)
+    if (match) {
+      const ts = parseInt(match[0])
+      const d = new Date(ts > 1e11 ? ts : ts * 1000)
+      if (!isNaN(d.getTime()) && d.getFullYear() >= 2020) {
+        return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+      }
+    }
+  }
+  return '—'
 }
 
 export default function CelebritiesAdmin() {
@@ -101,6 +122,7 @@ export default function CelebritiesAdmin() {
       role: { en: '', zh: '' },
       quote: { en: '', zh: '' },
       imageRelativeUrl: '',
+      updatedAt: new Date().toISOString(),
     }
     setEditForm(newCeleb)
     setEditingId(newId)
@@ -118,13 +140,18 @@ export default function CelebritiesAdmin() {
   const handleSaveEdit = () => {
     if (!editForm._id) return
 
+    const itemToSave = {
+      ...editForm,
+      updatedAt: new Date().toISOString(),
+    }
+
     const exists = celebrities.some(c => c._id === editForm._id)
     let updated: Celebrity[]
 
     if (exists) {
-      updated = celebrities.map(c => c._id === editForm._id ? (editForm as Celebrity) : c)
+      updated = celebrities.map(c => c._id === editForm._id ? (itemToSave as Celebrity) : c)
     } else {
-      updated = [...celebrities, editForm as Celebrity]
+      updated = [...celebrities, itemToSave as Celebrity]
     }
 
     handleSaveAll(updated)
@@ -157,6 +184,7 @@ export default function CelebritiesAdmin() {
               <th className="px-6 py-4 font-medium">Role</th>
               <th className="hidden md:table-cell px-6 py-4 font-medium">Image Path</th>
               <th className="px-6 py-4 font-medium text-right">Actions</th>
+              <th className="px-6 py-4 font-medium text-right whitespace-nowrap">Last edit</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -192,11 +220,14 @@ export default function CelebritiesAdmin() {
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </td>
+                <td className="px-6 py-4 text-right text-xs text-charcoal/60 whitespace-nowrap">
+                  {formatLastEdit(celeb.updatedAt, celeb._id)}
+                </td>
               </tr>
             ))}
             {celebrities.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-6 py-8 text-center text-charcoal/50">No celebrities found. Add one to get started.</td>
+                <td colSpan={6} className="px-6 py-8 text-center text-charcoal/50">No celebrities found. Add one to get started.</td>
               </tr>
             )}
           </tbody>

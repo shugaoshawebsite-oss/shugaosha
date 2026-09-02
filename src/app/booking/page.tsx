@@ -78,10 +78,10 @@ function FaqAccordion() {
             </button>
             <div
               className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                isOpen ? 'max-h-96 opacity-100 border-t border-black/[0.05]' : 'max-h-0 opacity-0'
+                isOpen ? 'max-h-[600px] opacity-100 border-t border-black/[0.05]' : 'max-h-0 opacity-0'
               }`}
             >
-              <div className="px-6 py-4 text-[13px] leading-relaxed text-charcoal/80 bg-[#fcfcfc]">
+              <div className="px-6 py-4 text-[13px] leading-relaxed text-charcoal/80 bg-[#fcfcfc] whitespace-pre-line">
                 {item.answer}
               </div>
             </div>
@@ -384,8 +384,8 @@ export default function BookingPage() {
               height={26}
               className="h-auto w-[110px]"
             />
-            <p className="text-xs font-light leading-relaxed text-white/55 max-w-[26ch]">
-              Authentic Japanese facial alignment in Sydney's Northern Districts.
+            <p className="text-xs font-light leading-relaxed text-white/55 max-w-[34ch]">
+              Supporting balance, alignment, confidence and a more lifted, refined appearance through precise, hands-on facial correction.
             </p>
           </div>
 

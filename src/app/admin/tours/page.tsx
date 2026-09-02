@@ -13,6 +13,27 @@ interface Tour {
   city: LocalizedString
   dates: string[]
   isActive: boolean
+  updatedAt?: string
+}
+
+function formatLastEdit(dateString?: string, fallbackId?: string) {
+  if (dateString) {
+    const d = new Date(dateString)
+    if (!isNaN(d.getTime())) {
+      return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+    }
+  }
+  if (fallbackId) {
+    const match = fallbackId.match(/\d{10,13}/)
+    if (match) {
+      const ts = parseInt(match[0])
+      const d = new Date(ts > 1e11 ? ts : ts * 1000)
+      if (!isNaN(d.getTime()) && d.getFullYear() >= 2020) {
+        return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+      }
+    }
+  }
+  return '—'
 }
 
 export default function ToursAdmin() {
@@ -71,6 +92,7 @@ export default function ToursAdmin() {
       city: { en: '', zh: '' },
       dates: [''],
       isActive: true,
+      updatedAt: new Date().toISOString(),
     }
     setEditForm(newTour)
     setEditingId(newId)
@@ -88,13 +110,18 @@ export default function ToursAdmin() {
   const handleSaveEdit = () => {
     if (!editForm._id) return
 
+    const itemToSave = {
+      ...editForm,
+      updatedAt: new Date().toISOString(),
+    }
+
     const exists = tours.some(c => c._id === editForm._id)
     let updated: Tour[]
 
     if (exists) {
-      updated = tours.map(c => c._id === editForm._id ? (editForm as Tour) : c)
+      updated = tours.map(c => c._id === editForm._id ? (itemToSave as Tour) : c)
     } else {
-      updated = [...tours, editForm as Tour]
+      updated = [...tours, itemToSave as Tour]
     }
 
     handleSaveAll(updated)
@@ -142,6 +169,7 @@ export default function ToursAdmin() {
               <th className="px-6 py-4 font-medium">Dates</th>
               <th className="px-6 py-4 font-medium">Status</th>
               <th className="px-6 py-4 font-medium text-right">Actions</th>
+              <th className="px-6 py-4 font-medium text-right whitespace-nowrap">Last edit</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -169,11 +197,14 @@ export default function ToursAdmin() {
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </td>
+                <td className="px-6 py-4 text-right text-xs text-charcoal/60 whitespace-nowrap">
+                  {formatLastEdit(tour.updatedAt, tour._id)}
+                </td>
               </tr>
             ))}
             {tours.length === 0 && (
               <tr>
-                <td colSpan={4} className="px-6 py-8 text-center text-charcoal/50">No tours found. Add one to get started.</td>
+                <td colSpan={5} className="px-6 py-8 text-center text-charcoal/50">No tours found. Add one to get started.</td>
               </tr>
             )}
           </tbody>

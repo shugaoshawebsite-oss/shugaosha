@@ -17,6 +17,27 @@ interface CaseStudy {
   imageRelativeUrl: string
   description?: LocalizedString
   specialist: 'Teresa Soo' | 'Charles Cho'
+  updatedAt?: string
+}
+
+function formatLastEdit(dateString?: string, fallbackId?: string) {
+  if (dateString) {
+    const d = new Date(dateString)
+    if (!isNaN(d.getTime())) {
+      return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+    }
+  }
+  if (fallbackId) {
+    const match = fallbackId.match(/\d{10,13}/)
+    if (match) {
+      const ts = parseInt(match[0])
+      const d = new Date(ts > 1e11 ? ts : ts * 1000)
+      if (!isNaN(d.getTime()) && d.getFullYear() >= 2020) {
+        return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+      }
+    }
+  }
+  return '—'
 }
 
 export default function CaseStudiesAdmin() {
@@ -102,7 +123,8 @@ export default function CaseStudiesAdmin() {
       sessionsCount: 4,
       imageRelativeUrl: '',
       description: { en: '', zh: '' },
-      specialist: 'Teresa Soo'
+      specialist: 'Teresa Soo',
+      updatedAt: new Date().toISOString(),
     }
     setEditForm(newStudy)
     setEditingId(newId)
@@ -120,13 +142,18 @@ export default function CaseStudiesAdmin() {
   const handleSaveEdit = () => {
     if (!editForm._id) return
 
+    const itemToSave = {
+      ...editForm,
+      updatedAt: new Date().toISOString(),
+    }
+
     const exists = caseStudies.some(c => c._id === editForm._id)
     let updated: CaseStudy[]
 
     if (exists) {
-      updated = caseStudies.map(c => c._id === editForm._id ? (editForm as CaseStudy) : c)
+      updated = caseStudies.map(c => c._id === editForm._id ? (itemToSave as CaseStudy) : c)
     } else {
-      updated = [...caseStudies, editForm as CaseStudy]
+      updated = [...caseStudies, itemToSave as CaseStudy]
     }
 
     handleSaveAll(updated)
@@ -159,6 +186,7 @@ export default function CaseStudiesAdmin() {
               <th className="px-6 py-4 font-medium">Specialist</th>
               <th className="hidden md:table-cell px-6 py-4 font-medium">Image Path</th>
               <th className="px-6 py-4 font-medium text-right">Actions</th>
+              <th className="px-6 py-4 font-medium text-right whitespace-nowrap">Last edit</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -192,11 +220,14 @@ export default function CaseStudiesAdmin() {
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </td>
+                <td className="px-6 py-4 text-right text-xs text-charcoal/60 whitespace-nowrap">
+                  {formatLastEdit(study.updatedAt, study._id)}
+                </td>
               </tr>
             ))}
             {caseStudies.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-6 py-8 text-center text-charcoal/50">No case studies found. Add one to get started.</td>
+                <td colSpan={6} className="px-6 py-8 text-center text-charcoal/50">No case studies found. Add one to get started.</td>
               </tr>
             )}
           </tbody>

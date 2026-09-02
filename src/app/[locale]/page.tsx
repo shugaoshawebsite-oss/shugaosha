@@ -7,6 +7,7 @@ import { ArrowRight, Sparkles, Scale, Droplet, Sun, Smile, Shield, Calendar } fr
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 import FaqSection from '@/components/FaqSection'
 import HeroSection from '@/components/HeroSection'
+import ServicesSection from '@/components/ServicesSection'
 import HomeCaseStudies from '@/components/HomeCaseStudies'
 import HomeCelebrities from '@/components/HomeCelebrities'
 import HomeGoogleReviews from '@/components/HomeGoogleReviews'
@@ -49,7 +50,7 @@ export default async function HomePage({ params }: PageProps) {
           <div className="space-y-8 order-1 lg:order-1 text-center lg:text-left">
             <div className="space-y-3">
               <span className="type-label text-primary">
-                {locale === 'en' ? 'Our Approach' : '我們的方法'}
+                {dict.home.whatWeDo.approach || (locale === 'en' ? 'OUR APPROACH' : '我們的理念')}
               </span>
               <h2 className="type-heading text-foreground">
                 {dict.home.whatWeDo.title}
@@ -62,13 +63,13 @@ export default async function HomePage({ params }: PageProps) {
             </div>
 
             <div className="flex items-center justify-center lg:justify-start gap-4">
-              <Link
-                href={`/${locale}/treatment`}
+              <a
+                href="#services"
                 className="btn-secondary flex items-center gap-2"
               >
-                {locale === 'en' ? 'Learn More' : '了解更多'}
+                {dict.home.whatWeDo.button || (locale === 'en' ? 'EXPLORE OUR SERVICES' : '了解我們的服務')}
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -97,16 +98,19 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* 3. Benefits of The Shugaosha Way */}
+      {/* 3. Explore Our Services (Foundation & Lift) */}
+      <ServicesSection dict={dict} locale={locale} />
+
+      {/* 4. Benefits of Shugaosha */}
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
           {/* Header */}
           <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-3">
             <span className="type-label text-primary">
-              {locale === 'en' ? 'Why Shugaosha' : '為什麼選擇修顏社小顏術'}
+              {locale === 'en' ? 'Why Shugaosha' : '為什麼選擇修顏社'}
             </span>
             <h2 className="type-heading text-foreground">
-              {locale === 'en' ? 'Benefits of The Shugaosha Way' : '修顏社小顏術的好處'}
+              {dict.home.whatWeDo.benefitsTitle || (locale === 'en' ? 'Benefits of Shugaosha' : '修顏社的主要好處')}
             </h2>
           </div>
 
@@ -115,33 +119,33 @@ export default async function HomePage({ params }: PageProps) {
             {[
               {
                 icon: Sparkles,
-                title: locale === 'en' ? 'Lifted & Refined' : '提升與緊緻',
-                desc: locale === 'en' ? 'Promotes a firmer, more contoured facial appearance.' : '促進面部輪廓更加緊緻立體。'
+                title: locale === 'en' ? 'Lifted & Refined' : '提升・細緻',
+                desc: locale === 'en' ? 'Supports a firmer, more lifted and refined appearance.' : '幫助面部呈現更緊緻、提升及細緻的外觀。'
               },
               {
                 icon: Scale,
-                title: locale === 'en' ? 'Facial Harmony' : '面部和諧',
-                desc: locale === 'en' ? 'Encourages better balance between facial features.' : '促進面部特徵之間更好的對稱與平衡。'
+                title: locale === 'en' ? 'Facial Balance & Alignment' : '面部平衡・對齊',
+                desc: locale === 'en' ? 'Supports better balance, alignment and harmony across the face.' : '支援面部整體平衡、對齊與和諧感。'
               },
               {
                 icon: Droplet,
-                title: locale === 'en' ? 'Reduced Puffiness' : '減少浮腫',
-                desc: locale === 'en' ? 'Helps minimize facial swelling and fluid retention.' : '有助於減少水分滯留與面部腫脹。'
+                title: locale === 'en' ? 'Reduced Puffiness' : '減少浮腫感',
+                desc: locale === 'en' ? 'Helps support a fresher, less puffy facial appearance.' : '幫助面部看起來更清爽，減少浮腫感。'
               },
               {
                 icon: Sun,
-                title: locale === 'en' ? 'Refreshed Radiance' : '煥新光彩',
-                desc: locale === 'en' ? 'Supports a healthier, more radiant complexion.' : '改善面部血液循環，重塑健康紅潤氣色。'
+                title: locale === 'en' ? 'Defined Contours' : '輪廓更立體清晰',
+                desc: locale === 'en' ? 'Helps create clearer, more sculpted and three-dimensional facial contours.' : '幫助輪廓看起來更清晰、立體及細緻。'
               },
               {
                 icon: Smile,
-                title: locale === 'en' ? 'Tension Relief' : '舒緩緊繃',
-                desc: locale === 'en' ? 'Encourages relaxation of facial muscles and everyday tension.' : '促進面部肌肉深層放鬆，舒緩日常張力。'
+                title: locale === 'en' ? 'Tension Release' : '釋放繃緊',
+                desc: locale === 'en' ? 'Helps release built-up tension through the face and connected areas.' : '幫助釋放面部及相關連部位累積的繃緊。'
               },
               {
                 icon: Shield,
-                title: locale === 'en' ? 'Youthful Glow' : '年輕光采',
-                desc: locale === 'en' ? 'Supports healthier-looking skin and a naturally refreshed appearance.' : '提升肌膚活力，帶來由內而外的自然健康光澤。'
+                title: locale === 'en' ? 'Overall Alignment' : '整體對齊',
+                desc: locale === 'en' ? 'Supports balance and alignment through the upper body, neck, head and face.' : '支援上半身、頸部、頭部及面部的整體平衡與對齊。'
               }
             ].map((item, i) => {
               const Icon = item.icon
@@ -176,13 +180,13 @@ export default async function HomePage({ params }: PageProps) {
             </div>
             <div className="space-y-2 flex-1">
               <h4 className="type-card-title text-foreground font-semibold">
-                {locale === 'en' ? 'Local Business Awards Finalist' : '地區商業大獎最終決賽入圍'}
+                {dict.about.awardItemTitle || (locale === 'en' ? '2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist' : '2026 年 Northern Districts 當地商業大獎 — 卓越美容服務決賽入圍')}
               </h4>
               <p className="type-body-sm text-charcoal/80 leading-relaxed">
-                {locale === 'en'
-                  ? 'Proudly recognised as a Finalist in the 2026 Northern Districts Local Business Awards, recognising our dedication to helping clients achieve natural, balanced results through The Shugaosha Way.'
-                  : '榮幸入圍 2026 年北區地區商業大獎（Northern Districts Local Business Awards）最終決賽，肯定了我們致力透過「修顏社小顏術（The Shugaosha Way）」幫助客戶重拾自然平衡、和諧與自信的努力。'
-                }
+                {dict.about.awardItemDesc || (locale === 'en'
+                  ? 'Proudly recognised as a Finalist in the 2026 Northern Districts Local Business Awards — Outstanding Beauty Services category, reflecting our commitment to precision, professionalism and exceptional client care.'
+                  : '榮幸入圍 2026 年 Northern Districts 當地商業大獎 — 卓越美容服務（Outstanding Beauty Services）類別最終決賽，肯定了我們對精準手法、專業精神與卓越客戶護理的堅持。'
+                )}
               </p>
             </div>
           </div>
