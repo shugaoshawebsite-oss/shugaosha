@@ -147,7 +147,7 @@ export default async function TrainingPage({ params }: PageProps) {
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-2xl p-6 sm:p-7 space-y-3.5 border border-gray-100/80 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto md:mx-0">
                   <Icon className="w-5 h-5" />
                 </div>
                 <h3 className="text-sm font-semibold text-foreground">{title}</h3>
@@ -238,7 +238,7 @@ export default async function TrainingPage({ params }: PageProps) {
               key={en}
               className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 space-y-3.5 hover:border-primary/30 hover:shadow-sm transition-all duration-300 group text-left"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300">
+              <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300 mx-auto md:mx-0">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
               <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
@@ -285,7 +285,7 @@ export default async function TrainingPage({ params }: PageProps) {
           </div>
 
           <div className="bg-soft-bg border border-gray-100 rounded-3xl p-8 sm:p-10 space-y-6 text-left">
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mx-auto md:mx-0">
               <Clock className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-medium text-foreground">
@@ -344,7 +344,7 @@ export default async function TrainingPage({ params }: PageProps) {
             },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bg-white border border-gray-100 rounded-3xl p-7 sm:p-8 space-y-4 hover:shadow-sm transition-shadow duration-300 text-left">
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mx-auto md:mx-0">
                 <Icon className="w-6 h-6" />
               </div>
               <h3 className="text-base font-semibold text-foreground">{title}</h3>
@@ -389,7 +389,7 @@ export default async function TrainingPage({ params }: PageProps) {
             <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
               THE SHUGAOSHA WAY
             </span>
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
               <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
                 {locale === 'en' ? 'Advanced Professional Training — The Shugaosha Way' : '進階專業培訓 — 修顏社小顏術'}
               </h2>
@@ -412,11 +412,6 @@ export default async function TrainingPage({ params }: PageProps) {
                 ? 'Further details will be announced as the programme continues to develop.'
                 : '課程仍在持續發展中，詳情將於日後公布。'}
             </p>
-            <div className="pt-2">
-              <span className="inline-flex items-center px-6 py-2.5 rounded-full bg-gray-200/80 text-charcoal/60 text-xs font-medium tracking-wider uppercase cursor-not-allowed">
-                {locale === 'en' ? 'COMING SOON' : '即將推出'}
-              </span>
-            </div>
           </div>
         </div>
       </section>

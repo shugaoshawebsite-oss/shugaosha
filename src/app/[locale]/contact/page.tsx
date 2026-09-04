@@ -182,7 +182,7 @@ export default async function ContactPage({ params }: PageProps) {
 
           {/* Right: Shop details + Map */}
           <div className="space-y-8 text-left">
-            <h2 className="text-xl font-medium text-foreground tracking-wide flex items-center justify-start gap-3">
+            <h2 className="text-xl font-medium text-foreground tracking-wide flex items-center justify-center md:justify-start gap-3">
               <MapPin className="w-5 h-5 text-primary" />
               {locale === 'en' ? 'OUR LOCATION' : '我們的地點'}
             </h2>
@@ -219,7 +219,7 @@ export default async function ContactPage({ params }: PageProps) {
               />
             </div>
 
-            <div className="flex justify-start">
+            <div className="flex justify-center md:justify-start">
               <a
                 href="https://maps.google.com/?q=5+Pittwater+Road,+Gladesville+NSW+2111"
                 target="_blank"
@@ -241,7 +241,7 @@ export default async function ContactPage({ params }: PageProps) {
           {/* Left: Tour Details */}
           <div className="space-y-8 w-full text-left">
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center md:justify-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
                   <p className="type-label text-primary uppercase tracking-wider text-xs font-semibold mb-1">
@@ -253,8 +253,8 @@ export default async function ContactPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 pt-2">
-                <Calendar className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div className="flex items-center justify-center md:justify-start gap-3 pt-2">
+                <Calendar className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
                   <p className="type-label text-charcoal/50 uppercase tracking-wider text-xs font-semibold mb-1">
                     {locale === 'en' ? 'DATES' : '日期'}
@@ -284,7 +284,7 @@ export default async function ContactPage({ params }: PageProps) {
               </p>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 flex justify-center md:justify-start">
               <a
                 href={encodeURI(
                   locale === 'en'
@@ -307,7 +307,7 @@ export default async function ContactPage({ params }: PageProps) {
 
           {/* Right: Important Booking Note */}
           <div className="bg-primary/5 border border-primary/10 rounded-2xl p-8 space-y-5 text-left">
-            <div className="flex justify-start">
+            <div className="flex justify-center md:justify-start">
               <MapPin className="w-6 h-6 text-primary" />
             </div>
             <h4 className="text-base font-semibold text-foreground uppercase tracking-wide">

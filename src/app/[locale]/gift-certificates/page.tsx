@@ -117,7 +117,7 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
                   : '如欲安排購買禮券，請透過 WhatsApp 與我們聯絡。收禮人其後可以憑禮券號碼直接向我們預約。'}
               </p>
 
-              <div className="pt-3">
+              <div className="pt-3 flex justify-center md:justify-start">
                 <a
                   href={whatsappHref}
                   target="_blank"

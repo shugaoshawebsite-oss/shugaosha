@@ -156,7 +156,7 @@ export default async function ServicesPage({ params }: PageProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {t.steps.map((item, index) => (
                 <div key={index} className="space-y-4 text-left bg-white/10 border border-white/15 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
-                  <div className="text-3xl font-light text-primary tracking-wide">
+                  <div className="text-3xl font-light text-primary tracking-wide text-center md:text-left">
                     {item.step}
                   </div>
                   <h3 className="type-card-title text-white font-medium">
@@ -192,7 +192,7 @@ export default async function ServicesPage({ params }: PageProps) {
                   key={i}
                   className="bg-soft-bg border border-gray-100 rounded-2xl p-6 flex flex-col space-y-4 shadow-sm hover:shadow-md transition-shadow duration-300 group text-left"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300 mx-auto md:mx-0">
                     <IconComponent className="w-6 h-6" />
                   </div>
                   <div className="space-y-2">
