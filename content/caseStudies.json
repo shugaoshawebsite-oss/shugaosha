@@ -3,7 +3,7 @@
     "_id": "cs1",
     "title": {
       "en": "Client Progression A",
-      "zh": "客戶療程對照 A"
+      "zh": "客戶矯正對照 A"
     },
     "sessionsCount": 5,
     "category": "8-session",
@@ -24,7 +24,7 @@
     "category": "maintenance",
     "imageRelativeUrl": "/assets/uploads/1783688736818-IMG_5482.JPG",
     "description": {
-      "en": " Face uplifted.\nRaised and straighter nasal bridge.\n Larger and more vibrant eyes .\nJaw receded for V-shaped face.\n Lighten nasolabial folds and wrinkles.\n Firmer skin.",
+      "en": "Face uplifted.\nRaised and straighter nasal bridge.\nLarger and more vibrant eyes.\nJaw receded for V-shaped face.\nLightened nasolabial folds and wrinkles.\nFirmer skin.",
       "zh": "臉部整體提升。\n鼻樑提高且更筆直。\n雙眼更大、更有神。\n下顎後縮，打造 V 臉輪廓。\n淡化法令紋與皺紋。\n肌膚更緊緻。"
     },
     "specialist": "Teresa Soo"
@@ -33,13 +33,13 @@
     "_id": "cs2",
     "title": {
       "en": "Client Progression B",
-      "zh": "客戶療程對照 B"
+      "zh": "客戶矯正對照 B"
     },
     "sessionsCount": 4,
     "category": "8-session",
     "imageRelativeUrl": "/assets/uploads/1783688706101-Face_Slimming_F_01.webp",
     "description": {
-      "en": "Face uplifted.\nRaised and straighter nasal bridge.\nBalanced and lively eyes.\nBalanced cheekbones for a V-shaped face.\nLighten nasolabial folds and wrinkles.\nFirmer skin.",
+      "en": "Face uplifted.\nRaised and straighter nasal bridge.\nBalanced and lively eyes.\nBalanced cheekbones for a V-shaped face.\nLightened nasolabial folds and wrinkles.\nFirmer skin.",
       "zh": "臉部整體提升。\n鼻樑提高且更筆直。\n雙眼更有神、更富神采。\n顴骨比例更均衡，打造 V 臉輪廓。\n淡化法令紋與皺紋。\n肌膚更緊緻。"
     },
     "specialist": "Charles Cho"

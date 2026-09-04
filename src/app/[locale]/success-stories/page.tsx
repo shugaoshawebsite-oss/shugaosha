@@ -45,7 +45,7 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
           <p className="type-body text-charcoal/80 max-w-xl mt-4">
             {locale === 'en'
               ? 'Real progression journeys and testimonials showcasing how consistency and hand alignment bring visible, natural results.'
-              : '最真實的療程進展對照與見證，展示透過持續的日式小顏手感帶來的顯著與自然調整。'}
+              : '最真實的小顏矯正進展對照與見證，展示透過持續的日式小顏手感帶來的顯著與自然調整。'}
           </p>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
           <p className="type-body-sm text-charcoal/70 max-w-md mx-auto md:mx-0">
             {locale === 'en'
               ? 'Book your personalized consultation or treatment session today.'
-              : '立即預約您的個人化諮詢或療程。'}
+              : '立即預約您的個人化諮詢或小顏矯正。'}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <a

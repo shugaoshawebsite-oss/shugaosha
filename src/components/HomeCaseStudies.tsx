@@ -21,7 +21,7 @@ interface HomeCaseStudiesProps {
 
 function getOrdinalSessionText(count: number, locale: 'en' | 'zh') {
   if (locale === 'zh') {
-    return `${count} 次療程後`
+    return `${count} 次矯正後`
   }
   const limit = Math.max(1, count)
   const word = limit === 1 ? 'Session' : 'Sessions'
@@ -40,12 +40,12 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
             {locale === 'en' ? 'Visual Evidence' : '真實案例'}
           </span>
           <h2 className="type-heading text-foreground">
-            {locale === 'en' ? 'Real Results' : '真實療效'}
+            {locale === 'en' ? 'Real Results' : '真實效果'}
           </h2>
           <p className="type-body text-charcoal/80 max-w-2xl mx-auto md:mx-0">
             {locale === 'en'
               ? 'These are real client progressions. Natural, consistent, and honest results from dedicated sessions.'
-              : '以下均為真實客戶的療程進展對照，展示持續堅持後帶來的自然、誠實的效果。'}
+              : '以下均為真實客戶的矯正進展對照，展示持續堅持後帶來的自然、誠實的效果。'}
           </p>
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
                 {cs ? (
                   <Image
                     src={cs.imageRelativeUrl}
-                    alt={locale === 'en' ? 'Before and after progression' : '療程前後對照'}
+                    alt={locale === 'en' ? 'Before and after progression' : '小顏矯正前後對照'}
                     fill
                     sizes="(max-width: 768px) 100vw, 360px"
                     className="object-cover"
@@ -101,7 +101,7 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
                     <div className="h-3 bg-gray-100 rounded-full w-1/3 mx-auto md:mx-0" />
                     <div className="h-4 bg-gray-100 rounded-full w-2/3 mx-auto md:mx-0" />
                     <p className="text-xs font-light text-charcoal/40 italic pt-1 text-center md:text-left">
-                      {locale === 'en' ? 'Case study coming soon' : '療程案例即將更新'}
+                      {locale === 'en' ? 'Case study coming soon' : '案例即將更新'}
                     </p>
                   </div>
                 )}

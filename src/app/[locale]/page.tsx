@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Script from 'next/script'
 import { getDictionary } from '@/utils/dictionary'
 import { getServices, getCelebrities, getCaseStudies, getGoogleReviews } from '@/utils/dataService'
-import { ArrowRight, Sparkles, Scale, Droplet, Sun, Smile, Shield, Calendar } from 'lucide-react'
+import { ArrowRight, Sparkles, Scale, Droplet, Sun, Smile, Shield, Calendar, Heart } from 'lucide-react'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 import FaqSection from '@/components/FaqSection'
 import HeroSection from '@/components/HeroSection'
@@ -78,7 +78,7 @@ export default async function HomePage({ params }: PageProps) {
             <div className="relative aspect-[3/2] w-full rounded-2xl overflow-hidden bg-gray-50">
               <Image
                 src="/assets/images/home1.webp"
-                alt={locale === 'en' ? 'Shugaosha treatment' : '修顏社療程'}
+                alt={locale === 'en' ? 'Shugaosha treatment' : '修顏社小顏矯正'}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -143,9 +143,9 @@ export default async function HomePage({ params }: PageProps) {
                 desc: locale === 'en' ? 'Helps release built-up tension through the face and connected areas.' : '幫助釋放面部及相關連部位累積的繃緊。'
               },
               {
-                icon: Shield,
-                title: locale === 'en' ? 'Overall Alignment' : '整體對齊',
-                desc: locale === 'en' ? 'Supports balance and alignment through the upper body, neck, head and face.' : '支援上半身、頸部、頭部及面部的整體平衡與對齊。'
+                icon: Heart,
+                title: locale === 'en' ? 'Refreshed & Revitalised' : '煥發精神與活力',
+                desc: locale === 'en' ? 'Supports a fresher, more relaxed and revitalised overall appearance and sense of wellbeing.' : '有助呈現更清新、放鬆及充滿活力的整體狀態，同時提升整體舒適感。'
               }
             ].map((item, i) => {
               const Icon = item.icon
@@ -220,7 +220,7 @@ export default async function HomePage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-4 mb-20">
             <span className="type-label text-primary">
-              {locale === 'en' ? 'Our Process' : '療程步驟'}
+              {locale === 'en' ? 'Our Process' : '服務流程'}
             </span>
             <h2 className="type-heading text-foreground">
               {dict.home.howItWorks.title}

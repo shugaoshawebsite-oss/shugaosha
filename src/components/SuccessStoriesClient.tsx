@@ -50,7 +50,7 @@ const countryFlags: Record<string, string> = {
 
 function getOrdinalSessionText(count: number, locale: 'en' | 'zh') {
   if (locale === 'zh') {
-    return `${count} 次療程後`
+    return `${count} 次矯正後`
   }
   const limit = Math.max(1, count)
   const word = limit === 1 ? 'Session' : 'Sessions'
@@ -232,7 +232,7 @@ export default function SuccessStoriesClient({
                   {cs ? (
                     <Image
                       src={cs.imageRelativeUrl}
-                      alt={locale === 'en' ? 'Before and after progression' : '療程前後對照'}
+                      alt={locale === 'en' ? 'Before and after progression' : '小顏矯正前後對照'}
                       fill
                       sizes="(max-width: 768px) 100vw, 360px"
                       className="object-cover"
@@ -270,7 +270,7 @@ export default function SuccessStoriesClient({
                       <div className="h-3 bg-gray-100 rounded-full w-1/3 mx-auto md:mx-0" />
                       <div className="h-4 bg-gray-100 rounded-full w-2/3 mx-auto md:mx-0" />
                       <p className="text-xs font-light text-charcoal/40 italic pt-1 text-center md:text-left">
-                        {locale === 'en' ? 'Case study coming soon' : '療程案例即將更新'}
+                        {locale === 'en' ? 'Case study coming soon' : '案例即將更新'}
                       </p>
                     </div>
                   )}

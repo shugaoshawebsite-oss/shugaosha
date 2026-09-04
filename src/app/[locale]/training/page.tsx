@@ -43,7 +43,7 @@ const whoIsItFor = {
     'Beginners with no previous experience',
   ],
   zh: [
-    '美容專業人士及面部護理從業員',
+    '美容師及面部護理從業員',
     '美容院及工作室負責人',
     '身心健康行業專業人士',
     '希望轉換事業方向的人士',
@@ -133,10 +133,10 @@ export default async function TrainingPage({ params }: PageProps) {
               },
               {
                 icon: Award,
-                title: locale === 'en' ? 'Official Japanese Certification' : '日本官方認證',
+                title: locale === 'en' ? 'Official JSFA Certification' : 'JSFA 官方認證',
                 desc: locale === 'en'
-                  ? 'Students who successfully complete the training and pass the final practical assessment receive an official Diploma issued by the Japan Small Face Correction Certification Association, Japan.'
-                  : '成功完成課程並通過最終實習考核的學員，將獲頒由日本小顏矯正認定協會正式發出的 Diploma。',
+                  ? 'Students who successfully complete the training and pass the final practical assessment receive an official Diploma issued by the Japan Small Face Correction Certification Association (JSFA), Japan.'
+                  : '完成培訓並通過最終實務考核的學員，將獲由日本小顏矯正認定協會（JSFA）頒發的正式證書。',
               },
               {
                 icon: BookOpen,
@@ -323,10 +323,10 @@ export default async function TrainingPage({ params }: PageProps) {
           {[
             {
               icon: Award,
-              title: locale === 'en' ? 'Official JSFA Diploma' : '日本協會官方 Diploma',
+              title: locale === 'en' ? 'Official JSFA Certification' : 'JSFA 官方認證',
               desc: locale === 'en'
-                ? 'Students who successfully complete the programme and pass the final practical assessment receive an official Diploma issued by the Japan Small Face Correction Certification Association, Japan.'
-                : '成功完成課程並通過最終實習考核的學員，將獲頒由日本小顏矯正認定協會正式發出的 Diploma。',
+                ? 'Students who successfully complete the training and pass the final practical assessment receive an official Diploma issued by the Japan Small Face Correction Certification Association (JSFA), Japan.'
+                : '完成培訓並通過最終實務考核的學員，將獲由日本小顏矯正認定協會（JSFA）頒發的正式證書。',
             },
             {
               icon: Briefcase,
@@ -337,10 +337,10 @@ export default async function TrainingPage({ params }: PageProps) {
             },
             {
               icon: Users,
-              title: locale === 'en' ? 'Professional Confidence' : '專業信心',
+              title: locale === 'en' ? 'Professional Confidence' : '專業自信',
               desc: locale === 'en'
-                ? 'Upon graduation, students will have developed the practical skills and confidence to begin offering authentic Japanese Small Face Correction as part of their professional services or future business.'
-                : '完成課程後，學員將掌握相關實踐技巧及信心，並可將正統日本小顏矯正加入現有專業服務，或作為開展未來事業的基礎。',
+                ? 'Upon graduation, students will have the practical skills and confidence to begin offering authentic Japanese Small Face Correction professionally — whether adding a new service to an existing practice or starting a new professional journey.'
+                : '完成課程後，學員將掌握實際操作所需的專業技能與信心，並可將正統日本小顏矯正應用於專業服務中——無論是為現有業務增添一項全新服務，還是開展新的專業方向。',
             },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="bg-white border border-gray-100 rounded-3xl p-7 sm:p-8 space-y-4 hover:shadow-sm transition-shadow duration-300 text-left">
@@ -391,7 +391,7 @@ export default async function TrainingPage({ params }: PageProps) {
             </span>
             <div className="flex flex-wrap items-center gap-3">
               <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-                {locale === 'en' ? 'Continuing Professional Development' : '持續專業發展'}
+                {locale === 'en' ? 'Advanced Professional Training — The Shugaosha Way' : '進階專業培訓 — 修顏社小顏術'}
               </h2>
               <span className="inline-block bg-primary/10 text-primary text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
                 {locale === 'en' ? 'Coming Soon' : '即將推出'}
@@ -399,13 +399,13 @@ export default async function TrainingPage({ params }: PageProps) {
             </div>
             <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
               {locale === 'en'
-                ? 'The Shugaosha Way represents Teresa’s continuing development of a precise and layered approach, built through years of hands-on experience, professional training and ongoing exchange in Japan.'
-                : 'The Shugaosha Way 是 Teresa 透過多年徒手實踐、專業培訓及持續赴日交流，不斷發展及完善的精準分層矯正方式。'}
+                ? 'The Shugaosha Way is Shugaosha’s advanced professional training, developed through years of hands-on practice, continued refinement and experience working with a wide range of facial structures.'
+                : '「修顏社小顏術（The Shugaosha Way）」是 Shugaosha 經多年徒手實踐、持續鑽研及不同面部結構的經驗累積而發展出的進階專業培訓。'}
             </p>
             <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
               {locale === 'en'
-                ? 'Future professional development training will be created for practitioners who have already obtained their official Japanese certification and wish to further refine their observation, precision, practical application and professional confidence.'
-                : '未來的持續專業發展課程，將為已取得日本官方認證、並希望進一步提升觀察力、精準度、實際應用及專業信心的從業員而設。'}
+                ? 'The training places a strong emphasis on precision, detailed facial assessment, layered rebalancing and a deeper understanding of facial balance, alignment and contours. It is designed for those who wish to develop or further refine their hands-on skills and bring a more precise, individualised approach into professional practice.'
+                : '課程著重精準度、細緻的面部評估、層次式調整，以及對面部平衡、對稱與輪廓的深入理解，適合希望發展或進一步精進徒手技術的人士，將更精準及個人化的調整方式應用於專業實踐之中。'}
             </p>
             <p className="text-xs sm:text-sm font-light text-charcoal/60 pt-2">
               {locale === 'en'
@@ -509,7 +509,7 @@ export default async function TrainingPage({ params }: PageProps) {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {[
               {
                 name: 'Karina',
@@ -522,6 +522,10 @@ export default async function TrainingPage({ params }: PageProps) {
               {
                 name: 'Yen',
                 review: '學習小顏術這段旅程，真的為我的人生翻開了全新的一頁。\n\n起初懷著好奇與期待，幸好遇到了非常用心的老師。整個學習過程中，老師總是手把手地耐心教導，從骨骼結構、手法力道的細微調整，到面對客人時的細節處理，毫不保留地傳授經驗。每當我感到迷茫或手法不夠準確時，老師總能在旁邊及時指點，給了我滿滿的安全感與信心。\n\n沒想到當時的一個決定，讓小顏術不僅成為了一門手藝，更變成了我現在每天投入的工作。\n\n我很喜歡現在這份工作。每當看著客人做完項目後帶著滿意與驚喜的笑容離開，那種能用自己的雙手幫別人變美、變得更有自信的成就感，是其他事物無法比擬的。感謝老師當初的悉心栽培，讓我找到了這條能夠為之熱愛並持續努力的方向！',
+              },
+              {
+                name: 'Katie',
+                review: '謝謝Teresa 老師的教學\n一開始接觸的時候 有些動作未能掌握\n但老師很有耐性 在每個動作上作出指導 也親自示範 讓我感受力度大小 經過不停的練習及改善 慢慢看到了療程前後的分別 最後得到老師的認可\n\n過程雖然需要更多的時間練習\n但很值得。\n\n應用在美容工作上非常合適\n能夠改善客人的面部問題 令我感到高興。所以我很推薦小颜療程\n既舒適又有效果 。',
               },
             ].map((item, index) => (
               <div

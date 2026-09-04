@@ -20,7 +20,7 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
           'Please note that not receiving or replying to a reminder does not cancel or change your appointment.',
         ]
         : [
-          '預約提醒將在您的療程前作為提示發送。',
+          '預約提醒將在您的預約前作為提示發送。',
           '如無法出席，請盡快告知我們。',
           '請注意，未收到或未回覆提醒並不會取消或更改您的預約。',
         ],
@@ -53,8 +53,8 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
           'This applies to both individual appointments and package sessions.',
         ]
         : [
-          '在 24 小時內取消、更改或缺席的預約將不予補期，並視作已完成療程。',
-          '此政策適用於個別預約及套餐療程。',
+          '在 24 小時內取消、更改或缺席的預約將不予補期，並視作已完成該次預約。',
+          '此政策適用於單次預約及套票預約。',
         ],
     },
     {
@@ -66,9 +66,9 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
           'Your scheduled appointment will still be treated as a completed session.',
         ]
         : [
-          '請準時到達，以享受完整的療程。',
-          '遲到可能導致療程縮短，或在剩餘時間不足時無法進行預約。',
-          '您的預約仍將視作已完成療程。',
+          '請準時到達，以享受完整的小顏矯正體驗。',
+          '遲到可能導致服務時間縮短，或在剩餘時間不足時無法進行預約。',
+          '您的預約仍將視作已完成該次預約。',
         ],
     },
     {

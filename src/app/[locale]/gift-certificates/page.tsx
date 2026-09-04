@@ -98,6 +98,12 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
               ))}
             </div>
 
+            <p className="text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed">
+              {locale === 'en'
+                ? 'For new clients, Foundation is the recommended starting point.'
+                : '新客戶建議先從 Foundation 開始。'}
+            </p>
+
             <p className="text-sm font-light text-charcoal/80 leading-relaxed italic">
               {locale === 'en'
                 ? 'Each Gift Certificate will be personalised with the recipient’s name and selected treatment.'
