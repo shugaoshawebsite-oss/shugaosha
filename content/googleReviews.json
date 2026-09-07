@@ -1,7 +1,19 @@
 {
   "rating": 5,
-  "user_ratings_total": 52,
+  "user_ratings_total": 53,
   "reviews": [
+    {
+      "author_name": "Siyanna V",
+      "author_url": "https://www.google.com/maps/contrib/111009340590758774122/reviews",
+      "language": "en",
+      "original_language": "en",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWHdxajbhQWg2MJUxu39eMVn-2QZUPnnpa4krJ7HrEBEDcUxAI=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "in the last week",
+      "text": "I had such a wonderful facial experience! The treatment was incredibly relaxing. The therapist was professional, gentle and attentive throughout the treatment. I loved the whole experience and will definitely be coming back. Highly recommend! ✨",
+      "time": 1788398824,
+      "translated": false
+    },
     {
       "author_name": "Lily Y",
       "author_url": "https://www.google.com/maps/contrib/106643554203877895278/reviews",
@@ -9,7 +21,7 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjW0RjkL0uRvI0p-W4JPOQfMAlF9-n2mcg_aloznXN07peGzy22W=s128-c0x00000000-cc-rp-mo-ba2",
       "rating": 5,
-      "relative_time_description": "in the last week",
+      "relative_time_description": "a week ago",
       "text": "It’s a comfortable and relaxing experience! You can definitely the difference after one session. Teresa is so lovely, warm and welcoming.",
       "time": 1787919755,
       "translated": false
@@ -43,23 +55,11 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLXa9LoN1lMvT3f3usJ4rjnqvMw9pQ_X3iMeyMT2aYmck2nNQ=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "3 weeks ago",
+      "relative_time_description": "4 weeks ago",
       "text": "I’ve been seeing Teresa for treatments and couldn’t recommend her more highly. She is professional, attentive and genuinely cares about her clients. Teresa always takes the time to understand what I’m looking for and makes me feel completely comfortable and relaxed throughout the treatment.\n\nHer attention to detail is fantastic, and I’m always so happy with the results. She is also such a lovely person, which makes every appointment something I look forward to.\n\nHighly recommend Teresa if you’re looking for a skilled, caring and professional therapist! ⭐️⭐️⭐️⭐️⭐️",
       "time": 1786312512,
       "translated": false
-    },
-    {
-      "author_name": "Cathy",
-      "author_url": "https://www.google.com/maps/contrib/107604179348971889995/reviews",
-      "language": "en",
-      "original_language": "en",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocI-nG3y61sV8MmgoNJnx94mhyyx8OdtitPJRsXsxk28YoWKwQ=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "3 weeks ago",
-      "text": "I had such a great experience with Teresa. This technique is amazing, I’ve honestly never experienced anything like it before!\nThe results from just one session were incredible. I could see and feel a noticeable difference straight away.\nTeresa truly has miracle hands!\nHighly recommend.",
-      "time": 1786262151,
-      "translated": false
     }
   ],
-  "cachedAt": "2026-09-01T23:00:27.987Z"
+  "cachedAt": "2026-09-07T02:13:12.086Z"
 }

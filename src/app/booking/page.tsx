@@ -60,11 +60,11 @@ function FaqAccordion() {
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : idx)}
-              className="w-full flex justify-between items-center px-6 py-4 sm:py-5 text-left bg-transparent border-0 cursor-pointer focus:outline-none"
+              className="w-full flex justify-between items-center px-6 py-4 sm:py-5 !text-left text-left bg-transparent border-0 cursor-pointer focus:outline-none"
               aria-expanded={isOpen}
             >
               <span
-                className={`text-sm font-semibold leading-snug transition-colors duration-200 ${
+                className={`text-sm font-semibold leading-snug transition-colors duration-200 !text-left text-left flex-1 ${
                   isOpen ? 'text-primary' : 'text-foreground'
                 }`}
               >
@@ -81,7 +81,7 @@ function FaqAccordion() {
                 isOpen ? 'max-h-[600px] opacity-100 border-t border-black/[0.05]' : 'max-h-0 opacity-0'
               }`}
             >
-              <div className="px-6 py-4 text-[13px] leading-relaxed text-charcoal/80 bg-[#fcfcfc] whitespace-pre-line">
+              <div className="px-6 py-4 text-[13px] leading-relaxed text-charcoal/80 bg-[#fcfcfc] whitespace-pre-line !text-left text-left">
                 {item.answer}
               </div>
             </div>
@@ -315,12 +315,12 @@ export default function BookingPage() {
               {homepageBenefits.map((benefitText, idx) => (
                 <div
                   key={idx}
-                  className="bg-white border border-gray-100 rounded-2xl p-5 flex items-start gap-3.5 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 hover:border-primary/20 transition-all duration-300"
+                  className="bg-white border border-gray-100 rounded-2xl p-5 flex items-start gap-3.5 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 hover:border-primary/20 transition-all duration-300 text-left"
                 >
                   <div className="w-8 h-8 rounded-full bg-primary/[0.08] flex items-center justify-center shrink-0 mt-0.5">
                     <CheckCircle2 className="w-4 h-4 text-primary" />
                   </div>
-                  <p className="text-sm font-medium leading-relaxed text-foreground m-0">
+                  <p className="text-sm font-medium leading-relaxed text-foreground m-0 text-left flex-1">
                     {benefitText}
                   </p>
                 </div>

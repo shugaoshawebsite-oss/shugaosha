@@ -157,7 +157,7 @@ export default async function HomePage({ params }: PageProps) {
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto md:mx-0 md:mt-1">
                     <Icon className="w-5.5 h-5.5" />
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-1.5 text-center md:text-left">
                     <h3 className="type-card-title text-foreground">{item.title}</h3>
                     <p className="type-body-sm text-charcoal/80">{item.desc}</p>
                   </div>
@@ -167,8 +167,8 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           {/* Award/Trust Badge */}
-          <div className="max-w-3xl mx-auto p-6 sm:p-8 rounded-[2rem] bg-[#f8f9fa] border border-gray-100/80 flex flex-col sm:flex-row items-center text-center sm:text-left gap-6 sm:gap-8 hover:shadow-sm transition-shadow duration-300">
-            <div className="flex-shrink-0 flex justify-center items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100/50">
+          <div className="max-w-3xl mx-auto p-6 sm:p-8 rounded-[2rem] bg-[#f8f9fa] border border-gray-100/80 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 sm:gap-8 hover:shadow-sm transition-shadow duration-300">
+            <div className="flex-shrink-0 flex justify-center items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100/50 mx-auto sm:mx-0">
               <Image
                 src="/assets/cert/Outstanding Beauty Services_s.webp"
                 alt={locale === 'en' ? 'Outstanding Beauty Services Finalist' : '卓越美容服務決賽入圍'}
@@ -178,7 +178,7 @@ export default async function HomePage({ params }: PageProps) {
                 sizes="150px"
               />
             </div>
-            <div className="space-y-2 flex-1">
+            <div className="space-y-2 flex-1 text-center sm:text-left">
               <h4 className="type-card-title text-foreground font-semibold">
                 {dict.about.awardItemTitle || (locale === 'en' ? '2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist' : '2026 年 Northern Districts 當地商業大獎 — 卓越美容服務決賽入圍')}
               </h4>
@@ -259,7 +259,7 @@ export default async function HomePage({ params }: PageProps) {
           <h2 className="type-heading text-foreground max-w-xl mx-auto md:mx-0">
             {dict.home.cta.title}
           </h2>
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
             <a
               href="https://benotely.com/shugaosha/book"
               target="_blank"
@@ -276,7 +276,7 @@ export default async function HomePage({ params }: PageProps) {
               {locale === 'en' ? 'Contact Us' : '聯絡我們'}
             </Link>
           </div>
-          <p className="type-caption text-charcoal/60">
+          <p className="type-caption text-charcoal/60 mx-auto md:mx-0">
             {locale === 'en'
               ? 'Appointments can be booked online instantly. Feel free to contact us for personalized enquiries.'
               : '您可以透過線上預約系統即時預約時段，亦歡迎隨時聯絡我們進行個別諮詢。'}
@@ -291,7 +291,7 @@ export default async function HomePage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-6 pb-12">
         {/* Elfsight Instagram Feed | Shugaosha Instagram Feed */}
         <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
-        <div className="elfsight-app-053d3d7a-69da-4f5a-a15a-eb53ed990fb7 w-full max-w-full overflow-hidden" data-elfsight-app-lazy></div>
+        <div className="elfsight-app-053d3d7a-69da-4f5a-a15a-eb53ed990fb7 w-full max-w-full" data-elfsight-app-lazy></div>
         <div className="mt-4">
           <a
             href="https://www.instagram.com/shugaosha"

@@ -165,9 +165,20 @@ export default function Footer({ locale }: FooterProps) {
 
         </div>
 
+        {/* General Disclaimer */}
+        <div className="pt-8 pb-6 border-b border-white/10 text-left">
+          <p className="text-[11px] sm:text-xs font-light text-white/50 leading-relaxed max-w-5xl">
+            {locale === 'en'
+              ? 'Shugaosha reserves the right to amend its website content, services, policies and terms at any time. Information provided on this website is general in nature and does not constitute medical advice. Individual responses and results may vary. Nothing on this website excludes or limits any rights or remedies that cannot lawfully be excluded under applicable law. In the event of any inconsistency between language versions, the English version shall prevail.'
+              : 'Shugaosha 保留隨時修改網站內容、服務、政策及條款的權利。本網站所提供的資料只屬一般資訊，並不構成醫療建議。每個人的反應及效果可能有所不同。本網站任何內容均不排除或限制適用法律下不能合法排除的任何權利或補救。如不同語言版本之間存在任何不一致，概以英文版本為準。'}
+          </p>
+        </div>
+
         {/* Bottom footer */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-6 space-y-2.5 md:space-y-0 text-center md:text-left">
-          <p className="text-xs font-light text-white/40">© {new Date().getFullYear()} Shugaosha.com. All rights reserved.</p>
+          <p className="text-xs font-light text-white/40">
+            {locale === 'en' ? '© 2026 Shugaosha. All Rights Reserved.' : '© 2026 Shugaosha. 版權所有。'}
+          </p>
           
           <div className="py-1 md:py-0">
             <span className="text-xs font-medium tracking-widest uppercase text-white/50 block">

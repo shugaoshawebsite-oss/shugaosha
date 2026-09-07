@@ -12,7 +12,6 @@ import {
   CheckSquare,
   Briefcase,
   ArrowRight,
-  Clock,
   Quote,
   CheckCircle2,
 } from 'lucide-react'
@@ -22,34 +21,53 @@ interface PageProps {
 }
 
 const courseModules = [
-  { icon: BookOpen, en: 'Japanese Small Face Correction Philosophy', zh: '日本小顏矯正理念' },
+  { icon: BookOpen, en: 'Japanese Small Face Correction Principles', zh: '日本小顏矯正原理' },
   { icon: Eye, en: 'Facial Observation & Assessment', zh: '面部觀察與評估' },
-  { icon: Heart, en: 'Authentic Japanese Hands-on Techniques', zh: '正統日本徒手技術' },
-  { icon: Users, en: 'Guided Practical Training', zh: '指導實習' },
-  { icon: Clipboard, en: 'Session Flow', zh: 'Session 流程' },
-  { icon: Briefcase, en: 'Professional Consultation', zh: '專業諮詢' },
-  { icon: Shield, en: 'Safety & Contraindications', zh: '安全守則與不適合情況' },
-  { icon: CheckSquare, en: 'Final Practical Assessment', zh: '最終實習考核' },
+  { icon: Heart, en: 'Japanese Hands-On Techniques', zh: '日本徒手技術' },
+  { icon: Users, en: 'Guided Hands-On Practice', zh: '指導式實務練習' },
+  { icon: Clipboard, en: 'Session Structure & Flow', zh: '服務結構與流程' },
+  { icon: Briefcase, en: 'Client Consultation & Communication', zh: '客戶諮詢與溝通' },
+  { icon: Shield, en: 'Safety & Contraindications', zh: '安全事項與禁忌' },
+  { icon: CheckSquare, en: 'Final Practical Assessment', zh: '最終實務考核' },
 ]
 
 const whoIsItFor = {
   en: [
     'Beauty professionals and facial practitioners',
-    'Salon and studio owners',
-    'Wellness professionals',
-    'Individuals looking for a career change',
-    'Parents returning to work after raising children',
-    'Anyone wishing to develop a flexible professional skill',
+    'Salon, studio and wellness professionals',
+    'New migrants looking to build a practical professional skill in Australia',
+    'Individuals looking for a career change or a fresh start',
+    'Parents looking to use their available time to learn a practical skill and build a flexible career around family life',
+    'Anyone looking to build a flexible career with greater freedom over their working hours',
     'Beginners with no previous experience',
   ],
   zh: [
-    '美容師及面部護理從業員',
-    '美容院及工作室負責人',
-    '身心健康行業專業人士',
-    '希望轉換事業方向的人士',
-    '育兒後準備重返職場的家長',
-    '希望掌握具彈性的專業技能的人士',
-    '沒有相關經驗的初學者',
+    '美容專業人士及面部護理從業員',
+    '美容院、工作室及健康美容行業人士',
+    '剛移居澳洲，希望建立一門實用專業技能的人士',
+    '希望轉換事業跑道或重新開始的人士',
+    '希望善用空餘時間學習實用技能，並建立可配合家庭生活之彈性事業的家長',
+    '希望建立更具彈性的事業，能更自由安排工作時間的人士',
+    '完全沒有相關經驗的初學者',
+  ],
+}
+
+const courseFormatItems = {
+  en: [
+    'Structured theory and facial assessment',
+    'Live demonstrations',
+    'Small-group, personalised hands-on training',
+    'Practice on live models with different facial structures',
+    'Close guidance on hand placement, pressure and technique',
+    'Final practical assessment',
+  ],
+  zh: [
+    '系統理論及面部評估',
+    '真人示範',
+    '小班個人化手把手培訓',
+    '使用不同面部結構的真人模特進行實習',
+    '針對手位、力度及技巧作近距離指導及修正',
+    '最終實務考核',
   ],
 }
 
@@ -76,84 +94,133 @@ export default async function TrainingPage({ params }: PageProps) {
             {locale === 'en' ? 'PROFESSIONAL TRAINING' : '專業培訓'}
           </span>
           <h1 className="type-hero text-charcoal max-w-3xl leading-tight">
-            {locale === 'en' ? 'Training' : '專業課程'}
+            {locale === 'en' ? 'Training' : '培訓課程'}
           </h1>
-          <p className="text-xl sm:text-2xl font-light text-primary mt-3 sm:mt-4 tracking-tight">
-            {locale === 'en'
-              ? 'Learn Authentic Japanese Small Face Correction. Build a Professional Career.'
-              : '學習正統日本小顏矯正　開展專業發展之路'}
+          <p className="text-xl sm:text-2xl font-light text-primary mt-3 sm:mt-4 tracking-tight leading-snug">
+            {locale === 'en' ? (
+              <>
+                Learn Japanese Small Face Correction.
+                <br />
+                Build a Professional Career.
+              </>
+            ) : (
+              <>
+                學習日本小顏矯正，
+                <br />
+                開展專業事業。
+              </>
+            )}
           </p>
         </div>
       </section>
 
       {/* ── 2. Intro Statement ── */}
-      <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-6 scroll-mt-28">
+      <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-6 scroll-mt-28 text-left">
         <p className="text-base sm:text-lg font-light text-charcoal/85 leading-relaxed">
           {locale === 'en'
-            ? 'Shugaosha offers professional training in authentic Japanese Small Face Correction, based on the official curriculum of the Japan Small Face Correction Certification Association (JSFA), Japan.'
-            : '修顏社提供正統日本小顏矯正專業培訓，課程以日本小顏矯正認定協會的官方課程為基礎。'}
+            ? 'Shugaosha offers professional training in Japanese Small Face Correction in Australia, based on the official curriculum of the Japan Small Face Correction Certification Association (JSFA), Japan.'
+            : 'Shugaosha 在澳洲提供日本小顏矯正專業培訓，課程以日本小顏矯正認證協會（JSFA）的官方課程為基礎。'}
+        </p>
+        <p className="text-base sm:text-lg font-light text-charcoal/85 leading-relaxed">
+          {locale === 'en'
+            ? 'Students can undertake the training locally in Australia with Teresa Soo, Australia’s JSFA Representative and Certified Trainer.'
+            : '學員可直接在澳洲跟隨澳洲 JSFA 代表及認證導師 Teresa Soo 接受培訓。'}
         </p>
         <p className="text-base sm:text-lg font-light text-charcoal/85 leading-relaxed">
           {locale === 'en'
             ? 'Designed for beauty professionals, career changers and anyone passionate about learning a specialised hands-on technique, the programme combines structured learning, guided practical training and professional assessment to help students develop the skills and confidence required for professional practice.'
-            : '課程適合美容專業人士、希望轉換事業方向的人士，以及對專業徒手技術有興趣的人士。透過有系統的學習、實習指導及專業考核，協助學員逐步掌握專業實踐所需的技術及信心。'}
+            : '課程適合美容專業人士、希望轉換事業方向的人士，以及任何有興趣學習專業徒手技術的人。課程結合系統學習、指導式實務培訓及專業考核，幫助學員建立投入專業實務所需的技巧與信心。'}
         </p>
       </section>
 
       {/* ── 3. Official Certification ── */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full scroll-mt-28">
-        <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 sm:p-12 lg:p-16 space-y-10">
+        <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 sm:p-12 lg:p-16 space-y-8 sm:space-y-10">
           <div className="space-y-3 text-left">
             <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
               {locale === 'en' ? 'OFFICIAL CERTIFICATION' : '官方認證'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-              {locale === 'en' ? 'Official Japanese Small Face Correction Certification' : '日本官方小顏矯正認證'}
+              {locale === 'en' ? 'Official Japanese Small Face Correction Certification' : '日本小顏矯正官方認證'}
             </h2>
             <p className="text-base font-medium text-foreground">
-              {locale === 'en' ? 'Learn through Australia’s Official JSFA Representative' : '由日本小顏矯正認定協會澳洲官方代表親自教授'}
+              {locale === 'en' ? 'Learn through Australia’s JSFA Representative' : '跟隨澳洲 JSFA 代表學習'}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Clipboard,
-                title: locale === 'en' ? 'Official JSFA Curriculum' : '日本協會官方課程',
-                desc: locale === 'en'
-                  ? 'Based on the official curriculum of the Japan Small Face Correction Certification Association (JSFA), Japan.'
-                  : '課程以日本小顏矯正認定協會的官方培訓內容為基礎。',
-              },
-              {
-                icon: Users,
-                title: locale === 'en' ? "Australia’s Official JSFA Representative" : '澳洲官方代表',
-                desc: locale === 'en'
-                  ? 'Learn directly from Teresa Soo, the official Australian Representative and a Certified Trainer of the Japan Small Face Correction Certification Association.'
-                  : '由日本小顏矯正認定協會澳洲官方代表及認證導師 Teresa Soo 親自教授。',
-              },
-              {
-                icon: Award,
-                title: locale === 'en' ? 'Official JSFA Certification' : 'JSFA 官方認證',
-                desc: locale === 'en'
-                  ? 'Students who successfully complete the training and pass the final practical assessment receive an official Diploma issued by the Japan Small Face Correction Certification Association (JSFA), Japan.'
-                  : '完成培訓並通過最終實務考核的學員，將獲由日本小顏矯正認定協會（JSFA）頒發的正式證書。',
-              },
-              {
-                icon: BookOpen,
-                title: locale === 'en' ? 'Structured Learning' : '系統化學習',
-                desc: locale === 'en'
-                  ? 'Structured theory, practical demonstrations, guided hands-on practice and a final practical assessment.'
-                  : '課程包括理論、技術示範、指導實習及最終實習考核。',
-              },
-            ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-2xl p-6 sm:p-7 space-y-3.5 border border-gray-100/80 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
-                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto md:mx-0">
-                  <Icon className="w-5 h-5" />
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: Clipboard,
+                  title: locale === 'en' ? 'JSFA Curriculum' : 'JSFA 課程',
+                  desc: locale === 'en'
+                    ? 'Based on the official curriculum of the Japan Small Face Correction Certification Association (JSFA), Japan.'
+                    : '課程以日本小顏矯正認證協會（JSFA）的官方課程為基礎。',
+                },
+                {
+                  icon: Users,
+                  title: locale === 'en' ? 'Australia’s JSFA Representative' : '澳洲 JSFA 代表',
+                  desc: locale === 'en'
+                    ? 'Learn directly from Teresa Soo, Australia’s JSFA Representative and Certified Trainer of the Japan Small Face Correction Certification Association.'
+                    : '由澳洲 JSFA 代表及日本小顏矯正認證協會認證導師 Teresa Soo 親自教授。',
+                },
+                {
+                  icon: Award,
+                  title: locale === 'en' ? 'Official JSFA Certification' : 'JSFA 官方認證',
+                  desc: locale === 'en'
+                    ? 'Students who successfully complete the training and pass the final practical assessment receive an official Diploma issued by the Japan Small Face Correction Certification Association (JSFA), Japan.'
+                    : '學員成功完成培訓並通過最終實務考核後，將獲日本小顏矯正認證協會（JSFA）頒發的官方 Diploma。',
+                },
+              ].map(({ icon: Icon, title, desc }) => (
+                <div key={title} className="bg-white rounded-2xl p-6 sm:p-7 space-y-3.5 border border-gray-100/80 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
+                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto sm:mx-0">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+                  <p className="text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed">{desc}</p>
                 </div>
-                <h3 className="text-sm font-semibold text-foreground">{title}</h3>
-                <p className="text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed">{desc}</p>
+              ))}
+            </div>
+
+            {/* Practice-Ready Hands-On Training */}
+            <div className="bg-white rounded-2xl p-6 sm:p-8 space-y-4 border border-gray-100/80 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold text-foreground">
+                  {locale === 'en' ? 'Practice-Ready Hands-On Training' : '實務導向手把手培訓'}
+                </h3>
               </div>
-            ))}
+              <div className="space-y-3 text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed pt-1">
+                {locale === 'en' ? (
+                  <>
+                    <p>
+                      Extensive hands-on training with real models, including one-on-one guidance, live demonstrations and individual technique correction.
+                    </p>
+                    <p>
+                      The programme is designed to help students develop the practical skills, precision and confidence needed to begin working with clients professionally after successful completion and assessment.
+                    </p>
+                    <p>
+                      The focus is not only on learning the techniques, but on applying them effectively and confidently in real client situations.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      透過真人模特實習、一對一指導、現場示範及個別手法糾正，讓學員累積充分的實際操作經驗。
+                    </p>
+                    <p>
+                      課程旨在幫助學員建立所需的實際技巧、精準度及信心，在成功完成課程及通過考核後，具備開始為客戶提供專業服務的實務能力。
+                    </p>
+                    <p>
+                      課程重點不只是學懂技巧，而是懂得如何在真實客戶情況中有效及有信心地運用。
+                    </p>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -181,9 +248,9 @@ export default async function TrainingPage({ params }: PageProps) {
                   ? 'Certified Trainer of the Japan Small Face Correction Certification Association'
                   : '日本小顏矯正認定協會認證導師',
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/85">
+                <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/85 text-left">
                   <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>{item}</span>
+                  <span className="text-left flex-1">{item}</span>
                 </li>
               ))}
             </ul>
@@ -220,26 +287,31 @@ export default async function TrainingPage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-10 scroll-mt-28">
         <div className="text-left space-y-3">
           <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
-            {locale === 'en' ? 'WHAT YOU WILL LEARN' : '課程內容'}
+            {locale === 'en' ? 'COURSE OVERVIEW' : '課程內容'}
           </span>
           <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-            {locale === 'en' ? 'Course Overview' : '課程概覽'}
+            {locale === 'en' ? 'What You Will Learn' : '你將會學到甚麼'}
           </h2>
           <p className="type-body text-charcoal/75 max-w-2xl">
             {locale === 'en'
-              ? 'The training combines theory and practical learning, allowing students to progressively develop the knowledge, technique and confidence required for professional practice.'
-              : '課程結合理論與實習，讓學員循序漸進地建立專業實踐所需的知識、技術及信心。'}
+              ? 'The programme combines essential theory with extensive hands-on learning, allowing students to progressively develop the knowledge, practical skills, precision and confidence required to work with clients professionally.'
+              : '課程結合理論基礎與大量實務操作，讓學員循序漸進地建立專業知識、實際手法、精準度及信心，為日後實際服務客戶做好準備。'}
           </p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
-          {courseModules.map(({ icon: Icon, en, zh }) => (
+          {courseModules.map(({ icon: Icon, en, zh }, idx) => (
             <div
               key={en}
               className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 space-y-3.5 hover:border-primary/30 hover:shadow-sm transition-all duration-300 group text-left"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300 mx-auto md:mx-0">
-                <Icon className="w-5 h-5 text-primary" />
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <span className="text-xs font-mono font-medium text-charcoal/40">
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
               </div>
               <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
                 {locale === 'en' ? en : zh}
@@ -249,106 +321,116 @@ export default async function TrainingPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* ── 6. Is This Right For Me? ── */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full scroll-mt-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6 text-left">
-            <div>
-              <span className="type-label text-primary block mb-3 uppercase tracking-widest text-xs font-semibold">
-                {locale === 'en' ? 'IS THIS RIGHT FOR ME?' : '這個課程適合我嗎？'}
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-                {locale === 'en' ? 'Who Is This Training For?' : '課程適合對象'}
-              </h2>
-            </div>
-            <p className="type-body text-charcoal/75">
-              {locale === 'en'
-                ? 'This programme is suitable for anyone interested in learning a professional hands-on facial correction technique. It is ideal for:'
-                : '本課程適合希望學習專業徒手面部矯正技術的人士，包括：'}
-            </p>
-            <ul className="space-y-3 text-left">
-              {whoIsItFor[locale].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-light text-charcoal/85">
-                  <ArrowRight className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-sm font-medium text-primary pt-3 flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4" />
-              <span>
-                {locale === 'en'
-                  ? 'No previous experience is required.'
-                  : '無須任何相關經驗。'}
-              </span>
-            </p>
-          </div>
+      {/* ── 6. Who Is This Training For? ── */}
+      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-10 scroll-mt-28">
+        <div className="text-left space-y-3">
+          <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
+            {locale === 'en' ? 'WHO IS THIS TRAINING FOR?' : '這個課程適合哪些人？'}
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+            {locale === 'en' ? 'Who Is This Training For?' : '這個課程適合哪些人？'}
+          </h2>
+          <p className="type-body text-charcoal/75 max-w-3xl">
+            {locale === 'en'
+              ? 'This programme is suitable for anyone interested in learning professional hands-on facial correction techniques. It is ideal for:'
+              : '本課程適合任何有興趣學習專業徒手修顏技術的人士，包括：'}
+          </p>
+        </div>
 
-          <div className="bg-soft-bg border border-gray-100 rounded-3xl p-8 sm:p-10 space-y-6 text-left">
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mx-auto md:mx-0">
-              <Clock className="w-6 h-6" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+          {whoIsItFor[locale].map((item, i) => (
+            <div
+              key={i}
+              className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 flex items-start gap-4 hover:border-primary/30 hover:shadow-sm transition-all duration-300 text-left group"
+            >
+              <div className="w-8 h-8 rounded-xl bg-primary/8 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors duration-300 mt-0.5">
+                <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform duration-300" />
+              </div>
+              <span className="text-sm sm:text-[15px] font-light text-charcoal/90 leading-relaxed text-left pt-1 flex-1">
+                {item}
+              </span>
             </div>
-            <h3 className="text-lg font-medium text-foreground">
-              {locale === 'en' ? 'Course Format' : '課程形式'}
-            </h3>
-            <ul className="space-y-3.5 text-left">
-              {[
-                locale === 'en' ? 'Structured theory sessions' : '系統化理論課程',
-                locale === 'en' ? 'Practical demonstrations' : '技術示範',
-                locale === 'en' ? 'Guided hands-on practice' : '指導徒手實習',
-                locale === 'en' ? 'Final practical assessment' : '最終實習考核',
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/85">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+          ))}
+
+          {/* Experience callout */}
+          <div className="bg-primary/5 border border-primary/20 rounded-2xl p-5 sm:p-6 flex items-center gap-4 text-left">
+            <div className="w-8 h-8 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0 text-primary">
+              <CheckCircle2 className="w-5 h-5" />
+            </div>
+            <p className="text-sm sm:text-[15px] font-medium text-primary tracking-wide flex-1">
+              {locale === 'en'
+                ? 'No previous experience is required.'
+                : '無需任何相關經驗。'}
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ── 7. After You Graduate ── */}
+      {/* ── 7. Course Format ── */}
+      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-10 scroll-mt-28">
+        <div className="text-left space-y-3">
+          <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
+            {locale === 'en' ? 'COURSE FORMAT' : '課程形式'}
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+            {locale === 'en' ? 'How the Training Is Delivered' : '培訓方式'}
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {courseFormatItems[locale].map((item, i) => (
+            <div
+              key={i}
+              className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 flex items-start gap-4 hover:border-primary/30 hover:shadow-sm transition-all duration-300 text-left group"
+            >
+              <div className="w-8 h-8 rounded-xl bg-primary/8 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors duration-300 mt-0.5">
+                <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform duration-300" />
+              </div>
+              <span className="text-sm sm:text-[15px] font-light text-charcoal/90 leading-relaxed text-left pt-1 flex-1">
+                {item}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 8. Certification & Professional Practice ── */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-10 scroll-mt-28">
         <div className="text-left space-y-3">
           <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
             {locale === 'en' ? 'AFTER YOU GRADUATE' : '完成課程後'}
           </span>
           <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-            {locale === 'en' ? 'Certification & Professional Practice' : '專業認證與實踐'}
+            {locale === 'en' ? 'Certification & Professional Practice' : '認證與專業實務'}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {[
             {
               icon: Award,
               title: locale === 'en' ? 'Official JSFA Certification' : 'JSFA 官方認證',
               desc: locale === 'en'
-                ? 'Students who successfully complete the training and pass the final practical assessment receive an official Diploma issued by the Japan Small Face Correction Certification Association (JSFA), Japan.'
-                : '完成培訓並通過最終實務考核的學員，將獲由日本小顏矯正認定協會（JSFA）頒發的正式證書。',
+                ? 'Upon successful completion of the training and final practical assessment, students receive an official Diploma issued by the Japan Small Face Correction Certification Association (JSFA), Japan.'
+                : '成功完成培訓並通過最終實務考核後，學員將獲日本小顏矯正認證協會（JSFA）頒發的官方 Diploma。',
             },
             {
               icon: Briefcase,
-              title: locale === 'en' ? 'Practice-Ready Skills' : '實踐所需技能',
+              title: locale === 'en' ? 'Ready for Professional Practice' : '具備投入專業實務的能力',
               desc: locale === 'en'
-                ? 'The programme is designed to prepare students to work confidently with clients through guided practical training and professional assessment.'
-                : '課程透過指導實習及專業考核，協助學員建立為客人提供服務所需的實際技巧及信心。',
-            },
-            {
-              icon: Users,
-              title: locale === 'en' ? 'Professional Confidence' : '專業自信',
-              desc: locale === 'en'
-                ? 'Upon graduation, students will have the practical skills and confidence to begin offering authentic Japanese Small Face Correction professionally — whether adding a new service to an existing practice or starting a new professional journey.'
-                : '完成課程後，學員將掌握實際操作所需的專業技能與信心，並可將正統日本小顏矯正應用於專業服務中——無論是為現有業務增添一項全新服務，還是開展新的專業方向。',
+                ? 'Upon successful completion of the training and final practical assessment, students will have developed the practical skills, precision and confidence to begin working with clients professionally — whether adding a new service to an existing practice or starting a new professional journey.'
+                : '成功完成培訓並通過最終實務考核後，學員將建立所需的實際手法、精準度及信心，可開始為客戶提供專業服務，無論是為現有業務增加新服務，或開展新的專業方向。',
             },
           ].map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="bg-white border border-gray-100 rounded-3xl p-7 sm:p-8 space-y-4 hover:shadow-sm transition-shadow duration-300 text-left">
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mx-auto md:mx-0">
+            <div
+              key={title}
+              className="bg-white border border-gray-100 rounded-3xl p-7 sm:p-9 space-y-4 hover:border-primary/30 hover:shadow-sm transition-all duration-300 text-left flex flex-col justify-start"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mx-auto md:mx-0">
                 <Icon className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-semibold text-foreground">{title}</h3>
-              <p className="text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed">{desc}</p>
+              <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+              <p className="text-sm font-light text-charcoal/80 leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -382,36 +464,58 @@ export default async function TrainingPage({ params }: PageProps) {
         </p>
       </section>
 
-      {/* ── 8. The Shugaosha Way (CPD - Coming Soon) ── */}
+      {/* ── 9. The Shugaosha Way ── */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full scroll-mt-28">
         <div className="relative overflow-hidden bg-charcoal/[0.03] border border-charcoal/10 rounded-3xl p-8 sm:p-12 lg:p-14 text-left">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-5 max-w-3xl">
             <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
               THE SHUGAOSHA WAY
             </span>
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
+
+            <div className="space-y-1">
               <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-                {locale === 'en' ? 'Advanced Professional Training — The Shugaosha Way' : '進階專業培訓 — 修顏社小顏術'}
+                The Shugaosha Way
               </h2>
-              <span className="inline-block bg-primary/10 text-primary text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
-                {locale === 'en' ? 'Coming Soon' : '即將推出'}
-              </span>
+              <p className="text-xl sm:text-2xl font-light text-primary tracking-tight">
+                {locale === 'en' ? 'Professional Training' : '專業培訓'}
+              </p>
+              <p className="text-xs sm:text-sm uppercase tracking-wider text-charcoal/60 font-medium pt-1">
+                {locale === 'en' ? 'Developed by Shugaosha' : '由 Shugaosha 創立及發展'}
+              </p>
             </div>
-            <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
-              {locale === 'en'
-                ? 'The Shugaosha Way is Shugaosha’s advanced professional training, developed through years of hands-on practice, continued refinement and experience working with a wide range of facial structures.'
-                : '「修顏社小顏術（The Shugaosha Way）」是 Shugaosha 經多年徒手實踐、持續鑽研及不同面部結構的經驗累積而發展出的進階專業培訓。'}
-            </p>
-            <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
-              {locale === 'en'
-                ? 'The training places a strong emphasis on precision, detailed facial assessment, layered rebalancing and a deeper understanding of facial balance, alignment and contours. It is designed for those who wish to develop or further refine their hands-on skills and bring a more precise, individualised approach into professional practice.'
-                : '課程著重精準度、細緻的面部評估、層次式調整，以及對面部平衡、對稱與輪廓的深入理解，適合希望發展或進一步精進徒手技術的人士，將更精準及個人化的調整方式應用於專業實踐之中。'}
-            </p>
-            <p className="text-xs sm:text-sm font-light text-charcoal/60 pt-2">
-              {locale === 'en'
-                ? 'Further details will be announced as the programme continues to develop.'
-                : '課程仍在持續發展中，詳情將於日後公布。'}
-            </p>
+
+            <div className="space-y-3.5 text-sm sm:text-base font-light text-charcoal/80 leading-relaxed pt-2">
+              <p>
+                {locale === 'en'
+                  ? 'The Shugaosha Way is Shugaosha’s own facial correction method, developed through years of hands-on practice, continued refinement and experience working with a wide range of facial structures.'
+                  : 'The Shugaosha Way 是 Shugaosha 經過多年實際操作、不斷改良，以及接觸不同面部結構後發展出的自家修顏方法。'}
+              </p>
+              <p>
+                {locale === 'en'
+                  ? 'This professional training focuses on detailed facial assessment, precision, layered rebalancing and learning how to adapt the work to each individual face.'
+                  : '這個專業培訓著重細緻的面部評估、精準手法、分層調整，以及學習如何因應每一張不同的面作出個人化處理。'}
+              </p>
+              <p>
+                {locale === 'en'
+                  ? 'Designed for JSFA graduates and practitioners with relevant hands-on facial experience who wish to further develop their assessment skills, precision and individualised approach to facial correction.'
+                  : '課程適合已完成 JSFA 培訓，或已具備相關徒手面部技術經驗的從業員，希望進一步提升評估能力、手法精準度，以及個人化修顏技巧。'}
+              </p>
+            </div>
+
+            <div className="pt-3">
+              <div className="bg-white/90 border border-primary/20 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 text-sm shadow-sm">
+                <span className="font-medium text-charcoal/85">
+                  {locale === 'en' ? 'Build your foundation with JSFA' : '先以 JSFA 建立基礎'}
+                </span>
+                <span className="text-primary hidden sm:inline font-bold">→</span>
+                <span className="text-primary sm:hidden font-bold">↓</span>
+                <span className="font-semibold text-primary">
+                  {locale === 'en'
+                    ? 'Develop your individualised approach through The Shugaosha Way'
+                    : '再透過 The Shugaosha Way 發展你的個人化專業手法'}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -420,16 +524,23 @@ export default async function TrainingPage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-12 scroll-mt-28">
         <div className="text-left space-y-3">
           <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
-            {locale === 'en' ? 'STUDENT EXPERIENCE' : '學員體驗'}
+            {locale === 'en' ? 'LEARNING IN PRACTICE' : '實務學習'}
           </span>
           <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-            {locale === 'en' ? 'Learning in Practice' : '實踐中學習'}
+            {locale === 'en' ? 'Learning in Practice' : '實務學習'}
           </h2>
-          <p className="type-body text-charcoal/75 max-w-2xl">
-            {locale === 'en'
-              ? 'Learning is practical, supportive and focused on real technique application. Students progress through demonstrations, guided practice and practical assessment, building their precision and confidence step by step throughout their learning journey.'
-              : '課程著重實際操作，在具支持性的學習環境中，專注於技術的真正應用。學員透過導師示範、指導實習及實習考核，逐步提升精準度、實踐能力及專業信心。'}
-          </p>
+          <div className="space-y-3 type-body text-charcoal/75 max-w-3xl">
+            <p>
+              {locale === 'en'
+                ? 'Students learn in a highly personalised setting, with close one-on-one or small-group guidance throughout the practical training.'
+                : '學員會在高度個人化的學習環境中接受培訓，實務部分以一對一或小班形式進行，讓導師可以更貼身指導及即時修正手法。'}
+            </p>
+            <p>
+              {locale === 'en'
+                ? 'Through live demonstrations, hands-on correction and practice with a variety of real models and facial structures, students are able to refine each technique with greater precision and develop the confidence to adapt their skills to different clients.'
+                : '透過現場示範、手把手指導，以及接觸不同面形和面部結構的真人模特，學員可以更精準地掌握每項技巧，並建立因應不同客戶作出調整的信心和能力。'}
+            </p>
+          </div>
         </div>
 
         {/* Gallery with all existing photos + new Brisbane Kimmy photos */}
@@ -541,19 +652,19 @@ export default async function TrainingPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* ── 10. Interested? (Enquiries CTA) ── */}
+      {/* ── 10. Training Enquiries CTA ── */}
       <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 w-full scroll-mt-28">
         <div className="bg-primary/5 border border-primary/10 rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-sm">
           <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
-            {locale === 'en' ? 'INTERESTED?' : '有興趣了解更多？'}
+            {locale === 'en' ? 'TRAINING ENQUIRIES' : '培訓課程查詢'}
           </span>
           <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-            {locale === 'en' ? 'Enquiries' : '課程查詢'}
+            {locale === 'en' ? 'Training Enquiries' : '培訓課程查詢'}
           </h2>
-          <p className="type-body text-charcoal/75 max-w-lg mx-auto">
+          <p className="type-body text-charcoal/75 max-w-xl mx-auto">
             {locale === 'en'
-              ? 'For more information about our training programmes, upcoming courses and enrolment, please contact us.'
-              : '如欲了解培訓課程、即將開辦的課程及報名詳情，歡迎與我們聯絡。'}
+              ? 'For more information about our training programmes, upcoming training dates and enrolment, please contact us.'
+              : '如欲了解培訓課程、最新開課安排及報名詳情，歡迎與我們聯絡。'}
           </p>
           <div className="pt-2">
             <a

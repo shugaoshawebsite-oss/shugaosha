@@ -35,14 +35,14 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
           />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-center sm:text-left">
           <span className="type-label text-charcoal/70 block mb-3">
             {dict.success.subtitle}
           </span>
           <h1 className="type-hero text-charcoal">
             {dict.success.title}
           </h1>
-          <p className="type-body text-charcoal/80 max-w-xl mt-4">
+          <p className="type-body text-charcoal/80 max-w-xl mt-4 mx-auto sm:mx-0">
             {locale === 'en'
               ? 'Real progression journeys and testimonials showcasing how consistency and hand alignment bring visible, natural results.'
               : '最真實的小顏矯正進展對照與見證，展示透過持續的日式小顏手感帶來的顯著與自然調整。'}
@@ -64,8 +64,8 @@ export default async function SuccessStoriesPage({ params }: PageProps) {
 
       {/* CTA */}
       <section className="w-full bg-primary/5 border-y border-primary/10 py-16 sm:py-20 mt-16 md:mt-24">
-        <div className="max-w-7xl mx-auto px-6 text-center md:text-left space-y-8">
-          <h2 className="type-heading text-foreground max-w-xl mx-auto md:mx-0 leading-tight">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center md:text-left space-y-8">
+          <h2 className="type-heading text-foreground max-w-xl leading-tight mx-auto md:mx-0">
             {locale === 'en'
               ? 'Start Your Own Success Story'
               : '開啟您自己的成功故事'}

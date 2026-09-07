@@ -212,15 +212,15 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
   return (
     <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
       {/* Section header */}
-      <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-5 mb-14">
+      <div className="text-left max-w-2xl md:max-w-none space-y-5 mb-14">
         <span className="type-label text-primary">
           {locale === 'en' ? 'Client Voices' : '客戶心聲'}
         </span>
 
-        {/* Google branding — stacks vertically on mobile, horizontal on md+ */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-start gap-4">
+        {/* Google branding — stacks vertically on mobile, horizontal on sm+ */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-4">
           {/* G logo + rating block */}
-          <div className="flex items-center justify-center md:justify-start gap-3">
+          <div className="flex items-center justify-start gap-3">
             <GoogleLogo className="w-[45px] h-[45px] flex-shrink-0" />
             <div className="flex flex-col text-left">
               <div className="flex items-center gap-2">
@@ -241,7 +241,7 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
             href={MAPS_REVIEW_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary inline-flex items-center justify-center gap-2 !py-2.5 !px-5 !text-xs w-full sm:w-auto md:w-auto"
+            className="btn-primary inline-flex items-center justify-center gap-2 !py-2.5 !px-5 !text-xs w-full sm:w-auto"
             id="google-review-cta"
           >
             <GoogleLogo className="w-4 h-4 flex-shrink-0" />
@@ -250,7 +250,7 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
         </div>
 
         {/* Flag row */}
-        <div className="flex justify-center md:justify-start items-center gap-4 flex-wrap">
+        <div className="flex justify-start items-center gap-4 flex-wrap">
           {(['🇭🇰', '🇦🇺', '🇺🇸', '🇨🇦'] as const).map((flag, idx) => (
             <span key={idx} className="text-2xl sm:text-3xl">{flag}</span>
           ))}
@@ -261,6 +261,8 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
       {reviews.length > 0 ? (
         <MarqueeCarousel
           items={reviews}
+          autoPlay={false}
+          showArrows={true}
           renderItem={(review) => (
             <ReviewCard
               review={review}

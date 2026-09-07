@@ -1,11 +1,14 @@
 'use client'
 
 import React, { useRef, useEffect, useState, useCallback } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface MarqueeCarouselProps<T> {
   items: T[]
   renderItem: (item: T, index: number, isClone: boolean) => React.ReactNode
   speed?: number // kept for API compat, unused
+  autoPlay?: boolean
+  showArrows?: boolean
 }
 
 // ─── Config ──────────────────────────────────────────────────────────────────
@@ -27,6 +30,8 @@ function getPerView(w: number): number {
 export default function MarqueeCarousel<T>({
   items,
   renderItem,
+  autoPlay = true,
+  showArrows = false,
 }: MarqueeCarouselProps<T>) {
   const containerRef = useRef<HTMLDivElement>(null)
   const trackRef     = useRef<HTMLDivElement>(null)
@@ -95,8 +100,11 @@ export default function MarqueeCarousel<T>({
   // ── Schedule Next Slide ────────────────────────────────────────────────────
   const scheduleNext = () => {
     const s = S.current
-    if (s.timer) clearTimeout(s.timer)
-    if (n <= s.perView) return
+    if (s.timer) {
+      clearTimeout(s.timer)
+      s.timer = null
+    }
+    if (!autoPlay || n <= s.perView) return
     s.timer = setTimeout(() => {
       if (!s.isHovered && !s.isDragging && !s.isSliding) {
         doSlide(1)
@@ -169,10 +177,10 @@ export default function MarqueeCarousel<T>({
     setActiveDot(0)
 
     applyTransform(calcX(s.virtualIdx, cw), false)
-    if (n > pv) {
+    if (n > pv && autoPlay) {
       scheduleNext()
     }
-  }, [n])
+  }, [n, autoPlay])
 
   useEffect(() => {
     measure()
@@ -311,7 +319,7 @@ export default function MarqueeCarousel<T>({
     if (s.isSliding || idx === activeDot || n <= perView) return
     setActiveDot(idx)
     const targetVI = perView + idx * perView
-    doSlide(1, targetVI)
+    doSlide(1, targetVI, 700)
   }
 
   return (
@@ -351,19 +359,44 @@ export default function MarqueeCarousel<T>({
       </div>
 
       {totalSets > 1 && (
-        <div className="flex justify-center items-center gap-2 pt-2">
-          {Array.from({ length: totalSets }).map((_, idx) => (
+        <div className="flex justify-center items-center gap-3 pt-2">
+          {showArrows && (
             <button
-              key={idx}
-              onClick={() => onDotClick(idx)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                activeDot === idx
-                  ? 'bg-primary w-6'
-                  : 'bg-charcoal/20 hover:bg-charcoal/40 w-2.5'
-              }`}
-              aria-label={`Go to slide set ${idx + 1}`}
-            />
-          ))}
+              type="button"
+              onClick={() => doSlide(-1, undefined, 700)}
+              className="p-1.5 rounded-full border border-gray-200 text-charcoal/60 hover:text-primary hover:border-primary/40 transition-colors focus:outline-none cursor-pointer"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+          )}
+
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalSets }).map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => onDotClick(idx)}
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  activeDot === idx
+                    ? 'bg-primary w-6'
+                    : 'bg-charcoal/20 hover:bg-charcoal/40 w-2.5'
+                }`}
+                aria-label={`Go to slide set ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          {showArrows && (
+            <button
+              type="button"
+              onClick={() => doSlide(1, undefined, 700)}
+              className="p-1.5 rounded-full border border-gray-200 text-charcoal/60 hover:text-primary hover:border-primary/40 transition-colors focus:outline-none cursor-pointer"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
       )}
     </div>

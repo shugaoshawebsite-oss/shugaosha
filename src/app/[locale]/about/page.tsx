@@ -248,7 +248,7 @@ export default async function AboutPage({ params }: PageProps) {
 
       {/* CTA */}
       <section className="w-full bg-primary/5 border-y border-primary/10 py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-6 text-center md:text-left space-y-8">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center md:text-left space-y-8">
           <h2 className="type-heading text-foreground max-w-xl mx-auto md:mx-0">
             {dict.about.cta.title}
           </h2>

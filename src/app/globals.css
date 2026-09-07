@@ -431,16 +431,52 @@ header a:not(.btn-book-nav):hover {
    ============================================ */
 @media (max-width: 767px) {
 
+  /* General content: center-aligned on mobile */
   main p,
   main h1,
   main h2,
   main h3,
   main h4,
   main h5,
-  main h6,
-  main span,
-  main li {
+  main h6 {
     text-align: center !important;
+  }
+
+  /* Center headings and text tokens on mobile */
+  main .type-label,
+  main .type-heading,
+  main .type-subheading,
+  main .type-card-title,
+  main .type-body,
+  main .type-body-sm,
+  main .type-caption {
+    text-align: center;
+  }
+
+  /* EXCEPTIONS: Text lists in dotted points (bullet points) MUST be justified/aligned left */
+  main ul,
+  main ol,
+  main li,
+  main ul *,
+  main ol *,
+  main li *,
+  .bullet-list,
+  .bullet-list * {
+    text-align: left !important;
+  }
+
+  /* EXCEPTIONS: FAQ Section questions and answers MUST be justified/aligned left */
+  .faq-list,
+  .faq-list *,
+  .faq-item,
+  .faq-item *,
+  .faq-question,
+  .faq-question *,
+  .faq-answer,
+  .faq-answer *,
+  .faq-accordion,
+  .faq-accordion * {
+    text-align: left !important;
   }
 
   main img,
@@ -448,5 +484,38 @@ header a:not(.btn-book-nav):hover {
   main video {
     margin-left: auto !important;
     margin-right: auto !important;
+  }
+
+  /* Instagram Feed (Elfsight) — prevent profile avatar clipping on mobile */
+  .elfsight-app-053d3d7a-69da-4f5a-a15a-eb53ed990fb7,
+  [class*="elfsight-app"] {
+    overflow: visible !important;
+  }
+
+  [class*="es-header-container"],
+  .es-header-container,
+  [class*="Header__HeaderContainer"] {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  [class*="es-header-account-author-avatar-link"],
+  .es-header-account-author-avatar-link,
+  [class*="AuthorBlock__AvatarProfileLink"],
+  [class*="AvatarProfileLink"] {
+    margin-left: 8px !important;
+    margin-right: 10px !important;
+    flex-shrink: 0 !important;
+    overflow: visible !important;
+  }
+
+  [class*="es-header-account-author-avatar"],
+  .es-header-account-author-avatar,
+  [class*="AuthorBlock__Avatar"] {
+    overflow: visible !important;
   }
 }

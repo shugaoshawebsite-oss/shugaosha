@@ -32,14 +32,14 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
           />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 sm:pt-28 pb-16 sm:pb-20 text-left">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 sm:pt-28 pb-16 sm:pb-20 text-center sm:text-left">
           <span className="type-label text-charcoal/70 block mb-3 uppercase tracking-widest text-xs font-semibold">
             {locale === 'en' ? 'GIFT CERTIFICATES' : '禮券'}
           </span>
-          <h1 className="type-hero text-charcoal max-w-3xl leading-tight">
+          <h1 className="type-hero text-charcoal max-w-3xl leading-tight mx-auto sm:mx-0">
             {locale === 'en' ? 'Give the Gift of Shugaosha' : '送上一份特別的 Shugaosha 體驗'}
           </h1>
-          <p className="type-body text-charcoal/80 max-w-2xl mt-4 leading-relaxed">
+          <p className="type-body text-charcoal/80 max-w-2xl mt-4 leading-relaxed mx-auto sm:mx-0">
             {locale === 'en'
               ? 'A Shugaosha Gift Certificate is a thoughtful way to give someone special a personalised facial correction experience.'
               : 'Shugaosha 禮券是一份細緻而貼心的禮物，讓重要的人親身體驗我們專業的面部矯正。'}
@@ -52,7 +52,7 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left Column: Description, Options & CTA */}
-          <div className="lg:col-span-6 space-y-8 text-left">
+          <div className="lg:col-span-6 space-y-8 text-center lg:text-left">
             <div className="space-y-4">
               <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
                 {locale === 'en' ? 'PERSONALISED EXPERIENCE' : '專屬個人化體驗'}
@@ -85,13 +85,12 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 space-y-2 shadow-sm hover:border-primary/30 transition-all duration-300"
+                  className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 space-y-2 shadow-sm hover:border-primary/30 transition-all duration-300 text-center sm:text-left"
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                    <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
-                  </div>
-                  <p className="text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed pl-5">
+                  <h3 className="text-base font-semibold text-foreground text-center sm:text-left">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed text-center sm:text-left">
                     {item.desc}
                   </p>
                 </div>
@@ -117,7 +116,7 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
                   : '如欲安排購買禮券，請透過 WhatsApp 與我們聯絡。收禮人其後可以憑禮券號碼直接向我們預約。'}
               </p>
 
-              <div className="pt-3 flex justify-center md:justify-start">
+              <div className="pt-3 flex justify-center lg:justify-start">
                 <a
                   href={whatsappHref}
                   target="_blank"
@@ -170,9 +169,9 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
               locale === 'en' ? 'Non-refundable and not redeemable for cash' : '禮券不設退款，亦不可兌換現金',
               locale === 'en' ? 'Valid for the named recipient only' : '禮券只限指定收禮人使用',
             ].map((detail, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/85">
+              <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/85 text-left">
                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                <span>{detail}</span>
+                <span className="text-left flex-1">{detail}</span>
               </li>
             ))}
           </ul>
@@ -181,19 +180,19 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
 
       {/* ── 4. Bottom Booking & Services CTA ── */}
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full scroll-mt-28">
-        <div className="bg-soft-bg border border-gray-100 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-          <div className="space-y-2">
+        <div className="bg-soft-bg border border-gray-100 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center md:items-center justify-between gap-8 text-center md:text-left">
+          <div className="space-y-2 text-center md:text-left">
             <h3 className="text-xl sm:text-2xl font-light text-foreground">
               {locale === 'en' ? 'Have Questions or Need Help?' : '有任何問題或需要協助？'}
             </h3>
-            <p className="text-sm font-light text-charcoal/75 max-w-lg">
+            <p className="text-sm font-light text-charcoal/75 max-w-lg mx-auto md:mx-0">
               {locale === 'en'
                 ? 'Contact our specialist team on WhatsApp (+61 493 552 213) to arrange your gift certificate or enquire about our services.'
                 : '歡迎隨時透過 WhatsApp（+61 493 552 213）聯絡我們的專業團隊安排禮券或查詢服務。'}
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
             <a
               href={whatsappHref}
               target="_blank"

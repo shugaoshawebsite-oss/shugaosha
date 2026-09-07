@@ -10,7 +10,24 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
   const locale = (rawLocale === 'zh' ? 'zh' : 'en') as 'en' | 'zh'
   const dict = getDictionary(locale)
 
-  const sections = [
+  const sections: { title: string; items: string[]; note?: string }[] = [
+    {
+      title: locale === 'en' ? 'Important Booking Note' : '重要預約須知',
+      items: locale === 'en'
+        ? [
+          'Appointments are available by prior arrangement only.',
+          'Appointments are limited — early booking is recommended.',
+          'Booking and confirmation procedures may vary depending on location.',
+        ]
+        : [
+          '所有預約均需提前安排。',
+          '預約名額有限，建議提早查詢及預約。',
+          '預約及確認方式會因地點而有所不同。',
+        ],
+      note: locale === 'en'
+        ? 'All sessions are subject to our Appointment Policy.'
+        : '所有服務均受我們的預約政策約束。',
+    },
     {
       title: locale === 'en' ? 'Appointment Confirmation' : '預約確認',
       items: locale === 'en'
@@ -61,14 +78,12 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
       title: locale === 'en' ? 'Late Arrival' : '遲到',
       items: locale === 'en'
         ? [
-          'Please arrive on time so you can enjoy your full treatment.',
-          'Late arrival may result in a shortened treatment, or the appointment may not be able to proceed if there is insufficient time remaining.',
-          'Your scheduled appointment will still be treated as a completed session.',
+          'Please arrive on time so you can receive your full session.',
+          'Late arrival may result in a shortened session. If there is insufficient time remaining, the appointment may not be able to proceed.',
         ]
         : [
-          '請準時到達，以享受完整的小顏矯正體驗。',
-          '遲到可能導致服務時間縮短，或在剩餘時間不足時無法進行預約。',
-          '您的預約仍將視作已完成該次預約。',
+          '請準時到達，以確保可以完成整個服務。',
+          '如遲到，服務時間可能需要相應縮短。如剩餘時間不足，該次預約可能無法進行。',
         ],
     },
     {
@@ -133,14 +148,19 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
               <h3 className="text-base font-semibold text-foreground tracking-wide">
                 {section.title}
               </h3>
-              <ul className="space-y-2.5">
+              <ul className="space-y-2.5 text-left">
                 {section.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-3 text-sm font-light text-charcoal/80 leading-relaxed">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/60 flex-shrink-0" />
-                    {item}
+                  <li key={j} className="flex items-start gap-3 text-sm font-light text-charcoal/80 leading-relaxed text-left">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span className="text-left flex-1">{item}</span>
                   </li>
                 ))}
               </ul>
+              {section.note && (
+                <p className="text-xs font-light text-charcoal/70 pt-2 border-t border-gray-50">
+                  {section.note}
+                </p>
+              )}
             </div>
           ))}
         </div>

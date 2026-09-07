@@ -142,6 +142,7 @@ export default async function ServicesPage({ params }: PageProps) {
         </div>
 
         {/* Content */}
+        {/* Content */}
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
           <div className="space-y-10">
             <div className="text-center md:text-left space-y-3">
@@ -155,7 +156,7 @@ export default async function ServicesPage({ params }: PageProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {t.steps.map((item, index) => (
-                <div key={index} className="space-y-4 text-left bg-white/10 border border-white/15 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
+                <div key={index} className="space-y-4 text-center md:text-left bg-white/10 border border-white/15 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
                   <div className="text-3xl font-light text-primary tracking-wide text-center md:text-left">
                     {item.step}
                   </div>
@@ -190,12 +191,12 @@ export default async function ServicesPage({ params }: PageProps) {
               return (
                 <div
                   key={i}
-                  className="bg-soft-bg border border-gray-100 rounded-2xl p-6 flex flex-col space-y-4 shadow-sm hover:shadow-md transition-shadow duration-300 group text-left"
+                  className="bg-soft-bg border border-gray-100 rounded-2xl p-6 flex flex-col space-y-4 shadow-sm hover:shadow-md transition-shadow duration-300 group text-center sm:text-left"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300 mx-auto md:mx-0">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300 mx-auto sm:mx-0">
                     <IconComponent className="w-6 h-6" />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 text-center sm:text-left">
                     <h3 className="type-card-title text-foreground font-semibold">
                       {benefit.title}
                     </h3>
@@ -212,7 +213,7 @@ export default async function ServicesPage({ params }: PageProps) {
 
       {/* Section 4: CTA Section */}
       <section className="w-full bg-primary/5 border-y border-primary/10 py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-6 text-center md:text-left space-y-8">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center md:text-left space-y-8">
           <h2 className="type-heading text-foreground max-w-xl mx-auto md:mx-0">
             {t.cta.title}
           </h2>

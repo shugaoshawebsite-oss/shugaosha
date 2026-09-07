@@ -55,7 +55,7 @@ export default function HomeCelebrities({ celebrities, locale }: HomeCelebrities
   return (
     <section className="bg-soft-bg border-y border-gray-100 py-24 w-full">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="space-y-12 px-6 sm:px-8 lg:px-12 text-center md:text-left mb-12">
+        <div className="space-y-12 px-6 sm:px-8 lg:px-12 text-left mb-12">
           <div className="space-y-3">
             <span className="type-label text-primary">
               {locale === 'en' ? 'Celebrity Endorsements' : '名人明星推薦'}
@@ -92,19 +92,19 @@ export default function HomeCelebrities({ celebrities, locale }: HomeCelebrities
               </div>
 
               {/* Bottom: Content */}
-              <div className="p-6 flex flex-col justify-start flex-grow space-y-4">
-                <div className="space-y-1">
-                  <h3 className="text-lg font-medium text-foreground leading-tight text-center md:text-left">
+              <div className="p-6 flex flex-col justify-start flex-grow space-y-4 text-left">
+                <div className="space-y-1 text-left">
+                  <h3 className="text-lg font-medium text-foreground leading-tight text-left">
                     {celebrity.name[locale] || celebrity.name.en}
                   </h3>
-                  <span className="text-xs font-semibold text-primary uppercase tracking-wider block mt-1 text-center md:text-left">
+                  <span className="text-xs font-semibold text-primary uppercase tracking-wider block mt-1 text-left">
                     {celebrity.role[locale] || celebrity.role.en}
                   </span>
                 </div>
 
-                <div className="space-y-2 border-t border-gray-50 pt-4">
-                  <Quote className="w-6 h-6 text-primary/15 mx-auto md:mx-0" />
-                  <p className="text-sm font-light text-charcoal/85 italic leading-relaxed text-center md:text-left">
+                <div className="space-y-2 border-t border-gray-50 pt-4 text-left">
+                  <Quote className="w-6 h-6 text-primary/15" />
+                  <p className="text-sm font-light text-charcoal/85 italic leading-relaxed text-left">
                     {(() => {
                       const rawQuote = celebrity.quote[locale] || celebrity.quote.en
                       const isExpanded = !!expandedQuotes[celebrity._id]

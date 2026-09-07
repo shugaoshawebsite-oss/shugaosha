@@ -31,14 +31,14 @@ export default async function ContactPage({ params }: PageProps) {
           />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 sm:pt-28 pb-16 sm:pb-20 text-left">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 sm:pt-28 pb-16 sm:pb-20 text-center sm:text-left">
           <span className="type-label text-charcoal/70 block mb-3 uppercase tracking-widest text-xs font-semibold">
             {dict.contact.title}
           </span>
           <h1 className="type-hero text-charcoal">
             {dict.contact.subtitle}
           </h1>
-          <p className="type-body text-charcoal/80 max-w-2xl mt-4 leading-relaxed">
+          <p className="type-body text-charcoal/80 max-w-2xl mt-4 leading-relaxed mx-auto sm:mx-0">
             {dict.contact.desc}
           </p>
         </div>
@@ -50,7 +50,7 @@ export default async function ContactPage({ params }: PageProps) {
 
           {/* Left: Contact Methods */}
           <div className="space-y-6">
-            <h2 className="text-xl font-medium text-foreground tracking-wide text-left">
+            <h2 className="text-xl font-medium text-foreground tracking-wide text-center sm:text-left">
               {locale === 'en' ? 'Book Your Appointment' : '預約您的 Session'}
             </h2>
 
@@ -181,14 +181,14 @@ export default async function ContactPage({ params }: PageProps) {
           </div>
 
           {/* Right: Shop details + Map */}
-          <div className="space-y-8 text-left">
-            <h2 className="text-xl font-medium text-foreground tracking-wide flex items-center justify-center md:justify-start gap-3">
+          <div className="space-y-8 text-center sm:text-left">
+            <h2 className="text-xl font-medium text-foreground tracking-wide flex items-center justify-center sm:justify-start gap-3">
               <MapPin className="w-5 h-5 text-primary" />
               {locale === 'en' ? 'OUR LOCATION' : '我們的地點'}
             </h2>
 
             <div className="space-y-4">
-              <div className="bg-soft-bg border border-gray-100 rounded-2xl p-6 sm:p-7 space-y-3">
+              <div className="bg-soft-bg border border-gray-100 rounded-2xl p-6 sm:p-7 space-y-3 text-center sm:text-left">
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">
                   GLADESVILLE STUDIO
                 </p>
@@ -219,7 +219,7 @@ export default async function ContactPage({ params }: PageProps) {
               />
             </div>
 
-            <div className="flex justify-center md:justify-start">
+            <div className="flex justify-center sm:justify-start">
               <a
                 href="https://maps.google.com/?q=5+Pittwater+Road,+Gladesville+NSW+2111"
                 target="_blank"
@@ -235,13 +235,22 @@ export default async function ContactPage({ params }: PageProps) {
       </section>
 
       {/* ── International Visits Section (Hong Kong) ── */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full border-t border-gray-100 pt-16 scroll-mt-28">
+      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full border-t border-gray-100 pt-16 scroll-mt-28 space-y-10">
+        <div className="space-y-3 text-center sm:text-left">
+          <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
+            {locale === 'en' ? 'HONG KONG VISIT' : '香港期間限定'}
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+            {locale === 'en' ? 'Shugaosha in Hong Kong' : 'Shugaosha 香港'}
+          </h2>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           
           {/* Left: Tour Details */}
-          <div className="space-y-8 w-full text-left">
+          <div className="space-y-8 w-full text-center sm:text-left">
             <div className="space-y-4">
-              <div className="flex items-center justify-center md:justify-start gap-3">
+              <div className="flex items-center justify-center sm:justify-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
                   <p className="type-label text-primary uppercase tracking-wider text-xs font-semibold mb-1">
@@ -253,7 +262,7 @@ export default async function ContactPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <div className="flex items-center justify-center md:justify-start gap-3 pt-2">
+              <div className="flex items-center justify-center sm:justify-start gap-3 pt-2">
                 <Calendar className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
                   <p className="type-label text-charcoal/50 uppercase tracking-wider text-xs font-semibold mb-1">
@@ -284,16 +293,16 @@ export default async function ContactPage({ params }: PageProps) {
               </p>
             </div>
 
-            <div className="pt-2 flex justify-center md:justify-start">
+            <div className="pt-2 flex justify-center sm:justify-start">
               <a
                 href={encodeURI(
                   locale === 'en'
-                    ? 'https://wa.me/61493552213?text=Hi, I would like to book a Hong Kong appointment (26 September – 16 October 2026).'
-                    : 'https://wa.me/61493552213?text=您好，我想透過 WhatsApp 預約香港 Session（2026年9月26日至10月16日）。'
+                    ? 'https://wa.me/61493552213?text=Hi, I would like to book an appointment for the Hong Kong Tour.'
+                    : 'https://wa.me/61493552213?text=您好，我想預約香港期間限定服務。'
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 bg-primary text-white px-7 py-3.5 rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-primary/10"
+                className="btn-primary flex items-center gap-2 text-xs py-3 px-6 shadow-sm hover:shadow transition-all duration-300 w-full sm:w-auto justify-center"
               >
                 <WhatsAppIcon className="w-4 h-4" />
                 <span>
@@ -307,34 +316,34 @@ export default async function ContactPage({ params }: PageProps) {
 
           {/* Right: Important Booking Note */}
           <div className="bg-primary/5 border border-primary/10 rounded-2xl p-8 space-y-5 text-left">
-            <div className="flex justify-center md:justify-start">
+            <div className="flex justify-center sm:justify-start">
               <MapPin className="w-6 h-6 text-primary" />
             </div>
-            <h4 className="text-base font-semibold text-foreground uppercase tracking-wide">
-              {locale === 'en' ? 'IMPORTANT BOOKING NOTE' : '重要預約事項'}
+            <h4 className="text-base font-semibold text-foreground uppercase tracking-wide text-center sm:text-left">
+              {locale === 'en' ? 'IMPORTANT BOOKING NOTE' : '重要預約須知'}
             </h4>
             <ul className="space-y-3 text-left">
               {[
                 locale === 'en'
                   ? 'Appointments are available by prior arrangement only.'
-                  : '所有預約必須提前安排。',
+                  : '所有預約均需提前安排。',
                 locale === 'en'
-                  ? 'Appointments are limited — early enquiry is recommended.'
-                  : '名額有限，建議提早查詢。',
+                  ? 'Appointments are limited — early booking is recommended.'
+                  : '預約名額有限，建議提早查詢及預約。',
                 locale === 'en'
-                  ? 'A payment is required to secure your appointment.'
-                  : '預約需完成付款以保留時段。',
+                  ? 'Booking and confirmation procedures may vary depending on location.'
+                  : '預約及確認方式會因地點而有所不同。',
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/80">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>{item}</span>
+                <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/80 text-left">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span className="text-left flex-1">{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="text-xs font-light text-charcoal/60 pt-2 border-t border-primary/10">
+            <p className="text-xs font-light text-charcoal/60 pt-2 border-t border-primary/10 text-center sm:text-left">
               {locale === 'en' ? (
                 <>
-                  All sessions follow the{' '}
+                  All sessions are subject to our{' '}
                   <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors font-medium">
                     Appointment Policy
                   </Link>
@@ -342,11 +351,11 @@ export default async function ContactPage({ params }: PageProps) {
                 </>
               ) : (
                 <>
-                  所有 Session 均須遵守我們的{' '}
+                  所有服務均受我們的{' '}
                   <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors font-medium">
                     預約政策
                   </Link>
-                  。
+                  {' '}約束。
                 </>
               )}
             </p>
