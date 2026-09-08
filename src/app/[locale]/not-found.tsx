@@ -47,7 +47,7 @@ export default function NotFound() {
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link href={`/${locale}/treatment`} className="btn-secondary w-full sm:w-auto text-center justify-center">
-            {isZh ? '了解我們的服務' : 'Browse Treatments'}
+            {isZh ? '瀏覽服務' : 'Browse Services'}
           </Link>
         </div>
       </div>

@@ -2,7 +2,7 @@
   "nav": {
     "home": "Home",
     "aboutUs": "About",
-    "treatment": "Our Services",
+    "treatment": "Services",
     "giftCertificates": "Gift Certificates",
     "successStories": "Success Stories",
     "newsTours": "News",
@@ -23,19 +23,45 @@
       "description1": "Shugaosha is a specialist facial correction practice focused on facial balance, alignment, contours and overall wellbeing.",
       "description2": "Built on years of hands-on experience and ongoing professional training in Japan, our approach uses precise, layered rebalancing to work with the face as a whole.",
       "description3": "We offer two distinct hands-on services, each with a different focus — The Shugaosha Way — Foundation and The Shugaosha Lift.",
-      "button": "EXPLORE OUR SERVICES",
+      "button": "EXPLORE SERVICES",
       "benefitsTitle": "Benefits of Shugaosha",
       "benefits": [
-        "Supports a firmer, more lifted and refined appearance.",
-        "Supports better balance, alignment and harmony across the face.",
-        "Helps support a fresher, less puffy facial appearance.",
-        "Helps create clearer, more sculpted and three-dimensional facial contours.",
-        "Helps release built-up tension through the face and connected areas.",
-        "Supports a fresher, more relaxed and revitalised overall appearance and sense of wellbeing."
+        "A firmer, lifted and more youthful appearance.",
+        "Better balance, alignment and harmony.",
+        "Supports fluid movement and reduces puffiness.",
+        "Clearer, sculpted and more defined contours.",
+        "Supports circulation for a fresher, brighter complexion.",
+        "Helps release built-up facial tension."
+      ],
+      "benefitCards": [
+        {
+          "title": "Lifted & Youthful",
+          "desc": "A firmer, lifted and more youthful appearance."
+        },
+        {
+          "title": "Facial Balance",
+          "desc": "Better balance, alignment and harmony."
+        },
+        {
+          "title": "Lymphatic Flow",
+          "desc": "Supports fluid movement and reduces puffiness."
+        },
+        {
+          "title": "Defined Contours",
+          "desc": "Clearer, sculpted and more defined contours."
+        },
+        {
+          "title": "Circulation & Radiance",
+          "desc": "Supports circulation for a fresher, brighter complexion."
+        },
+        {
+          "title": "Tension Release",
+          "desc": "Helps release built-up facial tension."
+        }
       ]
     },
     "servicesSection": {
-      "tag": "OUR SERVICES",
+      "tag": "SERVICES",
       "title": "Explore Our Services",
       "subtitle": "Two distinct hands-on services designed with a different focus.",
       "foundation": {
@@ -70,17 +96,17 @@
         {
           "number": "1",
           "title": "Consultation & Assessment",
-          "desc": "We begin with a consultation to understand your concerns and assess your facial balance, ensuring every treatment is tailored to your individual needs."
+          "desc": "We begin by understanding your concerns and assessing your facial balance, alignment and areas of focus."
         },
         {
           "number": "2",
-          "title": "Treatment",
-          "desc": "Every treatment is tailored to your unique facial balance, with each area carefully adjusted according to your individual needs using The Shugaosha Way."
+          "title": "The Shugaosha Way",
+          "desc": "Precise, hands-on facial correction works progressively across the face to restore balance and refine contours."
         },
         {
           "number": "3",
           "title": "Ongoing Care",
-          "desc": "We’ll recommend the most suitable next step based on your individual progress."
+          "desc": "We’ll recommend the most suitable next step based on how your face responds and progresses."
         }
       ]
     },
@@ -98,15 +124,15 @@
         },
         {
           "question": "Can I see a visible change after one session?",
-          "answer": "Many clients can see a visible change from their first session.\n\nWith The Shugaosha Way — Foundation, this may include a more balanced, lifted and refined facial appearance, with clearer contours.\n\nWith The Shugaosha Lift, clients may also feel a noticeable difference through the shoulders, neck and head, with a greater sense of release and openness."
+          "answer": "Yes! Many clients can see a visible change from their first session.\n\nWith The Shugaosha Way — Foundation, this may include a more balanced, lifted and refined facial appearance, with clearer contours.\n\nWith The Shugaosha Lift, clients may also feel a noticeable difference through the shoulders, neck and head, with a greater sense of release and openness."
         },
         {
           "question": "How long do the results last?",
-          "answer": "How long the results last varies from person to person and can be influenced by factors such as facial tension, posture, stress and everyday habits.\n\nOngoing sessions help support the balance and changes that have already been established, while regular maintenance can help the face continue to look balanced, lifted and refined over time.\n\nIt’s similar to exercise — whether it’s the gym, Pilates or yoga, keeping it up regularly is what helps maintain the results over time."
+          "answer": "How long the results last can vary depending on factors such as facial tension, posture, stress and everyday habits.\n\nOngoing sessions help support the balance and changes that have already been built, while regular maintenance can help the face continue to look more balanced, lifted, refined and refreshed over time.\n\nA simple way to think about it is a little like going to the gym — if you want to keep looking lifted, balanced and refreshed, regular maintenance helps support those results over time."
         },
         {
           "question": "How long is each session and why?",
-          "answer": "Each session takes approximately 45–60 minutes. The exact duration is guided by how your face and facial tissues respond during the session.\n\nMore time or pressure is not always better. Overworking the face can place unnecessary stress on the skin and facial tissues, which may lead to irritation or discomfort. By closely observing how the tissues respond, we can recognise when the face has received the appropriate amount of work and when it is time to stop.\n\nThis allows each session to be both precise and effective, without placing unnecessary stress on the face."
+          "answer": "Each session takes approximately 45–60 minutes, depending on how your face responds and how much the facial tissues can comfortably tolerate.\n\nFacial correction is not about working for as long as possible. Precision and appropriate pressure are more important than duration. Excessive pressure or working the facial tissues for too long may cause unnecessary irritation or tissue stress.\n\nWe therefore work carefully within what your face can comfortably tolerate, allowing us to achieve the most effective correction without overworking the face."
         },
         {
           "question": "How many sessions do I need?",
@@ -133,7 +159,7 @@
     "everydayTitle": "Google Reviews"
   },
   "treatment": {
-    "tag": "OUR SERVICES",
+    "tag": "SERVICES",
     "title": "Choose Your Shugaosha Experience",
     "tagline": "Two distinct hands-on services, each with its own focus.",
     "diffTag": "HOW ARE THEY DIFFERENT?",
@@ -207,12 +233,12 @@
     "awardsTag": "CREDENTIALS & RECOGNITION",
     "awardsTitle": "Awards & Recognition",
     "awards": [
-      "🏆 2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist",
+      "🏆 2026 Northern Districts Local Business Awards Finalist",
       "Outstanding Beauty Services",
       "5-Star Google Reviews"
     ],
-    "awardItemTitle": "2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist",
-    "awardItemDesc": "Proudly recognised as a Finalist in the 2026 Northern Districts Local Business Awards — Outstanding Beauty Services category, reflecting our commitment to precision, professionalism and exceptional client care.",
+    "awardItemTitle": "2026 Northern Districts Local Business Awards Finalist",
+    "awardItemDesc": "Proudly recognised as a Finalist in the Outstanding Beauty Services category.",
     "journeyTag": "OUR JOURNEY",
     "journeyTitle": "Where Our Journey Has Taken Us",
     "journeyP1": "Shugaosha’s journey began in Hong Kong and is now based in Sydney, Australia.",

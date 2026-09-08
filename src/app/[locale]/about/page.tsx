@@ -14,12 +14,17 @@ interface PageProps {
 
 const certGroups = [
   {
-    titleEn: '2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist',
-    titleZh: '2026 年 Northern Districts 當地商業大獎 — 卓越美容服務決賽入圍',
-    descEn: 'Proudly recognised as a Finalist in the 2026 Northern Districts Local Business Awards — Outstanding Beauty Services category, reflecting our commitment to precision, professionalism and exceptional client care.',
-    descZh: '榮幸入圍 2026 年 Northern Districts 當地商業大獎 — 卓越美容服務（Outstanding Beauty Services）類別最終決賽，肯定了我們對精準手法、專業精神與卓越客戶護理的堅持。',
+    titleEn: '2026 Northern Districts Local Business Awards Finalist',
+    titleZh: '2026 Northern Districts Local Business Awards 入圍商戶',
+    descEn: 'Proudly recognised as a Finalist in the Outstanding Beauty Services category.',
+    descZh: '榮獲 Outstanding Beauty Services（傑出美容服務） 組別入圍資格。',
     thumbs: [
-      { thumbSrc: '/assets/cert/Outstanding Beauty Services_s.webp', fullSrc: '/assets/cert/Outstanding Beauty Services.png', labelEn: 'Outstanding Beauty Services Finalist', labelZh: '卓越美容服務決賽入圍' },
+      {
+        thumbSrc: '/assets/cert/Outstanding Beauty Services.webp',
+        fullSrc: '/assets/cert/Outstanding Beauty Services.png',
+        labelEn: '2026 Northern Districts Local Business Awards Finalist',
+        labelZh: '2026 Northern Districts Local Business Awards 入圍商戶'
+      },
     ],
   },
 ]

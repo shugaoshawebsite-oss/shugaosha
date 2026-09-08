@@ -2,7 +2,7 @@
   "nav": {
     "home": "首頁",
     "aboutUs": "關於我們",
-    "treatment": "我們的服務",
+    "treatment": "服務",
     "giftCertificates": "禮券",
     "successStories": "案例分享",
     "newsTours": "最新消息",
@@ -23,19 +23,45 @@
       "description1": "修顏社專注於小顏矯正，著重面部平衡、對稱、輪廓及整體身心狀態。",
       "description2": "憑藉多年徒手實踐經驗及持續於日本進修的專業訓練，我們以精準、層次式的調整方式，從整體面部出發。",
       "description3": "我們提供兩項各具不同重點的徒手服務——「修顏社小顏術 — Foundation」及「The Shugaosha Lift」。",
-      "button": "了解我們的服務",
+      "button": "了解服務",
       "benefitsTitle": "修顏社的主要好處",
       "benefits": [
-        "幫助面部呈現更緊緻、提升及細緻的外觀。",
-        "支援面部整體平衡、對齊與和諧感。",
-        "幫助面部看起來更清爽，減少浮腫感。",
-        "幫助輪廓看起來更清晰、立體及細緻。",
-        "幫助釋放面部及相關連部位累積的繃緊。",
-        "有助呈現更清新、放鬆及充滿活力的整體狀態，同時提升整體舒適感。"
+        "呈現更緊緻、提升及年輕的面容。",
+        "提升面部平衡、對稱及和諧感。",
+        "促進淋巴流動，幫助減少浮腫。",
+        "令面部輪廓更清晰、立體及精緻。",
+        "促進循環，令面色更清新亮澤。",
+        "幫助舒緩面部累積的繃緊感。"
+      ],
+      "benefitCards": [
+        {
+          "title": "提升・年輕感",
+          "desc": "呈現更緊緻、提升及年輕的面容。"
+        },
+        {
+          "title": "面部平衡",
+          "desc": "提升面部平衡、對稱及和諧感。"
+        },
+        {
+          "title": "淋巴循環",
+          "desc": "促進淋巴流動，幫助減少浮腫。"
+        },
+        {
+          "title": "立體輪廓",
+          "desc": "令面部輪廓更清晰、立體及精緻。"
+        },
+        {
+          "title": "循環・亮澤",
+          "desc": "促進循環，令面色更清新亮澤。"
+        },
+        {
+          "title": "舒緩繃緊",
+          "desc": "幫助舒緩面部累積的繃緊感。"
+        }
       ]
     },
     "servicesSection": {
-      "tag": "我們的服務",
+      "tag": "服務",
       "title": "探索我們的服務",
       "subtitle": "兩項各具重點的專業徒手服務，配合您的面部需要。",
       "foundation": {
@@ -65,22 +91,22 @@
       "subtitle": "自然小顏的前後轉變"
     },
     "howItWorks": {
-      "title": "服務流程",
+      "title": "流程",
       "steps": [
         {
           "number": "1",
           "title": "諮詢與評估",
-          "desc": "我們會先了解您的需要，並評估您的面部平衡，確保每次小顏調整都能根據您的個人需要量身定制。"
+          "desc": "我們先了解您的需求，並評估面部平衡、對位及需要重點調整的部位。"
         },
         {
           "number": "2",
-          "title": "修顏社小顏術",
-          "desc": "每次調整都會根據您獨特的面部平衡及個人需要量身定制，運用「修顏社小顏術」細緻處理面部每個部位。"
+          "title": "修顏社小顏矯正",
+          "desc": "透過精準的徒手小顏矯正，逐步調整面部不同區域，幫助恢復平衡並細緻塑造輪廓。"
         },
         {
           "number": "3",
-          "title": "後續建議",
-          "desc": "我們會根據您的個人進度，建議最適合您的下一步安排。"
+          "title": "持續調整",
+          "desc": "我們會根據您的面部反應及進展，建議最適合的下一步安排。"
         }
       ]
     },
@@ -97,16 +123,16 @@
           "answer": "對於首次體驗的客人，我們建議先從 The Shugaosha Way — Foundation 開始。這是我們的標誌性修顏服務，專注於面部平衡、排列及輪廓，幫助呈現更提升、緊緻及精緻的外觀。\n\nThe Shugaosha Lift 是另一項獨立的徒手服務，範圍延伸至上半身、肩膀、頸部、頭部及面部，更著重釋放累積的繃緊感及提升面部。新客人仍建議先從 Foundation 開始。"
         },
         {
-          "question": "第一次 Session 可以看到明顯變化嗎？",
-          "answer": "很多客人在第一次 Session 已經可以看到明顯變化。\n\nThe Shugaosha Way — Foundation 的變化通常會反映在面部整體平衡、提升感、細緻度及輪廓清晰度上。\n\nThe Shugaosha Lift 除了面部的提升感外，客人亦可能會感受到肩膊、頸部及頭部更放鬆、更開展。"
+          "question": "一次就可以看到明顯變化嗎？",
+          "answer": "可以！很多客人在第一次體驗後已能看到明顯變化。\n\n透過 The Shugaosha Way — Foundation，面部可呈現更平衡、提升及精緻的外觀，輪廓亦更清晰。\n\n透過 The Shugaosha Lift，客人亦可能感受到肩頸及頭部的明顯變化，帶來更放鬆、舒展的感覺。"
         },
         {
           "question": "效果可以維持多久？",
-          "answer": "效果維持時間因人而異，亦會受到面部繃緊程度、姿勢、壓力及日常習慣等因素影響。\n\n持續接受服務有助延續已建立的平衡與變化，而定期保養則有助面部長時間保持平衡、提升及精緻的狀態。\n\n這就像運動一樣——無論是健身、Pilates 還是瑜伽，持續並定期進行，才能更好地維持效果。"
+          "answer": "效果維持的時間因人而異，亦會受到面部繃緊程度、姿勢、壓力及日常習慣等因素影響。\n\n持續進行修顏有助鞏固已建立的平衡與變化，而定期保養則有助面部持續保持更平衡、提升、精緻及精神煥發的狀態。\n\n可以簡單想像成去健身一樣——如果想持續保持提升、平衡及精神煥發的狀態，定期保養有助維持這些效果。"
         },
         {
-          "question": "每次 Session 大約需要多久？為甚麼？",
-          "answer": "每次服務約 45–60 分鐘，實際時間會根據面部皮膚及組織在過程中的反應而定。\n\n時間更長或力度更大，並不代表效果會更好。過度操作面部，有機會對皮膚及面部組織造成不必要的壓力，引起刺激或不適。我們會密切觀察面部組織的反應，判斷何時已經接受了適當程度的操作，以及何時應該停止。\n\n這樣可以確保每次服務都保持精準及有效，同時避免對面部造成不必要的負擔。"
+          "question": "每次修顏需時多久？為甚麼？",
+          "answer": "每次修顏約需 45–60分鐘，實際時間會根據面部的反應及組織可舒適承受的程度而定。\n\n修顏並不是時間越長越好，精準度及適當的力度比時間長短更重要。過大的力度或過長時間操作面部組織，反而可能造成不必要的刺激或組織壓力。\n\n因此，我們會根據每位客人的面部承受能力精準操作，在不過度操作面部的情況下，達至最理想的修顏效果。"
         },
         {
           "question": "一般需要做多少次 Session？",
@@ -133,7 +159,7 @@
     "everydayTitle": "Google 好評"
   },
   "treatment": {
-    "tag": "我們的服務",
+    "tag": "服務",
     "title": "選擇適合您的修顏社體驗",
     "tagline": "兩項各具重點的徒手服務。",
     "diffTag": "兩項服務有何分別？",
@@ -207,12 +233,12 @@
     "awardsTag": "專業資格與認可",
     "awardsTitle": "獎項與認可",
     "awards": [
-      "🏆 2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist",
+      "🏆 2026 Northern Districts Local Business Awards 入圍商戶",
       "Outstanding Beauty Services",
       "Google 5星好評推薦"
     ],
-    "awardItemTitle": "2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist",
-    "awardItemDesc": "修顏社獲選為2026 Northern Districts Local Business Awards「Outstanding Beauty Services」組別Finalist，肯定我們對精準、專業及卓越客戶服務的堅持。",
+    "awardItemTitle": "2026 Northern Districts Local Business Awards 入圍商戶",
+    "awardItemDesc": "榮獲 Outstanding Beauty Services（傑出美容服務） 組別入圍資格。",
     "journeyTag": "我們的旅程",
     "journeyTitle": "修顏社走過的地方",
     "journeyP1": "修顏社的旅程始於香港，現以澳洲悉尼為基地。",

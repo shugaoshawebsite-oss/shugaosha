@@ -96,7 +96,7 @@ export default function Footer({ locale }: FooterProps) {
               </li>
               <li>
                 <Link href={`/${locale}/treatment`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
-                  {locale === 'en' ? 'Services' : '服務'}
+                  {dict.nav.treatment}
                 </Link>
               </li>
               <li>

@@ -75,15 +75,17 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
         ],
     },
     {
-      title: locale === 'en' ? 'Late Arrival' : '遲到',
+      title: locale === 'en' ? 'Late Arrival' : '遲到安排',
       items: locale === 'en'
         ? [
-          'Please arrive on time so you can receive your full session.',
-          'Late arrival may result in a shortened session. If there is insufficient time remaining, the appointment may not be able to proceed.',
+          'Please allow a little extra travel time for traffic and parking, and check our Gladesville address before your appointment.',
+          'If you arrive late, your session may need to be shortened depending on the time remaining.',
+          'If there is insufficient time to proceed, the appointment will be treated as a completed session.',
         ]
         : [
-          '請準時到達，以確保可以完成整個服務。',
-          '如遲到，服務時間可能需要相應縮短。如剩餘時間不足，該次預約可能無法進行。',
+          '請預留充足交通及泊車時間，並於出發前確認 Gladesville 地址。',
+          '如遲到，療程時間可能因應剩餘時間而縮短。',
+          '如剩餘時間不足以進行服務，該次預約將視作已完成。',
         ],
     },
     {

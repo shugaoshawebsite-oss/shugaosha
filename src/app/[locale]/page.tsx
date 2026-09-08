@@ -67,7 +67,7 @@ export default async function HomePage({ params }: PageProps) {
                 href="#services"
                 className="btn-secondary flex items-center gap-2"
               >
-                {dict.home.whatWeDo.button || (locale === 'en' ? 'EXPLORE OUR SERVICES' : '了解我們的服務')}
+                {dict.home.whatWeDo.button || (locale === 'en' ? 'EXPLORE SERVICES' : '了解服務')}
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -119,33 +119,33 @@ export default async function HomePage({ params }: PageProps) {
             {[
               {
                 icon: Sparkles,
-                title: locale === 'en' ? 'Lifted & Refined' : '提升・細緻',
-                desc: locale === 'en' ? 'Supports a firmer, more lifted and refined appearance.' : '幫助面部呈現更緊緻、提升及細緻的外觀。'
+                title: locale === 'en' ? 'Lifted & Youthful' : '提升・年輕感',
+                desc: locale === 'en' ? 'A firmer, lifted and more youthful appearance.' : '呈現更緊緻、提升及年輕的面容。'
               },
               {
                 icon: Scale,
-                title: locale === 'en' ? 'Facial Balance & Alignment' : '面部平衡・對齊',
-                desc: locale === 'en' ? 'Supports better balance, alignment and harmony across the face.' : '支援面部整體平衡、對齊與和諧感。'
+                title: locale === 'en' ? 'Facial Balance' : '面部平衡',
+                desc: locale === 'en' ? 'Better balance, alignment and harmony.' : '提升面部平衡、對稱及和諧感。'
               },
               {
                 icon: Droplet,
-                title: locale === 'en' ? 'Reduced Puffiness' : '減少浮腫感',
-                desc: locale === 'en' ? 'Helps support a fresher, less puffy facial appearance.' : '幫助面部看起來更清爽，減少浮腫感。'
+                title: locale === 'en' ? 'Lymphatic Flow' : '淋巴循環',
+                desc: locale === 'en' ? 'Supports fluid movement and reduces puffiness.' : '促進淋巴流動，幫助減少浮腫。'
               },
               {
                 icon: Sun,
-                title: locale === 'en' ? 'Defined Contours' : '輪廓更立體清晰',
-                desc: locale === 'en' ? 'Helps create clearer, more sculpted and three-dimensional facial contours.' : '幫助輪廓看起來更清晰、立體及細緻。'
-              },
-              {
-                icon: Smile,
-                title: locale === 'en' ? 'Tension Release' : '釋放繃緊',
-                desc: locale === 'en' ? 'Helps release built-up tension through the face and connected areas.' : '幫助釋放面部及相關連部位累積的繃緊。'
+                title: locale === 'en' ? 'Defined Contours' : '立體輪廓',
+                desc: locale === 'en' ? 'Clearer, sculpted and more defined contours.' : '令面部輪廓更清晰、立體及精緻。'
               },
               {
                 icon: Heart,
-                title: locale === 'en' ? 'Refreshed & Revitalised' : '煥發精神與活力',
-                desc: locale === 'en' ? 'Supports a fresher, more relaxed and revitalised overall appearance and sense of wellbeing.' : '有助呈現更清新、放鬆及充滿活力的整體狀態，同時提升整體舒適感。'
+                title: locale === 'en' ? 'Circulation & Radiance' : '循環・亮澤',
+                desc: locale === 'en' ? 'Supports circulation for a fresher, brighter complexion.' : '促進循環，令面色更清新亮澤。'
+              },
+              {
+                icon: Smile,
+                title: locale === 'en' ? 'Tension Release' : '舒緩繃緊',
+                desc: locale === 'en' ? 'Helps release built-up facial tension.' : '幫助舒緩面部累積的繃緊感。'
               }
             ].map((item, i) => {
               const Icon = item.icon
@@ -167,26 +167,28 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           {/* Award/Trust Badge */}
-          <div className="max-w-3xl mx-auto p-6 sm:p-8 rounded-[2rem] bg-[#f8f9fa] border border-gray-100/80 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 sm:gap-8 hover:shadow-sm transition-shadow duration-300">
-            <div className="flex-shrink-0 flex justify-center items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100/50 mx-auto sm:mx-0">
+          <div className="max-w-3xl mx-auto p-6 sm:p-12 rounded-[2.5rem] bg-[#f8f9fa] border border-gray-100/80 flex flex-col items-center text-center gap-8 hover:shadow-md transition-all duration-300">
+            <div className="relative flex justify-center items-center bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100/60 w-full max-w-[340px] sm:max-w-[420px] md:max-w-[460px]">
               <Image
-                src="/assets/cert/Outstanding Beauty Services_s.webp"
-                alt={locale === 'en' ? 'Outstanding Beauty Services Finalist' : '卓越美容服務決賽入圍'}
-                width={150}
-                height={100}
-                className="h-20 w-auto object-contain"
-                sizes="150px"
+                src="/assets/cert/Outstanding Beauty Services.png"
+                alt={locale === 'en' ? '2026 Northern Districts Local Business Awards Finalist' : '2026 Northern Districts Local Business Awards 入圍商戶'}
+                width={282}
+                height={400}
+                className="w-full max-w-[280px] sm:max-w-[360px] md:max-w-[400px] h-auto object-contain drop-shadow-md"
+                sizes="(max-width: 640px) 280px, (max-width: 768px) 360px, 400px"
+                priority
               />
             </div>
-            <div className="space-y-2 flex-1 text-center sm:text-left">
-              <h4 className="type-card-title text-foreground font-semibold">
-                {dict.about.awardItemTitle || (locale === 'en' ? '2026 Northern Districts Local Business Awards — Outstanding Beauty Services Finalist' : '2026 年 Northern Districts 當地商業大獎 — 卓越美容服務決賽入圍')}
-              </h4>
-              <p className="type-body-sm text-charcoal/80 leading-relaxed">
+            <div className="space-y-3 max-w-xl">
+              <h3 className="type-card-title text-foreground font-semibold text-xl sm:text-2xl">
+                {dict.about.awardItemTitle || (locale === 'en'
+                  ? '2026 Northern Districts Local Business Awards Finalist'
+                  : '2026 Northern Districts Local Business Awards 入圍商戶')}
+              </h3>
+              <p className="type-body text-charcoal/80 leading-relaxed max-w-lg mx-auto">
                 {dict.about.awardItemDesc || (locale === 'en'
-                  ? 'Proudly recognised as a Finalist in the 2026 Northern Districts Local Business Awards — Outstanding Beauty Services category, reflecting our commitment to precision, professionalism and exceptional client care.'
-                  : '榮幸入圍 2026 年 Northern Districts 當地商業大獎 — 卓越美容服務（Outstanding Beauty Services）類別最終決賽，肯定了我們對精準手法、專業精神與卓越客戶護理的堅持。'
-                )}
+                  ? 'Proudly recognised as a Finalist in the Outstanding Beauty Services category.'
+                  : '榮獲 Outstanding Beauty Services（傑出美容服務） 組別入圍資格。')}
               </p>
             </div>
           </div>
@@ -220,7 +222,7 @@ export default async function HomePage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center md:text-left max-w-2xl md:max-w-none mx-auto md:mx-0 space-y-4 mb-20">
             <span className="type-label text-primary">
-              {locale === 'en' ? 'Our Process' : '服務流程'}
+              {locale === 'en' ? 'The Process' : '流程'}
             </span>
             <h2 className="type-heading text-foreground">
               {dict.home.howItWorks.title}

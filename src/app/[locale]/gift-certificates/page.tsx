@@ -206,7 +206,7 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
               href={`/${locale}/treatment`}
               className="btn-secondary text-xs uppercase tracking-wider py-3.5 px-6"
             >
-              {locale === 'en' ? 'VIEW OUR SERVICES' : '瀏覽我們的服務'}
+              {locale === 'en' ? 'VIEW SERVICES' : '瀏覽服務'}
             </Link>
           </div>
         </div>

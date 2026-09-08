@@ -66,10 +66,10 @@ export default function CertGallery({ groups, locale }: CertGalleryProps) {
                       <Image
                         src={thumb.thumbSrc}
                         alt={locale === 'en' ? thumb.labelEn : thumb.labelZh}
-                        width={140}
-                        height={140}
-                        className="object-contain h-[80px] md:h-[130px] w-auto"
-                        sizes="(max-width: 768px) 90px, 140px"
+                        width={282}
+                        height={400}
+                        className="object-contain h-[220px] sm:h-[260px] md:h-[300px] w-auto"
+                        sizes="(max-width: 768px) 220px, 300px"
                       />
                       {/* Hover overlay */}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-[1rem] flex items-end justify-center pb-2">
