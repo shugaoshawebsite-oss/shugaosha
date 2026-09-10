@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getDictionary } from '@/utils/dictionary'
-import { Scale, Sparkles, Sun, Shield, Calendar } from 'lucide-react'
+import { Scale, Sparkles, Sun, Heart, Calendar } from 'lucide-react'
 import TreatmentVideo from '@/components/TreatmentVideo'
 
 interface PageProps {
@@ -14,7 +14,7 @@ export default async function ServicesPage({ params }: PageProps) {
   const dict = getDictionary(locale)
   const t = dict.treatment
 
-  const benefitIcons = [Scale, Sparkles, Sun, Shield]
+  const benefitIcons = [Scale, Sparkles, Sun, Heart]
 
   return (
     <div className="flex flex-col space-y-24 md:space-y-32 pb-24">
@@ -62,9 +62,7 @@ export default async function ServicesPage({ params }: PageProps) {
                 {t.foundation.title}
               </h3>
               <div className="type-body text-charcoal/80 space-y-3 leading-relaxed">
-                <p className="font-medium text-foreground">{t.foundation.p1}</p>
-                <p>{t.foundation.p2}</p>
-                <p>{t.foundation.p3}</p>
+                <p>{t.foundation.p1}</p>
               </div>
             </div>
 
@@ -75,7 +73,6 @@ export default async function ServicesPage({ params }: PageProps) {
               </h3>
               <div className="type-body text-charcoal/80 space-y-3 leading-relaxed">
                 <p>{t.lift.p1}</p>
-                <p>{t.lift.p2}</p>
               </div>
             </div>
 

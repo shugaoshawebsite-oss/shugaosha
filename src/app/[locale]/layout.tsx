@@ -1,8 +1,18 @@
+import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 import { Montserrat, Noto_Sans_TC, Gilda_Display } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import '../globals.css'
+
+export const metadata: Metadata = {
+  formatDetection: {
+    telephone: false,
+    date: false,
+    email: false,
+    address: false,
+  },
+}
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -40,6 +50,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   return (
     <html lang={locale} className={`${montserrat.variable} ${notoSansTC.variable} ${gilda.variable}`}>
+      <head>
+        <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+      </head>
       <body className="bg-white text-foreground flex flex-col min-h-screen max-w-full overflow-x-hidden">
         {/* Floating Island Navbar */}
         <Header locale={locale} />

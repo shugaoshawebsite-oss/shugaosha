@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { getDictionary } from '@/utils/dictionary'
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -8,26 +7,8 @@ interface PageProps {
 export default async function AppointmentPolicyPage({ params }: PageProps) {
   const { locale: rawLocale } = await params
   const locale = (rawLocale === 'zh' ? 'zh' : 'en') as 'en' | 'zh'
-  const dict = getDictionary(locale)
 
   const sections: { title: string; items: string[]; note?: string }[] = [
-    {
-      title: locale === 'en' ? 'Important Booking Note' : '重要預約須知',
-      items: locale === 'en'
-        ? [
-          'Appointments are available by prior arrangement only.',
-          'Appointments are limited — early booking is recommended.',
-          'Booking and confirmation procedures may vary depending on location.',
-        ]
-        : [
-          '所有預約均需提前安排。',
-          '預約名額有限，建議提早查詢及預約。',
-          '預約及確認方式會因地點而有所不同。',
-        ],
-      note: locale === 'en'
-        ? 'All sessions are subject to our Appointment Policy.'
-        : '所有服務均受我們的預約政策約束。',
-    },
     {
       title: locale === 'en' ? 'Appointment Confirmation' : '預約確認',
       items: locale === 'en'
@@ -175,11 +156,6 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
           <p className="text-base font-medium text-foreground tracking-wide">The Shugaosha Way</p>
           <p className="type-label text-primary">
             {locale === 'en' ? 'PRECISION • BALANCE • HARMONY' : '精準・平衡・和諧'}
-          </p>
-          <p className="text-xs font-light text-charcoal/50 pt-2 max-w-md mx-auto">
-            {locale === 'en'
-              ? 'Booking an appointment with Shugaosha indicates acceptance of our Appointment Policy.'
-              : '向修顏社預約即表示接受我們的預約政策。'}
           </p>
         </div>
       </section>

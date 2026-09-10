@@ -188,14 +188,20 @@ export default async function ContactPage({ params }: PageProps) {
             </h2>
 
             <div className="space-y-4">
-              <div className="bg-soft-bg border border-gray-100 rounded-2xl p-6 sm:p-7 space-y-3 text-center sm:text-left">
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-                  GLADESVILLE STUDIO
+              <div className="bg-soft-bg border border-gray-100 rounded-2xl p-6 sm:p-7 space-y-3 text-center sm:text-left no-underline [text-decoration:none!important]">
+                <p className="text-xs font-semibold uppercase tracking-wider text-primary no-underline [text-decoration:none!important] [border-bottom:none!important]">
+                  GLADESVILLE{'\u200C'} STUDIO
                 </p>
-                <div className="space-y-1 text-sm font-light text-charcoal/85">
-                  <p className="font-medium text-foreground">5 Pittwater Road</p>
-                  <p>Gladesville NSW 2111</p>
-                  <p>Australia</p>
+                <div className="space-y-1 text-sm font-light text-charcoal/85 no-underline [text-decoration:none!important]">
+                  <p className="font-medium text-foreground no-underline [text-decoration:none!important] [border-bottom:none!important]">
+                    5{'\u200C'} Pittwater Road
+                  </p>
+                  <p className="no-underline [text-decoration:none!important] [border-bottom:none!important]">
+                    Gladesville{'\u200C'} NSW 2111
+                  </p>
+                  <p className="no-underline [text-decoration:none!important] [border-bottom:none!important]">
+                    Aust{'\u200C'}ralia
+                  </p>
                 </div>
                 <p className="text-xs font-light text-charcoal/65 pt-2 leading-relaxed">
                   {locale === 'en'

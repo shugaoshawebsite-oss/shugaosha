@@ -23,11 +23,11 @@ interface PageProps {
 const courseModules = [
   { icon: BookOpen, en: 'Japanese Small Face Correction Principles', zh: '日本小顏矯正原理' },
   { icon: Eye, en: 'Facial Observation & Assessment', zh: '面部觀察與評估' },
+  { icon: Shield, en: 'Safety & Contraindications', zh: '安全事項與禁忌' },
   { icon: Heart, en: 'Japanese Hands-On Techniques', zh: '日本徒手技術' },
   { icon: Users, en: 'Guided Hands-On Practice', zh: '指導式實務練習' },
   { icon: Clipboard, en: 'Session Structure & Flow', zh: '服務結構與流程' },
   { icon: Briefcase, en: 'Client Consultation & Communication', zh: '客戶諮詢與溝通' },
-  { icon: Shield, en: 'Safety & Contraindications', zh: '安全事項與禁忌' },
   { icon: CheckSquare, en: 'Final Practical Assessment', zh: '最終實務考核' },
 ]
 
@@ -39,7 +39,6 @@ const whoIsItFor = {
     'Individuals looking for a career change or a fresh start',
     'Parents looking to use their available time to learn a practical skill and build a flexible career around family life',
     'Anyone looking to build a flexible career with greater freedom over their working hours',
-    'Beginners with no previous experience',
   ],
   zh: [
     '美容專業人士及面部護理從業員',
@@ -48,7 +47,6 @@ const whoIsItFor = {
     '希望轉換事業跑道或重新開始的人士',
     '希望善用空餘時間學習實用技能，並建立可配合家庭生活之彈性事業的家長',
     '希望建立更具彈性的事業，能更自由安排工作時間的人士',
-    '完全沒有相關經驗的初學者',
   ],
 }
 
@@ -300,18 +298,13 @@ export default async function TrainingPage({ params }: PageProps) {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
-          {courseModules.map(({ icon: Icon, en, zh }, idx) => (
+          {courseModules.map(({ icon: Icon, en, zh }) => (
             <div
               key={en}
               className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 space-y-3.5 hover:border-primary/30 hover:shadow-sm transition-all duration-300 group text-left"
             >
-              <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-xs font-mono font-medium text-charcoal/40">
-                  {String(idx + 1).padStart(2, '0')}
-                </span>
+              <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300">
+                <Icon className="w-5 h-5 text-primary" />
               </div>
               <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
                 {locale === 'en' ? en : zh}
@@ -353,7 +346,7 @@ export default async function TrainingPage({ params }: PageProps) {
           ))}
 
           {/* Experience callout */}
-          <div className="bg-primary/5 border border-primary/20 rounded-2xl p-5 sm:p-6 flex items-center gap-4 text-left">
+          <div className="md:col-span-2 bg-primary/5 border border-primary/20 rounded-2xl p-5 sm:p-6 flex items-center gap-4 text-left">
             <div className="w-8 h-8 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0 text-primary">
               <CheckCircle2 className="w-5 h-5" />
             </div>

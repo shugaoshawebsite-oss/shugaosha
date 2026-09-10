@@ -58,7 +58,7 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
                 {locale === 'en' ? 'PERSONALISED EXPERIENCE' : '專屬個人化體驗'}
               </span>
               <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-                {locale === 'en' ? 'Choose the Perfect Treatment' : '選擇合適的護理體驗'}
+                {locale === 'en' ? 'Choose the Perfect Shugaosha Experience' : '選擇最適合的 Shugaosha 體驗'}
               </h2>
               <p className="text-base font-light text-charcoal/85 leading-relaxed">
                 {locale === 'en'
@@ -73,8 +73,8 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
                 {
                   title: 'The Shugaosha Way — Foundation',
                   desc: locale === 'en'
-                    ? 'Our core facial correction service focused on facial balance, alignment and structure.'
-                    : '我們的核心面部矯正服務，專注於面部平衡、對齊與結構調整。',
+                    ? 'Our signature facial correction service focused on facial balance, contours and overall harmony.'
+                    : '我們的標誌性修顏服務，專注於面部平衡、輪廓及整體協調。',
                 },
                 {
                   title: 'The Shugaosha Lift',
@@ -97,36 +97,37 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
               ))}
             </div>
 
-            <p className="text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed">
-              {locale === 'en'
-                ? 'For new clients, Foundation is the recommended starting point.'
-                : '新客戶建議先從 Foundation 開始。'}
-            </p>
-
-            <p className="text-sm font-light text-charcoal/80 leading-relaxed italic">
-              {locale === 'en'
-                ? 'Each Gift Certificate will be personalised with the recipient’s name and selected treatment.'
-                : '每張禮券均會填上收禮人的姓名及所選擇的 Treatment。'}
-            </p>
-
-            <div className="space-y-3 pt-2">
-              <p className="text-sm sm:text-base font-light text-charcoal/85 leading-relaxed">
+            {/* Explanatory Body Paragraphs */}
+            <div className="space-y-4">
+              <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
                 {locale === 'en'
-                  ? 'To arrange a Gift Certificate, please contact us via WhatsApp. The recipient can then book their appointment directly with us by quoting the voucher number.'
-                  : '如欲安排購買禮券，請透過 WhatsApp 與我們聯絡。收禮人其後可以憑禮券號碼直接向我們預約。'}
+                  ? 'For new clients, Foundation is the recommended starting point.'
+                  : '對於新客人，我們建議先從 Foundation 開始。'}
               </p>
 
-              <div className="pt-3 flex justify-center lg:justify-start">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 bg-primary text-white px-8 py-4 rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-primary/20"
-                >
-                  <WhatsAppIcon className="w-4 h-4" />
-                  <span>{locale === 'en' ? 'ARRANGE A GIFT CERTIFICATE' : '安排購買禮券'}</span>
-                </a>
-              </div>
+              <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed italic">
+                {locale === 'en'
+                  ? 'Each Gift Certificate will be personalised with the recipient’s name and selected treatment.'
+                  : '每張 Gift Certificate 都會加入收禮人的姓名及所選服務。'}
+              </p>
+
+              <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
+                {locale === 'en'
+                  ? 'To arrange a Gift Certificate, please contact us via WhatsApp. The recipient can then book their appointment directly with us by quoting the voucher number.'
+                  : '如需安排 Gift Certificate，請透過 WhatsApp 與我們聯絡。收禮人之後可憑 voucher number 直接與我們預約。'}
+              </p>
+            </div>
+
+            <div className="pt-2 flex justify-center lg:justify-start">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 bg-primary text-white px-8 py-4 rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-primary/90 transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-primary/20"
+              >
+                <WhatsAppIcon className="w-4 h-4" />
+                <span>{locale === 'en' ? 'ARRANGE A GIFT CERTIFICATE' : '安排購買禮券'}</span>
+              </a>
             </div>
           </div>
 

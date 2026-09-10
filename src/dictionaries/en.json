@@ -65,12 +65,12 @@
       "title": "Explore Our Services",
       "subtitle": "Two distinct hands-on services designed with a different focus.",
       "foundation": {
-        "badge": "Core Facial Correction",
+        "badge": "SIGNATURE FACIAL CORRECTION",
         "title": "The Shugaosha Way — Foundation",
-        "p1": "Our core facial correction service, focused closely on restoring facial balance, alignment and harmony.",
+        "p1": "Our signature facial correction service, focused closely on restoring facial balance, alignment and harmony.",
         "p2": "Using precise, layered rebalancing, it works with the face as a whole to help correct visible imbalance, refine the contours and support a more lifted, firmer and three-dimensional appearance.",
         "p3": "Many clients can see a visible change from their first session, with the face often appearing more balanced, centred and refined, with clearer contours and a fresher, more youthful overall appearance.",
-        "bookButton": "Book a Session"
+        "bookButton": "BOOK A SESSION"
       },
       "lift": {
         "badge": "Upper Body & Facial Lifting",
@@ -165,37 +165,34 @@
     "diffTag": "HOW ARE THEY DIFFERENT?",
     "foundation": {
       "title": "The Shugaosha Way — Foundation",
-      "p1": "Our core facial correction service and the recommended starting point for new clients.",
-      "p2": "It focuses closely on the face through precise, layered rebalancing to support facial balance, alignment and structure, a more lifted and firmer appearance, and clearer, more refined contours.",
-      "p3": "Many clients can see a visible change from their first session, with the face often appearing more balanced, centred, refined and youthful."
+      "p1": "Focuses closely on facial balance, alignment and contours. Through our Layered Rebalance Method, it uses precise hands-on techniques to create a more lifted, firmer and youthful appearance."
     },
     "lift": {
       "title": "The Shugaosha Lift",
-      "p1": "A separate hands-on service that works progressively through the upper body, neck, head and face.",
-      "p2": "It focuses on releasing built-up tension through these connected areas, supporting overall alignment and creating a stronger facial lifting and tightening effect."
+      "p1": "Works more broadly through the upper body, shoulders, neck, head and face. Its focus is on releasing built-up tension through these connected areas and supporting facial lifting from a wider structural perspective."
     },
     "together": {
-      "title": "How They Work Together",
-      "p1": "Each service has its own distinct focus. Foundation works in greater detail with the face, while The Shugaosha Lift extends the work through the connected areas of the upper body, neck and head.",
-      "p2": "When combined, they support and enhance each other from both a detailed facial and wider structural perspective."
+      "title": "HOW THEY WORK TOGETHER",
+      "p1": "Foundation provides more detailed facial correction, while The Shugaosha Lift works more broadly through the surrounding connected areas that can influence how the face feels and presents.",
+      "p2": "The two services can be experienced individually or combined depending on each client’s needs and goals."
     },
     "expectTag": "WHAT TO EXPECT",
     "expectTitle": "How It Works",
     "steps": [
       {
         "step": "01",
-        "title": "Choose Your Service",
-        "desc": "For new clients, The Shugaosha Way — Foundation is the recommended starting point. It allows us to first understand and work closely with your facial balance, alignment and structure."
+        "title": "Understand Your Concerns",
+        "desc": "For new clients, The Shugaosha Way — Foundation is our recommended starting point. We begin by understanding your facial concerns, structure and overall balance, so we can determine the most appropriate focus for your session."
       },
       {
         "step": "02",
         "title": "Your Personalised Hands-On Session",
-        "desc": "Each session is carefully guided by your individual facial structure and areas of focus. Our precise hands-on approach is adapted to the service you choose and what your face needs at that time."
+        "desc": "Your session is then tailored around your individual facial structure and areas of concern. Our precise hands-on approach works with the face as a whole to support better balance, refined contours and a more lifted, firmer appearance."
       },
       {
         "step": "03",
         "title": "Build and Maintain Your Progress",
-        "desc": "Many clients can see a visible change from their first session. Continuing over a series of sessions allows the work to build progressively, helping the changes become more refined and established over time."
+        "desc": "Many clients can see a visible change from their first session. With continued sessions, each visit builds on the work already established, helping the face maintain a more balanced, refined and lifted appearance over time."
       }
     ],
     "benefitsTag": "WHAT YOU CAN EXPECT",
@@ -214,8 +211,8 @@
         "desc": "Helps create clearer definition and a more refined, three-dimensional appearance."
       },
       {
-        "title": "Overall Alignment & Wellbeing",
-        "desc": "Supports greater ease, overall alignment and a more refreshed sense of wellbeing."
+        "title": "Circulation & Wellbeing",
+        "desc": "Supports circulation and lymphatic flow, helping the face appear fresher, brighter and more revitalised."
       }
     ],
     "cta": {

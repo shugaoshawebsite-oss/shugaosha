@@ -519,3 +519,15 @@ header a:not(.btn-book-nav):hover {
     overflow: visible !important;
   }
 }
+
+/* Disable Safari / Apple Data Detectors (dotted/dashed underlines on addresses & locations) */
+[x-apple-data-detectors],
+[x-apple-data-detectors-result],
+a[x-apple-data-detectors],
+span[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  background: none !important;
+  -webkit-text-decoration: none !important;
+}
