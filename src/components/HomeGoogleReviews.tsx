@@ -1,9 +1,8 @@
 'use client'
 
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react'
 import Image from 'next/image'
-import { X } from 'lucide-react'
-import MarqueeCarousel from './MarqueeCarousel'
+import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 import type { GoogleReview, GooglePlaceData } from '@/utils/dataService'
 
 interface HomeGoogleReviewsProps {
@@ -140,9 +139,10 @@ function ReviewLightbox({ review, onClose }: ReviewLightboxProps) {
             href={review.author_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-primary hover:underline self-start"
+            className="text-xs text-primary hover:underline self-start inline-flex items-center gap-1"
           >
-            View on Google
+            <span>View on Google</span>
+            <ExternalLink className="w-3 h-3" />
           </a>
         )}
       </div>
@@ -150,78 +150,186 @@ function ReviewLightbox({ review, onClose }: ReviewLightboxProps) {
   )
 }
 
-// ─── Review card (used inside MarqueeCarousel) ─────────────────────────────────
+// ─── Review card ───────────────────────────────────────────────────────────────
 interface ReviewCardProps {
   review: GoogleReview
   locale: 'en' | 'zh'
   onReadMore: (review: GoogleReview) => void
 }
 
-function ReviewCard({ review, onReadMore }: ReviewCardProps) {
-  const LINE_LIMIT = 160 // chars; approximate 3-line limit for typical card width
-  const isLong = review.text.length > LINE_LIMIT
+function ReviewCard({ review, locale, onReadMore }: ReviewCardProps) {
+  const LINE_LIMIT = 150
+  const isLong = (review.text || '').length > LINE_LIMIT
   const preview = isLong ? review.text.slice(0, LINE_LIMIT).trimEnd() : review.text
 
   return (
-    <div className="w-full bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full text-left p-6 gap-4">
-      {/* Author row */}
-      <div className="flex items-center gap-3">
-        <Avatar review={review} />
-        <div className="min-w-0">
-          <p className="font-semibold text-foreground text-sm leading-tight truncate">{review.author_name}</p>
-          <p className="text-charcoal/45 text-xs mt-0.5">{review.relative_time_description}</p>
+    <div className="w-[300px] sm:w-[350px] md:w-[370px] flex-shrink-0 bg-white border border-gray-100/90 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between p-6 gap-4 snap-start text-left">
+      <div className="space-y-4">
+        {/* Author row */}
+        <div className="flex items-center gap-3">
+          <Avatar review={review} />
+          <div className="min-w-0 flex-1">
+            <p className="font-semibold text-foreground text-sm leading-tight truncate">{review.author_name}</p>
+            <p className="text-charcoal/45 text-xs mt-0.5">{review.relative_time_description}</p>
+          </div>
+          <GoogleLogo className="w-4 h-4 opacity-40 flex-shrink-0" />
         </div>
+
+        {/* Stars */}
+        <Stars rating={review.rating} />
+
+        {/* Review text */}
+        <p className="type-body-sm text-charcoal/75 leading-relaxed">
+          {isLong ? (
+            <>
+              {preview}
+              <button
+                type="button"
+                onClick={() => onReadMore(review)}
+                className="ml-1 text-primary font-medium hover:underline inline-block focus:outline-none"
+              >
+                {locale === 'en' ? '… Read more' : '… 閱讀更多'}
+              </button>
+            </>
+          ) : (
+            preview
+          )}
+        </p>
       </div>
 
-      {/* Stars */}
-      <Stars rating={review.rating} />
-
-      {/* Review text */}
-      <p className="type-body-sm text-charcoal/75 leading-relaxed flex-grow">
-        {isLong ? (
-          <>
-            {preview}
-            <span
-              role="button"
-              tabIndex={0}
-              onClick={() => onReadMore(review)}
-              onKeyDown={(e) => e.key === 'Enter' && onReadMore(review)}
-              className="ml-1 text-primary font-medium hover:underline cursor-pointer"
-            >
-              … Read more
-            </span>
-          </>
-        ) : (
-          preview
-        )}
-      </p>
+      {review.author_url && (
+        <a
+          href={review.author_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[11px] text-charcoal/40 hover:text-primary transition-colors flex items-center gap-1 pt-3 border-t border-gray-50 self-start"
+        >
+          <span>Google Review</span>
+          <ExternalLink className="w-2.5 h-2.5" />
+        </a>
+      )}
     </div>
   )
 }
 
 // ─── Main export ───────────────────────────────────────────────────────────────
 const MAPS_REVIEW_URL = 'https://g.page/r/CTKti11WGOPFEBE/review'
+const MAPS_PROFILE_URL = 'https://maps.google.com/?cid=14207908915443215666'
 
 export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleReviewsProps) {
   const [lightboxReview, setLightboxReview] = useState<GoogleReview | null>(null)
+  const [visibleCount, setVisibleCount] = useState(5)
+  const [isLoading, setIsLoading] = useState(false)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const sentinelRef = useRef<HTMLDivElement>(null)
+  const isLoadingRef = useRef(false)
 
   const handleClose = useCallback(() => setLightboxReview(null), [])
 
-  const reviews = placeData.reviews ?? []
+  // Filter valid reviews with actual text
+  const allReviews = useMemo(
+    () => (placeData.reviews ?? []).filter((r) => r.text && r.text.trim().length > 0),
+    [placeData.reviews]
+  )
+
+  // Auto-load 5 more reviews from local cache (0 Google API cost)
+  const loadMore = useCallback(() => {
+    if (isLoadingRef.current || allReviews.length === 0) return
+    isLoadingRef.current = true
+    setIsLoading(true)
+
+    setVisibleCount((prev) => prev + 5)
+
+    setTimeout(() => {
+      isLoadingRef.current = false
+      setIsLoading(false)
+    }, 250)
+  }, [allReviews.length])
+
+  // Derive displayed reviews by cycling through authentic reviews pool
+  const displayedReviews = useMemo(() => {
+    if (allReviews.length === 0) return []
+    const list: GoogleReview[] = []
+    const count = Math.max(visibleCount, Math.min(5, allReviews.length))
+    for (let i = 0; i < count; i++) {
+      list.push(allReviews[i % allReviews.length])
+    }
+    return list
+  }, [allReviews, visibleCount])
+
+  // Monitor scroll position for arrow states and automatic end-of-scroll expansion
+  const checkScroll = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const { scrollLeft, scrollWidth, clientWidth } = el
+    setCanScrollLeft(scrollLeft > 10)
+    setCanScrollRight(allReviews.length > 0)
+
+    // When scrolled near the end, automatically load 5 more from the cached pool
+    if (scrollLeft + clientWidth >= scrollWidth - 350) {
+      loadMore()
+    }
+  }, [allReviews.length, loadMore])
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    checkScroll()
+    el.addEventListener('scroll', checkScroll, { passive: true })
+    window.addEventListener('resize', checkScroll)
+    return () => {
+      el.removeEventListener('scroll', checkScroll)
+      window.removeEventListener('resize', checkScroll)
+    }
+  }, [checkScroll, displayedReviews.length])
+
+  // IntersectionObserver on the sentinel at the end of the horizontal track
+  useEffect(() => {
+    const sentinel = sentinelRef.current
+    const root = scrollRef.current
+    if (!sentinel || !root || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          loadMore()
+        }
+      },
+      {
+        root,
+        rootMargin: '0px 250px 0px 0px',
+        threshold: 0.01,
+      }
+    )
+
+    observer.observe(sentinel)
+    return () => observer.disconnect()
+  }, [loadMore, displayedReviews.length])
+
+  const scrollByAmount = (offset: number) => {
+    const el = scrollRef.current
+    if (!el) return
+    if (offset > 0 && el.scrollLeft + el.clientWidth >= el.scrollWidth - 500) {
+      loadMore()
+    }
+    el.scrollBy({ left: offset, behavior: 'smooth' })
+  }
 
   return (
     <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
       {/* Section header */}
-      <div className="text-left max-w-2xl md:max-w-none space-y-5 mb-14">
-        <span className="type-label text-primary">
-          {locale === 'en' ? 'Client Voices' : '客戶心聲'}
-        </span>
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div className="text-left space-y-4 max-w-2xl">
+          <span className="type-label text-primary">
+            {locale === 'en' ? 'Client Voices' : '客戶心聲'}
+          </span>
 
-        {/* Google branding — stacks vertically on mobile, horizontal on sm+ */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-4">
-          {/* G logo + rating block */}
-          <div className="flex items-center justify-start gap-3">
-            <GoogleLogo className="w-[45px] h-[45px] flex-shrink-0" />
+          {/* Rating & Google badge (No review counts) */}
+          <div className="flex flex-wrap items-center gap-4">
+            <GoogleLogo className="w-10 h-10 flex-shrink-0" />
             <div className="flex flex-col text-left">
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-semibold text-foreground leading-none">
@@ -229,59 +337,107 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
                 </span>
                 <Stars rating={placeData.rating ?? 5} size="lg" />
               </div>
-              <span className="text-xs text-charcoal/50 mt-0.5">
-                {placeData.user_ratings_total ?? 0}{' '}
-                {locale === 'en' ? 'Google reviews' : '則 Google 評論'}
+              <span className="text-xs text-charcoal/60 mt-0.5 font-medium">
+                {locale === 'en' ? 'Google Reviews' : 'Google 評論'}
               </span>
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex items-center gap-2 ml-0 sm:ml-2">
+              <a
+                href={MAPS_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary !py-2 !px-3.5 !text-xs inline-flex items-center gap-1.5"
+                id="google-maps-link"
+              >
+                <span>{locale === 'en' ? 'Google Maps' : 'Google 地圖'}</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+              <a
+                href={MAPS_REVIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary !py-2 !px-3.5 !text-xs inline-flex items-center gap-1.5"
+                id="google-review-cta"
+              >
+                <span>{locale === 'en' ? 'Leave a Review' : '發表評論'}</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
           </div>
 
-          {/* Review us on Google button */}
-          <a
-            href={MAPS_REVIEW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-flex items-center justify-center gap-2 !py-2.5 !px-5 !text-xs w-full sm:w-auto"
-            id="google-review-cta"
-          >
-            <GoogleLogo className="w-4 h-4 flex-shrink-0" />
-            {locale === 'en' ? 'LEAVE A GOOGLE REVIEW' : '在 GOOGLE 留下評論'}
-          </a>
-        </div>
-
-        {/* Flag row */}
-        <div className="flex justify-start items-center gap-4 flex-wrap">
-          {(['🇭🇰', '🇦🇺', '🇺🇸', '🇨🇦'] as const).map((flag, idx) => (
-            <span key={idx} className="text-2xl sm:text-3xl">{flag}</span>
-          ))}
+          {/* Flag row */}
+          <div className="flex items-center gap-3 pt-1">
+            {(['🇭🇰', '🇦🇺', '🇺🇸', '🇨🇦'] as const).map((flag, idx) => (
+              <span key={idx} className="text-xl sm:text-2xl select-none">{flag}</span>
+            ))}
+            <span className="text-xs text-charcoal/50 ml-1">
+              {locale === 'en' ? 'Clients from Australia, Hong Kong & Worldwide' : '來自澳洲、香港及海外各地的客人'}
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Reviews carousel */}
-      {reviews.length > 0 ? (
-        <MarqueeCarousel
-          items={reviews}
-          autoPlay={false}
-          showArrows={true}
-          renderItem={(review) => (
-            <ReviewCard
-              review={review}
-              locale={locale}
-              onReadMore={setLightboxReview}
-            />
-          )}
-        />
+      {/* Reviews Horizontal Track with Seamless Auto-load */}
+      {displayedReviews.length > 0 ? (
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            className="flex items-stretch gap-5 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 -mx-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {displayedReviews.map((review, idx) => (
+              <ReviewCard
+                key={`${review.author_name}-${idx}`}
+                review={review}
+                locale={locale}
+                onReadMore={setLightboxReview}
+              />
+            ))}
+
+            {/* Auto-load sentinel & subtle indicator */}
+            <div
+              ref={sentinelRef}
+              className="w-10 flex-shrink-0 flex items-center justify-center self-center"
+              aria-hidden="true"
+            >
+              {isLoading && (
+                <div className="w-5 h-5 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
+              )}
+            </div>
+          </div>
+
+          {/* Bottom center controls */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            <button
+              type="button"
+              onClick={() => scrollByAmount(-380)}
+              disabled={!canScrollLeft}
+              aria-label="Previous review"
+              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-charcoal transition-all duration-200 hover:border-primary hover:text-primary hover:shadow-sm disabled:opacity-30 disabled:hover:border-gray-200 disabled:hover:text-charcoal disabled:cursor-not-allowed bg-white shadow-xs"
+            >
+              <ChevronLeft className="w-4.5 h-4.5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByAmount(380)}
+              disabled={!canScrollRight}
+              aria-label="Next review"
+              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-charcoal transition-all duration-200 hover:border-primary hover:text-primary hover:shadow-sm disabled:opacity-30 disabled:hover:border-gray-200 disabled:hover:text-charcoal disabled:cursor-not-allowed bg-white shadow-xs"
+            >
+              <ChevronRight className="w-4.5 h-4.5" />
+            </button>
+          </div>
+        </div>
       ) : (
-        /* Fallback when no reviews loaded yet */
         <div className="text-center py-16 text-charcoal/40 text-sm">
-          {locale === 'en'
-            ? 'Reviews are loading…'
-            : '評論載入中…'}
+          {locale === 'en' ? 'Reviews are loading…' : '評論載入中…'}
         </div>
       )}
 
-      {/* Lightbox */}
+      {/* Lightbox Modal */}
       <ReviewLightbox review={lightboxReview} onClose={handleClose} />
     </section>
   )
 }
+

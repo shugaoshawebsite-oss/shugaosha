@@ -177,8 +177,32 @@ export async function GET() {
     if (stale) {
       const fresh = await fetchFromGooglePlaces()
       if (fresh) {
-        await writeCache(fresh)
-        return NextResponse.json(fresh)
+        // Merge fresh reviews with existing cached reviews to accumulate them without losing past ones
+        const existingReviews = cached?.reviews || []
+        const mergedMap = new Map<string, GoogleReview>()
+
+        existingReviews.forEach(r => {
+          const key = `${r.author_name}-${r.time || r.text.slice(0, 20)}`
+          mergedMap.set(key, r)
+        })
+        fresh.reviews.forEach(r => {
+          const key = `${r.author_name}-${r.time || r.text.slice(0, 20)}`
+          mergedMap.set(key, r)
+        })
+
+        const mergedReviews = Array.from(mergedMap.values())
+          .filter(r => r.text && r.text.trim().length > 0)
+          .sort((a, b) => (b.time || 0) - (a.time || 0))
+
+        const mergedData: GooglePlaceData = {
+          rating: fresh.rating,
+          user_ratings_total: fresh.user_ratings_total,
+          reviews: mergedReviews,
+          cachedAt: fresh.cachedAt,
+        }
+
+        await writeCache(mergedData)
+        return NextResponse.json(mergedData)
       }
       // Google API failed — return stale cache if available, else empty fallback
       if (cached) return NextResponse.json(cached)

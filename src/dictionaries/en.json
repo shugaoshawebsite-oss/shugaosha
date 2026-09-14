@@ -9,7 +9,8 @@
     "training": "Training",
     "contact": "Contact",
     "faq": "FAQ",
-    "appointmentPolicy": "Appointment Policy"
+    "bookingPolicy": "Booking Policy",
+    "appointmentPolicy": "Booking Policy"
   },
   "home": {
     "hero": {
@@ -18,11 +19,12 @@
       "description": "A gentle hands-on approach to facial balance, harmony and wellbeing."
     },
     "whatWeDo": {
-      "approach": "OUR APPROACH",
+      "approach": "OUR PHILOSOPHY",
       "title": "What Is Shugaosha?",
-      "description1": "Shugaosha is a specialist facial correction practice focused on facial balance, alignment, contours and overall wellbeing.",
-      "description2": "Built on years of hands-on experience and ongoing professional training in Japan, our approach uses precise, layered rebalancing to work with the face as a whole.",
-      "description3": "We offer two distinct hands-on services, each with a different focus — The Shugaosha Way — Foundation and The Shugaosha Lift.",
+      "description1": "At Shugaosha, we believe facial correction should enhance natural beauty through balance, precision and harmony.",
+      "description2": "Our philosophy is not only about how the face looks. We work with the face as a whole, supporting facial balance, lift, firmness and clearer contours, while also encouraging circulation and lymphatic flow to help the face appear fresher, brighter and more revitalised.",
+      "description3": "Built on years of hands-on experience and continued professional training in Japan, our approach is guided by careful facial assessment and the way each individual face responds. Every session is adapted with precision, rather than applying the same technique to every face.",
+      "description4": "At the heart of Shugaosha is the belief that beauty should look natural, balanced and harmonious — bringing together visible facial refinement with a greater sense of overall wellbeing.",
       "button": "EXPLORE SERVICES",
       "benefitsTitle": "Benefits of Shugaosha",
       "benefits": [
@@ -128,11 +130,11 @@
         },
         {
           "question": "How long do the results last?",
-          "answer": "How long the results last can vary depending on factors such as facial tension, posture, stress and everyday habits.\n\nOngoing sessions help support the balance and changes that have already been built, while regular maintenance can help the face continue to look more balanced, lifted, refined and refreshed over time.\n\nA simple way to think about it is a little like going to the gym — if you want to keep looking lifted, balanced and refreshed, regular maintenance helps support those results over time."
+          "answer": "How long the results last varies from person to person and can be influenced by factors such as facial tension, posture, stress and everyday habits.\n\nAs you continue with your sessions, facial balance, lift and contours can progressively build. Regular maintenance can then help support and maintain these changes over time.\n\nMuch like Pilates, yoga or regular exercise, you may notice a difference from the beginning, but achieving and maintaining your best results comes with consistency over time."
         },
         {
           "question": "How long is each session and why?",
-          "answer": "Each session takes approximately 45–60 minutes, depending on how your face responds and how much the facial tissues can comfortably tolerate.\n\nFacial correction is not about working for as long as possible. Precision and appropriate pressure are more important than duration. Excessive pressure or working the facial tissues for too long may cause unnecessary irritation or tissue stress.\n\nWe therefore work carefully within what your face can comfortably tolerate, allowing us to achieve the most effective correction without overworking the face."
+          "answer": "Each session takes approximately 45–60 minutes, depending on how your face responds and the amount of hands-on work appropriate for your facial tissues.\n\nFacial correction is not about working for as long as possible. Precision, technique and appropriate pressure are more important than duration. Working with excessive pressure or for too long may place unnecessary stress on the facial tissues.\n\nWe therefore work according to how each individual face responds, adjusting the pressure and level of hands-on work accordingly to achieve effective correction without placing unnecessary stress on the facial tissues."
         },
         {
           "question": "How many sessions do I need?",
@@ -196,19 +198,19 @@
       }
     ],
     "benefitsTag": "WHAT YOU CAN EXPECT",
-    "benefitsTitle": "Core Benefits",
+    "benefitsTitle": "Benefits",
     "benefits": [
       {
         "title": "Facial Balance & Alignment",
-        "desc": "Supports a more balanced, centred and harmonious facial appearance."
+        "desc": "Brings greater harmony between facial features, supporting a more centred and balanced overall appearance."
       },
       {
         "title": "Lifted & Firmer",
-        "desc": "Supports a more lifted, firmer and refreshed overall appearance."
+        "desc": "Lifts and supports the mid-face and cheeks, helping create fuller, more elevated cheek contours while firming the lower face."
       },
       {
         "title": "Clearer, Refined Contours",
-        "desc": "Helps create clearer definition and a more refined, three-dimensional appearance."
+        "desc": "Enhances definition through the jawline and facial contours, creating a cleaner, more sculpted and refined overall look."
       },
       {
         "title": "Circulation & Wellbeing",

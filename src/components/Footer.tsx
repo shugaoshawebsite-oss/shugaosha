@@ -121,7 +121,7 @@ export default function Footer({ locale }: FooterProps) {
               </li>
               <li>
                 <Link href={`/${locale}/appointment-policy`} className="text-sm font-light text-white/70 hover:text-primary transition-colors duration-300">
-                  {dict.nav.appointmentPolicy}
+                  {dict.nav.bookingPolicy || dict.nav.appointmentPolicy || (locale === 'en' ? 'Booking Policy' : '預約守則')}
                 </Link>
               </li>
             </ul>
@@ -169,8 +169,8 @@ export default function Footer({ locale }: FooterProps) {
         <div className="pt-8 pb-6 border-b border-white/10 text-left">
           <p className="text-[11px] sm:text-xs font-light text-white/50 leading-relaxed max-w-5xl">
             {locale === 'en'
-              ? 'Shugaosha reserves the right to amend its website content, services, policies and terms at any time. Information provided on this website is general in nature and does not constitute medical advice. Individual responses and results may vary. Nothing on this website excludes or limits any rights or remedies that cannot lawfully be excluded under applicable law. In the event of any inconsistency between language versions, the English version shall prevail.'
-              : 'Shugaosha 保留隨時修改網站內容、服務、政策及條款的權利。本網站所提供的資料只屬一般資訊，並不構成醫療建議。每個人的反應及效果可能有所不同。本網站任何內容均不排除或限制適用法律下不能合法排除的任何權利或補救。如不同語言版本之間存在任何不一致，概以英文版本為準。'}
+              ? 'Shugaosha provides non-medical facial correction services. Information on this website is general in nature and does not constitute medical advice. Before-and-after images and testimonials reflect individual experiences only and do not guarantee the same or similar results for others. Individual responses, results and their duration may vary; no specific outcome is promised or guaranteed. Nothing in this disclaimer excludes any rights or remedies that cannot lawfully be excluded under the Australian Consumer Law. If language versions differ, the English version will prevail.'
+              : 'Shugaosha 提供非醫療性質的修顏服務。本網站內容僅屬一般資訊，並不構成醫療建議。前後對比照片及客戶分享只反映個別人士的體驗，不代表或保證其他人士可獲得相同或類似的效果。每位客人的反應、效果及維持時間均可能有所不同；我們不承諾或保證任何特定結果。本聲明不排除澳洲消費者法例下任何依法不能排除的權利或補救。如不同語言版本之間存在差異，概以英文版本為準。'}
           </p>
         </div>
 

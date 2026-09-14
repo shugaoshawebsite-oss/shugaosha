@@ -50,16 +50,17 @@ export default async function HomePage({ params }: PageProps) {
           <div className="space-y-8 order-1 lg:order-1 text-center lg:text-left">
             <div className="space-y-3">
               <span className="type-label text-primary">
-                {dict.home.whatWeDo.approach || (locale === 'en' ? 'OUR APPROACH' : '我們的理念')}
+                {dict.home.whatWeDo.approach || (locale === 'en' ? 'OUR PHILOSOPHY' : '我們的理念')}
               </span>
               <h2 className="type-heading text-foreground">
                 {dict.home.whatWeDo.title}
               </h2>
             </div>
             <div className="space-y-4 type-body text-charcoal/80">
-              <p>{dict.home.whatWeDo.description1}</p>
-              <p>{dict.home.whatWeDo.description2}</p>
+              {dict.home.whatWeDo.description1 && <p>{dict.home.whatWeDo.description1}</p>}
+              {dict.home.whatWeDo.description2 && <p>{dict.home.whatWeDo.description2}</p>}
               {dict.home.whatWeDo.description3 && <p>{dict.home.whatWeDo.description3}</p>}
+              {dict.home.whatWeDo.description4 && <p>{dict.home.whatWeDo.description4}</p>}
             </div>
 
             <div className="flex items-center justify-center lg:justify-start gap-4">
@@ -168,14 +169,14 @@ export default async function HomePage({ params }: PageProps) {
 
           {/* Award/Trust Badge */}
           <div className="max-w-3xl mx-auto p-6 sm:p-12 rounded-[2.5rem] bg-[#f8f9fa] border border-gray-100/80 flex flex-col items-center text-center gap-8 hover:shadow-md transition-all duration-300">
-            <div className="relative flex justify-center items-center bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100/60 w-full max-w-[340px] sm:max-w-[420px] md:max-w-[460px]">
+            <div className="relative flex justify-center items-center bg-white p-6 sm:p-8 md:p-5 rounded-3xl shadow-sm border border-gray-100/60 w-full max-w-[340px] sm:max-w-[420px] md:max-w-[230px]">
               <Image
                 src="/assets/cert/Outstanding Beauty Services.png"
                 alt={locale === 'en' ? '2026 Northern Districts Local Business Awards Finalist' : '2026 Northern Districts Local Business Awards 入圍商戶'}
                 width={282}
                 height={400}
-                className="w-full max-w-[280px] sm:max-w-[360px] md:max-w-[400px] h-auto object-contain drop-shadow-md"
-                sizes="(max-width: 640px) 280px, (max-width: 768px) 360px, 400px"
+                className="w-full max-w-[280px] sm:max-w-[360px] md:max-w-[200px] h-auto object-contain drop-shadow-md"
+                sizes="(max-width: 640px) 280px, (max-width: 768px) 360px, 200px"
                 priority
               />
             </div>

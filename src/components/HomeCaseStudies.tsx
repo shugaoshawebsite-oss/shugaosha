@@ -44,8 +44,8 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
           </h2>
           <p className="type-body text-charcoal/80 max-w-2xl">
             {locale === 'en'
-              ? 'These are real client progressions. Natural, consistent, and honest results from dedicated sessions.'
-              : '以下均為真實客戶的矯正進展對照，展示持續堅持後帶來的自然、誠實的效果。'}
+              ? 'These are real client progressions, showing natural and visible changes from individual sessions as well as results that continue to build over time.'
+              : '以下均為真實客戶的修顏進展對照，展示單次 Session 可見的自然變化，以及隨著修顏進行而逐步建立的效果。'}
           </p>
         </div>
       </div>

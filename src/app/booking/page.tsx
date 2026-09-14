@@ -438,7 +438,7 @@ export default function BookingPage() {
           </p>
           <div className="flex gap-6">
             <Link href="/en/appointment-policy" className="text-[11px] text-white/35 hover:text-white/70 transition-colors">
-              Appointment Policy
+              Booking Policy
             </Link>
             <Link href="/en" className="text-[11px] text-white/35 hover:text-white/70 transition-colors">
               Back to Home

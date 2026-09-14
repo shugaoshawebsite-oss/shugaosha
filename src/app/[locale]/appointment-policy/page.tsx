@@ -8,79 +8,94 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
   const { locale: rawLocale } = await params
   const locale = (rawLocale === 'zh' ? 'zh' : 'en') as 'en' | 'zh'
 
-  const sections: { title: string; items: string[]; note?: string }[] = [
+  const sections: { title: string; intro?: string[]; items?: string[]; note?: string }[] = [
     {
-      title: locale === 'en' ? 'Appointment Confirmation' : '預約確認',
+      title: locale === 'en' ? 'Booking Confirmation' : '預約確認',
       items: locale === 'en'
         ? [
-          'Appointment reminders are sent as a courtesy before your scheduled session.',
-          'If you are unable to attend, we kindly ask that you let us know as soon as possible.',
-          'Please note that not receiving or replying to a reminder does not cancel or change your appointment.',
+          'A friendly reminder will be sent before your scheduled appointment.',
+          'If you need to cancel or make a change, we kindly ask that you let us know at least 24 hours in advance whenever possible.',
+          'Not receiving or replying to a reminder does not cancel or change your booking. Your appointment will remain confirmed unless another arrangement has been made directly with us.',
         ]
         : [
-          '預約提醒將在您的預約前作為提示發送。',
-          '如無法出席，請盡快告知我們。',
-          '請注意，未收到或未回覆提醒並不會取消或更改您的預約。',
+          '我們會在預約前發送溫馨提示。',
+          '如需取消或更改預約，敬請盡可能於預約時間 24小時前通知我們，讓我們可以更妥善安排預留時段。',
+          '未收到或未回覆提示訊息，並不代表預約已被取消或更改。除非已直接與我們另作安排，原有預約仍會保留。',
         ],
     },
     {
       title: locale === 'en' ? 'Rescheduling' : '更改預約',
       items: locale === 'en'
-        ? ['Appointments may be rescheduled once with at least 24 hours\' notice, subject to availability.']
-        : ['預約可在至少提前 24 小時通知的情況下更改一次，視乎名額是否充足。'],
+        ? [
+          'We understand that plans can change. If you need to reschedule, please let us know at least 24 hours in advance.',
+          'Each appointment may be rescheduled once, subject to availability. Changes within 24 hours will follow our Short Notice Cancellations & Changes Policy.',
+        ]
+        : [
+          '我們明白行程有時會有變動。如需改期，敬請至少提前 24小時通知我們。',
+          '每個預約可安排一次改期，並視乎當時可預約時段而定。24小時內提出的更改，將按照「24小時內取消及更改」守則處理。',
+        ],
     },
     {
       title: locale === 'en' ? 'Feeling Unwell' : '身體不適',
       items: locale === 'en'
         ? [
-          'If you are feeling unwell or experiencing symptoms of a cold, flu, COVID-19 or any other contagious illness, we kindly ask that you do not attend your appointment to help protect the wellbeing of other clients.',
-          'If cancellation or rescheduling is required within 24 hours due to illness, our Short Notice Cancellations & Changes policy will still apply, as your appointment time has been reserved exclusively for you.',
-          'Thank you for your understanding and kindness.',
+          'If you are feeling unwell or experiencing cold, flu, COVID-19 or other contagious symptoms, we kindly ask that you reschedule your appointment.',
+          'As our sessions involve close personal contact, this helps protect the health and wellbeing of both our clients and practitioners. Please let us know as early as possible so we can make the necessary arrangements.',
         ]
         : [
-          '如您感到不適，或出現感冒、流感、COVID-19 或其他傳染病症狀，請勿出席預約，以保障其他客人的健康。',
-          '如因病需在 24 小時內取消或更改預約，我們的「短時間取消及更改」政策仍然適用，因為您的預約時段已專屬為您保留。',
-          '感謝您的理解與體諒。',
+          '如您感到不適，或出現感冒、流感、COVID-19 或其他具傳染性的症狀，敬請安排改期。',
+          '由於修顏過程需要近距離接觸，為保障客人及修顏師的健康，敬請盡早通知我們，以便作出適當安排。',
         ],
     },
     {
-      title: locale === 'en' ? 'Short Notice Cancellations & Changes' : '短時間取消及更改',
-      items: locale === 'en'
+      title: locale === 'en' ? 'Short Notice Cancellations & Changes' : '24小時內取消及更改',
+      intro: locale === 'en'
         ? [
-          'Appointments cancelled, changed or missed within 24 hours cannot be rescheduled and will be treated as a completed session.',
-          'This applies to both individual appointments and package sessions.',
+          'Each appointment time is reserved especially for you. When a cancellation or change is made at short notice, it can be difficult for us to offer that time to another client.',
+          'Cancellations or changes made within 24 hours of your appointment, including those due to illness, will be handled as follows:',
         ]
         : [
-          '在 24 小時內取消、更改或缺席的預約將不予補期，並視作已完成該次預約。',
-          '此政策適用於單次預約及套票預約。',
+          '每個預約時段均特別為您預留。如在短時間內取消或更改預約，我們一般難以即時將該時段安排給其他客人。',
+          '如在預約時間前24小時內取消或更改，包括因身體不適而取消或改期，將按以下方式處理：',
+        ],
+      items: locale === 'en'
+        ? [
+          'Within 24 hours: 25% of the booked session price',
+          'Within 12 hours: 50% of the booked session price',
+          'Within 6 hours or no-show: 100% of the booked session price',
+          'Package Sessions: The scheduled session will be counted as completed.',
+        ]
+        : [
+          '24小時內： 收取該次預約費用的25%',
+          '12小時內： 收取該次預約費用的50%',
+          '6小時內或未有出席： 收取該次預約的全額費用',
+          '套票服務： 該次預約將視作已完成',
         ],
     },
     {
       title: locale === 'en' ? 'Late Arrival' : '遲到安排',
       items: locale === 'en'
         ? [
-          'Please allow a little extra travel time for traffic and parking, and check our Gladesville address before your appointment.',
-          'If you arrive late, your session may need to be shortened depending on the time remaining.',
-          'If there is insufficient time to proceed, the appointment will be treated as a completed session.',
+          'To ensure that every client receives their reserved appointment time, we kindly ask that you arrive on time.',
+          'If you arrive late, we will do our best to accommodate you; however, your session may need to be shortened to avoid delaying the appointments that follow.',
+          'If you arrive 30 minutes or more after your scheduled time, there may not be enough time to proceed with the session. In this situation, the full booked session fee will still apply, and package sessions will be counted as completed.',
         ]
         : [
-          '請預留充足交通及泊車時間，並於出發前確認 Gladesville 地址。',
-          '如遲到，療程時間可能因應剩餘時間而縮短。',
-          '如剩餘時間不足以進行服務，該次預約將視作已完成。',
+          '為確保每位客人都能享有完整的預約時段，敬請準時到達。',
+          '如您遲到，我們會盡力作出安排；惟為免影響其後客人的預約，服務時間可能需要相應縮短。',
+          '如遲到30分鐘或以上，可能因剩餘時間不足而無法進行該次服務。在此情況下，仍須支付該次預約的全額費用；套票客人的該次預約將視作已完成。',
         ],
     },
     {
-      title: locale === 'en' ? 'Reserved Appointment Times' : '預留時段',
-      items: locale === 'en'
+      title: locale === 'en' ? 'Respecting Reserved Appointment Times' : '尊重彼此的預約時間',
+      intro: locale === 'en'
         ? [
-          'Each appointment is reserved exclusively for you.',
-          'As appointment times are often fully booked, late cancellations or changes make it difficult to offer the reserved time to another client.',
-          'Thank you for respecting the time reserved for your appointment and for helping us create a calm, seamless and enjoyable experience for every client.',
+          'We value your time and carefully reserve each appointment especially for you. We kindly ask for the same consideration for the time our practitioners have set aside for your session.',
+          'Respecting each other’s time helps us maintain a smooth schedule and provide every client with a calm and enjoyable experience.',
         ]
         : [
-          '每個預約時段均專屬為您保留。',
-          '由於預約時段通常已完全預訂，臨時取消或更改將令我們難以將該時段提供給其他客人。',
-          '感謝您尊重您的預約時段，並協助我們為每位客人創造平靜、流暢且愉快的體驗。',
+          '我們重視每位客人的時間，亦會特別為您的服務預留專屬時段。同時，亦希望您能體諒並尊重修顏師為您預留的時間。',
+          '彼此尊重大家的時間，有助我們維持順暢的預約安排，並為每位客人提供從容而舒適的服務體驗。',
         ],
     },
   ]
@@ -101,28 +116,21 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 text-left">
           <span className="type-label text-charcoal/70 block mb-3">
-            {locale === 'en' ? 'Policy' : '預約政策'}
+            {locale === 'en' ? 'Policy' : '預約守則'}
           </span>
           <h1 className="type-hero text-charcoal">
-            {locale === 'en' ? 'Appointment Policy' : '預約政策'}
+            {locale === 'en' ? 'Booking Policy' : '預約守則'}
           </h1>
-          <p className="type-body text-charcoal/80 max-w-xl mt-4">
+          <p className="type-body text-charcoal/80 max-w-2xl mt-4">
             {locale === 'en'
-              ? 'Important guidelines to ensure a seamless, calm and professional experience for every client.'
-              : '重要的預約守則，旨在確保每位客人都能享有流暢、寧靜且專業的服務體驗。'}
+              ? 'Thank you for choosing Shugaosha. Each appointment time is reserved especially for you. To help us manage our schedule fairly and provide every client with the time and attention needed for their session, please read the following Booking Policy carefully before making your appointment.'
+              : '感謝您選擇修顏社。每個預約時段都會特別為客人預留。為了讓我們能妥善安排時間，並讓每位客人都得到應有的修顏時間及專注服務，請在預約前仔細閱讀以下預約守則。'}
           </p>
         </div>
       </section>
 
-      {/* Appointment Etiquette Content */}
+      {/* Booking Policy Content */}
       <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 w-full space-y-12">
-        <div className="space-y-4 pb-8 border-b border-gray-100">
-          <p className="type-body text-charcoal/70 max-w-2xl leading-relaxed">
-            {locale === 'en'
-              ? 'Thank you for choosing Shugaosha. Every appointment is thoughtfully reserved to provide a calm, personalised and uninterrupted experience. To help ensure the best experience for every client, we kindly ask that all appointments follow the guidelines below.'
-              : '感謝您選擇修顏社。每個預約均經過精心安排，以提供平靜、個人化且不受打擾的體驗。為確保每位客人均能享有最佳體驗，敬請遵守以下預約守則。'}
-          </p>
-        </div>
 
         {/* Etiquette sections */}
         <div className="space-y-12">
@@ -131,14 +139,23 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
               <h3 className="text-base font-semibold text-foreground tracking-wide">
                 {section.title}
               </h3>
-              <ul className="space-y-2.5 text-left">
-                {section.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-3 text-sm font-light text-charcoal/80 leading-relaxed text-left">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    <span className="text-left flex-1">{item}</span>
-                  </li>
-                ))}
-              </ul>
+              {section.intro && section.intro.length > 0 && (
+                <div className="space-y-3 text-sm font-light text-charcoal/80 leading-relaxed text-left">
+                  {section.intro.map((p, idx) => (
+                    <p key={idx}>{p}</p>
+                  ))}
+                </div>
+              )}
+              {section.items && section.items.length > 0 && (
+                <ul className="space-y-2.5 text-left">
+                  {section.items.map((item, j) => (
+                    <li key={j} className="flex items-start gap-3 text-sm font-light text-charcoal/80 leading-relaxed text-left">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-left flex-1">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {section.note && (
                 <p className="text-xs font-light text-charcoal/70 pt-2 border-t border-gray-50">
                   {section.note}
@@ -148,11 +165,8 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
           ))}
         </div>
 
-        {/* Footer note */}
-        <div className="text-center space-y-3 pt-8 border-t border-gray-100">
-          <p className="text-sm font-light text-charcoal/70">
-            {locale === 'en' ? 'Thank you for your understanding.' : '感謝您的理解與配合。'}
-          </p>
+        {/* Footer Branding */}
+        <div className="text-center space-y-2 pt-8 border-t border-gray-100">
           <p className="text-base font-medium text-foreground tracking-wide">The Shugaosha Way</p>
           <p className="type-label text-primary">
             {locale === 'en' ? 'PRECISION • BALANCE • HARMONY' : '精準・平衡・和諧'}

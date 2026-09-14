@@ -291,6 +291,15 @@ export default function Header({ locale }: HeaderProps) {
             </Link>
           ))}
 
+          <Link
+            href={`/${locale}/appointment-policy`}
+            onClick={() => setIsOpen(false)}
+            className={`text-base text-center tracking-wide transition-all duration-300
+              ${isActive(`/${locale}/appointment-policy`) ? 'text-primary font-medium' : 'text-charcoal font-light hover:text-primary'}`}
+          >
+            {dict.nav.bookingPolicy || dict.nav.appointmentPolicy || (locale === 'en' ? 'Booking Policy' : '預約守則')}
+          </Link>
+
           <div className="pt-6 border-t border-gray-100 w-full flex justify-center">
             <div className="flex items-center space-x-3">
               <Link

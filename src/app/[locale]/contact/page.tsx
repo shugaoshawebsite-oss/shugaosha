@@ -162,8 +162,8 @@ export default async function ContactPage({ params }: PageProps) {
                   </h4>
                   <p className="text-sm font-light text-charcoal/80 leading-relaxed mt-1">
                     {locale === 'en'
-                      ? 'By making a booking, you acknowledge and agree to our Appointment Policy. Please read it carefully before scheduling.'
-                      : '進行預約即表示您已閱讀並同意我們的預約政策。請在預約前仔細閱讀。'}
+                      ? 'By making a booking, you acknowledge and agree to our Booking Policy. Please read it carefully before scheduling.'
+                      : '進行預約即表示您已閱讀並同意我們的預約守則。請在預約前仔細閱讀。'}
                   </p>
                 </div>
                 <div>
@@ -172,7 +172,7 @@ export default async function ContactPage({ params }: PageProps) {
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl text-xs font-medium tracking-wide transition-all duration-300 shadow-sm hover:shadow group/btn"
                   >
                     <Shield className="w-3.5 h-3.5" />
-                    <span>{locale === 'en' ? 'READ OUR APPOINTMENT POLICY' : '閱讀預約政策'}</span>
+                    <span>{locale === 'en' ? 'READ OUR BOOKING POLICY' : '閱讀預約守則'}</span>
                     <span className="transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
                   </Link>
                 </div>
@@ -351,7 +351,7 @@ export default async function ContactPage({ params }: PageProps) {
                 <>
                   All sessions are subject to our{' '}
                   <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors font-medium">
-                    Appointment Policy
+                    Booking Policy
                   </Link>
                   .
                 </>
@@ -359,7 +359,7 @@ export default async function ContactPage({ params }: PageProps) {
                 <>
                   所有服務均受我們的{' '}
                   <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors font-medium">
-                    預約政策
+                    預約守則
                   </Link>
                   {' '}約束。
                 </>
