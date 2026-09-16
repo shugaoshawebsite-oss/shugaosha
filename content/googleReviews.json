@@ -1,7 +1,19 @@
 {
   "rating": 5,
-  "user_ratings_total": 53,
+  "user_ratings_total": 54,
   "reviews": [
+    {
+      "author_name": "MM Chau",
+      "author_url": "https://www.google.com/maps/contrib/117017769886031617558/reviews",
+      "language": "en",
+      "original_language": "en",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjULHsU-i_K1RJFGss3aX9kUebmR2AQqO8iPaelv0bZAAGR9Zvc=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "in the last week",
+      "text": "I’ve completed 10 sessions of Japanese face slimming realignment at Shugaosha and the change has been really noticeable! Teresa has amazing hands and skill — my face shape looks more refined and lifted, especially the cheekbones and around the eyes, and I can see a difference right after each session. I will continue as maintenance. Highly recommend Teresa and Shugaosha",
+      "time": 1789383338,
+      "translated": false
+    },
     {
       "author_name": "Siyanna V",
       "author_url": "https://www.google.com/maps/contrib/111009340590758774122/reviews",
@@ -9,7 +21,7 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWHdxajbhQWg2MJUxu39eMVn-2QZUPnnpa4krJ7HrEBEDcUxAI=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "in the last week",
+      "relative_time_description": "a week ago",
       "text": "I had such a wonderful facial experience! The treatment was incredibly relaxing. The therapist was professional, gentle and attentive throughout the treatment. I loved the whole experience and will definitely be coming back. Highly recommend! ✨",
       "time": 1788398824,
       "translated": false
@@ -21,7 +33,7 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjW0RjkL0uRvI0p-W4JPOQfMAlF9-n2mcg_aloznXN07peGzy22W=s128-c0x00000000-cc-rp-mo-ba2",
       "rating": 5,
-      "relative_time_description": "a week ago",
+      "relative_time_description": "2 weeks ago",
       "text": "It’s a comfortable and relaxing experience! You can definitely the difference after one session. Teresa is so lovely, warm and welcoming.",
       "time": 1787919755,
       "translated": false
@@ -33,7 +45,7 @@
       "original_language": "zh-Hant",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWokWVI9Po9ySdu_czQoymBkFj0PWwHJJyaSZCBErRP-mh2Bsw=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "3 weeks ago",
+      "relative_time_description": "4 weeks ago",
       "text": "This was amazing! An exceptionally wonderful experience! My whole face felt lifted after the treatment. Teresa's technique is superb, and it was incredibly comfortable and relaxing. 💗",
       "time": 1787022121,
       "translated": true
@@ -135,5 +147,5 @@
       "translated": false
     }
   ],
-  "cachedAt": "2026-09-14T00:24:00.000Z"
+  "cachedAt": "2026-09-15T22:59:00.130Z"
 }

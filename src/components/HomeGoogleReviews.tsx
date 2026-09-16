@@ -214,7 +214,7 @@ function ReviewCard({ review, locale, onReadMore }: ReviewCardProps) {
 
 // ─── Main export ───────────────────────────────────────────────────────────────
 const MAPS_REVIEW_URL = 'https://g.page/r/CTKti11WGOPFEBE/review'
-const MAPS_PROFILE_URL = 'https://maps.google.com/?cid=14207908915443215666'
+const MAPS_PROFILE_URL = 'https://maps.app.goo.gl/KWrQy285Um337U1G9'
 
 export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleReviewsProps) {
   const [lightboxReview, setLightboxReview] = useState<GoogleReview | null>(null)
@@ -327,20 +327,31 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
             {locale === 'en' ? 'Client Voices' : '客戶心聲'}
           </span>
 
-          {/* Rating & Google badge (No review counts) */}
+          {/* Rating & Google badge */}
           <div className="flex flex-wrap items-center gap-4">
-            <GoogleLogo className="w-10 h-10 flex-shrink-0" />
-            <div className="flex flex-col text-left">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl font-semibold text-foreground leading-none">
-                  {placeData.rating?.toFixed(1) ?? '5.0'}
+            <a
+              href={MAPS_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group cursor-pointer transition-opacity hover:opacity-90"
+              aria-label={locale === 'en' ? 'View Google Reviews' : '查看 Google 評論'}
+            >
+              <GoogleLogo className="w-10 h-10 flex-shrink-0" />
+              <div className="flex flex-col text-left">
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-semibold text-foreground leading-none">
+                    {placeData.rating?.toFixed(1) ?? '5.0'}
+                  </span>
+                  <Stars rating={placeData.rating ?? 5} size="lg" />
+                  <span className="text-sm font-medium text-charcoal/60">
+                    ({placeData.user_ratings_total || 54})
+                  </span>
+                </div>
+                <span className="text-xs text-charcoal/60 mt-0.5 font-medium group-hover:text-primary transition-colors">
+                  {locale === 'en' ? 'Google Reviews' : 'Google 評論'}
                 </span>
-                <Stars rating={placeData.rating ?? 5} size="lg" />
               </div>
-              <span className="text-xs text-charcoal/60 mt-0.5 font-medium">
-                {locale === 'en' ? 'Google Reviews' : 'Google 評論'}
-              </span>
-            </div>
+            </a>
 
             {/* Action buttons */}
             <div className="flex items-center gap-2 ml-0 sm:ml-2">

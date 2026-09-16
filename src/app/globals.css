@@ -248,6 +248,28 @@ html[lang="en"] .font-normal i {
   line-height: 1.5;
 }
 
+/* ============================================
+   JUSTIFIED PARAGRAPHS (> 20 words)
+   ============================================ */
+.justified-paragraph,
+.justified-paragraph p,
+p.justified-paragraph,
+[data-justified="true"] {
+  text-align: justify !important;
+  text-justify: inter-word;
+  text-align-last: left !important;
+  -webkit-text-align-last: left !important;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+:lang(zh) .justified-paragraph,
+:lang(zh) .justified-paragraph p,
+:lang(zh) p.justified-paragraph,
+:lang(zh) [data-justified="true"] {
+  text-justify: inter-ideograph;
+}
+
 /* Aspect ratio helper classes to guarantee cross-browser rendering in Next.js fill layouts */
 @utility aspect-3-2 {
   aspect-ratio: 3 / 2 !important;
@@ -477,6 +499,26 @@ header a:not(.btn-book-nav):hover {
   .faq-accordion,
   .faq-accordion * {
     text-align: left !important;
+  }
+
+  .faq-answer {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  /* EXCEPTIONS: Long paragraphs (> 20 words) MUST be left and right justified with last line centered on mobile */
+  main p.justified-paragraph,
+  main p[data-justified="true"],
+  main .justified-paragraph,
+  main .justified-paragraph p,
+  .justified-paragraph,
+  .justified-paragraph p,
+  p.justified-paragraph,
+  [data-justified="true"] {
+    text-align: justify !important;
+    text-align-last: center !important;
+    -webkit-text-align-last: center !important;
   }
 
   main img,

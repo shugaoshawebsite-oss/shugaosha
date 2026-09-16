@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Montserrat, Noto_Sans_TC, Gilda_Display } from 'next/font/google'
+import AutoJustifyParagraphs from '@/components/AutoJustifyParagraphs'
 import '../globals.css'
 
 const montserrat = Montserrat({
@@ -40,6 +41,7 @@ export default function BookingLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${montserrat.variable} ${notoSansTC.variable} ${gilda.variable}`}>
       <body className="bg-white text-foreground flex flex-col min-h-screen max-w-full overflow-x-hidden">
         {children}
+        <AutoJustifyParagraphs />
       </body>
     </html>
   )

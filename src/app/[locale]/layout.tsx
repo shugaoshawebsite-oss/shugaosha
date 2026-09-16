@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import { Montserrat, Noto_Sans_TC, Gilda_Display } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import AutoJustifyParagraphs from '@/components/AutoJustifyParagraphs'
 import '../globals.css'
 
 export const metadata: Metadata = {
@@ -65,6 +66,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           {children}
         </main>
         <Footer locale={locale} />
+        <AutoJustifyParagraphs />
       </body>
     </html>
   )

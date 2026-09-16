@@ -81,7 +81,7 @@ function FaqAccordion() {
                 isOpen ? 'max-h-[600px] opacity-100 border-t border-black/[0.05]' : 'max-h-0 opacity-0'
               }`}
             >
-              <div className="px-6 py-4 text-[13px] leading-relaxed text-charcoal/80 bg-[#fcfcfc] whitespace-pre-line !text-left text-left">
+              <div className="faq-answer px-6 py-4 text-[14.5px] sm:text-[15px] font-normal leading-relaxed text-charcoal/90 bg-[#fcfcfc] whitespace-pre-line !text-left text-left">
                 {item.answer}
               </div>
             </div>

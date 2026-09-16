@@ -90,7 +90,7 @@ export default function FaqSection({ dict, locale }: FaqSectionProps) {
                   isOpen ? 'max-h-[600px] opacity-100 border-t border-gray-50' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="faq-answer px-6 sm:px-8 py-5 type-body text-charcoal/80 bg-soft-bg whitespace-pre-line leading-relaxed text-left">
+                <div className="faq-answer px-6 sm:px-8 py-5 text-[15px] font-normal text-charcoal/90 bg-soft-bg whitespace-pre-line leading-relaxed text-left">
                   {item.answer}
                 </div>
               </div>
