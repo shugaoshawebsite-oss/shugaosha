@@ -143,10 +143,10 @@ export default async function ServicesPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
           <div className="space-y-10">
             <div className="text-center md:text-left space-y-3">
-              <span className="type-label text-primary block">
+              <span className="type-label !text-white/90 text-white/90 block">
                 {t.expectTag}
               </span>
-              <h2 className="type-heading text-white">
+              <h2 className="type-heading !text-white text-white">
                 {t.expectTitle}
               </h2>
             </div>
@@ -154,13 +154,13 @@ export default async function ServicesPage({ params }: PageProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {t.steps.map((item, index) => (
                 <div key={index} className="space-y-4 text-center md:text-left bg-white/10 border border-white/15 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
-                  <div className="text-3xl font-light text-primary tracking-wide text-center md:text-left">
+                  <div className="text-3xl font-light !text-white text-white tracking-wide text-center md:text-left">
                     {item.step}
                   </div>
-                  <h3 className="type-card-title text-white font-medium">
+                  <h3 className="type-card-title !text-white text-white font-medium">
                     {item.title}
                   </h3>
-                  <p className="type-body-sm text-white/80 leading-relaxed">
+                  <p className="type-body text-white/80 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -197,7 +197,7 @@ export default async function ServicesPage({ params }: PageProps) {
                     <h3 className="type-card-title text-foreground font-semibold">
                       {benefit.title}
                     </h3>
-                    <p className="type-body-sm text-charcoal/80 leading-relaxed">
+                    <p className="type-body text-charcoal/80 leading-relaxed">
                       {benefit.desc}
                     </p>
                   </div>

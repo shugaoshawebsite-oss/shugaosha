@@ -84,10 +84,10 @@ export default function CertGallery({ groups, locale }: CertGalleryProps) {
             </div>
 
             <div className="space-y-3 pt-2">
-              <h3 className="text-lg font-medium text-foreground">
+              <h3 className="type-card-title font-medium text-foreground">
                 {locale === 'en' ? group.titleEn : group.titleZh}
               </h3>
-              <p className="text-sm font-light text-charcoal/75 leading-relaxed">
+              <p className="type-body font-light text-charcoal/75 leading-relaxed">
                 {locale === 'en' ? group.descEn : group.descZh}
               </p>
             </div>

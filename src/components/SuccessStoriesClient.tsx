@@ -107,7 +107,7 @@ export default function SuccessStoriesClient({
       <section id="celebrities" className="max-w-7xl mx-auto w-full scroll-mt-40">
         <div className="space-y-12 px-6 sm:px-8 lg:px-12">
           <div className="border-b border-gray-100 pb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary block mb-3">
+            <span className="type-label text-primary block mb-3">
               {locale === 'en' ? 'Celebrity Stories' : '明星見證'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
@@ -146,17 +146,17 @@ export default function SuccessStoriesClient({
                 {/* Bottom: Content Column */}
                 <div className="p-6 flex flex-col justify-start flex-grow space-y-4 text-left">
                   <div className="space-y-1 text-left">
-                    <h3 className="text-lg font-medium text-foreground leading-tight text-left">
+                    <h3 className="type-card-title font-medium text-foreground leading-tight text-left">
                       {celebrity.name[locale] || celebrity.name.en}
                     </h3>
-                    <span className="text-xs font-semibold text-primary uppercase tracking-wider block mt-1 text-left">
+                    <span className="type-label font-semibold text-primary uppercase block mt-1 text-left">
                       {celebrity.role[locale] || celebrity.role.en}
                     </span>
                   </div>
 
                   <div className="space-y-2 border-t border-gray-50 pt-4 text-left">
                     <Quote className="w-6 h-6 text-primary/15" />
-                    <p className="text-sm font-light text-charcoal/85 italic leading-relaxed text-left">
+                    <p className="type-body text-charcoal/85 italic leading-relaxed text-left">
                       {(() => {
                         const rawQuote = celebrity.quote[locale] || celebrity.quote.en
                         const isExpanded = !!expandedQuotes[celebrity._id]
@@ -172,7 +172,7 @@ export default function SuccessStoriesClient({
                                     e.stopPropagation()
                                     toggleExpand(celebrity._id)
                                   }}
-                                  className="ml-1 text-xs font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
+                                  className="ml-1 type-caption font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
                                 >
                                   {locale === 'en' ? ' read less' : ' 收起'}
                                 </button>
@@ -189,7 +189,7 @@ export default function SuccessStoriesClient({
                                 e.stopPropagation()
                                 toggleExpand(celebrity._id)
                               }}
-                              className="ml-1 text-xs font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
+                              className="ml-1 type-caption font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
                             >
                               {locale === 'en' ? '... read more' : '... 閱讀更多'}
                             </button>
@@ -209,7 +209,7 @@ export default function SuccessStoriesClient({
       <section id="before-after" className="max-w-7xl mx-auto w-full scroll-mt-40">
         <div className="space-y-12 px-6 sm:px-8 lg:px-12">
           <div className="border-b border-gray-100 pb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary block mb-3">
+            <span className="type-label text-primary block mb-3">
               {locale === 'en' ? 'Visual Evidence' : '真實案例'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
@@ -251,16 +251,16 @@ export default function SuccessStoriesClient({
                 <div className="p-6 space-y-3 flex-grow flex flex-col justify-between text-left">
                   {cs ? (
                     <div className="space-y-2 text-left">
-                      <h3 className="text-base font-semibold text-primary text-left mb-2">
+                      <h3 className="type-card-title font-semibold text-primary text-left mb-2">
                         {getOrdinalSessionText(cs.sessionsCount || 1, locale)}
                       </h3>
                       {cs.description && (
-                        <p className="text-sm font-light text-charcoal/75 leading-relaxed text-left whitespace-pre-line">
+                        <p className="type-body font-light text-charcoal/75 leading-relaxed text-left whitespace-pre-line">
                           {cs.description[locale] || cs.description.en}
                         </p>
                       )}
                       {cs.specialist && (
-                        <p className="text-xs font-semibold text-primary pt-2 text-left">
+                        <p className="type-caption font-semibold text-primary pt-2 text-left">
                           Specialist: {cs.specialist}
                         </p>
                       )}
@@ -269,7 +269,7 @@ export default function SuccessStoriesClient({
                     <div className="space-y-2 text-left">
                       <div className="h-3 bg-gray-100 rounded-full w-1/3" />
                       <div className="h-4 bg-gray-100 rounded-full w-2/3" />
-                      <p className="text-xs font-light text-charcoal/40 italic pt-1 text-left">
+                      <p className="type-caption font-light text-charcoal/40 italic pt-1 text-left">
                         {locale === 'en' ? 'Case study coming soon' : '案例即將更新'}
                       </p>
                     </div>
@@ -285,7 +285,7 @@ export default function SuccessStoriesClient({
       <section id="reviews" className="bg-soft-bg border-y border-gray-100 py-24 scroll-mt-40">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-16">
           <div className="text-left max-w-2xl md:max-w-none space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            <span className="type-label text-primary">
               {locale === 'en' ? 'What Our Clients Say' : '客戶怎麼說'}
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
@@ -311,7 +311,7 @@ export default function SuccessStoriesClient({
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
-                  <p className="text-sm font-light text-charcoal/80 leading-relaxed italic text-left">
+                  <p className="type-body text-charcoal/80 leading-relaxed italic text-left">
                     &ldquo;{review.reviewText[locale] || review.reviewText.en}&rdquo;
                   </p>
                 </div>
@@ -319,7 +319,7 @@ export default function SuccessStoriesClient({
                 <div className="border-t border-gray-50 pt-4 flex items-center gap-4 justify-start text-left">
                   <span className="text-3xl flex-shrink-0">{countryFlags[review.location] || '⭐'}</span>
                   <div>
-                    <span className="text-sm font-medium text-foreground block text-left">{review.clientName}</span>
+                    <span className="type-body-sm font-medium text-foreground block text-left">{review.clientName}</span>
                   </div>
                 </div>
               </div>

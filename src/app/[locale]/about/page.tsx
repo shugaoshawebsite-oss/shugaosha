@@ -126,7 +126,7 @@ export default async function AboutPage({ params }: PageProps) {
                       {member.role[locale] || member.role.en}
                     </span>
                   </div>
-                  <p className="type-body-sm text-charcoal/80 whitespace-pre-line text-left leading-relaxed">
+                  <p className="type-body text-charcoal/80 whitespace-pre-line text-left leading-relaxed">
                     {member.bio[locale] || member.bio.en}
                   </p>
                 </div>

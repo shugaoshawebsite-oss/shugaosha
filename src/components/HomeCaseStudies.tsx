@@ -82,16 +82,16 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
               <div className="p-6 space-y-3 flex-grow flex flex-col justify-between text-left">
                 {cs ? (
                   <div className="space-y-2 text-left">
-                    <h3 className="text-base font-semibold text-primary text-left mb-2">
+                    <h3 className="type-card-title font-semibold text-primary text-left mb-2">
                       {getOrdinalSessionText(cs.sessionsCount || 1, locale)}
                     </h3>
                     {cs.description && (
-                      <p className="text-sm font-light text-charcoal/75 leading-relaxed text-left whitespace-pre-line">
+                      <p className="type-body font-light text-charcoal/75 leading-relaxed text-left whitespace-pre-line">
                         {cs.description[locale] || cs.description.en}
                       </p>
                     )}
                     {cs.specialist && (
-                      <p className="text-xs font-semibold text-primary pt-2 text-left">
+                      <p className="type-caption font-semibold text-primary pt-2 text-left">
                         Specialist: {cs.specialist}
                       </p>
                     )}
@@ -100,7 +100,7 @@ export default function HomeCaseStudies({ caseStudies, locale }: HomeCaseStudies
                   <div className="space-y-2 text-left">
                     <div className="h-3 bg-gray-100 rounded-full w-1/3" />
                     <div className="h-4 bg-gray-100 rounded-full w-2/3" />
-                    <p className="text-xs font-light text-charcoal/40 italic pt-1 text-left">
+                    <p className="type-caption font-light text-charcoal/40 italic pt-1 text-left">
                       {locale === 'en' ? 'Case study coming soon' : '案例即將更新'}
                     </p>
                   </div>

@@ -179,7 +179,7 @@ function ReviewCard({ review, locale, onReadMore }: ReviewCardProps) {
         <Stars rating={review.rating} />
 
         {/* Review text */}
-        <p className="type-body-sm text-charcoal/75 leading-relaxed">
+        <p className="type-body text-charcoal/75 leading-relaxed">
           {isLong ? (
             <>
               {preview}
@@ -214,7 +214,7 @@ function ReviewCard({ review, locale, onReadMore }: ReviewCardProps) {
 
 // ─── Main export ───────────────────────────────────────────────────────────────
 const MAPS_REVIEW_URL = 'https://g.page/r/CTKti11WGOPFEBE/review'
-const MAPS_PROFILE_URL = 'https://maps.app.goo.gl/KWrQy285Um337U1G9'
+const MAPS_PROFILE_URL = 'https://www.google.com/maps/search/?api=1&query=5+Pittwater+Road%2C+Gladesville+NSW+2111'
 
 export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleReviewsProps) {
   const [lightboxReview, setLightboxReview] = useState<GoogleReview | null>(null)

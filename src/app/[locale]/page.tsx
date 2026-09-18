@@ -160,7 +160,7 @@ export default async function HomePage({ params }: PageProps) {
                   </div>
                   <div className="space-y-1.5 text-center md:text-left">
                     <h3 className="type-card-title text-foreground">{item.title}</h3>
-                    <p className="type-body-sm text-charcoal/80">{item.desc}</p>
+                    <p className="type-body text-charcoal/80">{item.desc}</p>
                   </div>
                 </div>
               )
@@ -295,30 +295,52 @@ export default async function HomePage({ params }: PageProps) {
         {/* Elfsight Instagram Feed | Shugaosha Instagram Feed */}
         <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
         <div className="elfsight-app-053d3d7a-69da-4f5a-a15a-eb53ed990fb7 w-full max-w-full" data-elfsight-app-lazy></div>
-        <div className="mt-4">
+        <div className="mt-4 flex items-center justify-center gap-4">
           <a
-            href="https://www.instagram.com/shugaosha"
+            href="https://www.facebook.com/shugaosha"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary inline-flex items-center gap-2"
+            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-primary/40 hover:border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110 flex items-center justify-center shadow-xs"
+            aria-label="Facebook: Shugaosha"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="w-4 h-4"
+              className="w-5 h-5 flex-shrink-0"
+            >
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com/shugaosha"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-primary/40 hover:border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110 flex items-center justify-center shadow-xs"
+            aria-label="Instagram: @shugaosha"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-5 h-5 flex-shrink-0"
             >
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
             </svg>
-            {locale === 'en' ? 'Follow @shugaosha' : '追蹤 @shugaosha'}
           </a>
         </div>
       </section>

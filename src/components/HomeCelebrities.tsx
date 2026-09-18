@@ -94,17 +94,17 @@ export default function HomeCelebrities({ celebrities, locale }: HomeCelebrities
               {/* Bottom: Content */}
               <div className="p-6 flex flex-col justify-start flex-grow space-y-4 text-left">
                 <div className="space-y-1 text-left">
-                  <h3 className="text-lg font-medium text-foreground leading-tight text-left">
+                  <h3 className="type-card-title font-medium text-foreground leading-tight text-left">
                     {celebrity.name[locale] || celebrity.name.en}
                   </h3>
-                  <span className="text-xs font-semibold text-primary uppercase tracking-wider block mt-1 text-left">
+                  <span className="type-label font-semibold text-primary uppercase block mt-1 text-left">
                     {celebrity.role[locale] || celebrity.role.en}
                   </span>
                 </div>
 
                 <div className="space-y-2 border-t border-gray-50 pt-4 text-left">
                   <Quote className="w-6 h-6 text-primary/15" />
-                  <p className="text-sm font-light text-charcoal/85 italic leading-relaxed text-left">
+                  <p className="type-body font-light text-charcoal/85 italic leading-relaxed text-left">
                     {(() => {
                       const rawQuote = celebrity.quote[locale] || celebrity.quote.en
                       const isExpanded = !!expandedQuotes[celebrity._id]
@@ -120,7 +120,7 @@ export default function HomeCelebrities({ celebrities, locale }: HomeCelebrities
                                   e.stopPropagation()
                                   toggleExpand(celebrity._id)
                                 }}
-                                className="ml-1 text-xs font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
+                                className="ml-1 type-caption font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
                               >
                                 {locale === 'en' ? ' read less' : ' 收起'}
                               </button>
@@ -137,7 +137,7 @@ export default function HomeCelebrities({ celebrities, locale }: HomeCelebrities
                               e.stopPropagation()
                               toggleExpand(celebrity._id)
                             }}
-                            className="ml-1 text-xs font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
+                            className="ml-1 type-caption font-medium text-primary hover:underline focus:outline-none cursor-pointer inline-block"
                           >
                             {locale === 'en' ? '... read more' : '... 閱讀更多'}
                           </button>

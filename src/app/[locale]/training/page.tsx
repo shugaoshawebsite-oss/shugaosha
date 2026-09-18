@@ -171,12 +171,12 @@ export default async function TrainingPage({ params }: PageProps) {
                     : '學員成功完成培訓並通過最終實務考核後，將獲日本小顏矯正認證協會（JSFA）頒發的官方 Diploma。',
                 },
               ].map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="bg-white rounded-2xl p-6 sm:p-7 space-y-3.5 border border-gray-100/80 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div key={title} className="bg-white rounded-2xl p-6 sm:p-7 space-y-3.5 border border-gray-100/80 text-left shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-start">
                   <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto sm:mx-0">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-sm font-semibold text-foreground">{title}</h3>
-                  <p className="text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed">{desc}</p>
+                  <h3 className="type-card-title font-semibold text-foreground">{title}</h3>
+                  <p className="type-body font-light text-charcoal/75 leading-relaxed">{desc}</p>
                 </div>
               ))}
             </div>
@@ -187,11 +187,11 @@ export default async function TrainingPage({ params }: PageProps) {
                 <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
                   <BookOpen className="w-5 h-5" />
                 </div>
-                <h3 className="text-base sm:text-lg font-semibold text-foreground">
+                <h3 className="type-card-title font-semibold text-foreground">
                   {locale === 'en' ? 'Practice-Ready Hands-On Training' : '實務導向手把手培訓'}
                 </h3>
               </div>
-              <div className="space-y-3 text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed pt-1">
+              <div className="space-y-3 type-body font-light text-charcoal/75 leading-relaxed pt-1">
                 {locale === 'en' ? (
                   <>
                     <p>
@@ -301,12 +301,12 @@ export default async function TrainingPage({ params }: PageProps) {
           {courseModules.map(({ icon: Icon, en, zh }) => (
             <div
               key={en}
-              className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 space-y-3.5 hover:border-primary/30 hover:shadow-sm transition-all duration-300 group text-left"
+              className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 space-y-3.5 hover:border-primary/30 hover:shadow-sm transition-all duration-300 group text-center sm:text-left flex flex-col items-center sm:items-start"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center group-hover:bg-primary/15 transition-colors duration-300">
+              <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 mx-auto sm:mx-0">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
-              <p className="text-xs sm:text-sm font-medium text-foreground leading-snug">
+              <p className="text-sm sm:text-base font-semibold text-foreground leading-snug text-center sm:text-left">
                 {locale === 'en' ? en : zh}
               </p>
             </div>
@@ -339,7 +339,7 @@ export default async function TrainingPage({ params }: PageProps) {
               <div className="w-8 h-8 rounded-xl bg-primary/8 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors duration-300 mt-0.5">
                 <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform duration-300" />
               </div>
-              <span className="text-sm sm:text-[15px] font-light text-charcoal/90 leading-relaxed text-left pt-1 flex-1">
+              <span className="type-body font-light text-charcoal/90 leading-relaxed text-left pt-0.5 flex-1">
                 {item}
               </span>
             </div>
@@ -350,7 +350,7 @@ export default async function TrainingPage({ params }: PageProps) {
             <div className="w-8 h-8 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0 text-primary">
               <CheckCircle2 className="w-5 h-5" />
             </div>
-            <p className="text-sm sm:text-[15px] font-medium text-primary tracking-wide flex-1">
+            <p className="type-body font-medium text-primary tracking-wide flex-1">
               {locale === 'en'
                 ? 'No previous experience is required.'
                 : '無需任何相關經驗。'}
@@ -379,7 +379,7 @@ export default async function TrainingPage({ params }: PageProps) {
               <div className="w-8 h-8 rounded-xl bg-primary/8 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors duration-300 mt-0.5">
                 <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform duration-300" />
               </div>
-              <span className="text-sm sm:text-[15px] font-light text-charcoal/90 leading-relaxed text-left pt-1 flex-1">
+              <span className="type-body font-light text-charcoal/90 leading-relaxed text-left pt-0.5 flex-1">
                 {item}
               </span>
             </div>
@@ -422,8 +422,8 @@ export default async function TrainingPage({ params }: PageProps) {
               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mx-auto md:mx-0">
                 <Icon className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground">{title}</h3>
-              <p className="text-sm font-light text-charcoal/80 leading-relaxed">{desc}</p>
+              <h3 className="type-card-title font-semibold text-foreground">{title}</h3>
+              <p className="type-body font-light text-charcoal/80 leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

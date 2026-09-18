@@ -107,6 +107,12 @@ html[lang="zh"] h3,
 html[lang="zh"] h4 {
   font-family: var(--font-noto-sans-tc), var(--font-montserrat), sans-serif;
   font-weight: 400;
+}
+
+html[lang="zh"] h1:not([class*="text-white"]):not(.text-white),
+html[lang="zh"] h2:not([class*="text-white"]):not(.text-white),
+html[lang="zh"] h3:not([class*="text-white"]):not(.text-white),
+html[lang="zh"] h4:not([class*="text-white"]):not(.text-white) {
   color: #111215;
 }
 
@@ -142,9 +148,92 @@ html[lang="zh"] .text-charcoal {
   color: #1a1b1e;
 }
 
-html {
-  font-size: 15px;
-  scroll-behavior: smooth;
+/* Chinese locale — Red Eyebrow Subheadings & Section Labels (e.g. 「我們的理念」) */
+html[lang="zh"] .type-label,
+html[lang="zh"] span.type-label,
+html[lang="zh"] p.type-label {
+  font-size: clamp(0.85rem, 2vw, 0.95rem) !important; /* ~14px on mobile → ~15.7px on desktop */
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 640px) {
+  html[lang="zh"] .type-label,
+  html[lang="zh"] span.type-label,
+  html[lang="zh"] p.type-label {
+    font-size: 0.85rem !important; /* ~14px on mobile for optimal legibility */
+    letter-spacing: 0.1em !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Chinese locale — Typography Hierarchy (Readability & Elegance) */
+html[lang="zh"] section:has(.type-hero) .type-body,
+html[lang="zh"] section:has(.type-hero) p,
+html[lang="zh"] .hero-desc .type-body,
+html[lang="zh"] .hero-desc p,
+html[lang="zh"] .type-hero + p,
+html[lang="zh"] .type-hero ~ p {
+  font-size: 0.9375rem !important; /* ~15.5px, preserves exact hero description scale */
+  line-height: 1.8 !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Chinese Section Headings (H2) */
+html[lang="zh"] .type-heading {
+  font-size: clamp(1.75rem, 3vw, 2.4rem) !important; /* ~28.8px → ~39.6px */
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Chinese Sub-section Headings */
+html[lang="zh"] .type-subheading {
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem) !important; /* ~22.2px → ~30.5px */
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Chinese Card / Item Titles (H3) */
+html[lang="zh"] .type-card-title {
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem) !important; /* ~18.15px → ~20.6px */
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Chinese Body Paragraphs, Card Text, and Justified Paragraphs — unified identical scale */
+html[lang="zh"] .type-body,
+html[lang="zh"] .type-body-sm,
+html[lang="zh"] .justified-paragraph,
+html[lang="zh"] .justified-paragraph p,
+html[lang="zh"] p.justified-paragraph,
+html[lang="zh"] [data-justified="true"],
+html[lang="zh"] main p:not(.hero-desc *):not(.type-hero *):not(.type-label):not(.type-caption):not(.text-xs):not(.type-heading):not(.type-subheading):not(.type-card-title),
+html[lang="zh"] .card-desc,
+html[lang="zh"] .faq-answer {
+  font-size: clamp(1rem, 1.2vw, 1.075rem) !important; /* ~16.5px → ~17.7px */
+  font-weight: 400 !important;
+  line-height: 1.85 !important;
+  letter-spacing: 0.025em !important;
+}
+
+/* Chinese Caption / Fine Print */
+html[lang="zh"] .type-caption {
+  font-size: 0.8rem !important; /* ~13.2px */
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.015em !important;
+}
+
+html[lang="zh"] .text-sm:not(.hero-desc *):not(.hero-scroll-indicator *) {
+  font-size: 0.95rem; /* ~15.7px */
+}
+
+html[lang="zh"] .text-xs:not(.hero-desc *):not(.hero-scroll-indicator *):not(.type-caption) {
+  font-size: 0.825rem; /* ~13.6px */
 }
 
 html[lang="en"] p.font-light,
@@ -177,28 +266,22 @@ html[lang="en"] .font-normal i {
   font-weight: 500;
 }
 
-.text-xs,
-.text-sm {
+.text-xs {
+  font-weight: 400;
+}
+
+.text-sm:not(.hero-desc *):not(.hero-scroll-indicator *) {
+  font-size: 0.9375rem; /* 14px @ 15px base */
   font-weight: 400;
 }
 
 /* ============================================
    TYPE SCALE — Harmonized Role Classes
-   These define the ONE true size for each role
+   These define the true size for each role
    so every page/component stays consistent.
    ============================================ */
 
-/* Section eyebrow label */
-.type-label {
-  display: block;
-  font-size: 0.625rem;      /* 9.375px @15px base */
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  line-height: 1;
-}
-
-/* Section H1 (hero / page header) */
+/* Section H1 (hero / page header) — UNCHANGED */
 .type-hero {
   font-size: clamp(2.25rem, 5.5vw, 4.5rem);
   font-weight: 300;
@@ -206,46 +289,74 @@ html[lang="en"] .font-normal i {
   letter-spacing: -0.01em;
 }
 
+/* Hero Section Description Exemption — keeps original scale */
+section:has(.type-hero) .type-body,
+section:has(.type-hero) p,
+.hero-desc .type-body,
+.hero-desc p,
+.type-hero + p,
+.type-hero ~ p {
+  font-size: 0.875rem !important;
+  line-height: 1.8 !important;
+  letter-spacing: 0.01em !important;
+}
+
 /* Section H2 (standard section heading) */
 .type-heading {
-  font-size: clamp(1.5rem, 2.8vw, 2.1rem);  /* ~22.5px → ~31.5px */
+  font-size: clamp(1.75rem, 3.2vw, 2.35rem);  /* 26.25px → 35.25px */
   font-weight: 300;
-  line-height: 1.2;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 /* Sub-section H2 / smaller section heading */
 .type-subheading {
-  font-size: clamp(1.25rem, 2vw, 1.7rem);  /* ~18.75px → ~25.5px */
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);  /* 20.25px → 27px */
   font-weight: 300;
-  line-height: 1.25;
+  line-height: 1.3;
+  letter-spacing: normal;
 }
 
 /* Card / item H3 */
 .type-card-title {
-  font-size: 0.9375rem;   /* 14px */
+  font-size: clamp(1.05rem, 1.5vw, 1.15rem); /* ~15.75px → ~17.25px */
   font-weight: 500;
   line-height: 1.35;
+  letter-spacing: 0.01em;
 }
 
-/* Body / description text */
-.type-body {
-  font-size: 0.875rem;    /* 13.125px */
+/* Body / description text, Card text, and Justified paragraphs — unified identical scale */
+.type-body,
+.type-body-sm,
+.justified-paragraph,
+.justified-paragraph p,
+p.justified-paragraph,
+[data-justified="true"],
+main p:not(.hero-desc *):not(.type-hero *):not(.type-label):not(.type-caption):not(.text-xs):not(.type-heading):not(.type-subheading):not(.type-card-title),
+.card-desc,
+.faq-answer {
+  font-size: clamp(1rem, 1.1vw, 1.0625rem) !important;  /* 15px mobile → 16px desktop */
   font-weight: 300;
-  line-height: 1.8;
-}
-
-/* Small body (secondary descriptions, captions) */
-.type-body-sm {
-  font-size: 0.75rem;     /* 11.25px */
-  font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.8 !important;
+  letter-spacing: 0.005em;
 }
 
 /* Caption / fine print */
 .type-caption {
-  font-size: 0.625rem;    /* 9.375px */
+  font-size: 0.75rem;                        /* 11.25px */
   font-weight: 300;
   line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* Section eyebrow label */
+.type-label {
+  display: block;
+  font-size: 0.75rem;                        /* 11.25px */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
 }
 
 /* ============================================
@@ -268,6 +379,16 @@ p.justified-paragraph,
 :lang(zh) p.justified-paragraph,
 :lang(zh) [data-justified="true"] {
   text-justify: inter-ideograph;
+}
+
+[data-no-justify],
+[data-no-justify] *,
+.no-justify,
+.no-justify * {
+  text-align: inherit;
+  text-justify: auto !important;
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
 }
 
 /* Aspect ratio helper classes to guarantee cross-browser rendering in Next.js fill layouts */
@@ -502,20 +623,25 @@ header a:not(.btn-book-nav):hover {
   }
 
   .faq-answer {
-    font-size: 15px;
+    font-size: clamp(1rem, 1.1vw, 1.0625rem) !important;
     font-weight: 400;
-    line-height: 1.75;
+    line-height: 1.8 !important;
+  }
+
+  html[lang="zh"] .faq-answer {
+    font-size: clamp(1rem, 1.2vw, 1.075rem) !important;
+    line-height: 1.85 !important;
   }
 
   /* EXCEPTIONS: Long paragraphs (> 20 words) MUST be left and right justified with last line centered on mobile */
-  main p.justified-paragraph,
-  main p[data-justified="true"],
-  main .justified-paragraph,
-  main .justified-paragraph p,
-  .justified-paragraph,
-  .justified-paragraph p,
-  p.justified-paragraph,
-  [data-justified="true"] {
+  main p.justified-paragraph:not([data-no-justify]):not(.no-justify),
+  main p[data-justified="true"]:not([data-no-justify]):not(.no-justify),
+  main .justified-paragraph:not([data-no-justify]):not(.no-justify),
+  main .justified-paragraph p:not([data-no-justify]):not(.no-justify),
+  .justified-paragraph:not([data-no-justify]):not(.no-justify),
+  .justified-paragraph p:not([data-no-justify]):not(.no-justify),
+  p.justified-paragraph:not([data-no-justify]):not(.no-justify),
+  [data-justified="true"]:not([data-no-justify]):not(.no-justify) {
     text-align: justify !important;
     text-align-last: center !important;
     -webkit-text-align-last: center !important;

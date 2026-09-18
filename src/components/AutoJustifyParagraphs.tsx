@@ -46,12 +46,18 @@ export default function AutoJustifyParagraphs() {
           el.closest('.btn-secondary') ||
           el.closest('ul') ||
           el.closest('ol') ||
+          el.closest('[data-no-justify]') ||
+          el.closest('.no-justify') ||
           el.classList.contains('type-card-title') ||
           el.classList.contains('type-heading') ||
           el.classList.contains('type-subheading') ||
           el.classList.contains('type-hero') ||
           el.classList.contains('type-label')
         ) {
+          if (el.classList.contains('justified-paragraph')) {
+            el.classList.remove('justified-paragraph')
+            el.removeAttribute('data-justified')
+          }
           return
         }
 

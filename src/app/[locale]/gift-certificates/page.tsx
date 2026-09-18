@@ -57,10 +57,10 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
               <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
                 {locale === 'en' ? 'PERSONALISED EXPERIENCE' : '專屬個人化體驗'}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+              <h2 className="type-heading font-light text-foreground tracking-tight">
                 {locale === 'en' ? 'Choose the Perfect Shugaosha Experience' : '選擇最適合的 Shugaosha 體驗'}
               </h2>
-              <p className="text-base font-light text-charcoal/85 leading-relaxed">
+              <p className="type-body font-light text-charcoal/85 leading-relaxed">
                 {locale === 'en'
                   ? 'Gift Certificates can be arranged for either:'
                   : '禮券可選擇以下其中一項：'}
@@ -87,10 +87,10 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
                   key={idx}
                   className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 space-y-2 shadow-sm hover:border-primary/30 transition-all duration-300 text-center sm:text-left"
                 >
-                  <h3 className="text-base font-semibold text-foreground text-center sm:text-left">
+                  <h3 className="type-card-title font-semibold text-foreground text-center sm:text-left">
                     {item.title}
                   </h3>
-                  <p className="text-xs sm:text-sm font-light text-charcoal/75 leading-relaxed text-center sm:text-left">
+                  <p className="type-body font-light text-charcoal/75 leading-relaxed text-center sm:text-left">
                     {item.desc}
                   </p>
                 </div>
@@ -98,20 +98,20 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
             </div>
 
             {/* Explanatory Body Paragraphs */}
-            <div className="space-y-4">
-              <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
+            <div className="space-y-4" data-no-justify>
+              <p className="type-body font-light text-charcoal/80 leading-relaxed">
                 {locale === 'en'
                   ? 'For new clients, Foundation is the recommended starting point.'
                   : '對於新客人，我們建議先從 Foundation 開始。'}
               </p>
 
-              <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed italic">
+              <p className="type-body font-light text-charcoal/80 leading-relaxed">
                 {locale === 'en'
                   ? 'Each Gift Certificate will be personalised with the recipient’s name and selected treatment.'
                   : '每張 Gift Certificate 都會加入收禮人的姓名及所選服務。'}
               </p>
 
-              <p className="text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
+              <p className="type-body font-light text-charcoal/80 leading-relaxed">
                 {locale === 'en'
                   ? 'To arrange a Gift Certificate, please contact us via WhatsApp. The recipient can then book their appointment directly with us by quoting the voucher number.'
                   : '如需安排 Gift Certificate，請透過 WhatsApp 與我們聯絡。收禮人之後可憑 voucher number 直接與我們預約。'}
@@ -158,7 +158,7 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
             <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
               <Shield className="w-5 h-5" />
             </div>
-            <h3 className="text-base sm:text-lg font-semibold text-foreground uppercase tracking-wider">
+            <h3 className="type-card-title font-semibold text-foreground uppercase tracking-wider">
               {locale === 'en' ? 'GIFT CERTIFICATE DETAILS' : '禮券詳情'}
             </h3>
           </div>
@@ -170,7 +170,7 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
               locale === 'en' ? 'Non-refundable and not redeemable for cash' : '禮券不設退款，亦不可兌換現金',
               locale === 'en' ? 'Valid for the named recipient only' : '禮券只限指定收禮人使用',
             ].map((detail, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/85 text-left">
+              <li key={i} className="flex items-start gap-3 type-body font-light text-charcoal/85 text-left">
                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                 <span className="text-left flex-1">{detail}</span>
               </li>
@@ -183,10 +183,10 @@ export default async function GiftCertificatesPage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full scroll-mt-28">
         <div className="bg-soft-bg border border-gray-100 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center md:items-center justify-between gap-8 text-center md:text-left">
           <div className="space-y-2 text-center md:text-left">
-            <h3 className="text-xl sm:text-2xl font-light text-foreground">
+            <h3 className="type-subheading font-light text-foreground">
               {locale === 'en' ? 'Have Questions or Need Help?' : '有任何問題或需要協助？'}
             </h3>
-            <p className="text-sm font-light text-charcoal/75 max-w-lg mx-auto md:mx-0">
+            <p className="type-body font-light text-charcoal/75 max-w-lg mx-auto md:mx-0">
               {locale === 'en'
                 ? 'Contact our specialist team on WhatsApp (+61 493 552 213) to arrange your gift certificate or enquire about our services.'
                 : '歡迎隨時透過 WhatsApp（+61 493 552 213）聯絡我們的專業團隊安排禮券或查詢服務。'}

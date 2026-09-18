@@ -142,7 +142,7 @@ export default async function ContactPage({ params }: PageProps) {
                 <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider">
                   {locale === 'en' ? 'RESPONSE TIME' : '回覆時間'}
                 </h4>
-                <p className="text-sm font-light text-charcoal/80 leading-relaxed">
+                <p className="type-body font-light text-charcoal/80 leading-relaxed">
                   {locale === 'en'
                     ? 'We typically respond within a few hours during business hours.'
                     : '我們通常會在辦公時間內數小時內回覆。'}
@@ -160,7 +160,7 @@ export default async function ContactPage({ params }: PageProps) {
                   <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider">
                     {locale === 'en' ? 'BOOKING TERMS' : '預約條款'}
                   </h4>
-                  <p className="text-sm font-light text-charcoal/80 leading-relaxed mt-1">
+                  <p className="type-body font-light text-charcoal/80 leading-relaxed mt-1">
                     {locale === 'en'
                       ? 'By making a booking, you acknowledge and agree to our Booking Policy. Please read it carefully before scheduling.'
                       : '進行預約即表示您已閱讀並同意我們的預約守則。請在預約前仔細閱讀。'}

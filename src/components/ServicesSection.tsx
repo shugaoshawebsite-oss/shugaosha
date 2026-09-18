@@ -35,7 +35,7 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
             <div className="space-y-6">
               {/* Header Badge & Icon */}
               <div className="flex items-center justify-between gap-4">
-                <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-primary/10 text-primary">
+                <span className="inline-flex items-center px-3.5 py-1 rounded-full type-label font-semibold uppercase bg-primary/10 text-primary">
                   {s.foundation.badge}
                 </span>
                 <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
@@ -44,12 +44,12 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+              <h3 className="type-subheading font-light text-foreground tracking-tight">
                 {s.foundation.title}
               </h3>
 
               {/* Description Paragraphs */}
-              <div className="space-y-4 text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
+              <div className="space-y-4 type-body font-light text-charcoal/80 leading-relaxed">
                 <p>{s.foundation.p1}</p>
                 <p>{s.foundation.p2}</p>
                 <p>{s.foundation.p3}</p>
@@ -75,7 +75,7 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
             <div className="space-y-6">
               {/* Header Badge & Icon */}
               <div className="flex items-center justify-between gap-4">
-                <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-primary/10 text-primary">
+                <span className="inline-flex items-center px-3.5 py-1 rounded-full type-label font-semibold uppercase bg-primary/10 text-primary">
                   {s.lift.badge}
                 </span>
                 <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
@@ -84,12 +84,12 @@ export default function ServicesSection({ dict, locale }: ServicesSectionProps) 
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
+              <h3 className="type-subheading font-light text-foreground tracking-tight">
                 {s.lift.title}
               </h3>
 
               {/* Description Paragraphs */}
-              <div className="space-y-4 text-sm sm:text-base font-light text-charcoal/80 leading-relaxed">
+              <div className="space-y-4 type-body font-light text-charcoal/80 leading-relaxed">
                 <p>{s.lift.p1}</p>
                 <p>{s.lift.p2}</p>
                 <p>{s.lift.p3}</p>

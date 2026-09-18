@@ -136,11 +136,11 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
         <div className="space-y-12">
           {sections.map((section, i) => (
             <div key={i} className="border-b border-gray-100 pb-10 space-y-4 last:border-0">
-              <h3 className="text-base font-semibold text-foreground tracking-wide">
+              <h3 className="type-card-title font-semibold text-foreground tracking-wide">
                 {section.title}
               </h3>
               {section.intro && section.intro.length > 0 && (
-                <div className="space-y-3 text-sm font-light text-charcoal/80 leading-relaxed text-left">
+                <div className="space-y-3 type-body font-light text-charcoal/80 leading-relaxed text-left">
                   {section.intro.map((p, idx) => (
                     <p key={idx}>{p}</p>
                   ))}
@@ -149,7 +149,7 @@ export default async function AppointmentPolicyPage({ params }: PageProps) {
               {section.items && section.items.length > 0 && (
                 <ul className="space-y-2.5 text-left">
                   {section.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm font-light text-charcoal/80 leading-relaxed text-left">
+                    <li key={j} className="flex items-start gap-3 type-body font-light text-charcoal/80 leading-relaxed text-left">
                       <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                       <span className="text-left flex-1">{item}</span>
                     </li>
