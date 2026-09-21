@@ -61,6 +61,7 @@ export interface TourSchedule {
   _id: string
   city: LocaleString
   dates: string[]
+  datesZh?: string[]
   isActive: boolean
 }
 
@@ -292,8 +293,9 @@ const fallbackTeam: TeamMember[] = [
 const fallbackTours: TourSchedule[] = [
   {
     _id: 'tour1',
-    city: { en: 'Hong Kong (Causeway Bay)', zh: '香港 (銅鑼灣)' },
-    dates: ['27 September – 18 October 2026'],
+    city: { en: 'Hong Kong', zh: '香港' },
+    dates: ['26 September – 16 October 2026'],
+    datesZh: ['2026年9月26日至10月16日'],
     isActive: true
   }
 ]

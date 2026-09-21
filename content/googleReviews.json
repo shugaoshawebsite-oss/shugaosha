@@ -1,7 +1,19 @@
 {
   "rating": 5,
-  "user_ratings_total": 54,
+  "user_ratings_total": 55,
   "reviews": [
+    {
+      "author_name": "Bella",
+      "author_url": "https://www.google.com/maps/contrib/100025244382395500996/reviews",
+      "language": "en",
+      "original_language": "en",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKs1i93vm9D1Twgi-5AZRcKidzHmfM4JOke3gtclJAEPSlqplc=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "in the last week",
+      "text": "Have been going to Teresa for over 2 months now and can really see a difference! She has a warm and friendly approach and provides detailed feedback and facial analysis after the 3rd and 5th sessions. Wish I had started sooner. Can't recommend her enough!",
+      "time": 1789901020,
+      "translated": false
+    },
     {
       "author_name": "MM Chau",
       "author_url": "https://www.google.com/maps/contrib/117017769886031617558/reviews",
@@ -33,7 +45,7 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjW0RjkL0uRvI0p-W4JPOQfMAlF9-n2mcg_aloznXN07peGzy22W=s128-c0x00000000-cc-rp-mo-ba2",
       "rating": 5,
-      "relative_time_description": "2 weeks ago",
+      "relative_time_description": "3 weeks ago",
       "text": "It’s a comfortable and relaxing experience! You can definitely the difference after one session. Teresa is so lovely, warm and welcoming.",
       "time": 1787919755,
       "translated": false
@@ -147,5 +159,5 @@
       "translated": false
     }
   ],
-  "cachedAt": "2026-09-18T00:51:28.493Z"
+  "cachedAt": "2026-09-21T01:41:38.664Z"
 }

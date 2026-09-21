@@ -154,7 +154,7 @@ export default async function ServicesPage({ params }: PageProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {t.steps.map((item, index) => (
                 <div key={index} className="space-y-4 text-center md:text-left bg-white/10 border border-white/15 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
-                  <div className="text-3xl font-light !text-white text-white tracking-wide text-center md:text-left">
+                  <div className="text-3xl font-light text-primary tracking-wide text-center md:text-left">
                     {item.step}
                   </div>
                   <h3 className="type-card-title !text-white text-white font-medium">

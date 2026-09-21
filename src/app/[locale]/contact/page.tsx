@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { getDictionary } from '@/utils/dictionary'
 import { Mail, MapPin, Clock, Phone, Calendar, Shield } from 'lucide-react'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
+import UpcomingVisitContent from '@/components/UpcomingVisitContent'
 import { getTours } from '@/utils/dataService'
 
 interface PageProps {
@@ -66,7 +67,7 @@ export default async function ContactPage({ params }: PageProps) {
               </div>
               <div className="space-y-1 !text-left flex-1">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-base font-medium !text-left">
+                  <h3 className="text-base font-medium !text-left text-white !text-white">
                     {locale === 'en' ? 'Book a Session' : '網上預約'}
                   </h3>
                   <span className="text-[10px] font-medium uppercase tracking-wider bg-white/20 text-white px-2.5 py-0.5 rounded-full">
@@ -240,134 +241,9 @@ export default async function ContactPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* ── International Visits Section (Hong Kong) ── */}
-      <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full border-t border-gray-100 pt-16 scroll-mt-28 space-y-10">
-        <div className="space-y-3 text-center sm:text-left">
-          <span className="type-label text-primary block uppercase tracking-widest text-xs font-semibold">
-            {locale === 'en' ? 'HONG KONG VISIT' : '香港期間限定'}
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-light text-foreground tracking-tight">
-            {locale === 'en' ? 'Shugaosha in Hong Kong' : 'Shugaosha 香港'}
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          
-          {/* Left: Tour Details */}
-          <div className="space-y-8 w-full text-center sm:text-left">
-            <div className="space-y-4">
-              <div className="flex items-center justify-center sm:justify-start gap-3">
-                <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
-                <div>
-                  <p className="type-label text-primary uppercase tracking-wider text-xs font-semibold mb-1">
-                    {locale === 'en' ? 'DESTINATION' : '期間限定地點'}
-                  </p>
-                  <h3 className="text-2xl font-light text-foreground">
-                    {locale === 'en' ? 'Hong Kong' : '香港'}
-                  </h3>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center sm:justify-start gap-3 pt-2">
-                <Calendar className="w-5 h-5 text-primary flex-shrink-0" />
-                <div>
-                  <p className="type-label text-charcoal/50 uppercase tracking-wider text-xs font-semibold mb-1">
-                    {locale === 'en' ? 'DATES' : '日期'}
-                  </p>
-                  <p className="text-base font-medium text-foreground">
-                    {locale === 'en' ? '26 September – 16 October 2026' : '2026年9月26日至10月16日'}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-3 pt-4 border-t border-gray-100">
-              <p className="type-body text-charcoal/80 leading-relaxed">
-                {locale === 'en'
-                  ? 'Shugaosha will be returning to Hong Kong for a limited time during these dates.'
-                  : 'Shugaosha 將於以上日期期間限定回到香港。'}
-              </p>
-              <p className="type-body text-charcoal/80 leading-relaxed">
-                {locale === 'en'
-                  ? 'Appointments are limited and will be confirmed on a first-come, first-served basis.'
-                  : '預約名額有限，並會按照先到先得的方式確認。'}
-              </p>
-              <p className="type-body text-charcoal/80 leading-relaxed">
-                {locale === 'en'
-                  ? 'To book a Hong Kong appointment, please contact us via WhatsApp.'
-                  : '如欲預約香港 Session，請透過 WhatsApp 與我們聯絡。'}
-              </p>
-            </div>
-
-            <div className="pt-2 flex justify-center sm:justify-start">
-              <a
-                href={encodeURI(
-                  locale === 'en'
-                    ? 'https://wa.me/61493552213?text=Hi, I would like to book an appointment for the Hong Kong Tour.'
-                    : 'https://wa.me/61493552213?text=您好，我想預約香港期間限定服務。'
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary flex items-center gap-2 text-xs py-3 px-6 shadow-sm hover:shadow transition-all duration-300 w-full sm:w-auto justify-center"
-              >
-                <WhatsAppIcon className="w-4 h-4" />
-                <span>
-                  {locale === 'en'
-                    ? 'BOOK HONG KONG APPOINTMENT VIA WHATSAPP'
-                    : '透過 WHATSAPP 預約香港 SESSION'}
-                </span>
-              </a>
-            </div>
-          </div>
-
-          {/* Right: Important Booking Note */}
-          <div className="bg-primary/5 border border-primary/10 rounded-2xl p-8 space-y-5 text-left">
-            <div className="flex justify-center sm:justify-start">
-              <MapPin className="w-6 h-6 text-primary" />
-            </div>
-            <h4 className="text-base font-semibold text-foreground uppercase tracking-wide text-center sm:text-left">
-              {locale === 'en' ? 'IMPORTANT BOOKING NOTE' : '重要預約須知'}
-            </h4>
-            <ul className="space-y-3 text-left">
-              {[
-                locale === 'en'
-                  ? 'Appointments are available by prior arrangement only.'
-                  : '所有預約均需提前安排。',
-                locale === 'en'
-                  ? 'Appointments are limited — early booking is recommended.'
-                  : '預約名額有限，建議提早查詢及預約。',
-                locale === 'en'
-                  ? 'Booking and confirmation procedures may vary depending on location.'
-                  : '預約及確認方式會因地點而有所不同。',
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm font-light text-charcoal/80 text-left">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-left flex-1">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs font-light text-charcoal/60 pt-2 border-t border-primary/10 text-center sm:text-left">
-              {locale === 'en' ? (
-                <>
-                  All sessions are subject to our{' '}
-                  <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors font-medium">
-                    Booking Policy
-                  </Link>
-                  .
-                </>
-              ) : (
-                <>
-                  所有服務均受我們的{' '}
-                  <Link href={`/${locale}/appointment-policy`} className="underline hover:text-primary transition-colors font-medium">
-                    預約守則
-                  </Link>
-                  {' '}約束。
-                </>
-              )}
-            </p>
-          </div>
-
-        </div>
+      {/* ── International Visits Section ── */}
+      <section id="upcoming-visit" className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full border-t border-gray-100 pt-16 scroll-mt-28">
+        <UpcomingVisitContent locale={locale} tour={activeTours[0]} />
       </section>
 
     </div>

@@ -12,6 +12,7 @@ interface Tour {
   _id: string
   city: LocalizedString
   dates: string[]
+  datesZh?: string[]
   isActive: boolean
   updatedAt?: string
 }
