@@ -68,11 +68,8 @@ export default function UpcomingVisitContent({ locale, tour }: UpcomingVisitCont
     <div className="space-y-10 w-full">
       {/* Header */}
       <div className="space-y-2 text-center sm:text-left">
-        <h2
-          className="type-label text-foreground !text-foreground block uppercase tracking-widest text-xs font-semibold font-[family-name:var(--font-montserrat)]"
-          style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
-        >
-          {locale === 'en' ? 'UPCOMING VISIT' : '即將到訪'}
+        <h2 className="text-xl font-medium text-foreground tracking-wide text-center sm:text-left">
+          {locale === 'en' ? 'Upcoming Visit' : '即將到訪'}
         </h2>
       </div>
 
@@ -81,33 +78,29 @@ export default function UpcomingVisitContent({ locale, tour }: UpcomingVisitCont
         <div className="space-y-8 text-center sm:text-left">
           <div className="space-y-6">
             {/* Destination */}
-            <div className="flex items-start justify-center sm:justify-start gap-4">
-              <div className="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div className="text-center sm:text-left">
-                <p className="type-label text-primary uppercase tracking-wider text-xs font-semibold mb-1">
+            <div className="text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 mb-1.5">
+                <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+                <p className="type-label text-primary uppercase tracking-wider text-xs font-semibold">
                   {locale === 'en' ? 'DESTINATION' : '地點'}
                 </p>
-                <h3 className="text-2xl sm:text-3xl font-light text-foreground">
-                  {destination}
-                </h3>
               </div>
+              <h3 className="text-2xl sm:text-3xl font-light text-foreground">
+                {destination}
+              </h3>
             </div>
 
             {/* Dates */}
-            <div className="flex items-start justify-center sm:justify-start gap-4">
-              <div className="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Calendar className="w-5 h-5" />
-              </div>
-              <div className="text-center sm:text-left">
-                <p className="type-label text-charcoal/50 uppercase tracking-wider text-xs font-semibold mb-1">
+            <div className="text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 mb-1.5">
+                <Calendar className="w-3.5 h-3.5 text-charcoal/60 shrink-0" />
+                <p className="type-label text-charcoal/50 uppercase tracking-wider text-xs font-semibold">
                   {locale === 'en' ? 'DATES' : '日期'}
                 </p>
-                <p className="text-base sm:text-lg font-medium text-foreground">
-                  {dates}
-                </p>
               </div>
+              <p className="text-base sm:text-lg font-medium text-foreground">
+                {dates}
+              </p>
             </div>
           </div>
 
