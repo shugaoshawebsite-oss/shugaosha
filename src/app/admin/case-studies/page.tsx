@@ -209,7 +209,7 @@ export default function CaseStudiesAdmin() {
                 <td className="px-6 py-4">
                   <div className="text-charcoal font-medium">{study.specialist || 'Teresa Soo'}</div>
                 </td>
-                <td className="hidden md:table-cell px-6 py-4 font-mono text-xs text-charcoal/60">
+                <td className="hidden md:table-cell px-6 py-4 font-mono text-xs text-charcoal/60 max-w-[180px] truncate" title={study.imageRelativeUrl}>
                   {study.imageRelativeUrl || 'None'}
                 </td>
                 <td className="px-6 py-4 flex justify-end gap-2">

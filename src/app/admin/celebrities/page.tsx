@@ -209,7 +209,7 @@ export default function CelebritiesAdmin() {
                   <div className="text-charcoal">{celeb.role.en}</div>
                   <div className="text-charcoal/50 text-xs">{celeb.role.zh}</div>
                 </td>
-                <td className="hidden md:table-cell px-6 py-4 font-mono text-xs text-charcoal/60">
+                <td className="hidden md:table-cell px-6 py-4 font-mono text-xs text-charcoal/60 max-w-[180px] truncate" title={celeb.imageRelativeUrl}>
                   {celeb.imageRelativeUrl || 'None'}
                 </td>
                 <td className="px-6 py-4 flex justify-end gap-2">

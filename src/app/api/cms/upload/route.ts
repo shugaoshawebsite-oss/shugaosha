@@ -4,24 +4,38 @@ import path from 'path'
 import { v2 as cloudinary } from 'cloudinary'
 import { revalidatePath } from 'next/cache'
 
-// Configure Cloudinary if credentials exist
-if (
-  process.env.CLOUDINARY_CLOUD_NAME &&
-  process.env.CLOUDINARY_API_KEY &&
-  process.env.CLOUDINARY_API_SECRET
-) {
-  cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-  })
+function getCloudinary() {
+  if (process.env.CLOUDINARY_URL) {
+    cloudinary.config({
+      cloudinary_url: process.env.CLOUDINARY_URL,
+    })
+    return cloudinary
+  }
+  if (
+    process.env.CLOUDINARY_CLOUD_NAME &&
+    process.env.CLOUDINARY_API_KEY &&
+    process.env.CLOUDINARY_API_SECRET
+  ) {
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+    })
+    return cloudinary
+  }
+  return null
 }
 
 function uploadToCloudinary(buffer: Buffer): Promise<{ secure_url: string }> {
+  const client = getCloudinary()
+  if (!client) {
+    return Promise.reject(new Error('Cloudinary credentials not configured'))
+  }
   return new Promise((resolve, reject) => {
-    const uploadStream = cloudinary.uploader.upload_stream(
+    const uploadStream = client.uploader.upload_stream(
       {
         folder: 'shugaosha_cms',
+        resource_type: 'auto',
       },
       (error, result) => {
         if (error) return reject(error)
@@ -78,12 +92,8 @@ export async function POST(request: Request) {
 
     let finalUrl = ''
 
-    // 1. Try Cloudinary upload if fully configured
-    if (
-      process.env.CLOUDINARY_CLOUD_NAME &&
-      process.env.CLOUDINARY_API_KEY &&
-      process.env.CLOUDINARY_API_SECRET
-    ) {
+    // 1. Try Cloudinary upload if configured
+    if (getCloudinary()) {
       try {
         const result = await uploadToCloudinary(buffer)
         finalUrl = result.secure_url
