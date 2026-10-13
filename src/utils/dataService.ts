@@ -384,9 +384,9 @@ export async function getGoogleReviews(): Promise<GooglePlaceData> {
   // This is a best-effort fire-and-forget — the current request still returns cached data
   const isStale = !cached.cachedAt || (Date.now() - new Date(cached.cachedAt).getTime()) > CACHE_TTL_MS
   if (isStale) {
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000'
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
+      || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null)
+      || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
     fetch(`${baseUrl}/api/google-reviews`, { cache: 'no-store' }).catch(() => {})
   }
 

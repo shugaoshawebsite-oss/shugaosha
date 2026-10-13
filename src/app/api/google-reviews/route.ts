@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { promises as fs } from 'fs'
 import path from 'path'
+import { revalidatePath } from 'next/cache'
 
 // The Shugaosha Google Place ID (verified via Places API findplacefromtext)
 const PLACE_ID = 'ChIJn5vTzKetEmsRMq2LXVYY48U'
@@ -42,11 +43,13 @@ async function readCacheFromGitHub(): Promise<GooglePlaceData | null> {
   return null
 }
 
-async function writeCacheToGitHub(data: GooglePlaceData): Promise<void> {
+async function writeCacheToGitHub(data: GooglePlaceData): Promise<{ success: boolean; error?: string }> {
   const repo = process.env.GITHUB_CONTENT_REPO
   const branch = process.env.GITHUB_CONTENT_BRANCH || 'main'
   const token = process.env.GITHUB_TOKEN
-  if (!repo || !token) return
+  if (!repo || !token) {
+    return { success: false, error: 'GITHUB_CONTENT_REPO or GITHUB_TOKEN is not configured' }
+  }
 
   const filePath = `content/googleReviews.json`
   const getUrl = `https://api.github.com/repos/${repo}/contents/${filePath}?ref=${branch}`
@@ -71,15 +74,27 @@ async function writeCacheToGitHub(data: GooglePlaceData): Promise<void> {
     ...(sha ? { sha } : {}),
   }
 
-  await fetch(putUrl, {
-    method: 'PUT',
-    headers: {
-      Authorization: `token ${token}`,
-      Accept: 'application/vnd.github.v3+json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  })
+  try {
+    const putRes = await fetch(putUrl, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
+
+    if (!putRes.ok) {
+      const errText = await putRes.text()
+      console.error('Failed to commit reviews to GitHub:', errText)
+      return { success: false, error: `GitHub API error: ${errText}` }
+    }
+    return { success: true }
+  } catch (err: any) {
+    console.error('Network error writing to GitHub:', err)
+    return { success: false, error: err?.message || 'Network error writing to GitHub' }
+  }
 }
 
 async function readCacheFromLocal(): Promise<GooglePlaceData | null> {
@@ -103,11 +118,12 @@ async function writeCacheToLocal(data: GooglePlaceData): Promise<void> {
 
 // ─── Fetch fresh data from Google Places API (New) ────────────────────────────
 
-async function fetchFromGooglePlaces(): Promise<GooglePlaceData | null> {
+async function fetchFromGooglePlaces(): Promise<{ data: GooglePlaceData | null; error?: string }> {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY
   if (!apiKey) {
-    console.error('GOOGLE_PLACES_API_KEY is not set')
-    return null
+    const msg = 'GOOGLE_PLACES_API_KEY environment variable is not set'
+    console.error(msg)
+    return { data: null, error: msg }
   }
 
   // Google Places API (New) — Place Details endpoint
@@ -116,27 +132,32 @@ async function fetchFromGooglePlaces(): Promise<GooglePlaceData | null> {
   try {
     const res = await fetch(url, { cache: 'no-store' })
     if (!res.ok) {
-      console.error('Google Places API error:', res.status, res.statusText)
-      return null
+      const msg = `Google Places API HTTP error: ${res.status} ${res.statusText}`
+      console.error(msg)
+      return { data: null, error: msg }
     }
 
     const json = await res.json()
 
     if (json.status !== 'OK') {
-      console.error('Google Places API status:', json.status, json.error_message)
-      return null
+      const msg = `Google Places API status ${json.status}: ${json.error_message || 'Check API key restrictions and Place ID'}`
+      console.error(msg)
+      return { data: null, error: msg }
     }
 
     const result = json.result
     return {
-      rating: result.rating ?? 5.0,
-      user_ratings_total: result.user_ratings_total ?? 0,
-      reviews: (result.reviews ?? []) as GoogleReview[],
-      cachedAt: new Date().toISOString(),
+      data: {
+        rating: result.rating ?? 5.0,
+        user_ratings_total: result.user_ratings_total ?? 0,
+        reviews: (result.reviews ?? []) as GoogleReview[],
+        cachedAt: new Date().toISOString(),
+      },
     }
-  } catch (err) {
-    console.error('Failed to fetch from Google Places API:', err)
-    return null
+  } catch (err: any) {
+    const msg = `Failed to fetch from Google Places API: ${err?.message || err}`
+    console.error(msg)
+    return { data: null, error: msg }
   }
 }
 
@@ -149,11 +170,17 @@ async function readCache(): Promise<GooglePlaceData | null> {
   return readCacheFromLocal()
 }
 
-async function writeCache(data: GooglePlaceData): Promise<void> {
+async function writeCache(data: GooglePlaceData): Promise<{ target: 'github' | 'local'; success: boolean; error?: string }> {
   if (process.env.GITHUB_CONTENT_REPO && process.env.GITHUB_TOKEN) {
-    await writeCacheToGitHub(data)
+    const res = await writeCacheToGitHub(data)
+    return { target: 'github', ...res }
   } else {
-    await writeCacheToLocal(data)
+    try {
+      await writeCacheToLocal(data)
+      return { target: 'local', success: true }
+    } catch (err: any) {
+      return { target: 'local', success: false, error: err?.message }
+    }
   }
 }
 
@@ -166,32 +193,47 @@ function isCacheStale(cachedAt: string): boolean {
 
 /**
  * GET /api/google-reviews
- * Returns cached reviews, refreshing from Google Places API if cache is stale (> 24h).
+ * Returns cached reviews, or refreshes from Google Places API if stale (> 24h) or forced (?force=true).
  */
-export async function GET() {
-  try {
-    let cached = await readCache()
+export async function GET(request: Request) {
+  return handleSync(request)
+}
 
-    const stale = !cached || !cached.cachedAt || isCacheStale(cached.cachedAt)
+/**
+ * POST /api/google-reviews
+ * Manually trigger refresh (used by Admin dashboard).
+ */
+export async function POST(request: Request) {
+  return handleSync(request)
+}
+
+async function handleSync(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url)
+    const isCron = Boolean(request.headers.get('x-vercel-cron'))
+    const force = isCron || searchParams.get('force') === 'true'
+
+    let cached = await readCache()
+    const stale = force || !cached || !cached.cachedAt || isCacheStale(cached.cachedAt)
 
     if (stale) {
-      const fresh = await fetchFromGooglePlaces()
+      const { data: fresh, error: googleError } = await fetchFromGooglePlaces()
       if (fresh) {
         // Merge fresh reviews with existing cached reviews to accumulate them without losing past ones
         const existingReviews = cached?.reviews || []
         const mergedMap = new Map<string, GoogleReview>()
 
-        existingReviews.forEach(r => {
+        existingReviews.forEach((r) => {
           const key = `${r.author_name}-${r.time || r.text.slice(0, 20)}`
           mergedMap.set(key, r)
         })
-        fresh.reviews.forEach(r => {
+        fresh.reviews.forEach((r) => {
           const key = `${r.author_name}-${r.time || r.text.slice(0, 20)}`
           mergedMap.set(key, r)
         })
 
         const mergedReviews = Array.from(mergedMap.values())
-          .filter(r => r.text && r.text.trim().length > 0)
+          .filter((r) => r.text && r.text.trim().length > 0)
           .sort((a, b) => (b.time || 0) - (a.time || 0))
 
         const mergedData: GooglePlaceData = {
@@ -201,10 +243,37 @@ export async function GET() {
           cachedAt: fresh.cachedAt,
         }
 
-        await writeCache(mergedData)
-        return NextResponse.json(mergedData)
+        const writeResult = await writeCache(mergedData)
+
+        try {
+          revalidatePath('/', 'layout')
+        } catch (_) {}
+
+        return NextResponse.json({
+          success: true,
+          action: 'refreshed',
+          totalReviews: mergedData.reviews.length,
+          userRatingsTotal: mergedData.user_ratings_total,
+          cachedAt: mergedData.cachedAt,
+          storage: writeResult,
+          rating: mergedData.rating,
+          reviews: mergedData.reviews,
+        })
       }
-      // Google API failed — return stale cache if available, else empty fallback
+
+      // If Google API failed
+      if (force) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: googleError || 'Failed to fetch fresh reviews from Google',
+            cached,
+          },
+          { status: 502 }
+        )
+      }
+
+      // Google API failed on background check — return stale cache if available, else empty fallback
       if (cached) return NextResponse.json(cached)
       return NextResponse.json({
         rating: 5.0,
@@ -214,9 +283,13 @@ export async function GET() {
       })
     }
 
-    return NextResponse.json(cached)
-  } catch (err) {
+    return NextResponse.json({
+      success: true,
+      action: 'cached',
+      ...cached,
+    })
+  } catch (err: any) {
     console.error('GET /api/google-reviews error:', err)
-    return NextResponse.json({ error: 'Failed to get reviews' }, { status: 500 })
+    return NextResponse.json({ error: err?.message || 'Failed to get reviews' }, { status: 500 })
   }
 }

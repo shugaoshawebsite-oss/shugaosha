@@ -25,6 +25,8 @@ const countryFlags: Record<string, string> = {
   'Google Review Client': '⭐',
 }
 
+export const revalidate = 60
+
 export default async function HomePage({ params }: PageProps) {
   const { locale: rawLocale } = await params
   const locale = (rawLocale === 'zh' ? 'zh' : 'en') as 'en' | 'zh'

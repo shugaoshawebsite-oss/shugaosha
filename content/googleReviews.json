@@ -1,7 +1,31 @@
 {
   "rating": 5,
-  "user_ratings_total": 55,
+  "user_ratings_total": 57,
   "reviews": [
+    {
+      "author_name": "Kathleen Lau",
+      "author_url": "https://www.google.com/maps/contrib/112425557704654122898/reviews",
+      "language": "en",
+      "original_language": "en",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocI8vcujGIhzo8XaV0He1ZoAROjonV6NaI5nuaLkQdEYEP7whGzN=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "in the last week",
+      "text": "I recently had my first Japanese Facial Realignment session at Shugaosha and I'm absolutely impressed with the results.\n\nTeresa is exceptionally professional, patient and calm throughout the entire treatment. Her approach made me feel completely at ease, and her expertise in facial correction is evident in every precise movement.\n\nWhat struck me most was how the treatment focused on facial balance, contours and overall harmony rather than just one area. The precision and attention to detail were remarkable. I could actually see visible changes after just one treatment – my face looked more balanced, lifted and refined with clearer contours.\n\nThe whole experience felt natural and personalized to my face, not like a one-size-fits-all approach. Teresa's calm demeanor and patience made the session both relaxing and effective.\n\nIf you're considering Japanese Facial Realignment, I highly recommend Shugaosha. The results speak for themselves, and Teresa's professional service is truly outstanding.",
+      "time": 1791548850,
+      "translated": false
+    },
+    {
+      "author_name": "MC",
+      "author_url": "https://www.google.com/maps/contrib/111477548742183061799/reviews",
+      "language": "en",
+      "original_language": "en",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUQATdS9PMr03jFLBf70js0t5fLgnqZd6CcJkYq7KpVb0pULGoi_g=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "in the last week",
+      "text": "I had a wonderful experience! The treatment was incredibly effective and I'm extremely satisfied with the results. The whole process was very comfortable. Teresa was amazing—so kind, gentle, and highly skilled. Highly recommended!",
+      "time": 1791501346,
+      "translated": false
+    },
     {
       "author_name": "Bella",
       "author_url": "https://www.google.com/maps/contrib/100025244382395500996/reviews",
@@ -9,7 +33,7 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKs1i93vm9D1Twgi-5AZRcKidzHmfM4JOke3gtclJAEPSlqplc=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "in the last week",
+      "relative_time_description": "3 weeks ago",
       "text": "Have been going to Teresa for over 2 months now and can really see a difference! She has a warm and friendly approach and provides detailed feedback and facial analysis after the 3rd and 5th sessions. Wish I had started sooner. Can't recommend her enough!",
       "time": 1789901020,
       "translated": false
@@ -21,7 +45,7 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjULHsU-i_K1RJFGss3aX9kUebmR2AQqO8iPaelv0bZAAGR9Zvc=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "a week ago",
+      "relative_time_description": "4 weeks ago",
       "text": "I’ve completed 10 sessions of Japanese face slimming realignment at Shugaosha and the change has been really noticeable! Teresa has amazing hands and skill — my face shape looks more refined and lifted, especially the cheekbones and around the eyes, and I can see a difference right after each session. I will continue as maintenance. Highly recommend Teresa and Shugaosha",
       "time": 1789383338,
       "translated": false
@@ -33,7 +57,7 @@
       "original_language": "en",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWHdxajbhQWg2MJUxu39eMVn-2QZUPnnpa4krJ7HrEBEDcUxAI=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "2 weeks ago",
+      "relative_time_description": "a month ago",
       "text": "I had such a wonderful facial experience! The treatment was incredibly relaxing. The therapist was professional, gentle and attentive throughout the treatment. I loved the whole experience and will definitely be coming back. Highly recommend! ✨",
       "time": 1788398824,
       "translated": false
@@ -159,5 +183,5 @@
       "translated": false
     }
   ],
-  "cachedAt": "2026-09-23T00:01:39.362Z"
+  "cachedAt": "2026-10-13T05:08:08.157Z"
 }

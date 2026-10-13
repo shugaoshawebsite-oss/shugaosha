@@ -1,3 +1,5 @@
+import AdminGoogleReviewsSync from '@/components/AdminGoogleReviewsSync'
+
 export default function AdminDashboard() {
   return (
     <div className="space-y-8">
@@ -6,7 +8,9 @@ export default function AdminDashboard() {
         <p className="text-charcoal/60">Welcome to the Content Management System.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <AdminGoogleReviewsSync />
+
         <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
           <h2 className="text-lg font-medium text-charcoal">Celebrities</h2>
           <p className="text-sm text-charcoal/60">Manage celebrity endorsements and their quotes.</p>

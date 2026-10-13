@@ -217,6 +217,7 @@ const MAPS_REVIEW_URL = 'https://g.page/r/CTKti11WGOPFEBE/review'
 const MAPS_PROFILE_URL = 'https://www.google.com/maps/search/?api=1&query=5+Pittwater+Road%2C+Gladesville+NSW+2111'
 
 export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleReviewsProps) {
+  const [currentData, setCurrentData] = useState<GooglePlaceData>(placeData)
   const [lightboxReview, setLightboxReview] = useState<GoogleReview | null>(null)
   const [visibleCount, setVisibleCount] = useState(5)
   const [isLoading, setIsLoading] = useState(false)
@@ -227,12 +228,24 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
   const sentinelRef = useRef<HTMLDivElement>(null)
   const isLoadingRef = useRef(false)
 
+  // Fetch the latest reviews on client mount to guarantee real-time updates
+  useEffect(() => {
+    fetch('/api/google-reviews')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && Array.isArray(data.reviews) && data.reviews.length > 0) {
+          setCurrentData(data)
+        }
+      })
+      .catch(() => {})
+  }, [])
+
   const handleClose = useCallback(() => setLightboxReview(null), [])
 
   // Filter valid reviews with actual text
   const allReviews = useMemo(
-    () => (placeData.reviews ?? []).filter((r) => r.text && r.text.trim().length > 0),
-    [placeData.reviews]
+    () => (currentData.reviews ?? []).filter((r) => r.text && r.text.trim().length > 0),
+    [currentData.reviews]
   )
 
   // Auto-load 5 more reviews from local cache (0 Google API cost)
@@ -340,11 +353,11 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
               <div className="flex flex-col text-left">
                 <div className="flex items-center gap-2">
                   <span className="text-2xl font-semibold text-foreground leading-none">
-                    {placeData.rating?.toFixed(1) ?? '5.0'}
+                    {currentData.rating?.toFixed(1) ?? '5.0'}
                   </span>
-                  <Stars rating={placeData.rating ?? 5} size="lg" />
+                  <Stars rating={currentData.rating ?? 5} size="lg" />
                   <span className="text-sm font-medium text-charcoal/60">
-                    ({placeData.user_ratings_total || 54})
+                    ({currentData.user_ratings_total || 57})
                   </span>
                 </div>
                 <span className="text-xs text-charcoal/60 mt-0.5 font-medium group-hover:text-primary transition-colors">
