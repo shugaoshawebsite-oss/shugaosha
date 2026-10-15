@@ -219,7 +219,7 @@ const MAPS_PROFILE_URL = 'https://www.google.com/maps/search/?api=1&query=5+Pitt
 export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleReviewsProps) {
   const [currentData, setCurrentData] = useState<GooglePlaceData>(placeData)
   const [lightboxReview, setLightboxReview] = useState<GoogleReview | null>(null)
-  const [visibleCount, setVisibleCount] = useState(5)
+  const [visibleCount, setVisibleCount] = useState(() => Math.max(placeData?.reviews?.length || 0, 10))
   const [isLoading, setIsLoading] = useState(false)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
@@ -233,8 +233,15 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
     fetch('/api/google-reviews')
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data && Array.isArray(data.reviews) && data.reviews.length > 0) {
-          setCurrentData(data)
+        if (data) {
+          const total = data.user_ratings_total ?? data.userRatingsTotal
+          setCurrentData((prev) => ({
+            ...prev,
+            rating: typeof data.rating === 'number' ? data.rating : prev.rating,
+            user_ratings_total: typeof total === 'number' && total > 0 ? total : prev.user_ratings_total,
+            reviews: Array.isArray(data.reviews) && data.reviews.length > 0 ? data.reviews : prev.reviews,
+            cachedAt: data.cachedAt ?? prev.cachedAt,
+          }))
         }
       })
       .catch(() => {})
@@ -262,11 +269,11 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
     }, 250)
   }, [allReviews.length])
 
-  // Derive displayed reviews by cycling through authentic reviews pool
+  // Derive displayed reviews by showing all authentic reviews and seamlessly cycling if scrolled past
   const displayedReviews = useMemo(() => {
     if (allReviews.length === 0) return []
     const list: GoogleReview[] = []
-    const count = Math.max(visibleCount, Math.min(5, allReviews.length))
+    const count = Math.max(visibleCount, allReviews.length)
     for (let i = 0; i < count; i++) {
       list.push(allReviews[i % allReviews.length])
     }
@@ -357,7 +364,7 @@ export default function HomeGoogleReviews({ placeData, locale }: HomeGoogleRevie
                   </span>
                   <Stars rating={currentData.rating ?? 5} size="lg" />
                   <span className="text-sm font-medium text-charcoal/60">
-                    ({currentData.user_ratings_total || 57})
+                    ({currentData.user_ratings_total || allReviews.length || 59})
                   </span>
                 </div>
                 <span className="text-xs text-charcoal/60 mt-0.5 font-medium group-hover:text-primary transition-colors">

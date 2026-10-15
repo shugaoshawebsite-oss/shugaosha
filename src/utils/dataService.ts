@@ -371,7 +371,7 @@ const CACHE_TTL_MS = 24 * 60 * 60 * 1000 // 24 hours
 
 const fallbackGooglePlaceData: GooglePlaceData = {
   rating: 5.0,
-  user_ratings_total: 45,
+  user_ratings_total: 59,
   reviews: [],
   cachedAt: '2000-01-01T00:00:00.000Z',
 }

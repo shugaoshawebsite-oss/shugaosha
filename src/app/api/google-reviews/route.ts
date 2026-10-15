@@ -126,31 +126,56 @@ async function fetchFromGooglePlaces(): Promise<{ data: GooglePlaceData | null; 
     return { data: null, error: msg }
   }
 
-  // Google Places API (New) — Place Details endpoint
-  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=rating,user_ratings_total,reviews&reviews_sort=newest&key=${apiKey}`
-
   try {
-    const res = await fetch(url, { cache: 'no-store' })
-    if (!res.ok) {
-      const msg = `Google Places API HTTP error: ${res.status} ${res.statusText}`
-      console.error(msg)
-      return { data: null, error: msg }
+    const languages = ['en', 'zh-TW', 'zh-HK', 'zh-CN', 'ja']
+    const sorts = ['newest', 'most_relevant']
+    const reviewMap = new Map<string, GoogleReview>()
+    let latestRating = 5.0
+    let latestTotal = 0
+
+    for (const lang of languages) {
+      for (const sort of sorts) {
+        const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=rating,user_ratings_total,reviews&reviews_sort=${sort}&language=${lang}&key=${apiKey}`
+        try {
+          const res = await fetch(url, { cache: 'no-store' })
+          if (!res.ok) continue
+          const json = await res.json()
+          if (json.status !== 'OK' || !json.result) continue
+
+          const result = json.result
+          if (typeof result.rating === 'number') latestRating = result.rating
+          if (typeof result.user_ratings_total === 'number') {
+            latestTotal = Math.max(latestTotal, result.user_ratings_total)
+          }
+
+          if (Array.isArray(result.reviews)) {
+            for (const r of result.reviews) {
+              const key = (r.author_name || '').toLowerCase().trim()
+              if (key && r.text && r.text.trim()) {
+                if (!reviewMap.has(key)) {
+                  reviewMap.set(key, r as GoogleReview)
+                } else {
+                  const existing = reviewMap.get(key)!
+                  if ((r.time || 0) > (existing.time || 0)) {
+                    reviewMap.set(key, r as GoogleReview)
+                  }
+                }
+              }
+            }
+          }
+        } catch (_) {}
+      }
     }
 
-    const json = await res.json()
-
-    if (json.status !== 'OK') {
-      const msg = `Google Places API status ${json.status}: ${json.error_message || 'Check API key restrictions and Place ID'}`
-      console.error(msg)
-      return { data: null, error: msg }
+    if (latestTotal === 0 && reviewMap.size === 0) {
+      return { data: null, error: 'Could not fetch data from Google Places' }
     }
 
-    const result = json.result
     return {
       data: {
-        rating: result.rating ?? 5.0,
-        user_ratings_total: result.user_ratings_total ?? 0,
-        reviews: (result.reviews ?? []) as GoogleReview[],
+        rating: latestRating,
+        user_ratings_total: latestTotal,
+        reviews: Array.from(reviewMap.values()).sort((a, b) => (b.time || 0) - (a.time || 0)),
         cachedAt: new Date().toISOString(),
       },
     }
@@ -254,6 +279,7 @@ async function handleSync(request: Request) {
           action: 'refreshed',
           totalReviews: mergedData.reviews.length,
           userRatingsTotal: mergedData.user_ratings_total,
+          user_ratings_total: mergedData.user_ratings_total,
           cachedAt: mergedData.cachedAt,
           storage: writeResult,
           rating: mergedData.rating,
@@ -287,6 +313,8 @@ async function handleSync(request: Request) {
       success: true,
       action: 'cached',
       ...cached,
+      user_ratings_total: cached?.user_ratings_total ?? 0,
+      userRatingsTotal: cached?.user_ratings_total ?? 0,
     })
   } catch (err: any) {
     console.error('GET /api/google-reviews error:', err)
